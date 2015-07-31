@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { GNU Compiler Collection (GCC) based compiler toolchain,
+ including OpenMPI for MPI support. - Homepage: (none)
+    }
+}
+
+module-whatis {Description: GNU Compiler Collection (GCC) based compiler toolchain,
+ including OpenMPI for MPI support. - Homepage: (none)}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/gompi/1.7.20
+
+conflict gompi
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+if { ![ is-loaded OpenMPI/1.8.4-GCC-4.8.4 ] } {
+    module load OpenMPI/1.8.4-GCC-4.8.4
+}
+
+setenv	EBROOTGOMPI		"$root"
+setenv	EBVERSIONGOMPI		"1.7.20"
+setenv	EBDEVELGOMPI		"$root/easybuild/gompi-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0

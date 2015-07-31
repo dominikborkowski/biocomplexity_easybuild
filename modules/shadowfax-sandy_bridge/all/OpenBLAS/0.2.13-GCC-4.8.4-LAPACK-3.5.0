@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version. - Homepage: http://xianyi.github.com/OpenBLAS/
+    }
+}
+
+module-whatis {Description: OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version. - Homepage: http://xianyi.github.com/OpenBLAS/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/OpenBLAS/0.2.13-GCC-4.8.4-LAPACK-3.5.0
+
+conflict OpenBLAS
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTOPENBLAS		"$root"
+setenv	EBVERSIONOPENBLAS		"0.2.13"
+setenv	EBDEVELOPENBLAS		"$root/easybuild/OpenBLAS-0.2.13-GCC-4.8.4-LAPACK-3.5.0-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
