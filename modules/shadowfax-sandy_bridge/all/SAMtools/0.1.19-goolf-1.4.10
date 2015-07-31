@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SAM Tools provide various utilities for manipulating alignments in the SAM format, 
+ including sorting, merging, indexing and generating alignments in a per-position format. - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Description: SAM Tools provide various utilities for manipulating alignments in the SAM format, 
+ including sorting, merging, indexing and generating alignments in a per-position format. - Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/SAMtools/0.1.19-goolf-1.4.10
+
+conflict SAMtools
+
+if { ![ is-loaded goolf/1.4.10 ] } {
+    module load goolf/1.4.10
+}
+
+if { ![ is-loaded ncurses/5.9-goolf-1.4.10 ] } {
+    module load ncurses/5.9-goolf-1.4.10
+}
+
+if { ![ is-loaded zlib/1.2.7-goolf-1.4.10 ] } {
+    module load zlib/1.2.7-goolf-1.4.10
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSAMTOOLS		"$root"
+setenv	EBVERSIONSAMTOOLS		"0.1.19"
+setenv	EBDEVELSAMTOOLS		"$root/easybuild/SAMtools-0.1.19-goolf-1.4.10-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
