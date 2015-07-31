@@ -18,7 +18,6 @@ This directory is typically found in `/apps/easybuild`. The git repository conta
 
 ```
 module load site/shadowfax/easybuild/setup
-module load EasyBuild
 ```
 * list available modules:
 
