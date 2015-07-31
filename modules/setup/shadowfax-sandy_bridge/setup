@@ -117,9 +117,14 @@ append-path MODULEPATH  "$root/easybuild/modules/$site-$arch/all"
 #  final empty line
 if { [ module-info mode load ] } {
     puts stderr "* End of EasyBuild init procedure \n"
-    puts stderr " If you're an admin please be sure to run the following: "
+    puts stderr " If you're an adminstrator please be sure to run the following: "
+    puts stderr ""
     puts stderr "newgrp hpcadmin"
-    puts stderr "umask 002 \n"
+    puts stderr "umask 002"
+    puts stderr "module load EasyBuild"
+    puts stderr ""
+    puts stderr " To list all available modules please use 'module avail'"
+    puts stderr ""
 }
 
 
