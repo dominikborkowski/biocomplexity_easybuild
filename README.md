@@ -39,8 +39,14 @@ module load site/shadowfax/easybuild/setup
 module load EasyBuild
 ```
 * basic `eb` usage:
-  * `eb -S cufflinks` - search for 'cufflinks'
-  * `eb Cufflinks-2.2.1-goolf-1.4.10.eb --robot` - install specific cufflinks version
+  * search for cufflinks
+  ```
+  eb -S cufflinks
+  ```
+  * install cufflinks
+  ```
+  eb Cufflinks-2.2.1-goolf-1.4.10.eb --robot
+  ```
 
 * review and commit your changes after installing software:
 
@@ -53,5 +59,3 @@ git commit -m 'installed cufflinks 2.2.1'
 
 
 ## Structure
-
-
