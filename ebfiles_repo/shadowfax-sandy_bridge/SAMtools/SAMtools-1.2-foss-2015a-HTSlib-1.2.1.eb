@@ -1,0 +1,64 @@
+# Built with EasyBuild version 2.2.0 on 2015-07-31_12-41-19
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Robert Schmidt <roschmidt@ohri.ca>, Cedric Laczny <cedric.laczny@uni.lu>, Fotis Georgatos <fotis@cern.ch>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+name = 'SAMtools'
+version = '1.2'
+
+homepage = 'http://www.htslib.org/'
+description = """Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ SAMtools - Reading/writing/editing/indexing/viewing SAM/BAM/CRAM format"""
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['https://github.com/samtools/%(namelower)s/releases/download/%(version)s']
+
+patches = ['%(name)s-%(version)s_extHTSlib_Makefile.patch']
+
+htslib = 'HTSlib'
+htsver = '1.2.1'
+versionsuffix = '-%s-%s' % (htslib, htsver)
+
+dependencies = [
+    (htslib, htsver),
+    ('ncurses', '5.9'),
+    ('zlib', '1.2.8'),
+]
+
+parallel = 1 
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1438360879,
+    "build_time": 24.32,
+    "install_size": 1232069,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--configfiles=/apps/easybuild/config/generic/config.cfg,/apps/easybuild/config/shadowfax-sandy_bridge/config.cfg', '--group=hpcadmin', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'SAMtools-1.2-foss-2015a-HTSlib-1.2.1.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2899.851,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.9.2 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin3",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
