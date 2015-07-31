@@ -57,9 +57,7 @@ if { [ module-info mode load ] } {
 
 # trying to use a config file to pre-pend ROBOT_PATHS, since that function has not been
 # extended to environment variables yet
-# it seems that version 2.1 or 2.2 broke the ability to specify multiple files, so right now we use only one
-#setenv EASYBUILD_CONFIGFILES $root/easybuild/config/generic/config.cfg:$root/easybuild/config/$site-$arch/config.cfg
-setenv EASYBUILD_CONFIGFILES $root/easybuild/config/$site-$arch/config.cfg
+setenv EASYBUILD_CONFIGFILES $root/easybuild/config/generic/config.cfg,$root/easybuild/config/$site-$arch/config.cfg
 
 
 # setenv EASYBUILD_SUBDIR_MODULES $root/easybuild/modules/$site-$arch
