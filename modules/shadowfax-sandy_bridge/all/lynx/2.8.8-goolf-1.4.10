@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { lynx is an alphanumeric display oriented World-Wide Web Client - Homepage: http://lynx.isc.org/
+    }
+}
+
+module-whatis {Description: lynx is an alphanumeric display oriented World-Wide Web Client - Homepage: http://lynx.isc.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/lynx/2.8.8-goolf-1.4.10
+
+conflict lynx
+
+if { ![ is-loaded goolf/1.4.10 ] } {
+    module load goolf/1.4.10
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTLYNX		"$root"
+setenv	EBVERSIONLYNX		"2.8.8"
+setenv	EBDEVELLYNX		"$root/easybuild/lynx-2.8.8-goolf-1.4.10-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
