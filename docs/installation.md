@@ -15,34 +15,32 @@ The main goals behind this setup are:
 
 Everything in these directories is managed by system administrators, and it's available for all end-users.
 
-* `/apps/`
-    * `/modulefiles/`
-        * `/site/`
-            * `/<CLUSTER>-<ARCH>/`
-                * `/easybuild/` - symlink to `/apps/easybuild/modules/setup/<CLUSTER>-<ARCH>`
-            
+* `/apps/modulefiles/`
+    * `/site/`
+        * `/<CLUSTER>-<ARCH>/`
+            * `/easybuild/` - symlink to `/apps/easybuild/modules/setup/<CLUSTER>-<ARCH>`
+        * `/<CLUSTER>/` - _symlink to the default ARCH on a given CLUSTER_
+* `/apps/easybuild/` - _central location for all EasyBuild files, stored in a single git repository_
+    * `/config/`
+        * `/<CLUSTER>-<ARCH>` - _UNUSED, but reserved for the future use of config files_
+    * `/modules/`
+        * `/<CLUSTER>_<ARCH>/` - _automatically generated modules for software installed via easybuild_
+        * `/setup/` - _modules for setting up easybuild environment_
+         	* `/<CLUSTER>-<ARCH>/`
+                * `/setup` - _end-user module for setting up easybuild variables specific to this <CLUSTER>-<ARCH>_
+                * `/hpcadmin` - _sysadmin module for this <CLUSTER>-<ARCH>install options_
             * `/<CLUSTER>/` - _symlink to the default ARCH on a given CLUSTER_
-    * `/easybuild/` - _central location for all EasyBuild files, stored in a single git repository_
-        * `/config/`
-            * `/<CLUSTER>-<ARCH>` - _UNUSED, but reserved for the future use of config files_
-        * `/modules/`
-         	* `/<CLUSTER>_<ARCH>/` - _automatically generated modules for software installed via easybuild_
-         	* `/setup/` - _modules for setting up easybuild environment_
-         		 * `/<CLUSTER>-<ARCH>/`
-                    * `/setup` - _end-user module for setting up easybuild variables specific to this <CLUSTER>-<ARCH>_
-                    * `/hpcadmin` - _sysadmin module for this <CLUSTER>-<ARCH>install options_
-            	* `/<CLUSTER>/` - _symlink to the default ARCH on a given CLUSTER_
-        * `/ebfiles_repo/` - _automatically generated easyconfigs_
-            * `/<CLUSTER>/` - _symlink to the default ARCH on a given CLUSTER_
-            * `/<CLUSTER>-<ARCH>/` - _3rd in ROBOT path_
-        * `/ebfiles_repo-<org>/` - _custom easyconfigs maintained by our <org>_
-            * `/<CLUSTER>`  - _symlink to the default ARCH on a given CLUSTER_
-            * `/<CLUSTER>-<ARCH>/` _1st in ROBOT path_
-                * `/<software_name>`
-            * `/generic/` - _2nd in ROBOT path_
-        * `/software/` - _destination for installed software_
-            * `/<CLUSTER>-<ARCH>/`
-        * `/sources/` - _shared across all easybuild instances to minimize download times_
+    * `/ebfiles_repo/` - _automatically generated easyconfigs_
+        * `/<CLUSTER>/` - _symlink to the default ARCH on a given CLUSTER_
+        * `/<CLUSTER>-<ARCH>/` - _3rd in ROBOT path_
+    * `/ebfiles_repo-<org>/` - _custom easyconfigs maintained by our <org>_
+        * `/<CLUSTER>`  - _symlink to the default ARCH on a given CLUSTER_
+        * `/<CLUSTER>-<ARCH>/` _1st in ROBOT path_
+            * `/<software_name>`
+        * `/generic/` - _2nd in ROBOT path_
+    * `/software/` - _destination for installed software_
+        * `/<CLUSTER>-<ARCH>/`
+    * `/sources/` - _shared across all easybuild instances to minimize download times_
 
 
 ### Local directories
@@ -64,8 +62,6 @@ These directories are optional, and are created automatically when a user uses E
         * `/software/` - _destination for installed software_
             * `/<CLUSTER>-<ARCH>/`
         * `/sources/` - _shared across all easybuild instances to minimize download times_
-        * `/modules/`
-         	* `/<CLUSTER>_<ARCH>/` - _automatically generated modules for software installed via easybuild_
 
 ## Installation
 
