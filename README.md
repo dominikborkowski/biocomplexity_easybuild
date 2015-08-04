@@ -34,7 +34,7 @@ To deploy new software
 ```
 newgrp hpcadmin
 umask 002
-module load site/shadowfax/easybuild/setup
+module load site/shadowfax/easybuild/hpcadmin
 module load EasyBuild
 ```
 * basic `eb` usage:
