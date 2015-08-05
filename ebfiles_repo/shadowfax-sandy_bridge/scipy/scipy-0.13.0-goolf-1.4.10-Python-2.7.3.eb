@@ -1,0 +1,45 @@
+# Built with EasyBuild version 2.2.0 on 2015-08-05_13-51-45
+name = 'scipy'
+version = '0.13.0'
+versionsuffix = '-Python-2.7.3'
+
+homepage = 'http://www.scipy.org'
+description = """SciPy is a collection of mathematical algorithms and convenience
+ functions built on the Numpy extension for Python."""
+
+toolchain = {'name': 'goolf', 'version': '1.4.10'}
+toolchainopts = {'pic': True}
+
+source_urls = [('http://sourceforge.net/projects/scipy/files/scipy/%(version)s', 'download')]
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('numpy', '1.7.1', versionsuffix),
+]
+
+moduleclass = 'math'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.2.0",
+    "easybuild-easyblocks_version": "2.2.0",
+    "timestamp": 1438797105,
+    "build_time": 519.39,
+    "install_size": 78125585,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group=hpcadmin', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'scipy-0.13.0-goolf-1.4.10-Python-2.7.3.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2899.851,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.7.2/libexec/gcc/x86_64-unknown-linux-gnu/4.7.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.7.2 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.7.2; Thread model: posix; gcc version 4.7.2 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin3",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.7.2/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/shadowfax-sandy_bridge/Python/2.7.3-goolf-1.4.10/bin/python",
+}]
