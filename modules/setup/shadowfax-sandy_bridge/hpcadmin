@@ -66,6 +66,7 @@ setenv EASYBUILD_INSTALLPATH_MODULES $global/modules/$site-$arch
 setenv EASYBUILD_SOURCEPATH $global/sources
 setenv EASYBUILD_REPOSITORYPATH $global/ebfiles_repo/$site-$arch
 setenv EASYBUILD_ROBOT $global/ebfiles_repo-vbi/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/shadowfax-sandy_bridge
+setenv EASYBUILD_ROBOT_PATHS $global/ebfiles_repo-vbi/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/shadowfax-sandy_bridge:
 # use /dev/shm for building software
 setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 
