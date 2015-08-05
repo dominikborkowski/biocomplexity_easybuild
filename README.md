@@ -37,7 +37,7 @@ To get started, load the setup module and EasyBuild:
 
 ```
 module load site/shadowfax/easybuild/setup
-module load EasyBuild`
+module load EasyBuild
 ```
 
 Now you can run `eb` to search and install new software. 
