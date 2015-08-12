@@ -1,0 +1,45 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2015 Virginia Bioinformatics Institute at Virginia Tech
+# Authors::   Dominik L. Borkowski <dominik.borkowski@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'the_silver_searcher'
+version = '0.30.0'
+
+homepage = 'https://github.com/ggreer/the_silver_searcher'
+description = "A code searching tool similar to ack, with a focus on speed."
+
+toolchain = {'name': 'goolf', 'version': '1.4.10'}
+
+# github version doesn't seem to have automake/autoconf steps finished
+#sources = ['%(version)s.tar.gz']
+#source_urls = ['https://github.com/ggreer/the_silver_searcher/archive']
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://geoff.greer.fm/ag/releases/']
+
+#http://geoff.greer.fm/ag/releases/the_silver_searcher-0.30.0.tar.gz
+
+dependencies = [('PCRE','8.12'),('XZ','5.0.5')]
+
+# make sure we have necessary files as a result of compilation
+sanity_check_paths = {
+    'files': ["bin/ag"],
+    'dirs': [],
+}
+
+# make sure the resulting binary is working
+# First 'True' refers to the equivalent of: '%(name)s -h'
+#sanity_check_commands = [True, ('ag', '--version')]
+
+# make sure the resulting binary is working
+sanity_check_commands = [('ag', '--version')]
+
+moduleclass = 'tools'
