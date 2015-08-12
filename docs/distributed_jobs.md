@@ -105,3 +105,59 @@ module load site/shadowfax/easybuild/setup
 module load EasyBuild
 module load GC3Pie
 ```
+
+# Sample runs
+
+* Installing a metric ton of things:
+
+```
+~> eb hwloc-1.6.2-GCC-4.7.2.eb FFTW-3.3.3-gompi-1.4.10.eb  GCC-4.6.0.eb GCC-4.9.2.eb sed-4.2.2-goolf-1.4.10.eb libtool-2.4.2-GCC-4.9.2.eb M4-1.4.17-GCC-4.9.2.eb Autoconf-2.69-GCC-4.9.2.eb Automake-1.15-GCC-4.9.2.eb numactl-2.0.10-GCC-4.9.2.eb hwloc-1.10.0-GCC-4.9.2.eb OpenMPI-1.8.4-GCC-4.9.2.eb --robot --job  --job-backend=GC3Pie --job-backend-config=/apps/easybuild/config/gc3pie/sfx_q-setup.conf --job-cores=12 --job-polling-interval=60
+ 
+== temporary log file in case of crash /tmp/eb-Jytyku/easybuild-_5d4XM.log
+== resolving dependencies ...
+== GC3Pie job overview: 5 submitted (total: 12)
+== GC3Pie job overview: 2 terminated, 2 failed, 3 running (total: 12)
+== GC3Pie job overview: 2 terminated, 2 failed, 3 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 3 terminated, 1 ok, 2 failed, 2 running (total: 12)
+== GC3Pie job overview: 4 terminated, 2 ok, 2 failed, 1 running (total: 12)
+== GC3Pie job overview: 4 terminated, 2 ok, 2 failed, 1 running (total: 12)
+== GC3Pie job overview: 4 terminated, 2 ok, 2 failed, 1 running (total: 12)
+== GC3Pie job overview: 4 terminated, 2 ok, 2 failed, 1 running (total: 12)
+== GC3Pie job overview: 4 terminated, 2 ok, 2 failed, 1 running (total: 12)
+== GC3Pie job overview: 4 terminated, 2 ok, 2 failed, 1 running (total: 12)
+== GC3Pie job overview: 5 terminated, 3 ok, 2 failed (total: 12)
+== GC3Pie job overview: 5 terminated, 3 ok, 2 submitted, 2 failed (total: 12)
+== GC3Pie job overview: 7 terminated, 4 ok, 3 failed (total: 12)
+== GC3Pie job overview: 7 terminated, 4 ok, 1 submitted, 3 failed (total: 12)
+== GC3Pie job overview: 8 terminated, 5 ok, 3 failed (total: 12)
+== GC3Pie job overview: 8 terminated, 5 ok, 1 submitted, 3 failed (total: 12)
+== GC3Pie job overview: 9 terminated, 6 ok, 3 failed (total: 12)
+== GC3Pie job overview: 9 terminated, 6 ok, 1 submitted, 3 failed (total: 12)
+== GC3Pie job overview: 10 terminated, 7 ok, 3 failed (total: 12)
+== GC3Pie job overview: 10 terminated, 7 ok, 1 submitted, 3 failed (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 1 submitted, 4 failed (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed, 1 running (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed, 1 running (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed, 1 running (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed, 1 running (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed, 1 running (total: 12)
+== GC3Pie job overview: 11 terminated, 7 ok, 4 failed, 1 running (total: 12)
+== GC3Pie job overview: 12 terminated, 8 ok, 4 failed (total: 12)
+== GC3Pie job overview: 12 terminated, 8 ok, 4 failed (total: 12)
+== Done processing jobs
+== GC3Pie job overview: 12 terminated, 8 ok, 4 failed (total: 12)
+== Submitted parallel build jobs, exiting now
+== temporary log file(s) /tmp/eb-Jytyku/easybuild-_5d4XM.log* have been removed.
+== temporary directory /tmp/eb-Jytyku has been removed. 
+```
