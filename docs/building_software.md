@@ -101,6 +101,15 @@ More to come!
 ### Advanced options
 
 
+* If you need to build software which needs restricted access, specific to a group, use the following option.
+This will do two things:
+  * set more restrictive permissions on the installed software dirs/files
+  * verify whether the resulting files are owned by this group
+Since EasyBuild cant' change group by itself, we need to do it manually before running it:
+```
+newgroup <group_name>
+eb --group=<group_name> [...]
+```
 
 * List known easyblocks, which are methods for installing software:
 
