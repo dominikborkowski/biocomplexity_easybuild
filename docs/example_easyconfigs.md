@@ -1,6 +1,6 @@
 # Examples of custom easyconfigs
 
-These sample configurations can be placed either in a global location, if you're an administrator, or in personal custom repository. 
+These sample configurations can be placed either in a global location, if you're an administrator, or in personal custom repository.
 
 ## MACS2
 

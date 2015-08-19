@@ -112,7 +112,7 @@ module load GC3Pie
 
 ```
 ~> eb hwloc-1.6.2-GCC-4.7.2.eb FFTW-3.3.3-gompi-1.4.10.eb  GCC-4.6.0.eb GCC-4.9.2.eb sed-4.2.2-goolf-1.4.10.eb libtool-2.4.2-GCC-4.9.2.eb M4-1.4.17-GCC-4.9.2.eb Autoconf-2.69-GCC-4.9.2.eb Automake-1.15-GCC-4.9.2.eb numactl-2.0.10-GCC-4.9.2.eb hwloc-1.10.0-GCC-4.9.2.eb OpenMPI-1.8.4-GCC-4.9.2.eb --robot --job  --job-backend=GC3Pie --job-backend-config=/apps/easybuild/config/gc3pie/sfx_q-setup.conf --job-cores=12 --job-polling-interval=60
- 
+
 == temporary log file in case of crash /tmp/eb-Jytyku/easybuild-_5d4XM.log
 == resolving dependencies ...
 == GC3Pie job overview: 5 submitted (total: 12)
