@@ -14,18 +14,9 @@ set global "/apps/easybuild"
 set site "local"
 # set our organization
 set org "vbi"
-# set our architecture
-set arch "x86_64"
 
 # set local location of EasyBuild
 set local "~$::env(USER)/easybuild"
-
-# # permissions and ownerships
-# set easybuild_group "hpcadmin"
-# set easybuild_umask "002"
-# set easybuild_set_gid_bit "1"
-# set easybuild_sticky_bit "1"
-
 
 # end of global configuration
 #######################################################################################################################
@@ -34,41 +25,28 @@ set local "~$::env(USER)/easybuild"
 # help functions
 proc ModulesHelp { } {
   puts stderr "  This module will load the required environment to prepare for managing software installations"
-  puts stderr "  with EasyBuild on $site with $arch architecture in $local directory. \n"
+  puts stderr "  with EasyBuild on $site system in $local directory. \n"
 }
 
-module-whatis "Module for setting up EasyBuild development end-user environment on $site with $arch."
+module-whatis "Module for setting up EasyBuild development end-user environment on $site system."
 
 # start the module
 if { [ module-info mode load ] } {
-    puts stderr "\nPreparing EasyBuild environment for $site with $arch in $local directory: \n"
+    puts stderr "\nPreparing EasyBuild environment for $site system in $local directory: \n"
 }
-
-
-# what's the location of our dummy module, which indicates that we're installing EasyBuild
-# set easybuild_install_module "test/dom/EasyBuild-install"
 
 # paths
 if { [ module-info mode load ] } {
     puts stderr "* Setting environment variables for EasyBuild's directories"
 }
 
-# originally started by providing EASYBUILD_PREFIX, then switched to more split view
-# setenv EASYBUILD_PREFIX $global/$site-$arch
-# setenv EASYBUILD_INSTALLPATH $global/$site-arch
 
-# what configuration files should be loaded and in which order:
-# - settings in last file take precedence over settings in earlier files
-# - each config file listed must exist
-# - environment variables override options from config files
-# setenv EASYBUILD_CONFIGFILES $global/config/generic/config.cfg,$global/config/$site-$arch/config.cfg,$local/config/generic/config.cfg,$local/config/$site-$arch/config.cfg
-
-setenv EASYBUILD_INSTALLPATH_SOFTWARE $local/software/$site-$arch
-setenv EASYBUILD_INSTALLPATH_MODULES $local/modules/$site-$arch
+setenv EASYBUILD_INSTALLPATH_SOFTWARE $local/software/$site
+setenv EASYBUILD_INSTALLPATH_MODULES $local/modules/$site
 setenv EASYBUILD_SOURCEPATH $local/sources
-setenv EASYBUILD_REPOSITORYPATH $local/ebfiles_repo/$site-$arch
-setenv EASYBUILD_ROBOT $local/ebfiles_repo-custom/$site-$arch:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site-$arch:$global/ebfiles_repo-vbi/$site-$arch:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site-$arch
-setenv EASYBUILD_ROBOT_PATHS $local/ebfiles_repo-custom/$site-$arch:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site-$arch:$global/ebfiles_repo-vbi/$site-$arch:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site-$arch:
+setenv EASYBUILD_REPOSITORYPATH $local/ebfiles_repo/$site
+setenv EASYBUILD_ROBOT $local/ebfiles_repo-custom/$site:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site:$global/ebfiles_repo-vbi/$site:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site
+setenv EASYBUILD_ROBOT_PATHS $local/ebfiles_repo-custom/$site:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site:$global/ebfiles_repo-vbi/$site:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site:
 
 # use /dev/shm for building software
 setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
@@ -100,27 +78,11 @@ setenv EASYBUILD_MODULE_NAMING_SCHEME EasyBuildMNS
 append-path     PATH    "$::env(MODULESHOME)/bin"
 
 # make sure our custom modules are earlier in the MODULEPATH than global VBI ones
-append-path MODULEPATH  "~$::env(USER)/easybuild/modules/$site-$arch/all"
+append-path MODULEPATH  "~$::env(USER)/easybuild/modules/$site/all"
 
 # make sure we can load EasyBuild module manually
-append-path MODULEPATH  "$global/modules/$site-$arch/all"
+append-path MODULEPATH  "$global/modules/$site/all"
 
-#  this section is not used, since we may be triggering an issue in EasyBuild
-# # if EasyBuild-install module is loaded, then we assume we are trying to install EasyBuild
-# # otherwise, we are going to load the EasyBuild module
-# if { [ is-loaded $easybuild_install_module ] } {
-#     if { [ module-info mode load ] } {
-#         puts stderr "* EasyBuild-install module is loaded - we're ready for initial EasyBuild install"
-#     }
-# } else {
-#     if { [ module-info mode load ] } {
-#         puts stderr "* Loading EasyBuild module"
-#     }
-#     # make sure we can load EasyBuild module
-#     module use $global/modules/all/Core
-#     # load the EasyBuild module
-#     module load EasyBuild
-# }
 
 #  final empty line
 if { [ module-info mode load ] } {
@@ -133,11 +95,6 @@ if { [ module-info mode load ] } {
 }
 
 
-# if { [ module-info mode load ] } {
-#     puts stderr "* debug \n"
-#     puts stderr "- ModulesCurrentModulefile is $ModulesCurrentModulefile \n"
-#     puts stderr "- foobar is foobar \n"
-# }
 
 #######################################################################################################################
 
