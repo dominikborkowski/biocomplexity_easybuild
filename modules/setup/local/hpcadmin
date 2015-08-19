@@ -81,6 +81,10 @@ append-path     PATH    "$::env(MODULESHOME)/bin"
 # make sure we can load EasyBuild module manually
 append-path MODULEPATH  "$global/modules/$site/all"
 
+# prevent software from creating lib64/ dirs, so EasyBuild's sanity checks won't fail on OpenSUSE
+# since that's where /etc/profile.d/site.sh sets CONFIG_SITE
+# ( per https://lists.ugent.be/wws/arc/easybuild/2015-05/msg00000.html )
+unsetenv CONFIG_SITE
 
 #  final empty line
 if { [ module-info mode load ] } {

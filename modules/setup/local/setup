@@ -51,16 +51,6 @@ setenv EASYBUILD_ROBOT_PATHS $local/ebfiles_repo-custom/$site:$local/ebfiles_rep
 # use /dev/shm for building software
 setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 
-# # permissions
-# if { [ module-info mode load ] } {
-#     puts stderr "* Setting environment variables for EasyBuild's permissions"
-# }
-# setenv EASYBUILD_GROUP $easybuild_group
-# setenv EASYBUILD_UMASK $easybuild_umask
-# setenv EASYBUILD_SET_GID_BIT $easybuild_set_gid_bit
-# setenv EASYBUILD_STICKY_BIT $easybuild_sticky_bit
-
-
 # global options
 if { [ module-info mode load ] } {
     puts stderr "* Setting environment variables for EasyBuild's global options"
@@ -70,9 +60,6 @@ setenv EASYBUILD_REPOSITORY FileRepository
 setenv EASYBUILD_MODULE_NAMING_SCHEME EasyBuildMNS
 # setenv EASYBUILD_ALLOW_MODULES_TOOL_MISMATCH 1
 
-# if { [ module-info mode load ] } {
-#     puts stderr "* Setting environment variables for loading EasyBuild module"
-# }
 
 # allow EasyBuild to find the modulecmd binary directly
 append-path     PATH    "$::env(MODULESHOME)/bin"
@@ -82,6 +69,12 @@ append-path MODULEPATH  "~$::env(USER)/easybuild/modules/$site/all"
 
 # make sure we can load EasyBuild module manually
 append-path MODULEPATH  "$global/modules/$site/all"
+
+
+# prevent software from creating lib64/ dirs, so EasyBuild's sanity checks won't fail on OpenSUSE
+# since that's where /etc/profile.d/site.sh sets CONFIG_SITE
+# ( per https://lists.ugent.be/wws/arc/easybuild/2015-05/msg00000.html )
+unsetenv CONFIG_SITE
 
 
 #  final empty line
