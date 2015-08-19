@@ -59,7 +59,7 @@ git config core.sharedRepository group
 ```
 mkdir -p /apps/modulefiles/site/local
 ln -sf /apps/easybuild/modules/setup/local /apps/modulefiles/site/local/easybuild
-sudo ln -sf /apps/easybuild/config/profile.d/* /etc/profile.d/  
+sudo ln -sf /apps/easybuild/config/profile.d/* /etc/profile.d/
 ```
 
   * either log out or source the new module
@@ -80,5 +80,23 @@ rm bootstrap_eb.py
 module load EasyBuild
 ```
 
-Done! Now we need to figure out how to provide basic `goolf` and `goalf` toolkits, since they require `libibverbs-dev` to be installed.
+Done!
+
+Now you can use EasyBuild on this system.
+
+## Using EasyBuild
+
+* As one of the members of `hpcadmin` group, when installing software globally to `/apps/easybuild`:
+
+```
+module load site/local/easybuild/hpcadmin
+module load EasyBuild
+```
+
+* As a regular user who wants to use global EasyBuild installation, and install additional things locally in `~/easybuild/`:
+
+```
+module load site/local/easybuild/setup
+module load EasyBuild
+```
 
