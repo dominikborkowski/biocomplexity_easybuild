@@ -12,7 +12,7 @@ The setup also relies on the availability of __hpcadmin__ group, which is provid
 
 * Initial packages
 
-_ we need environment modules for module support, and libibverbs-devel for the goolf toolchain_
+_we need environment modules for module support, and libibverbs-devel for the goolf toolchain_
 
   * openSUSE
 
