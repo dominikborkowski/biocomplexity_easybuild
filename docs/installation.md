@@ -119,11 +119,10 @@ set arch "sandy_bridge"
 set local "~$::env(USER)/easybuild"
 
 # # permissions and ownerships
-# set easybuild_group "hpcadmin"
 # set easybuild_umask "002"
 # set easybuild_set_gid_bit "1"
 # set easybuild_sticky_bit "1"
-
+# set easybuild_group_writable_installdir "1"
 
 # end of global configuration
 #######################################################################################################################
@@ -173,11 +172,10 @@ setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 # if { [ module-info mode load ] } {
 #     puts stderr "* Setting environment variables for EasyBuild's permissions"
 # }
-# setenv EASYBUILD_GROUP $easybuild_group
 # setenv EASYBUILD_UMASK $easybuild_umask
 # setenv EASYBUILD_SET_GID_BIT $easybuild_set_gid_bit
 # setenv EASYBUILD_STICKY_BIT $easybuild_sticky_bit
-
+# setenv EASYBUILD_GROUP_WRITABLE_INSTALLDIR $easybuild_group_writable_installdir
 
 # global options
 if { [ module-info mode load ] } {
@@ -262,11 +260,10 @@ set arch "sandy_bridge"
 
 
 # # permissions and ownerships
-set easybuild_group "hpcadmin"
 set easybuild_umask "002"
 set easybuild_set_gid_bit "1"
 set easybuild_sticky_bit "1"
-
+set easybuild_group_writable_installdir "1"
 
 # end of global configuration
 #######################################################################################################################
@@ -316,11 +313,10 @@ setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 if { [ module-info mode load ] } {
     puts stderr "* Setting environment variables for EasyBuild's permissions"
 }
-setenv EASYBUILD_GROUP $easybuild_group
 setenv EASYBUILD_UMASK $easybuild_umask
 setenv EASYBUILD_SET_GID_BIT $easybuild_set_gid_bit
 setenv EASYBUILD_STICKY_BIT $easybuild_sticky_bit
-
+setenv EASYBUILD_GROUP_WRITABLE_INSTALLDIR $easybuild_group_writable_installdir
 
 # global options
 if { [ module-info mode load ] } {
