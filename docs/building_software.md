@@ -46,17 +46,17 @@ eb sed-4.2.2-goolf-1.4.10.eb --robot
  * VBI currently supports the following toolchains:
     * `goolf`
     * `gompi`
-    
+
 * If there is a newer, or older, version of sed that you may want instead, we can use `--try-software-version=N` option:
 
 ```
 eb sed-4.2.2-goolf-1.4.10.eb --robot --try-software-version=4.2.1
 ```
 
-* To build this software against a different toolchain (collection of compilers and libraries) you can specify it via one of the following options: 
-	
+* To build this software against a different toolchain (collection of compilers and libraries) you can specify it via one of the following options:
+
 	* build with specific toolchain and version:
-	
+
 ```
 eb sed-4.2.2-goolf-1.4.10.eb --try-toolchain=goolf,1.7.20
 
@@ -87,12 +87,11 @@ eb --software-name=sed --robot --try-toolchain-name=goolf
 ```
 
 	* Try building a specific version of sed:
-	
+
 ```
 eb --software-name=sed --robot --try-toolchain-name=goolf --try-software-version=4.2.1
 ```
-		
-	
+
 ### Sample scenarios
 
 

@@ -1,0 +1,101 @@
+#%Module1.0#############################################################################################################
+###
+### custom EasyBuild setup module for VBI HPC systems
+### This module is intended for end users. ~/easybuild files take precedence over global ones.
+###
+### originally based on work done by Jülich Supercomputing Centre (JSC)
+
+#######################################################################################################################
+# global configuration
+
+# set up paths for the global software repository
+set global "/apps/easybuild"
+# set our site
+set site "local"
+# set our organization
+set org "vbi"
+
+# set local location of EasyBuild
+set local "~$::env(USER)/easybuild"
+
+# end of global configuration
+#######################################################################################################################
+
+
+# help functions
+proc ModulesHelp { } {
+  puts stderr "  This module will load the required environment to prepare for managing software installations"
+  puts stderr "  with EasyBuild on $site system in $local directory. \n"
+}
+
+module-whatis "Module for setting up EasyBuild development end-user environment on $site system."
+
+# start the module
+if { [ module-info mode load ] } {
+    puts stderr "\nPreparing EasyBuild environment for $site system in $local directory: \n"
+}
+
+# paths
+if { [ module-info mode load ] } {
+    puts stderr "* Setting environment variables for EasyBuild's directories"
+}
+
+
+setenv EASYBUILD_INSTALLPATH_SOFTWARE $local/software/$site
+setenv EASYBUILD_INSTALLPATH_MODULES $local/modules/$site
+setenv EASYBUILD_SOURCEPATH $local/sources
+setenv EASYBUILD_REPOSITORYPATH $local/ebfiles_repo/$site
+setenv EASYBUILD_ROBOT $local/ebfiles_repo-custom/$site:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site:$global/ebfiles_repo-vbi/$site:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site
+setenv EASYBUILD_ROBOT_PATHS $local/ebfiles_repo-custom/$site:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site:$global/ebfiles_repo-vbi/$site:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site:
+
+# use /dev/shm for building software
+setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
+
+# # permissions
+# if { [ module-info mode load ] } {
+#     puts stderr "* Setting environment variables for EasyBuild's permissions"
+# }
+# setenv EASYBUILD_GROUP $easybuild_group
+# setenv EASYBUILD_UMASK $easybuild_umask
+# setenv EASYBUILD_SET_GID_BIT $easybuild_set_gid_bit
+# setenv EASYBUILD_STICKY_BIT $easybuild_sticky_bit
+
+
+# global options
+if { [ module-info mode load ] } {
+    puts stderr "* Setting environment variables for EasyBuild's global options"
+}
+setenv EASYBUILD_MODULES_TOOL EnvironmentModulesC
+setenv EASYBUILD_REPOSITORY FileRepository
+setenv EASYBUILD_MODULE_NAMING_SCHEME EasyBuildMNS
+# setenv EASYBUILD_ALLOW_MODULES_TOOL_MISMATCH 1
+
+# if { [ module-info mode load ] } {
+#     puts stderr "* Setting environment variables for loading EasyBuild module"
+# }
+
+# allow EasyBuild to find the modulecmd binary directly
+append-path     PATH    "$::env(MODULESHOME)/bin"
+
+# make sure our custom modules are earlier in the MODULEPATH than global VBI ones
+append-path MODULEPATH  "~$::env(USER)/easybuild/modules/$site/all"
+
+# make sure we can load EasyBuild module manually
+append-path MODULEPATH  "$global/modules/$site/all"
+
+
+#  final empty line
+if { [ module-info mode load ] } {
+    puts stderr "* End of EasyBuild init procedure \n"
+    puts stderr "- To use EasyBuild system for compiling new software please run: \n"
+    puts stderr "module load EasyBuild"
+    puts stderr ""
+    puts stderr "- To list all available modules please use: module av"
+    puts stderr ""
+}
+
+
+
+#######################################################################################################################
+
+

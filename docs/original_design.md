@@ -7,7 +7,7 @@ This document outlines basic ideas of how our organization manages scientific so
 
 ### About VBI
 
-VBI is a bioinformatics research institute at Virginia Tech. Our researchers have access to both external HPC resources, provided by the university, and our own internal ones. VBI has a few clusters, with Shadowfax being our core system. 
+VBI is a bioinformatics research institute at Virginia Tech. Our researchers have access to both external HPC resources, provided by the university, and our own internal ones. VBI has a few clusters, with Shadowfax being our core system.
 
 Shadowfax is a heterogenous system, with nodes spanning Sandy Bridge, Ivy Bridge and now Haswell. It also has a range of systems with different GPGPUs, fat nodes and FPGA based nodes. Multiple storage systems are provided access to applications, home and fast scratch. All nodes have access to the same storage, under the same mount points.
 
@@ -26,12 +26,12 @@ Historically, we've managed applications using EnvironmentModulesC, with the fol
         * `[1.2.3]/{bin,lib64,...}`
   * `/docs/`
   * `/etc/`
- 
+
 
 Users upon login have their modules environment `MODULEPATH` to `/cm/local/modulefiles:/cm/shared/modulefiles:/apps/modulefiles`. The first two locations are related to the BrightComputing's Cluster Manager product, responsible for provisioning systems.
 
 In the past our system administrators and graduate research assistants have managed software installed to `/apps/packages` and manually created corresponding modules in `/apps/modulefils`. Needless to say, the process was (and continues to be) slow and error prone. With limited resources we began looking at Easybuild as means to streamline the process, both for deploying new software and cleaning up the existing packages.
- 
+
 ## Easybuild integration
 
 Here are some of my ideas on how easybuild installation could be integrated into our environment. They are based on the limited experience with EasyBuild, its documentation, and disscussions with its developers and users. The major goals include (numbering scheme does not indicate priorities):
@@ -157,7 +157,7 @@ _there needs to be a way to easily override default easyconfigs by having ROBOT 
 
 Currently the only way to prepend the ROBOT path is via EasyBuild's configuration file. Setting EASYBUILD_ROBOT results in losing the default location. See [Issue 161](https://github.com/hpcugent/vsc-base/issues/161)
 
-### 7 
+### 7
 
 _automatically set a unique build location for each user_
 

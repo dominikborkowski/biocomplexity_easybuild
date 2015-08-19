@@ -2,3 +2,5 @@
 /sources
 /upstream
 .nfs*
+ebfiles_repo/local/
+modules/local/
