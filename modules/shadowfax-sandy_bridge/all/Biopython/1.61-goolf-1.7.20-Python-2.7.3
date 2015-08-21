@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Biopython is a set of freely available tools for biological computation written
+in Python by an international team of developers. It is a distributed collaborative effort to
+develop Python libraries and applications which address the needs of current and future work in
+bioinformatics.  - Homepage: http://www.biopython.org
+    }
+}
+
+module-whatis {Description: Biopython is a set of freely available tools for biological computation written
+in Python by an international team of developers. It is a distributed collaborative effort to
+develop Python libraries and applications which address the needs of current and future work in
+bioinformatics.  - Homepage: http://www.biopython.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Biopython/1.61-goolf-1.7.20-Python-2.7.3
+
+conflict Biopython
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.3-goolf-1.7.20 ] } {
+    module load Python/2.7.3-goolf-1.7.20
+}
+
+if { ![ is-loaded numpy/1.6.2-goolf-1.7.20-Python-2.7.3 ] } {
+    module load numpy/1.6.2-goolf-1.7.20-Python-2.7.3
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTBIOPYTHON		"$root"
+setenv	EBVERSIONBIOPYTHON		"1.61"
+setenv	EBDEVELBIOPYTHON		"$root/easybuild/Biopython-1.61-goolf-1.7.20-Python-2.7.3-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.2.0
