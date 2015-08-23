@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Git is a free and open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiency. - Homepage: http://git-scm.com/
+    }
+}
+
+module-whatis {Description: Git is a free and open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiency. - Homepage: http://git-scm.com/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/git/2.5.0-GCC-4.9.2
+
+conflict git
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+if { ![ is-loaded cURL/7.40.0-GCC-4.9.2 ] } {
+    module load cURL/7.40.0-GCC-4.9.2
+}
+
+if { ![ is-loaded expat/2.1.0-GCC-4.9.2 ] } {
+    module load expat/2.1.0-GCC-4.9.2
+}
+
+if { ![ is-loaded gettext/0.19.4-GCC-4.9.2 ] } {
+    module load gettext/0.19.4-GCC-4.9.2
+}
+
+if { ![ is-loaded Perl/5.20.1-GCC-4.9.2-bare ] } {
+    module load Perl/5.20.1-GCC-4.9.2-bare
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGIT		"$root"
+setenv	EBVERSIONGIT		"2.5.0"
+setenv	EBDEVELGIT		"$root/easybuild/git-2.5.0-GCC-4.9.2-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
