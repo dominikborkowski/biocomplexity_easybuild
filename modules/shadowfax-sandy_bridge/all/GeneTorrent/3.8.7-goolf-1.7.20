@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  GeneTorrent is a command-line tool required to download datasets
+held in repositories at the Cancer Genomics Hub.  - Homepage: https://cghub.ucsc.edu/index.html
+    }
+}
+
+module-whatis {Description:  GeneTorrent is a command-line tool required to download datasets
+held in repositories at the Cancer Genomics Hub.  - Homepage: https://cghub.ucsc.edu/index.html}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/GeneTorrent/3.8.7-goolf-1.7.20
+
+conflict GeneTorrent
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Xerces-C++/3.1.2-goolf-1.7.20 ] } {
+    module load Xerces-C++/3.1.2-goolf-1.7.20
+}
+
+if { ![ is-loaded cURL/7.44.0-goolf-1.7.20 ] } {
+    module load cURL/7.44.0-goolf-1.7.20
+}
+
+if { ![ is-loaded XQilla/2.3.0-goolf-1.7.20-Xerces-C++-3.1.2 ] } {
+    module load XQilla/2.3.0-goolf-1.7.20-Xerces-C++-3.1.2
+}
+
+if { ![ is-loaded Boost/1.58.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load Boost/1.58.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded pkg-config/0.28-GCC-4.8.4 ] } {
+    module load pkg-config/0.28-GCC-4.8.4
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGENETORRENT		"$root"
+setenv	EBVERSIONGENETORRENT		"3.8.7"
+setenv	EBDEVELGENETORRENT		"$root/easybuild/GeneTorrent-3.8.7-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
