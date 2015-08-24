@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  Genome assembler for single-cell and isolates data sets  - Homepage: http://bioinf.spbau.ru/en/spades
+    }
+}
+
+module-whatis {Description:  Genome assembler for single-cell and isolates data sets  - Homepage: http://bioinf.spbau.ru/en/spades}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/SPAdes/3.6.0-goolf-1.7.20
+
+conflict SPAdes
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded zlib/1.2.8-goolf-1.7.20 ] } {
+    module load zlib/1.2.8-goolf-1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSPADES		"$root"
+setenv	EBVERSIONSPADES		"3.6.0"
+setenv	EBDEVELSPADES		"$root/easybuild/SPAdes-3.6.0-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
