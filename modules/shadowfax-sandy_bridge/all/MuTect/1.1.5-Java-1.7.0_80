@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  MuTect is a method developed at the Broad Institute for the reliable
+ and accurate identification of somatic point mutations in next generation sequencing
+ data of cancer genomes.  - Homepage: http://www.broadinstitute.org/cancer/cga/mutect
+    }
+}
+
+module-whatis {Description:  MuTect is a method developed at the Broad Institute for the reliable
+ and accurate identification of somatic point mutations in next generation sequencing
+ data of cancer genomes.  - Homepage: http://www.broadinstitute.org/cancer/cga/mutect}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/MuTect/1.1.5-Java-1.7.0_80
+
+conflict MuTect
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CLASSPATH		$root/muTect-1.1.5.jar
+setenv	EBROOTMUTECT		"$root"
+setenv	EBVERSIONMUTECT		"1.1.5"
+setenv	EBDEVELMUTECT		"$root/easybuild/MuTect-1.1.5-Java-1.7.0_80-easybuild-devel"
+
+
+if { [ module-info mode load ] } {
+    puts stderr "
+to execute: java -jar \$EBROOTMUTECT/muTect-1.1.5.jar
+"
+}
+# Built with EasyBuild version 2.2.0
