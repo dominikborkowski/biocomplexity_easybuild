@@ -1,0 +1,24 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { ARPACK is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems. - Homepage: http://forge.scilab.org/index.php/p/arpack-ng/
+    }
+}
+
+module-whatis {Description: ARPACK is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems. - Homepage: http://forge.scilab.org/index.php/p/arpack-ng/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/arpack-ng/3.2.0-goolf-1.7.20
+
+conflict arpack-ng
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTARPACKMINNG		"$root"
+setenv	EBVERSIONARPACKMINNG		"3.2.0"
+setenv	EBDEVELARPACKMINNG		"$root/easybuild/arpack-ng-3.2.0-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
