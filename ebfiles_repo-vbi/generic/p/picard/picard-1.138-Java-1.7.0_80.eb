@@ -11,6 +11,7 @@
 name = 'picard'
 version = '1.138'
 
+
 homepage = 'http://broadinstitute.github.io/picard/'
 description = """A set of Java command line tools for manipulating high-throughput sequencing data (HTS) data and formats."""
 
@@ -19,7 +20,11 @@ toolchain = {'name': 'dummy', 'version': 'dummy'}
 sources = ['%(name)s-tools-%(version)s.zip']
 source_urls = ['https://github.com/broadinstitute/picard/releases/download/%(version)s/']
 
-dependencies = [('Java', '1.7.0_80')]
+java = 'Java'
+javaver = '1.7.0_80'
+versionsuffix = '-%s-%s' % (java, javaver)
+
+dependencies = [(java, javaver)]
 
 sanity_check_paths = {
     'files': ['picard.jar', 'picard-lib.jar', 'htsjdk-%(version)s.jar', 'libIntelDeflater.so'],
