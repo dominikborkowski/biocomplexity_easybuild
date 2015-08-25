@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Set of Linux utilities - Homepage: http://www.kernel.org/pub/linux/utils/util-linux
+    }
+}
+
+module-whatis {Description: Set of Linux utilities - Homepage: http://www.kernel.org/pub/linux/utils/util-linux}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/util-linux/2.22.2-goolf-1.7.20
+
+conflict util-linux
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded ncurses/5.9-goolf-1.7.20 ] } {
+    module load ncurses/5.9-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/sbin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTUTILMINLINUX		"$root"
+setenv	EBVERSIONUTILMINLINUX		"2.22.2"
+setenv	EBDEVELUTILMINLINUX		"$root/easybuild/util-linux-2.22.2-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.2.0
