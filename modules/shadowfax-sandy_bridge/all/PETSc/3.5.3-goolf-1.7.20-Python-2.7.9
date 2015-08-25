@@ -1,0 +1,62 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { PETSc, pronounced PET-see (the S is silent), is a suite of data structures and routines for the
+ scalable (parallel) solution of scientific applications modeled by partial differential equations. - Homepage: http://www.mcs.anl.gov/petsc
+    }
+}
+
+module-whatis {Description: PETSc, pronounced PET-see (the S is silent), is a suite of data structures and routines for the
+ scalable (parallel) solution of scientific applications modeled by partial differential equations. - Homepage: http://www.mcs.anl.gov/petsc}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/PETSc/3.5.3-goolf-1.7.20-Python-2.7.9
+
+conflict PETSc
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Boost/1.57.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load Boost/1.57.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded FIAT/1.5.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load FIAT/1.5.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded METIS/5.1.0-goolf-1.7.20 ] } {
+    module load METIS/5.1.0-goolf-1.7.20
+}
+
+if { ![ is-loaded ParMETIS/4.0.3-goolf-1.7.20 ] } {
+    module load ParMETIS/4.0.3-goolf-1.7.20
+}
+
+if { ![ is-loaded ScientificPython/2.9.4-goolf-1.7.20-Python-2.7.9 ] } {
+    module load ScientificPython/2.9.4-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded SCOTCH/6.0.4-goolf-1.7.20 ] } {
+    module load SCOTCH/6.0.4-goolf-1.7.20
+}
+
+if { ![ is-loaded SuiteSparse/4.4.3-goolf-1.7.20-ParMETIS-4.0.3 ] } {
+    module load SuiteSparse/4.4.3-goolf-1.7.20-ParMETIS-4.0.3
+}
+
+if { ![ is-loaded Hypre/2.10.0b-goolf-1.7.20 ] } {
+    module load Hypre/2.10.0b-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPETSC		"$root"
+setenv	EBVERSIONPETSC		"3.5.3"
+setenv	EBDEVELPETSC		"$root/easybuild/PETSc-3.5.3-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+setenv	PETSC_DIR		"/apps/easybuild/software/shadowfax-sandy_bridge/PETSc/3.5.3-goolf-1.7.20-Python-2.7.9"
+# Built with EasyBuild version 2.2.0

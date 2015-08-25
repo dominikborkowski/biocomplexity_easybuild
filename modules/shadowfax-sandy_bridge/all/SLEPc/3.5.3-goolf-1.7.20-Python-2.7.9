@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SLEPc (Scalable Library for Eigenvalue Problem Computations) is a software library for the solution of
+ large scale sparse eigenvalue problems on parallel computers. It is an extension of PETSc and can be used for either
+ standard or generalized eigenproblems, with real or complex arithmetic. It can also be used for computing a partial
+ SVD of a large, sparse, rectangular matrix, and to solve quadratic eigenvalue problems. - Homepage: http://www.grycap.upv.es/slepc/
+    }
+}
+
+module-whatis {Description: SLEPc (Scalable Library for Eigenvalue Problem Computations) is a software library for the solution of
+ large scale sparse eigenvalue problems on parallel computers. It is an extension of PETSc and can be used for either
+ standard or generalized eigenproblems, with real or complex arithmetic. It can also be used for computing a partial
+ SVD of a large, sparse, rectangular matrix, and to solve quadratic eigenvalue problems. - Homepage: http://www.grycap.upv.es/slepc/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/SLEPc/3.5.3-goolf-1.7.20-Python-2.7.9
+
+conflict SLEPc
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded PETSc/3.5.3-goolf-1.7.20-Python-2.7.9 ] } {
+    module load PETSc/3.5.3-goolf-1.7.20-Python-2.7.9
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSLEPC		"$root"
+setenv	EBVERSIONSLEPC		"3.5.3"
+setenv	EBDEVELSLEPC		"$root/easybuild/SLEPc-3.5.3-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+setenv	SLEPC_DIR		"/apps/easybuild/software/shadowfax-sandy_bridge/SLEPc/3.5.3-goolf-1.7.20-Python-2.7.9"
+# Built with EasyBuild version 2.2.0
