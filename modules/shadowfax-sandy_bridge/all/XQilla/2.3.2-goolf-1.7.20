@@ -8,7 +8,7 @@ utility written in C++, implemented on top of the Xerces-C++ library. - Homepage
 module-whatis {Description: XQilla is an XQuery and XPath 2 library and command line
 utility written in C++, implemented on top of the Xerces-C++ library. - Homepage: http://xqilla.sourceforge.net/HomePage}
 
-set root /apps/easybuild/software/shadowfax-sandy_bridge/XQilla/2.3.0-goolf-1.7.20-Xerces-C++-3.1.2
+set root /apps/easybuild/software/shadowfax-sandy_bridge/XQilla/2.3.2-goolf-1.7.20
 
 conflict XQilla
 
@@ -25,7 +25,7 @@ prepend-path	LD_LIBRARY_PATH		$root/lib
 prepend-path	LIBRARY_PATH		$root/lib
 prepend-path	PATH		$root/bin
 setenv	EBROOTXQILLA		"$root"
-setenv	EBVERSIONXQILLA		"2.3.0"
-setenv	EBDEVELXQILLA		"$root/easybuild/XQilla-2.3.0-goolf-1.7.20-Xerces-C++-3.1.2-easybuild-devel"
+setenv	EBVERSIONXQILLA		"2.3.2"
+setenv	EBDEVELXQILLA		"$root/easybuild/XQilla-2.3.2-goolf-1.7.20-easybuild-devel"
 
 # Built with EasyBuild version 2.2.0

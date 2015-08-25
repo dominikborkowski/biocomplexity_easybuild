@@ -24,8 +24,8 @@ if { ![ is-loaded cURL/7.44.0-goolf-1.7.20 ] } {
     module load cURL/7.44.0-goolf-1.7.20
 }
 
-if { ![ is-loaded XQilla/2.3.0-goolf-1.7.20-Xerces-C++-3.1.2 ] } {
-    module load XQilla/2.3.0-goolf-1.7.20-Xerces-C++-3.1.2
+if { ![ is-loaded XQilla/2.3.2-goolf-1.7.20 ] } {
+    module load XQilla/2.3.2-goolf-1.7.20
 }
 
 if { ![ is-loaded Boost/1.58.0-goolf-1.7.20-Python-2.7.9 ] } {

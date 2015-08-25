@@ -1,7 +1,7 @@
 easyblock = 'ConfigureMake'
 
 name = 'XQilla'
-version = '2.3.0'
+version = '2.3.2'
 xerces_version = '3.1.2'
 
 
@@ -12,7 +12,6 @@ utility written in C++, implemented on top of the Xerces-C++ library."""
 
 toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
-versionsuffix = '-Xerces-C++-%s' % xerces_version
 
 sources = [SOURCE_TAR_GZ]
 source_urls = [
