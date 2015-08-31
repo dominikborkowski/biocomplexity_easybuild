@@ -20,7 +20,8 @@ toolchain = {'name': 'goolf', 'version': '1.7.20'}
 # tar czf freebayes-0.9.21.tar.gz freebayes-0.9.21
 sources = [SOURCELOWER_TAR_GZ]
 
-builddependencies = [('CMake', '3.2.1')]
+#builddependencies = [('CMake', '3.2.1')]
+builddependencies = [('CMake', '3.2.1', '', ('GCC', '4.8.4'))]
 
 parallel = 1
 

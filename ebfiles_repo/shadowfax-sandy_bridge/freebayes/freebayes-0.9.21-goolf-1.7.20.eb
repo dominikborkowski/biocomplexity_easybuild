@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.2.0 on 2015-08-28_16-50-21
+# Built with EasyBuild version 2.2.0 on 2015-08-30_22-16-46
 # This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
 # Author: Pablo Escobar Lopez
 # Swiss Institute of Bioinformatics
@@ -21,7 +21,8 @@ toolchain = {'name': 'goolf', 'version': '1.7.20'}
 # tar czf freebayes-0.9.21.tar.gz freebayes-0.9.21
 sources = [SOURCELOWER_TAR_GZ]
 
-builddependencies = [('CMake', '3.2.1')]
+#builddependencies = [('CMake', '3.2.1')]
+builddependencies = [('CMake', '3.2.1', '', ('GCC', '4.8.4'))]
 
 parallel = 1
 
@@ -47,10 +48,10 @@ moduleclass = 'bio'
 buildstats = [{
     "easybuild-framework_version": "2.2.0",
     "easybuild-easyblocks_version": "2.2.0",
-    "timestamp": 1440795021,
-    "build_time": 132.63,
-    "install_size": 18207172,
-    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'freebayes-0.9.21-goolf-1.7.20.eb'],
+    "timestamp": 1440987406,
+    "build_time": 127.85,
+    "install_size": 18207148,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--force', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'freebayes-0.9.21-goolf-1.7.20.eb'],
     "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 16,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
