@@ -43,7 +43,7 @@ if { [ module-info mode load ] } {
 
 setenv EASYBUILD_INSTALLPATH_SOFTWARE $local/software/$site
 setenv EASYBUILD_INSTALLPATH_MODULES $local/modules/$site
-setenv EASYBUILD_SOURCEPATH $local/sources
+setenv EASYBUILD_SOURCEPATH $local/sources:$global/sources
 setenv EASYBUILD_REPOSITORYPATH $local/ebfiles_repo/$site
 setenv EASYBUILD_ROBOT $local/ebfiles_repo-custom/$site:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site:$global/ebfiles_repo-vbi/$site:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site
 setenv EASYBUILD_ROBOT_PATHS $local/ebfiles_repo-custom/$site:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/$site:$global/ebfiles_repo-vbi/$site:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/$site:
