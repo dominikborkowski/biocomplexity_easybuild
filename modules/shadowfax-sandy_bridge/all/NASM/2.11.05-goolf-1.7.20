@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { NASM: General-purpose x86 assembler - Homepage: http://www.nasm.us/
+    }
+}
+
+module-whatis {Description: NASM: General-purpose x86 assembler - Homepage: http://www.nasm.us/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/NASM/2.11.05-goolf-1.7.20
+
+conflict NASM
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNASM		"$root"
+setenv	EBVERSIONNASM		"2.11.05"
+setenv	EBDEVELNASM		"$root/easybuild/NASM-2.11.05-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
