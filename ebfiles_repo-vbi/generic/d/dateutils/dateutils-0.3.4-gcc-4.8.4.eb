@@ -1,0 +1,24 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2015 Virginia Bioinformatics Institute at Virginia Tech
+# Authors::   Dominik L. Borkowski <dominik.borkowski@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'dateutils'
+version = '0.3.4'
+
+homepage = 'https://github.com/hroptatyr/dateutils'
+description = "Nifty command line date and time utilities; fast date calculations and conversion in the shell"
+
+toolchain = {'name': 'GCC', 'version': '4.8.4'}
+
+source_urls = ['https://github.com/hroptatyr/%(name)s/releases/download/v%(version)s/']
+sources = ['%(name)s-%(version)s.tar.xz']
+
+moduleclass = 'tools'

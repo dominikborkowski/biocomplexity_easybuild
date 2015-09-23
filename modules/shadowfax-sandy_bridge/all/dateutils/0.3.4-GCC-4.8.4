@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Nifty command line date and time utilities; fast date calculations and conversion in the shell - Homepage: https://github.com/hroptatyr/dateutils
+    }
+}
+
+module-whatis {Description: Nifty command line date and time utilities; fast date calculations and conversion in the shell - Homepage: https://github.com/hroptatyr/dateutils}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/dateutils/0.3.4-GCC-4.8.4
+
+conflict dateutils
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTDATEUTILS		"$root"
+setenv	EBVERSIONDATEUTILS		"0.3.4"
+setenv	EBDEVELDATEUTILS		"$root/easybuild/dateutils-0.3.4-GCC-4.8.4-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
