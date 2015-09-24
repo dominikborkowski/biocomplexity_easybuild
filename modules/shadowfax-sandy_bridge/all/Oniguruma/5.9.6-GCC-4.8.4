@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { regular expression library - Homepage: https://github.com/kkos/oniguruma
+    }
+}
+
+module-whatis {Description: regular expression library - Homepage: https://github.com/kkos/oniguruma}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Oniguruma/5.9.6-GCC-4.8.4
+
+conflict Oniguruma
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTONIGURUMA		"$root"
+setenv	EBVERSIONONIGURUMA		"5.9.6"
+setenv	EBDEVELONIGURUMA		"$root/easybuild/Oniguruma-5.9.6-GCC-4.8.4-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
