@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { lightweight and flexible command-line JSON processor - Homepage: https://github.com/stedolan/jq
+    }
+}
+
+module-whatis {Description: lightweight and flexible command-line JSON processor - Homepage: https://github.com/stedolan/jq}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/jq/1.5-GCC-4.8.4
+
+conflict jq
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTJQ		"$root"
+setenv	EBVERSIONJQ		"1.5"
+setenv	EBDEVELJQ		"$root/easybuild/jq-1.5-GCC-4.8.4-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
