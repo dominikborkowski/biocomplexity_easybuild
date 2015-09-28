@@ -1,0 +1,36 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2015 Virginia Bioinformatics Institute at Virginia Tech
+# Authors::   Dominik L. Borkowski <dominik.borkowski@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = '4mc'
+version = '1.3.0'
+
+homepage = 'https://github.com/kkos/oniguruma'
+description = "The 4MC (4 More Compression) is a library for hadoop providing a new splittable compressed file format (4mc) which lets you leverage the power of LZ4 algorithm. It's been designed to add more features to existing big data solutions like HADOOP/ElephantBir"
+
+toolchain = {'name': 'GCC', 'version': '4.8.4'}
+
+source_urls = ['https://github.com/carlomedas/%(namelower)s/archive/']
+sources = ['%(version)s.tar.gz']
+
+start_dir = 'native'
+
+skipsteps = ['configure']
+
+installopts = 'PREFIX=%(installdir)s'
+
+sanity_check_paths = {
+    'files': ["bin/4mc"],
+    'dirs': ["share/man/man1"]
+}
+
+
+moduleclass = 'tools'
