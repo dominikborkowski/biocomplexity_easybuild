@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and
+ portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display
+ servers, font conversion tools, text image generation tools, and many other products as well. - Homepage: http://freetype.org
+    }
+}
+
+module-whatis {Description: FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and
+ portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display
+ servers, font conversion tools, text image generation tools, and many other products as well. - Homepage: http://freetype.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/freetype/2.6-goolf-1.7.20
+
+conflict freetype
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded libpng/1.6.17-goolf-1.7.20 ] } {
+    module load libpng/1.6.17-goolf-1.7.20
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include/freetype2
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTFREETYPE		"$root"
+setenv	EBVERSIONFREETYPE		"2.6"
+setenv	EBDEVELFREETYPE		"$root/easybuild/freetype-2.6-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

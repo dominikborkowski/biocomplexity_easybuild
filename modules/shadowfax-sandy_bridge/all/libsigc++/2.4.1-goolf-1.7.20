@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The libsigc++ package implements a typesafe callback system for standard C++. - Homepage: http://www.gtk.org/
+    }
+}
+
+module-whatis {Description: The libsigc++ package implements a typesafe callback system for standard C++. - Homepage: http://www.gtk.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/libsigc++/2.4.1-goolf-1.7.20
+
+conflict libsigc++
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBSIGCPLUSPLUS		"$root"
+setenv	EBVERSIONLIBSIGCPLUSPLUS		"2.4.1"
+setenv	EBDEVELLIBSIGCPLUSPLUS		"$root/easybuild/libsigc++-2.4.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

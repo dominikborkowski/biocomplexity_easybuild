@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Pixman is a low-level software library for pixel manipulation, providing features such as image
+compositing and trapezoid rasterization. Important users of pixman are the cairo graphics library and the X server. - Homepage: http://www.pixman.org/
+    }
+}
+
+module-whatis {Description: Pixman is a low-level software library for pixel manipulation, providing features such as image
+compositing and trapezoid rasterization. Important users of pixman are the cairo graphics library and the X server. - Homepage: http://www.pixman.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/pixman/0.32.6-goolf-1.7.20
+
+conflict pixman
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPIXMAN		"$root"
+setenv	EBVERSIONPIXMAN		"0.32.6"
+setenv	EBDEVELPIXMAN		"$root/easybuild/pixman-0.32.6-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

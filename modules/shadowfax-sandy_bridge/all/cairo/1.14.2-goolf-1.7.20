@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Cairo is a 2D graphics library with support for multiple output devices.
+ Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB - Homepage: http://cairographics.org
+    }
+}
+
+module-whatis {Description: Cairo is a 2D graphics library with support for multiple output devices.
+ Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB - Homepage: http://cairographics.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/cairo/1.14.2-goolf-1.7.20
+
+conflict cairo
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded bzip2/1.0.6-goolf-1.7.20 ] } {
+    module load bzip2/1.0.6-goolf-1.7.20
+}
+
+if { ![ is-loaded zlib/1.2.8-goolf-1.7.20 ] } {
+    module load zlib/1.2.8-goolf-1.7.20
+}
+
+if { ![ is-loaded libpng/1.6.17-goolf-1.7.20 ] } {
+    module load libpng/1.6.17-goolf-1.7.20
+}
+
+if { ![ is-loaded freetype/2.6-goolf-1.7.20 ] } {
+    module load freetype/2.6-goolf-1.7.20
+}
+
+if { ![ is-loaded pixman/0.32.6-goolf-1.7.20 ] } {
+    module load pixman/0.32.6-goolf-1.7.20
+}
+
+if { ![ is-loaded fontconfig/2.11.94-goolf-1.7.20 ] } {
+    module load fontconfig/2.11.94-goolf-1.7.20
+}
+
+if { ![ is-loaded expat/2.1.0-goolf-1.7.20 ] } {
+    module load expat/2.1.0-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTCAIRO		"$root"
+setenv	EBVERSIONCAIRO		"1.14.2"
+setenv	EBDEVELCAIRO		"$root/easybuild/cairo-1.14.2-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
