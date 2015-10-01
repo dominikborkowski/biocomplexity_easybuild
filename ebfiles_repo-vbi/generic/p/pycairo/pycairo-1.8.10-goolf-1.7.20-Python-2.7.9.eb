@@ -1,0 +1,40 @@
+easyblock = "ConfigureMake"
+
+name = "pycairo"
+version = "1.8.10"
+
+homepage = "http://cairographics.org/pycairo/"
+description = """Pycairo is a set of Python bindings for the cairo graphics library."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+source_urls = ['http://cairographics.org/releases/']
+# sources = [SOURCELOWER_TAR_GZ]
+sources = ['py2cairo-%(version)s.tar.gz']
+
+python = "Python"
+pythonversion = "2.7.9"
+
+versionsuffix = "-%s-%s" % (python, pythonversion)
+
+dependencies = [
+    (python, pythonversion),
+    ('cairo', '1.14.2'),
+]
+
+py_short_ver = ".".join(pythonversion.split(".")[0:2])
+pylibdir = "lib/python%s/site-packages/cairo" % py_short_ver
+
+sanity_check_paths = {
+    'files': ["%s/_cairo.so" % (pylibdir)],
+    'dirs': []
+}
+
+# unused now, since we're not using PythonPackage easyblock
+#
+# default sanity check for importing module fails, because EB guesses with name.lower().
+# to work around that, we explicitly tell it to use another name
+# options = {'modulename': 'cairo'}
+
+
+moduleclass = 'lib'
