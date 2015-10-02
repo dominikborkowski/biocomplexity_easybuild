@@ -29,4 +29,4 @@ setenv	EBVERSIONPYZMQ		"2.2.0.1"
 setenv	EBDEVELPYZMQ		"$root/easybuild/PyZMQ-2.2.0.1-goolf-1.7.20-Python-2.7.3-zmq3-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
-# Built with EasyBuild version 2.2.0
+# Built with EasyBuild version 2.3.0

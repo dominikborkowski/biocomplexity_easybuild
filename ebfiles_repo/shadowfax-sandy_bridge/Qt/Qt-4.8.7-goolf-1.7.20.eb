@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.3.0 on 2015-09-30_23-26-09
+# Built with EasyBuild version 2.3.0 on 2015-10-02_12-20-33
 name = 'Qt'
 version = '4.8.7'
 
@@ -15,7 +15,7 @@ sources = ['%(namelower)s-everywhere-opensource-src-%(version)s.tar.gz']
 
 #patches = ['Qt-4.8.6_icc-qUnused.patch']
 
-#dependencies = [('GLib', '2.46.0')]
+dependencies = [('GLib', '2.46.0')]
 
 moduleclass = 'devel'
 
@@ -23,10 +23,10 @@ moduleclass = 'devel'
 buildstats = [{
     "easybuild-framework_version": "2.3.0",
     "easybuild-easyblocks_version": "2.3.0",
-    "timestamp": 1443669966,
-    "build_time": 1017.11,
-    "install_size": 671598241,
-    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'CGAL-4.6.3-goolf-1.7.20-Python-2.7.9.eb'],
+    "timestamp": 1443802830,
+    "build_time": 1175.26,
+    "install_size": 671607627,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--force', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Qt-4.8.7-goolf-1.7.20.eb'],
     "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 16,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",

@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.2.0 on 2015-08-25_14-52-58
+# Built with EasyBuild version 2.3.0 on 2015-10-02_14-20-34
 name = 'SLEPc'
 version = '3.5.3'
 versionsuffix = '-Python-2.7.9'
@@ -23,16 +23,16 @@ moduleclass = 'numlib'
 
 # Build statistics
 buildstats = [{
-    "easybuild-framework_version": "2.2.0",
-    "easybuild-easyblocks_version": "2.2.0",
-    "timestamp": 1440528778,
-    "build_time": 29.77,
-    "install_size": 10554451,
-    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.2.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.2.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'SLEPc-3.5.3-goolf-1.7.20-Python-2.7.9.eb'],
+    "easybuild-framework_version": "2.3.0",
+    "easybuild-easyblocks_version": "2.3.0",
+    "timestamp": 1443810034,
+    "build_time": 24.73,
+    "install_size": 10554472,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--force', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'SLEPc-3.5.3-goolf-1.7.20-Python-2.7.9.eb'],
     "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 16,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
-    "cpu_speed": 2899.851,
+    "cpu_speed": 2899.86,
     "cpu_vendor": "Intel",
     "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
     "glibc_version": "2.11.3",

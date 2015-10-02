@@ -14,6 +14,6 @@ sources = ['%(namelower)s-everywhere-opensource-src-%(version)s.tar.gz']
 
 #patches = ['Qt-4.8.6_icc-qUnused.patch']
 
-#dependencies = [('GLib', '2.46.0')]
+dependencies = [('GLib', '2.46.0')]
 
 moduleclass = 'devel'

@@ -14,6 +14,10 @@ if { ![ is-loaded goolf/1.7.20 ] } {
     module load goolf/1.7.20
 }
 
+if { ![ is-loaded GLib/2.46.0-goolf-1.7.20 ] } {
+    module load GLib/2.46.0-goolf-1.7.20
+}
+
 prepend-path	CPATH		$root/include
 prepend-path	LD_LIBRARY_PATH		$root/lib
 prepend-path	LIBRARY_PATH		$root/lib

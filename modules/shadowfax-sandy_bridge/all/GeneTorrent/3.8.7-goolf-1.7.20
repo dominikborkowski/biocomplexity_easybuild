@@ -44,4 +44,4 @@ setenv	EBROOTGENETORRENT		"$root"
 setenv	EBVERSIONGENETORRENT		"3.8.7"
 setenv	EBDEVELGENETORRENT		"$root/easybuild/GeneTorrent-3.8.7-goolf-1.7.20-easybuild-devel"
 
-# Built with EasyBuild version 2.2.0
+# Built with EasyBuild version 2.3.0
