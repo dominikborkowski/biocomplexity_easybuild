@@ -23,10 +23,15 @@ dependencies = [
 ]
 
 py_short_ver = ".".join(pythonversion.split(".")[0:2])
-pylibdir = "lib/python%s/site-packages/cairo" % py_short_ver
+py_lib_dir = "lib/python%s/site-packages/cairo" % py_short_ver
+
+# we have to patch setup.py to install __init__.* files into our destination dir
+# instead of python system's dir
+patches = ['pycairo-%(version)s-setup.py.patch']
+
 
 sanity_check_paths = {
-    'files': ["%s/_cairo.so" % (pylibdir)],
+    'files': ["%s/_cairo.so" % (py_lib_dir)],
     'dirs': []
 }
 
