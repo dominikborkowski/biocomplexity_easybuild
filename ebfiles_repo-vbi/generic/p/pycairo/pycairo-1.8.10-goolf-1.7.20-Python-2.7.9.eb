@@ -1,4 +1,4 @@
-easyblock = "ConfigureMake"
+easyblock = "PythonPackage"
 
 name = "pycairo"
 version = "1.8.10"
@@ -34,7 +34,7 @@ sanity_check_paths = {
 #
 # default sanity check for importing module fails, because EB guesses with name.lower().
 # to work around that, we explicitly tell it to use another name
-# options = {'modulename': 'cairo'}
+options = {'modulename': 'cairo'}
 
 
 moduleclass = 'lib'
