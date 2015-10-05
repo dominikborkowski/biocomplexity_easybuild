@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SciPy is a collection of mathematical algorithms and convenience
+ functions built on the Numpy extension for Python. - Homepage: http://www.scipy.org
+    }
+}
+
+module-whatis {Description: SciPy is a collection of mathematical algorithms and convenience
+ functions built on the Numpy extension for Python. - Homepage: http://www.scipy.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/scipy/0.16.0-goolf-1.7.20-Python-2.7.9
+
+conflict scipy
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded numpy/1.9.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load numpy/1.9.2-goolf-1.7.20-Python-2.7.9
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTSCIPY		"$root"
+setenv	EBVERSIONSCIPY		"0.16.0"
+setenv	EBDEVELSCIPY		"$root/easybuild/scipy-0.16.0-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0
