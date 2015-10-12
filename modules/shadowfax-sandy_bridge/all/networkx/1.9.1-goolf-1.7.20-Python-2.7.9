@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics,
+ and functions of complex networks. - Homepage: https://pypi.python.org/pypi/networkx
+    }
+}
+
+module-whatis {Description: NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics,
+ and functions of complex networks. - Homepage: https://pypi.python.org/pypi/networkx}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/networkx/1.9.1-goolf-1.7.20-Python-2.7.9
+
+conflict networkx
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTNETWORKX		"$root"
+setenv	EBVERSIONNETWORKX		"1.9.1"
+setenv	EBDEVELNETWORKX		"$root/easybuild/networkx-1.9.1-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0
