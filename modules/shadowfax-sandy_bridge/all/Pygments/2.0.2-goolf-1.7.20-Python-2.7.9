@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Python http for humans - Homepage: https://pypi.python.org/pypi/requests/2.6.0
+    }
+}
+
+module-whatis {Description: Python http for humans - Homepage: https://pypi.python.org/pypi/requests/2.6.0}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Pygments/2.0.2-goolf-1.7.20-Python-2.7.9
+
+conflict Pygments
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTPYGMENTS		"$root"
+setenv	EBVERSIONPYGMENTS		"2.0.2"
+setenv	EBDEVELPYGMENTS		"$root/easybuild/Pygments-2.0.2-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0
