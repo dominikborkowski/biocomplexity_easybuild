@@ -1,0 +1,33 @@
+easyblock = "PythonPackage"
+
+name = 'six'
+version = '1.10.0'
+
+homepage = 'http://pythonhosted.org//six/'
+description = """Six provides simple utilities for wrapping over differences 
+between Python 2 and Python 3. It is intended to support codebases that work 
+on both Python 2 and 3 without modification."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+toolchainopts = {'pic': True}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+python = "Python"
+pythonversion = '2.7.9'
+pyshortver = ".".join(pythonversion.split(".")[:-1])
+
+dependencies = [(python, pythonversion)]
+
+versionsuffix = "-%s-%s" % (python, pythonversion)
+
+pyprefix = 'lib/python%s/site-packages' % pyshortver
+eggname = '%%(name)s-%%(version)s-py%s.egg' % pyshortver
+sanity_check_paths = {
+    'files': [],
+    'dirs': [('%s/%%(name)s' % pyprefix, '%s/%s' % (pyprefix, eggname))],
+}
+
+
+moduleclass = 'lib'
