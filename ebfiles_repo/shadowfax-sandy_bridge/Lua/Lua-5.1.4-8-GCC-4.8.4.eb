@@ -1,0 +1,52 @@
+# Built with EasyBuild version 2.3.0 on 2015-10-15_16-27-43
+easyblock = 'ConfigureMake'
+
+name = "Lua"
+version = "5.1.4-8"
+
+homepage = "http://www.lua.org/"
+description = """Lua is a powerful, fast, lightweight, embeddable scripting language.
+ Lua combines simple procedural syntax with powerful data description constructs based
+ on associative arrays and extensible semantics. Lua is dynamically typed,
+ runs by interpreting bytecode for a register-based virtual machine,
+ and has automatic memory management with incremental garbage collection,
+ making it ideal for configuration, scripting, and rapid prototyping."""
+
+toolchain = {'name': 'GCC', 'version': '4.8.4'}
+
+sources = ['lua-%s.tar.gz' % version.replace('-', '.')]
+source_urls = ['http://sourceforge.net/projects/lmod/files/']
+
+dependencies = [('ncurses', '5.9')]
+
+sanity_check_paths = {
+    'files': ["bin/lua"],
+    'dirs': []
+}
+
+moduleclass = "lang"
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.3.0",
+    "easybuild-easyblocks_version": "2.3.0",
+    "timestamp": 1444940863,
+    "build_time": 11.02,
+    "install_size": 985102,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Lmod-5.9-GCC-4.8.4.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2899.86,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin3",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

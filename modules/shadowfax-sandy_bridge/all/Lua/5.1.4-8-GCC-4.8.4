@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Lua is a powerful, fast, lightweight, embeddable scripting language.
+ Lua combines simple procedural syntax with powerful data description constructs based
+ on associative arrays and extensible semantics. Lua is dynamically typed,
+ runs by interpreting bytecode for a register-based virtual machine,
+ and has automatic memory management with incremental garbage collection,
+ making it ideal for configuration, scripting, and rapid prototyping. - Homepage: http://www.lua.org/
+    }
+}
+
+module-whatis {Description: Lua is a powerful, fast, lightweight, embeddable scripting language.
+ Lua combines simple procedural syntax with powerful data description constructs based
+ on associative arrays and extensible semantics. Lua is dynamically typed,
+ runs by interpreting bytecode for a register-based virtual machine,
+ and has automatic memory management with incremental garbage collection,
+ making it ideal for configuration, scripting, and rapid prototyping. - Homepage: http://www.lua.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Lua/5.1.4-8-GCC-4.8.4
+
+conflict Lua
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+if { ![ is-loaded ncurses/5.9-GCC-4.8.4 ] } {
+    module load ncurses/5.9-GCC-4.8.4
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTLUA		"$root"
+setenv	EBVERSIONLUA		"5.1.4-8"
+setenv	EBDEVELLUA		"$root/easybuild/Lua-5.1.4-8-GCC-4.8.4-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
