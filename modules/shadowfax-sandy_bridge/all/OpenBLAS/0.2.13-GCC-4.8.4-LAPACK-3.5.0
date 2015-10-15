@@ -22,4 +22,4 @@ setenv	EBROOTOPENBLAS		"$root"
 setenv	EBVERSIONOPENBLAS		"0.2.13"
 setenv	EBDEVELOPENBLAS		"$root/easybuild/OpenBLAS-0.2.13-GCC-4.8.4-LAPACK-3.5.0-easybuild-devel"
 
-# Built with EasyBuild version 2.2.0
+# Built with EasyBuild version 2.3.0
