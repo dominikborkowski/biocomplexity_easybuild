@@ -1,0 +1,53 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Python module for manipulation and statistical analysis of graphs - Homepage: https://graph-tool.skewed.de/
+    }
+}
+
+module-whatis {Description: Python module for manipulation and statistical analysis of graphs - Homepage: https://graph-tool.skewed.de/}
+
+set root /apps/easybuild/software/shadowfax-westmere/graph-tool/2.9-goolf-1.7.20-Python-2.7.9
+
+conflict graph-tool
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Boost/1.58.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load Boost/1.58.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded CGAL/4.6.3-goolf-1.7.20-Python-2.7.9 ] } {
+    module load CGAL/4.6.3-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded expat/2.1.0-goolf-1.7.20 ] } {
+    module load expat/2.1.0-goolf-1.7.20
+}
+
+if { ![ is-loaded pycairo/1.8.10-goolf-1.7.20-Python-2.7.9 ] } {
+    module load pycairo/1.8.10-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded numpy/1.9.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load numpy/1.9.2-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded matplotlib/1.4.3-goolf-1.7.20-Python-2.7.9 ] } {
+    module load matplotlib/1.4.3-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded cairomm/1.10.0-goolf-1.7.20 ] } {
+    module load cairomm/1.10.0-goolf-1.7.20
+}
+
+if { ![ is-loaded sparsehash/2.0.2-goolf-1.7.20 ] } {
+    module load sparsehash/2.0.2-goolf-1.7.20
+}
+
+setenv	EBROOTGRAPHMINTOOL		"$root"
+setenv	EBVERSIONGRAPHMINTOOL		"2.9"
+setenv	EBDEVELGRAPHMINTOOL		"$root/easybuild/graph-tool-2.9-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  Bayesian haplotype-based polymorphism discovery and genotyping.  - Homepage: https://github.com/ekg/freebayes
+    }
+}
+
+module-whatis {Description:  Bayesian haplotype-based polymorphism discovery and genotyping.  - Homepage: https://github.com/ekg/freebayes}
+
+set root /apps/easybuild/software/shadowfax-westmere/freebayes/0.9.21-goolf-1.7.20
+
+conflict freebayes
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTFREEBAYES		"$root"
+setenv	EBVERSIONFREEBAYES		"0.9.21"
+setenv	EBDEVELFREEBAYES		"$root/easybuild/freebayes-0.9.21-goolf-1.7.20-easybuild-devel"
+
+prepend-path	PATH		$root/scripts
+# Built with EasyBuild version 2.3.0

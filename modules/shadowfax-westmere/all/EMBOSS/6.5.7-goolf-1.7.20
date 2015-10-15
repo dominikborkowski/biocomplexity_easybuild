@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { EMBOSS is 'The European Molecular Biology Open Software Suite'.
+ EMBOSS is a free Open Source software analysis package specially developed for
+ the needs of the molecular biology (e.g. EMBnet) user community. - Homepage: http://emboss.sourceforge.net/
+    }
+}
+
+module-whatis {Description: EMBOSS is 'The European Molecular Biology Open Software Suite'.
+ EMBOSS is a free Open Source software analysis package specially developed for
+ the needs of the molecular biology (e.g. EMBnet) user community. - Homepage: http://emboss.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-westmere/EMBOSS/6.5.7-goolf-1.7.20
+
+conflict EMBOSS
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded libharu/2.2.0-goolf-1.7.20 ] } {
+    module load libharu/2.2.0-goolf-1.7.20
+}
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTEMBOSS		"$root"
+setenv	EBVERSIONEMBOSS		"6.5.7"
+setenv	EBDEVELEMBOSS		"$root/easybuild/EMBOSS-6.5.7-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

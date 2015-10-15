@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Pycairo is a set of Python bindings for the cairo graphics library. - Homepage: http://cairographics.org/pycairo/
+    }
+}
+
+module-whatis {Description: Pycairo is a set of Python bindings for the cairo graphics library. - Homepage: http://cairographics.org/pycairo/}
+
+set root /apps/easybuild/software/shadowfax-westmere/pycairo/1.8.10-goolf-1.7.20-Python-2.7.9
+
+conflict pycairo
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded cairo/1.14.2-goolf-1.7.20 ] } {
+    module load cairo/1.14.2-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPYCAIRO		"$root"
+setenv	EBVERSIONPYCAIRO		"1.8.10"
+setenv	EBDEVELPYCAIRO		"$root/easybuild/pycairo-1.8.10-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

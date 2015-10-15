@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Node.js is a platform built on Chrome's JavaScript runtime 
+ for easily building fast, scalable network applications. Node.js uses an 
+ event-driven, non-blocking I/O model that makes it lightweight and efficient, 
+ perfect for data-intensive real-time applications that run across distributed devices. - Homepage: http://nodejs.org
+    }
+}
+
+module-whatis {Description: Node.js is a platform built on Chrome's JavaScript runtime 
+ for easily building fast, scalable network applications. Node.js uses an 
+ event-driven, non-blocking I/O model that makes it lightweight and efficient, 
+ perfect for data-intensive real-time applications that run across distributed devices. - Homepage: http://nodejs.org}
+
+set root /apps/easybuild/software/shadowfax-westmere/nodejs/0.10.36-goolf-1.7.20
+
+conflict nodejs
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNODEJS		"$root"
+setenv	EBVERSIONNODEJS		"0.10.36"
+setenv	EBDEVELNODEJS		"$root/easybuild/nodejs-0.10.36-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

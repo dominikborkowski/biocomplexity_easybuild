@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Fontconfig is a library designed to provide system-wide font configuration, customization and
+application access. - Homepage: http://www.freedesktop.org/software/fontconfig
+    }
+}
+
+module-whatis {Description: Fontconfig is a library designed to provide system-wide font configuration, customization and
+application access. - Homepage: http://www.freedesktop.org/software/fontconfig}
+
+set root /apps/easybuild/software/shadowfax-westmere/fontconfig/2.11.94-goolf-1.7.20
+
+conflict fontconfig
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded expat/2.1.0-goolf-1.7.20 ] } {
+    module load expat/2.1.0-goolf-1.7.20
+}
+
+if { ![ is-loaded freetype/2.6-goolf-1.7.20 ] } {
+    module load freetype/2.6-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTFONTCONFIG		"$root"
+setenv	EBVERSIONFONTCONFIG		"2.11.94"
+setenv	EBDEVELFONTCONFIG		"$root/easybuild/fontconfig-2.11.94-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

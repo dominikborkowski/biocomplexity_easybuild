@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { An extremely memory-efficient hash_map implementation. 2 bits/entry overhead! The SparseHash library
+contains several hash-map implementations, including implementations that optimize for space or speed. - Homepage: http://code.google.com/p/google-sparsehash/
+    }
+}
+
+module-whatis {Description: An extremely memory-efficient hash_map implementation. 2 bits/entry overhead! The SparseHash library
+contains several hash-map implementations, including implementations that optimize for space or speed. - Homepage: http://code.google.com/p/google-sparsehash/}
+
+set root /apps/easybuild/software/shadowfax-westmere/sparsehash/2.0.2-goolf-1.7.20
+
+conflict sparsehash
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSPARSEHASH		"$root"
+setenv	EBVERSIONSPARSEHASH		"2.0.2"
+setenv	EBDEVELSPARSEHASH		"$root/easybuild/sparsehash-2.0.2-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

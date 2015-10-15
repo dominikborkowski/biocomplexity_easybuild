@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { PANDAseq assembles Illumina Solexa overlapping pair-end reads. - Homepage: https://github.com/neufeld/pandaseq
+    }
+}
+
+module-whatis {Description: PANDAseq assembles Illumina Solexa overlapping pair-end reads. - Homepage: https://github.com/neufeld/pandaseq}
+
+set root /apps/easybuild/software/shadowfax-westmere/PANDAseq/2.8.1-goolf-1.7.20
+
+conflict PANDAseq
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded libtool/2.4.2-goolf-1.7.20 ] } {
+    module load libtool/2.4.2-goolf-1.7.20
+}
+
+if { ![ is-loaded bzip2/1.0.6-goolf-1.7.20 ] } {
+    module load bzip2/1.0.6-goolf-1.7.20
+}
+
+if { ![ is-loaded zlib/1.2.8-goolf-1.7.20 ] } {
+    module load zlib/1.2.8-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPANDASEQ		"$root"
+setenv	EBVERSIONPANDASEQ		"2.8.1"
+setenv	EBDEVELPANDASEQ		"$root/easybuild/PANDAseq-2.8.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

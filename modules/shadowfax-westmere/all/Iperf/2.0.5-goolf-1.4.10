@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Iperf-2.0.5: TCP and UDP bandwidth performance measurement tool - Homepage: http://iperf.sourceforge.net/
+    }
+}
+
+module-whatis {Description: Iperf-2.0.5: TCP and UDP bandwidth performance measurement tool - Homepage: http://iperf.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-westmere/Iperf/2.0.5-goolf-1.4.10
+
+conflict Iperf
+
+if { ![ is-loaded goolf/1.4.10 ] } {
+    module load goolf/1.4.10
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTIPERF		"$root"
+setenv	EBVERSIONIPERF		"2.0.5"
+setenv	EBDEVELIPERF		"$root/easybuild/Iperf-2.0.5-goolf-1.4.10-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

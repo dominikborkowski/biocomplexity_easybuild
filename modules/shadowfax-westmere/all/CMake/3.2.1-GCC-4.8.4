@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { CMake, the cross-platform, open-source build system.
+ CMake is a family of tools designed to build, test and package software. - Homepage: http://www.cmake.org
+    }
+}
+
+module-whatis {Description: CMake, the cross-platform, open-source build system.
+ CMake is a family of tools designed to build, test and package software. - Homepage: http://www.cmake.org}
+
+set root /apps/easybuild/software/shadowfax-westmere/CMake/3.2.1-GCC-4.8.4
+
+conflict CMake
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+if { ![ is-loaded ncurses/5.9-GCC-4.8.4 ] } {
+    module load ncurses/5.9-GCC-4.8.4
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	PATH		$root/bin
+setenv	EBROOTCMAKE		"$root"
+setenv	EBVERSIONCMAKE		"3.2.1"
+setenv	EBDEVELCMAKE		"$root/easybuild/CMake-3.2.1-GCC-4.8.4-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

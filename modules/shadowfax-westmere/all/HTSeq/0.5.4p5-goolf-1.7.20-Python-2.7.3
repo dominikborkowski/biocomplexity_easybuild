@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { A framework to process and analyze data from high-throughput sequencing (HTS) assays - Homepage: http://www-huber.embl.de/users/anders/HTSeq/
+    }
+}
+
+module-whatis {Description: A framework to process and analyze data from high-throughput sequencing (HTS) assays - Homepage: http://www-huber.embl.de/users/anders/HTSeq/}
+
+set root /apps/easybuild/software/shadowfax-westmere/HTSeq/0.5.4p5-goolf-1.7.20-Python-2.7.3
+
+conflict HTSeq
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.3-goolf-1.7.20 ] } {
+    module load Python/2.7.3-goolf-1.7.20
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTHTSEQ		"$root"
+setenv	EBVERSIONHTSEQ		"0.5.4p5"
+setenv	EBDEVELHTSEQ		"$root/easybuild/HTSeq-0.5.4p5-goolf-1.7.20-Python-2.7.3-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0

@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Armadillo is an open-source C++ linear algebra library (matrix maths) aiming towards
+ a good balance between speed and ease of use. Integer, floating point and complex numbers are supported,
+ as well as a subset of trigonometric and statistics functions. - Homepage: http://arma.sourceforge.net/
+    }
+}
+
+module-whatis {Description: Armadillo is an open-source C++ linear algebra library (matrix maths) aiming towards
+ a good balance between speed and ease of use. Integer, floating point and complex numbers are supported,
+ as well as a subset of trigonometric and statistics functions. - Homepage: http://arma.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-westmere/Armadillo/5.400.2-goolf-1.7.20-Python-2.7.9
+
+conflict Armadillo
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Boost/1.58.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load Boost/1.58.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded arpack-ng/3.2.0-goolf-1.7.20 ] } {
+    module load arpack-ng/3.2.0-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTARMADILLO		"$root"
+setenv	EBVERSIONARMADILLO		"5.400.2"
+setenv	EBDEVELARMADILLO		"$root/easybuild/Armadillo-5.400.2-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

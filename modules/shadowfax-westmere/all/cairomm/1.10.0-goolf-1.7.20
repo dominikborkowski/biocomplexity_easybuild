@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { 
+ The Cairomm package provides a C++ interface to Cairo. 
+ - Homepage: http://cairographics.org
+    }
+}
+
+module-whatis {Description: 
+ The Cairomm package provides a C++ interface to Cairo. 
+ - Homepage: http://cairographics.org}
+
+set root /apps/easybuild/software/shadowfax-westmere/cairomm/1.10.0-goolf-1.7.20
+
+conflict cairomm
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded cairo/1.14.2-goolf-1.7.20 ] } {
+    module load cairo/1.14.2-goolf-1.7.20
+}
+
+if { ![ is-loaded libsigc++/2.4.1-goolf-1.7.20 ] } {
+    module load libsigc++/2.4.1-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTCAIROMM		"$root"
+setenv	EBVERSIONCAIROMM		"1.10.0"
+setenv	EBDEVELCAIROMM		"$root/easybuild/cairomm-1.10.0-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

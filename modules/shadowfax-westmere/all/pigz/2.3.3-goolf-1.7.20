@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  pigz, which stands for parallel implementation of gzip, is a fully 
+ functional replacement for gzip that exploits multiple processors and multiple cores 
+ to the hilt when compressing data. pigz was written by Mark Adler, and uses the zlib 
+ and pthread libraries.  - Homepage: http://zlib.net/pigz/
+    }
+}
+
+module-whatis {Description:  pigz, which stands for parallel implementation of gzip, is a fully 
+ functional replacement for gzip that exploits multiple processors and multiple cores 
+ to the hilt when compressing data. pigz was written by Mark Adler, and uses the zlib 
+ and pthread libraries.  - Homepage: http://zlib.net/pigz/}
+
+set root /apps/easybuild/software/shadowfax-westmere/pigz/2.3.3-goolf-1.7.20
+
+conflict pigz
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded zlib/1.2.8-goolf-1.7.20 ] } {
+    module load zlib/1.2.8-goolf-1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPIGZ		"$root"
+setenv	EBVERSIONPIGZ		"2.3.3"
+setenv	EBDEVELPIGZ		"$root/easybuild/pigz-2.3.3-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

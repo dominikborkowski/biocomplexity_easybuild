@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { aria2-1.15.1: Multi-threaded, multi-protocol, flexible download accelerator - Homepage: http://aria2.sourceforge.net/
+    }
+}
+
+module-whatis {Description: aria2-1.15.1: Multi-threaded, multi-protocol, flexible download accelerator - Homepage: http://aria2.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-westmere/aria2/1.15.1-goolf-1.7.20
+
+conflict aria2
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTARIA2		"$root"
+setenv	EBVERSIONARIA2		"1.15.1"
+setenv	EBDEVELARIA2		"$root/easybuild/aria2-1.15.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

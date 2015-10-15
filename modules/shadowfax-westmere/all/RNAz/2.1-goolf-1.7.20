@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { RNAz is a program for predicting structurally conserved and
+thermodynamically stable RNA secondary structures in multiple sequence alignments. - Homepage: http://www.tbi.univie.ac.at/~wash/RNAz/
+    }
+}
+
+module-whatis {Description: RNAz is a program for predicting structurally conserved and
+thermodynamically stable RNA secondary structures in multiple sequence alignments. - Homepage: http://www.tbi.univie.ac.at/~wash/RNAz/}
+
+set root /apps/easybuild/software/shadowfax-westmere/RNAz/2.1-goolf-1.7.20
+
+conflict RNAz
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTRNAZ		"$root"
+setenv	EBVERSIONRNAZ		"2.1"
+setenv	EBDEVELRNAZ		"$root/easybuild/RNAz-2.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { PICOS is a user friendly interface to several conic and integer 
+programming solvers, very much like YALMIP or CVX under MATLAB. - Homepage: http://picos.zib.de/
+    }
+}
+
+module-whatis {Description: PICOS is a user friendly interface to several conic and integer 
+programming solvers, very much like YALMIP or CVX under MATLAB. - Homepage: http://picos.zib.de/}
+
+set root /apps/easybuild/software/shadowfax-westmere/PICOS/1.1.1-goolf-1.7.20-Python-2.7.9
+
+conflict PICOS
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded CVXOPT/1.1.5-goolf-1.7.20-Python-2.7.9 ] } {
+    module load CVXOPT/1.1.5-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded numpy/1.9.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load numpy/1.9.2-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded six/1.10.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load six/1.10.0-goolf-1.7.20-Python-2.7.9
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTPICOS		"$root"
+setenv	EBVERSIONPICOS		"1.1.1"
+setenv	EBDEVELPICOS		"$root/easybuild/PICOS-1.1.1-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0

@@ -1,0 +1,66 @@
+# Built with EasyBuild version 2.3.0 on 2015-10-15_00-03-40
+easyblock = "PythonPackage"
+
+name = 'seaborn'
+version = '0.6.0'
+
+homepage = 'http://stanford.edu/~mwaskom/software/seaborn/'
+description = """ Seaborn is a Python visualization library based on matplotlib.
+ It provides a high-level interface for drawing attractive statistical graphics. """
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+source_urls = ['https://github.com/mwaskom/seaborn/archive/']
+sources = ['v%(version)s.tar.gz']
+
+python = 'Python'
+pyver = '2.7.9'
+pyshortver = '.'.join(pyver.split('.')[:2])
+
+versionsuffix = "-%s-%s" % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('scipy', '0.16.0', versionsuffix),
+    ('numpy', '1.9.2', versionsuffix),
+    ('matplotlib', '1.4.3', versionsuffix),
+    ('pandas', '0.16.2', versionsuffix),
+]
+
+# algorithms.py  axisgrid.py     crayons.py        __init__.py      matrix.py    palettes.py  timeseries.py  xkcd_rgb.py
+# apionly.py     categorical.py  distributions.py  linearmodels.py  miscplot.py  rcmod.py     utils.py
+
+eggname = '%%(name)s-%%(version)s-py%s.egg' % pyshortver
+
+sanity_check_paths = {
+    'files': ['lib/python%s/site-packages/%s/seaborn/%s' % (pyshortver, eggname, x) for x in ['algorithms.py', 'apionly.py', 'axisgrid.py']],
+    'dirs': [],
+}
+
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.3.0",
+    "easybuild-easyblocks_version": "2.3.0",
+    "timestamp": 1444881820,
+    "build_time": 11.3,
+    "install_size": 1451605,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.3.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge/', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere::/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge/', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'seaborn-0.6.0-goolf-1.7.20-Python-2.7.9.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2925.992,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP2",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/shadowfax-westmere/Python/2.7.9-goolf-1.7.20/bin/python",
+}]

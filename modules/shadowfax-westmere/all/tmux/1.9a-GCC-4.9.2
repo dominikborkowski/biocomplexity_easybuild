@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { tmux is a terminal multiplexer. It lets you switch easily 
+between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. - Homepage: http://tmux.sourceforge.net/
+    }
+}
+
+module-whatis {Description: tmux is a terminal multiplexer. It lets you switch easily 
+between several programs in one terminal, detach them (they keep running in the background) and reattach them to a different terminal. - Homepage: http://tmux.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-westmere/tmux/1.9a-GCC-4.9.2
+
+conflict tmux
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+if { ![ is-loaded ncurses/5.9-GCC-4.9.2 ] } {
+    module load ncurses/5.9-GCC-4.9.2
+}
+
+if { ![ is-loaded libevent/2.0.22-GCC-4.9.2 ] } {
+    module load libevent/2.0.22-GCC-4.9.2
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTTMUX		"$root"
+setenv	EBVERSIONTMUX		"1.9a"
+setenv	EBDEVELTMUX		"$root/easybuild/tmux-1.9a-GCC-4.9.2-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0

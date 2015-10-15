@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  Seaborn is a Python visualization library based on matplotlib.
+ It provides a high-level interface for drawing attractive statistical graphics.  - Homepage: http://stanford.edu/~mwaskom/software/seaborn/
+    }
+}
+
+module-whatis {Description:  Seaborn is a Python visualization library based on matplotlib.
+ It provides a high-level interface for drawing attractive statistical graphics.  - Homepage: http://stanford.edu/~mwaskom/software/seaborn/}
+
+set root /apps/easybuild/software/shadowfax-westmere/seaborn/0.6.0-goolf-1.7.20-Python-2.7.9
+
+conflict seaborn
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded scipy/0.16.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load scipy/0.16.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded numpy/1.9.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load numpy/1.9.2-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded matplotlib/1.4.3-goolf-1.7.20-Python-2.7.9 ] } {
+    module load matplotlib/1.4.3-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded pandas/0.16.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load pandas/0.16.2-goolf-1.7.20-Python-2.7.9
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTSEABORN		"$root"
+setenv	EBVERSIONSEABORN		"0.6.0"
+setenv	EBDEVELSEABORN		"$root/easybuild/seaborn-0.6.0-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0

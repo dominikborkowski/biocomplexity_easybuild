@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { ScientificPython is a collection of Python modules for scientific computing.
+ It contains support for geometry, mathematical functions, statistics, physical units, IO, visualization,
+ and parallelization. - Homepage: https://sourcesup.cru.fr/projects/scientific-py/
+    }
+}
+
+module-whatis {Description: ScientificPython is a collection of Python modules for scientific computing.
+ It contains support for geometry, mathematical functions, statistics, physical units, IO, visualization,
+ and parallelization. - Homepage: https://sourcesup.cru.fr/projects/scientific-py/}
+
+set root /apps/easybuild/software/shadowfax-westmere/ScientificPython/2.9.4-goolf-1.7.20-Python-2.7.9
+
+conflict ScientificPython
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded numpy/1.8.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load numpy/1.8.2-goolf-1.7.20-Python-2.7.9
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSCIENTIFICPYTHON		"$root"
+setenv	EBVERSIONSCIENTIFICPYTHON		"2.9.4"
+setenv	EBDEVELSCIENTIFICPYTHON		"$root/easybuild/ScientificPython-2.9.4-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.3.0

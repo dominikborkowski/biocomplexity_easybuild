@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Ruby is a dynamic, open source programming language with 
+ a focus on simplicity and productivity. It has an elegant syntax that is 
+ natural to read and easy to write. - Homepage: https://www.ruby-lang.org
+    }
+}
+
+module-whatis {Description: Ruby is a dynamic, open source programming language with 
+ a focus on simplicity and productivity. It has an elegant syntax that is 
+ natural to read and easy to write. - Homepage: https://www.ruby-lang.org}
+
+set root /apps/easybuild/software/shadowfax-westmere/Ruby/2.1.7
+
+conflict Ruby
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTRUBY		"$root"
+setenv	EBVERSIONRUBY		"2.1.7"
+setenv	EBDEVELRUBY		"$root/easybuild/Ruby-2.1.7-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
+setenv	EBEXTSLISTRUBY		"ffi-1.9.8,childprocess-0.5.6,json-1.8.2,cabin-0.7.1,backports-3.6.4,arr-pm-0.0.10,clamp-0.6.5"
