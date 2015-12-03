@@ -1,4 +1,4 @@
-# EastBuild setup for Biocomplexity Institute at Virginia Tech
+# EasyBuild setup for Biocomplexity Institute at Virginia Tech
 
 ## Introduction
 
