@@ -1,6 +1,6 @@
-# VBI EasyBuild Installation
+# BI EasyBuild Installation
 
-This basic document outlines how to install EasyBuild and take advantage of the directory structure developed for VBI HPC resources.
+This basic document outlines how to install EasyBuild and take advantage of the directory structure developed for BI HPC resources.
 
 The main goals behind this setup are:
 
@@ -119,10 +119,11 @@ set arch "sandy_bridge"
 set local "~$::env(USER)/easybuild"
 
 # # permissions and ownerships
+# set easybuild_group "hpcadmin"
 # set easybuild_umask "002"
 # set easybuild_set_gid_bit "1"
 # set easybuild_sticky_bit "1"
-# set easybuild_group_writable_installdir "1"
+
 
 # end of global configuration
 #######################################################################################################################
@@ -162,9 +163,11 @@ if { [ module-info mode load ] } {
 
 setenv EASYBUILD_INSTALLPATH_SOFTWARE $local/software/$site-$arch
 setenv EASYBUILD_INSTALLPATH_MODULES $local/modules/$site-$arch
-setenv EASYBUILD_SOURCEPATH $local/sources
+setenv EASYBUILD_SOURCEPATH $local/sources:$global/sources
 setenv EASYBUILD_REPOSITORYPATH $local/ebfiles_repo/$site-$arch
 setenv EASYBUILD_ROBOT $local/ebfiles_repo-custom/shadowfax-sandy_bridge:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/shadowfax-sandy_bridge
+setenv EASYBUILD_ROBOT_PATHS $local/ebfiles_repo-custom/shadowfax-sandy_bridge:$local/ebfiles_repo-custom/generic:$local/ebfiles_repo/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/shadowfax-sandy_bridge:
+
 # use /dev/shm for building software
 setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 
@@ -172,10 +175,11 @@ setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 # if { [ module-info mode load ] } {
 #     puts stderr "* Setting environment variables for EasyBuild's permissions"
 # }
+# setenv EASYBUILD_GROUP $easybuild_group
 # setenv EASYBUILD_UMASK $easybuild_umask
 # setenv EASYBUILD_SET_GID_BIT $easybuild_set_gid_bit
 # setenv EASYBUILD_STICKY_BIT $easybuild_sticky_bit
-# setenv EASYBUILD_GROUP_WRITABLE_INSTALLDIR $easybuild_group_writable_installdir
+
 
 # global options
 if { [ module-info mode load ] } {
@@ -306,6 +310,7 @@ setenv EASYBUILD_INSTALLPATH_MODULES $global/modules/$site-$arch
 setenv EASYBUILD_SOURCEPATH $global/sources
 setenv EASYBUILD_REPOSITORYPATH $global/ebfiles_repo/$site-$arch
 setenv EASYBUILD_ROBOT $global/ebfiles_repo-vbi/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/shadowfax-sandy_bridge
+setenv EASYBUILD_ROBOT_PATHS $global/ebfiles_repo-vbi/shadowfax-sandy_bridge:$global/ebfiles_repo-vbi/generic:$global/ebfiles_repo/shadowfax-sandy_bridge:
 # use /dev/shm for building software
 setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 
@@ -317,6 +322,7 @@ setenv EASYBUILD_UMASK $easybuild_umask
 setenv EASYBUILD_SET_GID_BIT $easybuild_set_gid_bit
 setenv EASYBUILD_STICKY_BIT $easybuild_sticky_bit
 setenv EASYBUILD_GROUP_WRITABLE_INSTALLDIR $easybuild_group_writable_installdir
+
 
 # global options
 if { [ module-info mode load ] } {
