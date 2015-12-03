@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Larry Wall's Practical Extraction and Report Language - Homepage: http://www.perl.org/
+    }
+}
+
+module-whatis {Description: Larry Wall's Practical Extraction and Report Language - Homepage: http://www.perl.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Perl/5.22.0-GCC-4.9.2-bare
+
+conflict Perl
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTPERL		"$root"
+setenv	EBVERSIONPERL		"5.22.0"
+setenv	EBDEVELPERL		"$root/easybuild/Perl-5.22.0-GCC-4.9.2-bare-easybuild-devel"
+
+# Built with EasyBuild version 2.3.0
