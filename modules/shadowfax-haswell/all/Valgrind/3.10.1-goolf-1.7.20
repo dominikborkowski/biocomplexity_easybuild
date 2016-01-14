@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Valgrind-3.8.1: Debugging and profiling tools - Homepage: http://valgrind.org/downloads/
+    }
+}
+
+module-whatis {Valgrind-3.8.1: Debugging and profiling tools - Homepage: http://valgrind.org/downloads/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Valgrind/3.10.1-goolf-1.7.20
+
+conflict Valgrind
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTVALGRIND		"$root"
+setenv	EBVERSIONVALGRIND		"3.10.1"
+setenv	EBDEVELVALGRIND		"$root/easybuild/Valgrind-3.10.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

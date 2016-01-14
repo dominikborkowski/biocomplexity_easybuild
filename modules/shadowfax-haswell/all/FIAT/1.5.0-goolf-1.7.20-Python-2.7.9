@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The FInite element Automatic Tabulator FIAT supports generation of arbitrary order
+instances of the Lagrange elements on lines, triangles, and tetrahedra. It is also capable of generating
+arbitrary order instances of Jacobi-type quadrature rules on the same element shapes. - Homepage: ttps://bitbucket.org/fenics-project/fiat
+    }
+}
+
+module-whatis {The FInite element Automatic Tabulator FIAT supports generation of arbitrary order
+instances of the Lagrange elements on lines, triangles, and tetrahedra. It is also capable of generating
+arbitrary order instances of Jacobi-type quadrature rules on the same element shapes. - Homepage: ttps://bitbucket.org/fenics-project/fiat}
+
+set root /apps/easybuild/software/shadowfax-haswell/FIAT/1.5.0-goolf-1.7.20-Python-2.7.9
+
+conflict FIAT
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded ScientificPython/2.9.4-goolf-1.7.20-Python-2.7.9 ] } {
+    module load ScientificPython/2.9.4-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded sympy/0.7.6-goolf-1.7.20-Python-2.7.9 ] } {
+    module load sympy/0.7.6-goolf-1.7.20-Python-2.7.9
+}
+
+setenv	EBROOTFIAT		"$root"
+setenv	EBVERSIONFIAT		"1.5.0"
+setenv	EBDEVELFIAT		"$root/easybuild/FIAT-1.5.0-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.5.0

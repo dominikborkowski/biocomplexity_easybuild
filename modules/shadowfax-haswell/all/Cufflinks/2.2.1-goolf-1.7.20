@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Transcript assembly, differential expression, and differential regulation for RNA-Seq - Homepage: http://cole-trapnell-lab.github.io/cufflinks/
+    }
+}
+
+module-whatis {Transcript assembly, differential expression, and differential regulation for RNA-Seq - Homepage: http://cole-trapnell-lab.github.io/cufflinks/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Cufflinks/2.2.1-goolf-1.7.20
+
+conflict Cufflinks
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Boost/1.55.0-goolf-1.7.20 ] } {
+    module load Boost/1.55.0-goolf-1.7.20
+}
+
+if { ![ is-loaded SAMtools/0.1.19-goolf-1.7.20 ] } {
+    module load SAMtools/0.1.19-goolf-1.7.20
+}
+
+if { ![ is-loaded Eigen/3.2.6-goolf-1.7.20 ] } {
+    module load Eigen/3.2.6-goolf-1.7.20
+}
+
+if { ![ is-loaded zlib/1.2.8-goolf-1.7.20 ] } {
+    module load zlib/1.2.8-goolf-1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTCUFFLINKS		"$root"
+setenv	EBVERSIONCUFFLINKS		"2.2.1"
+setenv	EBDEVELCUFFLINKS		"$root/easybuild/Cufflinks-2.2.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

@@ -1,0 +1,55 @@
+# Built with EasyBuild version 2.5.0 on 2016-01-13_11-38-25
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+# Author: Adam Huffman
+# The Francis Crick Institute
+
+easyblock = 'ConfigureMake'
+
+name = 'HTSlib'
+version = '1.2.1'
+
+homepage = "http://www.htslib.org/"
+description = """ A C library for reading/writing high-throughput sequencing data.
+ This package includes the utilities bgzip and tabix """
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+source_urls = ['https://github.com/samtools/%(namelower)s/releases/download/%(version)s/']
+sources = [SOURCELOWER_TAR_BZ2]
+
+dependencies = [('zlib', '1.2.8')]
+
+sanity_check_paths = {
+    'files': ["bin/bgzip", "bin/tabix", "lib/libhts.so"],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1452703105,
+    "build_time": 5.31,
+    "install_size": 4157210,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-haswell', '--installpath-software=/apps/easybuild/software/shadowfax-haswell', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-haswell', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/2.5.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell::/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'BCFtools-1.2-goolf-1.7.20.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCC/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-haswell/GCC/4.8.4 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCC/4.8.4; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCC/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

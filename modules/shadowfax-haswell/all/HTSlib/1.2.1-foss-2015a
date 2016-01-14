@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  A C library for reading/writing high-throughput sequencing data.
+ This package includes the utilities bgzip and tabix  - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis { A C library for reading/writing high-throughput sequencing data.
+ This package includes the utilities bgzip and tabix  - Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/HTSlib/1.2.1-foss-2015a
+
+conflict HTSlib
+
+if { ![ is-loaded foss/2015a ] } {
+    module load foss/2015a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2015a ] } {
+    module load zlib/1.2.8-foss-2015a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTHTSLIB		"$root"
+setenv	EBVERSIONHTSLIB		"1.2.1"
+setenv	EBDEVELHTSLIB		"$root/easybuild/HTSlib-1.2.1-foss-2015a-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

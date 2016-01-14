@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SQLite: SQL Database Engine in a C Library - Homepage: http://www.sqlite.org/
+    }
+}
+
+module-whatis {SQLite: SQL Database Engine in a C Library - Homepage: http://www.sqlite.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/SQLite/3.8.8.1-goolf-1.7.20
+
+conflict SQLite
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded libreadline/6.3-goolf-1.7.20 ] } {
+    module load libreadline/6.3-goolf-1.7.20
+}
+
+if { ![ is-loaded Tcl/8.6.3-goolf-1.7.20 ] } {
+    module load Tcl/8.6.3-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSQLITE		"$root"
+setenv	EBVERSIONSQLITE		"3.8.8.1"
+setenv	EBDEVELSQLITE		"$root/easybuild/SQLite-3.8.8.1-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences. - Homepage: http://blast.ncbi.nlm.nih.gov/
+    }
+}
+
+module-whatis {Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences. - Homepage: http://blast.ncbi.nlm.nih.gov/}
+
+set root /apps/easybuild/software/shadowfax-haswell/BLAST+/2.2.31-goolf-1.7.20
+
+conflict BLAST+
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Boost/1.57.0-goolf-1.7.20 ] } {
+    module load Boost/1.57.0-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTBLASTPLUS		"$root"
+setenv	EBVERSIONBLASTPLUS		"2.2.31"
+setenv	EBDEVELBLASTPLUS		"$root/easybuild/BLAST+-2.2.31-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

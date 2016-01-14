@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { TCP and UDP bandwidth performance measurement tool - Homepage: http://iperf.sourceforge.net/
+    }
+}
+
+module-whatis {TCP and UDP bandwidth performance measurement tool - Homepage: http://iperf.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Iperf/3.0.11-goolf-1.7.20
+
+conflict Iperf
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTIPERF		"$root"
+setenv	EBVERSIONIPERF		"3.0.11"
+setenv	EBDEVELIPERF		"$root/easybuild/Iperf-3.0.11-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

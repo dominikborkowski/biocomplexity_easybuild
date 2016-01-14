@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Expat is an XML parser library written in C. It is a stream-oriented parser in which an application
+registers handlers for things the parser might find in the XML document (like start tags) - Homepage: http://expat.sourceforge.net/
+    }
+}
+
+module-whatis {Expat is an XML parser library written in C. It is a stream-oriented parser in which an application
+registers handlers for things the parser might find in the XML document (like start tags) - Homepage: http://expat.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-haswell/expat/2.1.0-goolf-1.7.20
+
+conflict expat
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTEXPAT		"$root"
+setenv	EBVERSIONEXPAT		"2.1.0"
+setenv	EBDEVELEXPAT		"$root/easybuild/expat-2.1.0-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

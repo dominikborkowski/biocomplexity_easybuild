@@ -1,0 +1,22 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { ALLPATHS-LG, the new short read genome assembler. - Homepage: http://www.broadinstitute.org/software/allpaths-lg/blog/
+    }
+}
+
+module-whatis {ALLPATHS-LG, the new short read genome assembler. - Homepage: http://www.broadinstitute.org/software/allpaths-lg/blog/}
+
+set root /apps/easybuild/software/shadowfax-haswell/ALLPATHS-LG/52488-goolf-1.7.20
+
+conflict ALLPATHS-LG
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTALLPATHSMINLG		"$root"
+setenv	EBVERSIONALLPATHSMINLG		"52488"
+setenv	EBDEVELALLPATHSMINLG		"$root/easybuild/ALLPATHS-LG-52488-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

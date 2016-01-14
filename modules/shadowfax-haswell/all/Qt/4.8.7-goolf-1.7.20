@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Qt is a comprehensive cross-platform C++ application framework. - Homepage: http://qt.io/
+    }
+}
+
+module-whatis {Qt is a comprehensive cross-platform C++ application framework. - Homepage: http://qt.io/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Qt/4.8.7-goolf-1.7.20
+
+conflict Qt
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded GLib/2.46.0-goolf-1.7.20 ] } {
+    module load GLib/2.46.0-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTQT		"$root"
+setenv	EBVERSIONQT		"4.8.7"
+setenv	EBDEVELQT		"$root/easybuild/Qt-4.8.7-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

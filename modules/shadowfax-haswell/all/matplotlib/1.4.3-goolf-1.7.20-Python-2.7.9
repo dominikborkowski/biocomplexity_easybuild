@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits. - Homepage: http://matplotlib.org
+    }
+}
+
+module-whatis {matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits. - Homepage: http://matplotlib.org}
+
+set root /apps/easybuild/software/shadowfax-haswell/matplotlib/1.4.3-goolf-1.7.20-Python-2.7.9
+
+conflict matplotlib
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded freetype/2.6-goolf-1.7.20 ] } {
+    module load freetype/2.6-goolf-1.7.20
+}
+
+if { ![ is-loaded libpng/1.6.17-goolf-1.7.20 ] } {
+    module load libpng/1.6.17-goolf-1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMATPLOTLIB		"$root"
+setenv	EBVERSIONMATPLOTLIB		"1.4.3"
+setenv	EBDEVELMATPLOTLIB		"$root/easybuild/matplotlib-1.4.3-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.5.0

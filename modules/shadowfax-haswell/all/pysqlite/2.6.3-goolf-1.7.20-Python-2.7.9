@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { pysqlite is an interface to the SQLite 3.x embedded relational database engine.
+ It is almost fully compliant with the Python database API version 2.0 also exposes the unique features of SQLite. - Homepage: https://pypi.python.org/pypi/pysqlite
+    }
+}
+
+module-whatis {pysqlite is an interface to the SQLite 3.x embedded relational database engine.
+ It is almost fully compliant with the Python database API version 2.0 also exposes the unique features of SQLite. - Homepage: https://pypi.python.org/pypi/pysqlite}
+
+set root /apps/easybuild/software/shadowfax-haswell/pysqlite/2.6.3-goolf-1.7.20-Python-2.7.9
+
+conflict pysqlite
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded SQLite/3.8.8.1-goolf-1.7.20 ] } {
+    module load SQLite/3.8.8.1-goolf-1.7.20
+}
+
+setenv	EBROOTPYSQLITE		"$root"
+setenv	EBVERSIONPYSQLITE		"2.6.3"
+setenv	EBDEVELPYSQLITE		"$root/easybuild/pysqlite-2.6.3-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.5.0

@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Lmod is a Lua based module system. Modules allow for dynamic modification
+ of a user's environment under Unix systems. See www.tacc.utexas.edu/tacc-projects/lmod
+ for a complete description. Lmod is a new implementation that easily handles the MODULEPATH
+ Hierarchical problem. It is drop-in replacement for TCL/C modules and reads TCL modulefiles directly. - Homepage: http://sourceforge.net/projects/lmod/
+    }
+}
+
+module-whatis {Lmod is a Lua based module system. Modules allow for dynamic modification
+ of a user's environment under Unix systems. See www.tacc.utexas.edu/tacc-projects/lmod
+ for a complete description. Lmod is a new implementation that easily handles the MODULEPATH
+ Hierarchical problem. It is drop-in replacement for TCL/C modules and reads TCL modulefiles directly. - Homepage: http://sourceforge.net/projects/lmod/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Lmod/5.9-GCC-4.8.4
+
+conflict Lmod
+
+if { ![ is-loaded GCC/4.8.4 ] } {
+    module load GCC/4.8.4
+}
+
+if { ![ is-loaded Lua/5.1.4-8-GCC-4.8.4 ] } {
+    module load Lua/5.1.4-8-GCC-4.8.4
+}
+
+setenv	EBROOTLMOD		"$root"
+setenv	EBVERSIONLMOD		"5.9"
+setenv	EBDEVELLMOD		"$root/easybuild/Lmod-5.9-GCC-4.8.4-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

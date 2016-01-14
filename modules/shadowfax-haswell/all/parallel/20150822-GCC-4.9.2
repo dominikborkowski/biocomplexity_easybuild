@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { parallel: Build and execute shell commands in parallel - Homepage: http://savannah.gnu.org/projects/parallel/
+    }
+}
+
+module-whatis {parallel: Build and execute shell commands in parallel - Homepage: http://savannah.gnu.org/projects/parallel/}
+
+set root /apps/easybuild/software/shadowfax-haswell/parallel/20150822-GCC-4.9.2
+
+conflict parallel
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+if { ![ is-loaded Perl/5.22.0-GCC-4.9.2-bare ] } {
+    module load Perl/5.22.0-GCC-4.9.2-bare
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTPARALLEL		"$root"
+setenv	EBVERSIONPARALLEL		"20150822"
+setenv	EBDEVELPARALLEL		"$root/easybuild/parallel-20150822-GCC-4.9.2-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

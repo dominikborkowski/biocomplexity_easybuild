@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ SAMtools - Reading/writing/editing/indexing/viewing SAM/BAM/CRAM format - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ SAMtools - Reading/writing/editing/indexing/viewing SAM/BAM/CRAM format - Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/SAMtools/1.2-foss-2015a-HTSlib-1.2.1
+
+conflict SAMtools
+
+if { ![ is-loaded foss/2015a ] } {
+    module load foss/2015a
+}
+
+if { ![ is-loaded HTSlib/1.2.1-foss-2015a ] } {
+    module load HTSlib/1.2.1-foss-2015a
+}
+
+if { ![ is-loaded ncurses/5.9-foss-2015a ] } {
+    module load ncurses/5.9-foss-2015a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2015a ] } {
+    module load zlib/1.2.8-foss-2015a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSAMTOOLS		"$root"
+setenv	EBVERSIONSAMTOOLS		"1.2"
+setenv	EBDEVELSAMTOOLS		"$root/easybuild/SAMtools-1.2-foss-2015a-HTSlib-1.2.1-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

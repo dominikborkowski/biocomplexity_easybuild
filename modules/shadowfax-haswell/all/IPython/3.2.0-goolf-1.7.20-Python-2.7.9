@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing. - Homepage: http://ipython.org/index.html
+    }
+}
+
+module-whatis {IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing. - Homepage: http://ipython.org/index.html}
+
+set root /apps/easybuild/software/shadowfax-haswell/IPython/3.2.0-goolf-1.7.20-Python-2.7.9
+
+conflict IPython
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+if { ![ is-loaded pysqlite/2.6.3-goolf-1.7.20-Python-2.7.9 ] } {
+    module load pysqlite/2.6.3-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded PyZMQ/14.7.0-goolf-1.7.20-Python-2.7.9-zmq3 ] } {
+    module load PyZMQ/14.7.0-goolf-1.7.20-Python-2.7.9-zmq3
+}
+
+if { ![ is-loaded requests/2.7.0-goolf-1.7.20-Python-2.7.9 ] } {
+    module load requests/2.7.0-goolf-1.7.20-Python-2.7.9
+}
+
+if { ![ is-loaded Pygments/2.0.2-goolf-1.7.20-Python-2.7.9 ] } {
+    module load Pygments/2.0.2-goolf-1.7.20-Python-2.7.9
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTIPYTHON		"$root"
+setenv	EBVERSIONIPYTHON		"3.2.0"
+setenv	EBDEVELIPYTHON		"$root/easybuild/IPython-3.2.0-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.5.0

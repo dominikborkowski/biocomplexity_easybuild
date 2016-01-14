@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Bioperl is the product of a community effort to produce Perl code which is useful in biology.
+ Examples include Sequence objects, Alignment objects and database searching objects. - Homepage: http://www.bioperl.org/
+    }
+}
+
+module-whatis {Bioperl is the product of a community effort to produce Perl code which is useful in biology.
+ Examples include Sequence objects, Alignment objects and database searching objects. - Homepage: http://www.bioperl.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/BioPerl/1.6.1-goolf-1.7.20-Perl-5.16.3
+
+conflict BioPerl
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Perl/5.16.3-goolf-1.7.20 ] } {
+    module load Perl/5.16.3-goolf-1.7.20
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+prepend-path	PERL5LIB		$root
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.16.3/x86_64-linux-thread-multi
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.16.3
+setenv	EBROOTBIOPERL		"$root"
+setenv	EBVERSIONBIOPERL		"1.6.1"
+setenv	EBDEVELBIOPERL		"$root/easybuild/BioPerl-1.6.1-goolf-1.7.20-Perl-5.16.3-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

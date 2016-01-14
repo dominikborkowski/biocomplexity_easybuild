@@ -1,0 +1,68 @@
+# Built with EasyBuild version 2.5.0 on 2016-01-13_11-55-48
+name = "GCC"
+version = '4.7.2'
+
+homepage = 'http://gcc.gnu.org/'
+description = """The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran,
+ Java, and Ada, as well as libraries for these languages (libstdc++, libgcj,...)."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [
+    'http://ftpmirror.gnu.org/%(namelower)s/%(namelower)s-%(version)s',  # GCC auto-resolving HTTP mirror
+    'http://ftpmirror.gnu.org/gmp',  # idem for GMP
+    'http://ftpmirror.gnu.org/mpfr',  # idem for MPFR
+    'http://www.multiprecision.org/mpc/download',  # MPC official
+]
+sources = [
+    SOURCELOWER_TAR_GZ,
+    'gmp-5.0.5.tar.bz2',
+    'mpfr-3.1.1.tar.gz',
+    'mpc-1.0.1.tar.gz',
+]
+
+patches = ['mpfr-3.1.0-changes_fix.patch']
+
+checksums = [
+    '5199d34506d4fa6528778ddba362d3f4',     # gcc-4.7.2.tar.gz
+    '041487d25e9c230b0c42b106361055fe',     # gmp-5.0.5.tar.bz2
+    '769411e241a3f063ae1319eb5fac2462',     # mpfr-3.1.1.tar.gz
+    'b32a2e1a3daa392372fbd586d1ed3679',     # mpc-1.0.1.tar.gz
+    'fa4095252d843d465ac9aa5e2d760dd8',     # mpfr-3.1.0-changes_fix.patch
+]
+
+dependencies = [
+    ('binutils', '2.25'),
+]
+
+languages = ['c', 'c++', 'fortran']
+
+# building GCC sometimes fails if make parallelism is too high, so let's limit it
+maxparallel = 4
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1452704148,
+    "build_time": 1009.77,
+    "install_size": 452737791,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-haswell', '--installpath-software=/apps/easybuild/software/shadowfax-haswell', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-haswell', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/2.5.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell::/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'BLAST+-2.2.30-goolf-1.4.10.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/shared/apps/gcc/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../gcc-4.8.4/configure --prefix=/cm/shared/apps/gcc/4.8.4 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src/.libs; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/cm/shared/apps/gcc/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

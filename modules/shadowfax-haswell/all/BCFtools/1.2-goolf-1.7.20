@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ BCFtools - Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence variants - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ BCFtools - Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence variants - Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/BCFtools/1.2-goolf-1.7.20
+
+conflict BCFtools
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded HTSlib/1.2.1-goolf-1.7.20 ] } {
+    module load HTSlib/1.2.1-goolf-1.7.20
+}
+
+if { ![ is-loaded zlib/1.2.8-goolf-1.7.20 ] } {
+    module load zlib/1.2.8-goolf-1.7.20
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBCFTOOLS		"$root"
+setenv	EBVERSIONBCFTOOLS		"1.2"
+setenv	EBDEVELBCFTOOLS		"$root/easybuild/BCFtools-1.2-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

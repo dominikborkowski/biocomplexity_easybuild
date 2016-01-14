@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The GNU Readline library provides a set of functions for use by applications that
+ allow users to edit command lines as they are typed in. Both Emacs and vi editing modes are available.
+ The Readline library includes additional functions to maintain a list of previously-entered command lines,
+ to recall and perhaps reedit those lines, and perform csh-like history expansion on previous commands. - Homepage: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
+    }
+}
+
+module-whatis {The GNU Readline library provides a set of functions for use by applications that
+ allow users to edit command lines as they are typed in. Both Emacs and vi editing modes are available.
+ The Readline library includes additional functions to maintain a list of previously-entered command lines,
+ to recall and perhaps reedit those lines, and perform csh-like history expansion on previous commands. - Homepage: http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html}
+
+set root /apps/easybuild/software/shadowfax-haswell/libreadline/6.3-goolf-1.7.20
+
+conflict libreadline
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded ncurses/5.9-goolf-1.7.20 ] } {
+    module load ncurses/5.9-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTLIBREADLINE		"$root"
+setenv	EBVERSIONLIBREADLINE		"6.3"
+setenv	EBDEVELLIBREADLINE		"$root/easybuild/libreadline-6.3-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

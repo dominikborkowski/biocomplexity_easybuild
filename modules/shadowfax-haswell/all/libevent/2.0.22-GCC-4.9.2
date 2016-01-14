@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The libevent API provides a mechanism to execute a callback function when a specific
+ event occurs on a file descriptor or after a timeout has been reached.
+ Furthermore, libevent also support callbacks due to signals or regular timeouts. - Homepage: http://libevent.org/
+    }
+}
+
+module-whatis {The libevent API provides a mechanism to execute a callback function when a specific
+ event occurs on a file descriptor or after a timeout has been reached.
+ Furthermore, libevent also support callbacks due to signals or regular timeouts. - Homepage: http://libevent.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/libevent/2.0.22-GCC-4.9.2
+
+conflict libevent
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBEVENT		"$root"
+setenv	EBVERSIONLIBEVENT		"2.0.22"
+setenv	EBDEVELLIBEVENT		"$root/easybuild/libevent-2.0.22-GCC-4.9.2-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

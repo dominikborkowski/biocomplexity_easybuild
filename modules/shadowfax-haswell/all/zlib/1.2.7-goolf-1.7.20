@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { zlib is designed to be a free, general-purpose, legally unencumbered -- that is, 
+not covered by any patents -- lossless data-compression library for use on virtually any 
+computer hardware and operating system. - Homepage: http://www.zlib.net/
+    }
+}
+
+module-whatis {zlib is designed to be a free, general-purpose, legally unencumbered -- that is, 
+not covered by any patents -- lossless data-compression library for use on virtually any 
+computer hardware and operating system. - Homepage: http://www.zlib.net/}
+
+set root /apps/easybuild/software/shadowfax-haswell/zlib/1.2.7-goolf-1.7.20
+
+conflict zlib
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTZLIB		"$root"
+setenv	EBVERSIONZLIB		"1.2.7"
+setenv	EBDEVELZLIB		"$root/easybuild/zlib-1.2.7-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0
