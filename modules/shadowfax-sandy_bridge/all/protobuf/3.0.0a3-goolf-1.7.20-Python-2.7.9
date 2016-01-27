@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Google Protocol Buffers - Homepage: https://github.com/google/protobuf
+    }
+}
+
+module-whatis {Google Protocol Buffers - Homepage: https://github.com/google/protobuf}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/protobuf/3.0.0a3-goolf-1.7.20-Python-2.7.9
+
+conflict protobuf
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPROTOBUF		"$root"
+setenv	EBVERSIONPROTOBUF		"3.0.0a3"
+setenv	EBDEVELPROTOBUF		"$root/easybuild/protobuf-3.0.0a3-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.5.0
