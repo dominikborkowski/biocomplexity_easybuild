@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way. - Homepage: http://hpcugent.github.com/easybuild/
+    }
+}
+
+module-whatis {EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way. - Homepage: http://hpcugent.github.com/easybuild/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.6.0
+
+conflict EasyBuild
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTEASYBUILD		"$root"
+setenv	EBVERSIONEASYBUILD		"2.6.0"
+setenv	EBDEVELEASYBUILD		"$root/easybuild/EasyBuild-2.6.0-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib64/python2.6/site-packages
+# Built with EasyBuild version 2.5.0
