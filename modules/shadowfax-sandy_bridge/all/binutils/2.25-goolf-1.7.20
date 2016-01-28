@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { binutils: GNU binary utilities - Homepage: http://directory.fsf.org/project/binutils/
+    }
+}
+
+module-whatis {binutils: GNU binary utilities - Homepage: http://directory.fsf.org/project/binutils/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/binutils/2.25-goolf-1.7.20
+
+conflict binutils
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBINUTILS		"$root"
+setenv	EBVERSIONBINUTILS		"2.25"
+setenv	EBDEVELBINUTILS		"$root/easybuild/binutils-2.25-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

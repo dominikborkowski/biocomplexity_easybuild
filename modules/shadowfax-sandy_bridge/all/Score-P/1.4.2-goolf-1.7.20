@@ -1,0 +1,53 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The Score-P measurement infrastructure is a highly scalable and
+ easy-to-use tool suite for profiling, event tracing, and online analysis of HPC
+ applications. - Homepage: http://www.score-p.org
+    }
+}
+
+module-whatis {The Score-P measurement infrastructure is a highly scalable and
+ easy-to-use tool suite for profiling, event tracing, and online analysis of HPC
+ applications. - Homepage: http://www.score-p.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Score-P/1.4.2-goolf-1.7.20
+
+conflict Score-P
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded binutils/2.25-goolf-1.7.20 ] } {
+    module load binutils/2.25-goolf-1.7.20
+}
+
+if { ![ is-loaded Cube/4.3.2-goolf-1.7.20 ] } {
+    module load Cube/4.3.2-goolf-1.7.20
+}
+
+if { ![ is-loaded OPARI2/1.1.4-goolf-1.7.20 ] } {
+    module load OPARI2/1.1.4-goolf-1.7.20
+}
+
+if { ![ is-loaded OTF2/1.5.1-goolf-1.7.20 ] } {
+    module load OTF2/1.5.1-goolf-1.7.20
+}
+
+if { ![ is-loaded PAPI/5.4.0-goolf-1.7.20 ] } {
+    module load PAPI/5.4.0-goolf-1.7.20
+}
+
+if { ![ is-loaded PDT/3.20-goolf-1.7.20 ] } {
+    module load PDT/3.20-goolf-1.7.20
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSCOREMINP		"$root"
+setenv	EBVERSIONSCOREMINP		"1.4.2"
+setenv	EBDEVELSCOREMINP		"$root/easybuild/Score-P-1.4.2-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

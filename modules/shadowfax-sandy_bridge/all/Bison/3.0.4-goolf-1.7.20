@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Bison is a general-purpose parser generator that converts an annotated context-free grammar
+into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables. - Homepage: http://www.gnu.org/software/bison
+    }
+}
+
+module-whatis {Bison is a general-purpose parser generator that converts an annotated context-free grammar
+into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables. - Homepage: http://www.gnu.org/software/bison}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Bison/3.0.4-goolf-1.7.20
+
+conflict Bison
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBISON		"$root"
+setenv	EBVERSIONBISON		"3.0.4"
+setenv	EBDEVELBISON		"$root/easybuild/Bison-3.0.4-goolf-1.7.20-easybuild-devel"
+
+# Built with EasyBuild version 2.5.0

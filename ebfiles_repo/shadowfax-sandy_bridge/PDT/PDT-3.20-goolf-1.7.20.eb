@@ -1,0 +1,99 @@
+# Built with EasyBuild version 2.5.0 on 2016-01-27_22-52-31
+# Built with EasyBuild version 2.5.0 on 2016-01-27_21-56-04
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# Authors::   Jordi Blasco <jordi.blasco@nesi.org.nz>
+# License::   New BSD
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = "PDT"
+version = "3.20"
+
+homepage = 'http://www.cs.uoregon.edu/research/pdt/'
+description = """Program Database Toolkit (PDT) is a framework for analyzing source
+ code written in several programming languages and for making rich program knowledge
+ accessible to developers of static and dynamic analysis tools. PDT implements a standard
+ program representation, the program database (PDB), that can be accessed in a uniform way
+ through a class library supporting common PDB operations."""
+
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
+
+# http://tau.uoregon.edu/pdt_releases/pdtoolkit-3.19.tar.gz
+sources = ['pdtoolkit-%(version)s.tar.gz']
+source_urls = ['http://tau.uoregon.edu/pdt_releases/']
+
+prefix_opt = '-prefix='
+
+# notes by Bernd Mohr
+# Compiler suite should always be specified -- MUCH quicker and SAVER than autodetect
+# -KAI|-KCC|-GNU|-CC|-c++|-cxx|-xlC|-pgCC|-icpc|-ecpc
+configopts = '-GNU'
+
+keeppreviousinstall = True
+
+# notes by Bernd Mohr
+# Use hardcoded x86_64 or "import platform; machine = platform.machine()" here?
+sanity_check_paths = {
+    'files': ["x86_64/bin/cparse", "x86_64/include/pdb.h", "x86_64/lib/libpdb.a"],
+    'dirs': [],
+}
+
+skipsteps = ['build']
+
+modextrapaths = {
+    'PATH': "x86_64/bin",
+    'LD_LIBRARY_PATH': "x86_64/lib",
+}
+
+moduleclass = 'perf'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1453949763,
+    "build_time": 92.1,
+    "install_size": 371466773,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.5.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--try-toolchain-version=1.7.20', '--umask=002', 'PDT-3.20-goolf-1.5.14.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.004,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCC/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
+
+buildstats.append({
+    "easybuild-framework_version": "2.5.0",
+    "easybuild-easyblocks_version": "2.5.0",
+    "timestamp": 1453953150,
+    "build_time": 72.17,
+    "install_size": 371468789,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.5.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge::/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Score-P-1.4.2-goolf-1.7.20.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2899.712,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin3",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCC/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+})
