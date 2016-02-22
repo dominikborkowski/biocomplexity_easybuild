@@ -30,9 +30,10 @@ checksums = [
     'fa4095252d843d465ac9aa5e2d760dd8',     # mpfr-3.1.0-changes_fix.patch
 ]
 
-dependencies = [
-    ('binutils', '2.25'),
-]
+# we no longer force it here, since we load binutils outside of easybuild
+#dependencies = [
+#    ('binutils', '2.25'),
+#]
 
 languages = ['c', 'c++', 'fortran']
 

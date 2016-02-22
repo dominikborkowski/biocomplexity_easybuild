@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.5.0 on 2016-01-13_11-20-52
+# Built with EasyBuild version 2.5.0 on 2016-02-08_14-02-56
 name = "GCC"
 version = '4.9.2'
 
@@ -34,9 +34,10 @@ checksums = [
     '21958aaf3d242e51b2f45cefcb9560d9',     # mpfr-3.1.2-allpatches-20140630.patch
 ]
 
-dependencies = [
-    ('binutils', '2.25'),
-]
+# we no longer force it here, since we load binutils outside of easybuild
+#dependencies = [
+#    ('binutils', '2.25'),
+#]
 
 
 languages = ['c', 'c++', 'fortran']
@@ -51,10 +52,10 @@ moduleclass = 'compiler'
 buildstats = [{
     "easybuild-framework_version": "2.5.0",
     "easybuild-easyblocks_version": "2.5.0",
-    "timestamp": 1452702052,
-    "build_time": 1143.74,
-    "install_size": 591799779,
-    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-haswell', '--installpath-software=/apps/easybuild/software/shadowfax-haswell', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-haswell', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/2.5.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell::/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Autoconf-2.69-GCC-4.9.2.eb'],
+    "timestamp": 1454958176,
+    "build_time": 1157.5,
+    "install_size": 591450218,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--force', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-haswell', '--installpath-software=/apps/easybuild/software/shadowfax-haswell', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-haswell', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/2.5.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.5.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'GCC-4.9.2.eb'],
     "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
     "core_count": 32,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",

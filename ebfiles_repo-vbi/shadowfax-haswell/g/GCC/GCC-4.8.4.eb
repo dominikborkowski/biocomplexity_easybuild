@@ -29,9 +29,11 @@ checksums = [
 ]
 
 
-dependencies = [
-    ('binutils', '2.25'),
-]
+# we no longer force it here, since we load binutils outside of easybuild
+#dependencies = [
+#    ('binutils', '2.25'),
+#]
+
 
 languages = ['c', 'c++', 'fortran']
 
