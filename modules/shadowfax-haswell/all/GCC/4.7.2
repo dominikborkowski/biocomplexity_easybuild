@@ -12,10 +12,6 @@ set root /apps/easybuild/software/shadowfax-haswell/GCC/4.7.2
 
 conflict GCC
 
-if { ![ is-loaded binutils/2.25 ] } {
-    module load binutils/2.25
-}
-
 prepend-path	CPATH		$root/include
 prepend-path	LD_LIBRARY_PATH		$root/lib
 prepend-path	LD_LIBRARY_PATH		$root/lib64
