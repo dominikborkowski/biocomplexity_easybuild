@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  cutadapt removes adapter sequences from high-throughput sequencing data. 
+ This is usually necessary when the read length of the sequencing machine is longer than 
+ the molecule that is sequenced, for example when sequencing microRNAs.   - Homepage: http://code.google.com/p/cutadapt/
+    }
+}
+
+module-whatis { cutadapt removes adapter sequences from high-throughput sequencing data. 
+ This is usually necessary when the read length of the sequencing machine is longer than 
+ the molecule that is sequenced, for example when sequencing microRNAs.   - Homepage: http://code.google.com/p/cutadapt/}
+
+set root /apps/easybuild/software/shadowfax-westmere/cutadapt/1.9.1-goolf-1.7.20-Python-2.7.9
+
+conflict cutadapt
+
+if { ![ is-loaded goolf/1.7.20 ] } {
+    module load goolf/1.7.20
+}
+
+if { ![ is-loaded Python/2.7.9-goolf-1.7.20 ] } {
+    module load Python/2.7.9-goolf-1.7.20
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTCUTADAPT		"$root"
+setenv	EBVERSIONCUTADAPT		"1.9.1"
+setenv	EBDEVELCUTADAPT		"$root/easybuild/cutadapt-1.9.1-goolf-1.7.20-Python-2.7.9-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.6.0
