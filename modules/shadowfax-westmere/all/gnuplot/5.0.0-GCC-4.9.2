@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { gnuplot-4.6.0: Portable interactive, function plotting utility - Homepage: http://gnuplot.sourceforge.net/
+    }
+}
+
+module-whatis {gnuplot-4.6.0: Portable interactive, function plotting utility - Homepage: http://gnuplot.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-westmere/gnuplot/5.0.0-GCC-4.9.2
+
+conflict gnuplot
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGNUPLOT		"$root"
+setenv	EBVERSIONGNUPLOT		"5.0.0"
+setenv	EBDEVELGNUPLOT		"$root/easybuild/gnuplot-5.0.0-GCC-4.9.2-easybuild-devel"
+
+# Built with EasyBuild version 2.6.0
