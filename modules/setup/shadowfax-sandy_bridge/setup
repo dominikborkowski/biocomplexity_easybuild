@@ -40,18 +40,18 @@ proc ModulesHelp { } {
 module-whatis "Module for setting up EasyBuild development end-user environment on $site with $arch."
 
 # start the module
-if { [ module-info mode load ] } {
-    puts stderr "\nPreparing EasyBuild environment for $site with $arch in $local directory: \n"
-}
+#if { [ module-info mode load ] } {
+#    puts stderr "\nPreparing EasyBuild environment for $site with $arch in $local directory: \n"
+#}
 
 
 # what's the location of our dummy module, which indicates that we're installing EasyBuild
 # set easybuild_install_module "test/dom/EasyBuild-install"
 
 # paths
-if { [ module-info mode load ] } {
-    puts stderr "* Setting environment variables for EasyBuild's directories"
-}
+#if { [ module-info mode load ] } {
+#    puts stderr "* Setting environment variables for EasyBuild's directories"
+#}
 
 # originally started by providing EASYBUILD_PREFIX, then switched to more split view
 # setenv EASYBUILD_PREFIX $global/$site-$arch
@@ -84,9 +84,9 @@ setenv EASYBUILD_BUILDPATH /dev/shm/$::env(USER)/build
 
 
 # global options
-if { [ module-info mode load ] } {
-    puts stderr "* Setting environment variables for EasyBuild's global options"
-}
+#if { [ module-info mode load ] } {
+#    puts stderr "* Setting environment variables for EasyBuild's global options"
+#}
 setenv EASYBUILD_MODULES_TOOL EnvironmentModulesC
 setenv EASYBUILD_REPOSITORY FileRepository
 setenv EASYBUILD_MODULE_NAMING_SCHEME EasyBuildMNS
@@ -123,14 +123,14 @@ append-path MODULEPATH  "$global/modules/$site-$arch/all"
 # }
 
 #  final empty line
-if { [ module-info mode load ] } {
-    puts stderr "* End of EasyBuild init procedure \n"
-    puts stderr "- To use EasyBuild system for compiling new software please run: \n"
-    puts stderr "module load EasyBuild"
-    puts stderr ""
-    puts stderr "- To list all available modules please use: module av"
-    puts stderr ""
-}
+#if { [ module-info mode load ] } {
+#    puts stderr "* End of EasyBuild init procedure \n"
+#    puts stderr "- To use EasyBuild system for compiling new software please run: \n"
+#    puts stderr "module load EasyBuild"
+#    puts stderr ""
+#    puts stderr "- To list all available modules please use: module av"
+#    puts stderr ""
+#}
 
 
 # if { [ module-info mode load ] } {
