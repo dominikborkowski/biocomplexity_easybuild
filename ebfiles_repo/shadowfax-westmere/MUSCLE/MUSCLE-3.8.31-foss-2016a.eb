@@ -1,0 +1,59 @@
+# Built with EasyBuild version 2.7.0 on 2016-04-26_00-49-31
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = 'MUSCLE'
+version = '3.8.31'
+
+homepage = 'http://drive5.com/muscle/'
+description = """ MUSCLE is one of the best-performing multiple alignment programs 
+ according to published benchmark tests, with accuracy and speed that are consistently 
+ better than CLUSTALW. MUSCLE can align hundreds of sequences in seconds. Most users 
+ learn everything they need to know about MUSCLE in a few minutes—only a handful of 
+ command-line options are needed to perform common alignment tasks."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = ['%(namelower)s%(version)s_src.tar.gz']
+source_urls = ['http://www.drive5.com/muscle/downloads%(version)s/']
+
+patches = ['MUSCLE-%(version)s_fix-mk-hardcoding.patch']
+
+files_to_copy = [
+    (["muscle"], 'bin')]
+
+sanity_check_paths = {
+    'files': ["bin/muscle"],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1461646171,
+    "build_time": 18.15,
+    "install_size": 1584287,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'MUSCLE-3.8.31-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.055,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
