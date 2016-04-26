@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The Ncurses (new curses) library is a free software emulation of curses in System V Release 4.0,
+ and more. It uses Terminfo format, supports pads and color and multiple highlights and forms characters and
+ function-key mapping, and has all the other SYSV-curses enhancements over BSD Curses. - Homepage: http://www.gnu.org/software/ncurses/
+    }
+}
+
+module-whatis {Description: The Ncurses (new curses) library is a free software emulation of curses in System V Release 4.0,
+ and more. It uses Terminfo format, supports pads and color and multiple highlights and forms characters and
+ function-key mapping, and has all the other SYSV-curses enhancements over BSD Curses. - Homepage: http://www.gnu.org/software/ncurses/}
+
+set root /apps/easybuild/software/shadowfax-westmere/ncurses/6.0-foss-2016a
+
+conflict ncurses
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNCURSES		"$root"
+setenv	EBVERSIONNCURSES		"6.0"
+setenv	EBDEVELNCURSES		"$root/easybuild/ncurses-6.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
