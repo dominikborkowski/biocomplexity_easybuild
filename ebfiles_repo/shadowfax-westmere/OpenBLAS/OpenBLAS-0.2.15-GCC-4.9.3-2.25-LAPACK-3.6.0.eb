@@ -1,0 +1,77 @@
+# Built with EasyBuild version 2.7.0 on 2016-04-25_22-27-27
+easyblock = 'ConfigureMake'
+
+name = 'OpenBLAS'
+version = '0.2.15'
+
+lapackver = '3.6.0'
+versionsuffix = '-LAPACK-%s' % lapackver
+
+homepage = 'http://xianyi.github.com/OpenBLAS/'
+description = """OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version."""
+
+toolchain = {'name': 'GCC', 'version': '4.9.3-2.25'}
+
+lapack_src = 'lapack-%s.tgz' % lapackver
+large_src = 'large.tgz'
+timing_src = 'timing.tgz'
+sources = [
+    'v%(version)s.tar.gz',
+    lapack_src,
+    large_src,
+    timing_src,
+]
+source_urls = [
+    # order matters, trying to download the LAPACK tarball from GitHub causes trouble
+    "http://www.netlib.org/lapack/",
+    "http://www.netlib.org/lapack/timing/",
+    "https://github.com/xianyi/OpenBLAS/archive/",
+]
+
+patches = [
+    (lapack_src, '.'),  # copy LAPACK tarball to unpacked OpenBLAS dir
+    (large_src, '.'),
+    (timing_src, '.'),
+]
+
+skipsteps = ['configure']
+
+buildopts = 'BINARY=64 USE_THREAD=1 CC="$CC" FC="$F77" NO_AFFINITY=1'
+installopts = "USE_THREAD=1 PREFIX=%(installdir)s"
+
+# extensive testing can be enabled by uncommenting the line below
+#runtest = 'PATH=.:$PATH lapack-timing'
+
+sanity_check_paths = {
+    'files': ['include/cblas.h', 'include/f77blas.h', 'include/lapacke_config.h', 'include/lapacke.h',
+              'include/lapacke_mangling.h', 'include/lapacke_utils.h', 'include/openblas_config.h',
+              'lib/libopenblas.a', 'lib/libopenblas.%s' % SHLIB_EXT],
+    'dirs': [],
+}
+
+moduleclass = 'numlib'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1461637647,
+    "build_time": 116.47,
+    "install_size": 90520359,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.055,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
