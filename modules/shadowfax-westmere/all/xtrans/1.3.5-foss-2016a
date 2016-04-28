@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { xtrans includes a number of routines to make X implementations transport-independent;
+ at time of writing, it includes support for UNIX sockets, IPv4, IPv6, and DECnet.
+ - Homepage: http://www.freedesktop.org/wiki/Software/xlibs
+    }
+}
+
+module-whatis {Description: xtrans includes a number of routines to make X implementations transport-independent;
+ at time of writing, it includes support for UNIX sockets, IPv4, IPv6, and DECnet.
+ - Homepage: http://www.freedesktop.org/wiki/Software/xlibs}
+
+set root /apps/easybuild/software/shadowfax-westmere/xtrans/1.3.5-foss-2016a
+
+conflict xtrans
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	PKG_CONFIG_PATH		$root/share/pkgconfig
+setenv	EBROOTXTRANS		"$root"
+setenv	EBVERSIONXTRANS		"1.3.5"
+setenv	EBDEVELXTRANS		"$root/easybuild/xtrans-1.3.5-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

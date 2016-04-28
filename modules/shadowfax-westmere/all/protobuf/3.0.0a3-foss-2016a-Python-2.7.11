@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Google Protocol Buffers - Homepage: https://github.com/google/protobuf
+    }
+}
+
+module-whatis {Description: Google Protocol Buffers - Homepage: https://github.com/google/protobuf}
+
+set root /apps/easybuild/software/shadowfax-westmere/protobuf/3.0.0a3-foss-2016a-Python-2.7.11
+
+conflict protobuf
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPROTOBUF		"$root"
+setenv	EBVERSIONPROTOBUF		"3.0.0a3"
+setenv	EBDEVELPROTOBUF		"$root/easybuild/protobuf-3.0.0a3-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.7.0

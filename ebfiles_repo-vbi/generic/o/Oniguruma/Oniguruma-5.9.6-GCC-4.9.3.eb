@@ -1,0 +1,25 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2015 Virginia Bioinformatics Institute at Virginia Tech
+# Authors::   Dominik L. Borkowski <dominik.borkowski@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'Oniguruma'
+version = '5.9.6'
+
+homepage = 'https://github.com/kkos/oniguruma'
+description = "regular expression library"
+
+
+toolchain = {'name': 'GCC', 'version': '4.9.3'}
+
+source_urls = ['https://github.com/kkos/%(namelower)s/releases/download/v%(version)s/']
+sources = ['onig-%(version)s.tar.gz']
+
+moduleclass = 'lib'

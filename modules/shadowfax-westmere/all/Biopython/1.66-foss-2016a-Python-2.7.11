@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Biopython is a set of freely available tools for biological computation written
+in Python by an international team of developers. It is a distributed collaborative effort to
+develop Python libraries and applications which address the needs of current and future work in
+bioinformatics.  - Homepage: http://www.biopython.org
+    }
+}
+
+module-whatis {Description: Biopython is a set of freely available tools for biological computation written
+in Python by an international team of developers. It is a distributed collaborative effort to
+develop Python libraries and applications which address the needs of current and future work in
+bioinformatics.  - Homepage: http://www.biopython.org}
+
+set root /apps/easybuild/software/shadowfax-westmere/Biopython/1.66-foss-2016a-Python-2.7.11
+
+conflict Biopython
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded numpy/1.9.2-foss-2016a-Python-2.7.11 ] } {
+    module load numpy/1.9.2-foss-2016a-Python-2.7.11
+}
+
+setenv	EBROOTBIOPYTHON		"$root"
+setenv	EBVERSIONBIOPYTHON		"1.66"
+setenv	EBDEVELBIOPYTHON		"$root/easybuild/Biopython-1.66-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.7.0

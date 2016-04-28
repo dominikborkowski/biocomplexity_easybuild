@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The BEDTools utilities allow one to address common genomics tasks such as finding feature overlaps
+ and computing coverage. The utilities are largely based on four widely-used file formats: BED, GFF/GTF, VCF,
+ and SAM/BAM. - Homepage: https://github.com/arq5x/bedtools2
+    }
+}
+
+module-whatis {Description: The BEDTools utilities allow one to address common genomics tasks such as finding feature overlaps
+ and computing coverage. The utilities are largely based on four widely-used file formats: BED, GFF/GTF, VCF,
+ and SAM/BAM. - Homepage: https://github.com/arq5x/bedtools2}
+
+set root /apps/easybuild/software/shadowfax-westmere/BEDTools/2.25.0-foss-2015a
+
+conflict BEDTools
+
+if { ![ is-loaded foss/2015a ] } {
+    module load foss/2015a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTBEDTOOLS		"$root"
+setenv	EBVERSIONBEDTOOLS		"2.25.0"
+setenv	EBDEVELBEDTOOLS		"$root/easybuild/BEDTools-2.25.0-foss-2015a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
