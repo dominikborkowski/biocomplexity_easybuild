@@ -1,0 +1,38 @@
+easyblock = 'ConfigureMake'
+
+name = 'graph-tool'
+version = '2.9'
+
+description = "Python module for manipulation and statistical analysis of graphs"
+homepage = 'https://graph-tool.skewed.de/'
+
+source_urls = ['https://downloads.skewed.de/graph-tool/']
+sources = [SOURCELOWER_TAR_BZ2]
+
+
+configopts = '--enable-openmp'
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+# parallel = 1
+moduleclass = 'vis'
+
+
+sanity_check_paths = {
+     'files': [],
+     'dirs': ['.'],
+}
+
+pythonversion = '2.7.9'
+versionsuffix = "-Python-%s" % pythonversion
+
+dependencies = [
+    ('Boost', '1.60.0', versionsuffix),
+    ('CGAL', '4.6.3', versionsuffix),
+    ('expat', '2.1.0'),
+    ('pycairo', '1.8.10', versionsuffix),
+    ('numpy', '1.9.2', versionsuffix),
+    ('matplotlib', '1.5.1', versionsuffix),
+    ('cairomm', '1.10.0'),
+    ('sparsehash', '2.0.2'),
+]

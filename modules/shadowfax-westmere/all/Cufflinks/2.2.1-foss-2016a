@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Transcript assembly, differential expression, and differential regulation for RNA-Seq - Homepage: http://cole-trapnell-lab.github.io/cufflinks/
+    }
+}
+
+module-whatis {Description: Transcript assembly, differential expression, and differential regulation for RNA-Seq - Homepage: http://cole-trapnell-lab.github.io/cufflinks/}
+
+set root /apps/easybuild/software/shadowfax-westmere/Cufflinks/2.2.1-foss-2016a
+
+conflict Cufflinks
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Boost/1.60.0-foss-2016a-Python-2.7.11 ] } {
+    module load Boost/1.60.0-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded SAMtools/0.1.19-foss-2016a ] } {
+    module load SAMtools/0.1.19-foss-2016a
+}
+
+if { ![ is-loaded Eigen/3.2.3-foss-2016a ] } {
+    module load Eigen/3.2.3-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTCUFFLINKS		"$root"
+setenv	EBVERSIONCUFFLINKS		"2.2.1"
+setenv	EBDEVELCUFFLINKS		"$root/easybuild/Cufflinks-2.2.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
