@@ -10,9 +10,9 @@ by building on Python's extensive standard library and on the strengths of Pytho
 
 toolchain = {'name': 'foss', 'version': '2016a'}
 
-source_urls = ['http://abel.ee.ucla.edu/src/']
-sources = [SOURCELOWER_TAR_GZ]
-
+source_urls = ['https://github.com/cvxopt/cvxopt/archive/']
+#sources = [SOURCELOWER_TAR_GZ]
+source = ['%(version)s.tar.gz']
 patches = ['CVXOPT-blas-lapack.patch']
 
 python = 'Python'
@@ -25,8 +25,8 @@ dependencies = [
                ]
 
 sanity_check_paths = {
-                      'files': ['lib/python%s/site-packages/%s' % (pythonshortver, name.lower())],
-                      'dirs': []
+                      'dirs': ['lib/python%s/site-packages/%s' % (pythonshortver, name.lower())],
+                      'files': []
                      }
 
 start_dir = 'src'

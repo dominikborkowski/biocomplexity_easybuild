@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { RNAz is a program for predicting structurally conserved and
+thermodynamically stable RNA secondary structures in multiple sequence alignments. - Homepage: http://www.tbi.univie.ac.at/~wash/RNAz/
+    }
+}
+
+module-whatis {Description: RNAz is a program for predicting structurally conserved and
+thermodynamically stable RNA secondary structures in multiple sequence alignments. - Homepage: http://www.tbi.univie.ac.at/~wash/RNAz/}
+
+set root /apps/easybuild/software/shadowfax-westmere/RNAz/2.1-foss-2016a
+
+conflict RNAz
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTRNAZ		"$root"
+setenv	EBVERSIONRNAZ		"2.1"
+setenv	EBDEVELRNAZ		"$root/easybuild/RNAz-2.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

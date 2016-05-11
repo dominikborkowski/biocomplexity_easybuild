@@ -23,7 +23,7 @@ sanity_check_paths = {
      'dirs': ['.'],
 }
 
-pythonversion = '2.7.9'
+pythonversion = '2.7.11'
 versionsuffix = "-Python-%s" % pythonversion
 
 dependencies = [

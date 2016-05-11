@@ -1,0 +1,31 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Fotis Georgatos <fotis@cern.ch>
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-90.html
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'Iperf'
+version = '3.1.2'
+
+homepage = 'http://iperf.sourceforge.net/'
+description = """TCP and UDP bandwidth performance measurement tool"""
+
+sources = ['%s-%s.tar.gz' % (name.lower(), version)]
+source_urls = [('http://downloads.es.net/pub/iperf/')]
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sanity_check_paths = {
+                      'files': ['bin/iperf3'],
+                      'dirs': []
+                     }
+
+moduleclass = 'tools'
