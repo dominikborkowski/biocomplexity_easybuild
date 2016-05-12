@@ -1,0 +1,27 @@
+# Built with EasyBuild version 2.3.0 on 2015-10-14_17-14-34
+# Built with EasyBuild version 2.2.0 on 2015-08-24_16-03-32
+easyblock = 'ConfigureMake'
+
+name = 'libpng'
+version = '1.5.13'
+
+homepage = 'http://www.libpng.org/pub/png/libpng.html'
+description = "libpng is the official PNG reference library"
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+toolchainopts = {'optarch': True}
+configopts = "--with-pic"
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [('zlib', '1.2.8')]
+
+sanity_check_paths = {
+                      'files': ['bin/libpng-config', 'lib/libpng.a', 'lib/libpng.so',
+                                'lib/pkgconfig/libpng.pc'],
+                      'dirs': ['include']
+                     }
+
+moduleclass = 'lib'
+

@@ -1,0 +1,44 @@
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = 'freebayes'
+version = '0.9.21'
+
+homepage = 'https://github.com/ekg/freebayes'
+description = """ Bayesian haplotype-based polymorphism discovery and genotyping. """
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+# no direct download url. As described in documentation the download has been done with
+# $> git clone --recursive git://github.com/ekg/freebayes.git
+# git clone --recursive git://github.com/ekg/freebayes.git
+# mv freebayes freebayes-0.9.21
+# tar czf freebayes-0.9.21.tar.gz freebayes-0.9.21
+sources = [SOURCELOWER_TAR_GZ]
+
+builddependencies = [('CMake', '3.4.3')]
+#builddependencies = [('CMake', '3.4.3', '', ('GCC', '4.9.3'))]
+
+parallel = 1
+
+# workaround to avoid the error "The C compiler identification is unknown"
+prebuildopts = "unset CC && unset CXX && "
+
+files_to_copy = ["bin", "README.md", "examples", "scripts", "python"]
+
+sanity_check_paths = {
+        'files': ["bin/freebayes", "bin/bamleftalign"],
+        'dirs': [""]
+}
+
+# add scripts dir to PATH
+modextrapaths = { 
+    'PATH': "scripts",
+}
+
+moduleclass = 'bio'
+

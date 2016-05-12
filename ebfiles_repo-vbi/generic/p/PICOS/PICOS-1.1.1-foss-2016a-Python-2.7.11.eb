@@ -1,0 +1,47 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2015 Virginia Bioinformatics Institute at Virginia Tech
+# Authors::   Dominik L. Borkowski <dominik.borkowski@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = "PythonPackage"
+
+name = 'PICOS'
+version = '1.1.1'
+
+homepage = 'http://picos.zib.de/'
+description = """PICOS is a user friendly interface to several conic and integer 
+programming solvers, very much like YALMIP or CVX under MATLAB."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {'pic': True}
+
+source_urls = ['http://picos.zib.de/dist/']
+sources = [SOURCE_TAR_GZ]
+
+python = "Python"
+pythonversion = '2.7.11'
+pyshortver = ".".join(pythonversion.split(".")[:-1])
+
+versionsuffix = "-%s-%s" % (python, pythonversion)
+
+dependencies = [
+    (python, pythonversion),
+    ('CVXOPT', '1.1.5', versionsuffix),
+    ('numpy', '1.9.2', versionsuffix),
+    ('six', '1.10.0', versionsuffix),
+    ]
+
+pyprefix = 'lib/python%s/site-packages' % pyshortver
+sanity_check_paths = {
+    'files': ['lib/python%s/site-packages/picos/%s' % (pyshortver, x) for x in 
+	['constraint.py', 'cplex_callbacks.py', 'expression.py', 'problem.py', 'test_picos.py', 'tools.py']],
+    'dirs': [],
+}
+
+
+moduleclass = 'math'

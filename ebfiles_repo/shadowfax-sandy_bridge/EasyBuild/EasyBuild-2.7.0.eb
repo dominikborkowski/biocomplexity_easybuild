@@ -1,0 +1,57 @@
+# Built with EasyBuild version 2.6.0 on 2016-04-01_10-45-41
+easyblock = 'EB_EasyBuildMeta'
+
+name = 'EasyBuild'
+version = '2.7.0'
+
+homepage = 'http://hpcugent.github.com/easybuild/'
+description = """EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [
+    'https://pypi.python.org/packages/source/v/vsc-base/',
+    'https://pypi.python.org/packages/source/e/easybuild-framework/',
+    'https://pypi.python.org/packages/source/e/easybuild-easyblocks/',
+    'https://pypi.python.org/packages/source/e/easybuild-easyconfigs/',
+]
+# order matters a lot, to avoid having dependencies auto-resolved (--no-deps easy_install option doesn't work?)
+sources = [
+    'vsc-base-2.4.18.tar.gz',
+    'easybuild-framework-%(version)s.tar.gz',
+    'easybuild-easyblocks-%(version)s.tar.gz',
+    'easybuild-easyconfigs-%(version)s.tar.gz',
+]
+
+# EasyBuild is a (set of) Python packages, so it depends on Python
+# usually, we want to use the system Python, so no actual Python dependency is listed
+allow_system_deps = [('Python', SYS_PYTHON_VERSION)]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.6.0",
+    "easybuild-easyblocks_version": "2.6.0",
+    "timestamp": 1459521939,
+    "build_time": 37.38,
+    "install_size": 19538071,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--from-pr=2740', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.6.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.6.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2900.083,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin3",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

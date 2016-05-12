@@ -1,0 +1,39 @@
+easyblock = "PythonPackage"
+
+name = 'seaborn'
+version = '0.7.0'
+
+homepage = 'http://stanford.edu/~mwaskom/software/seaborn/'
+description = """ Seaborn is a Python visualization library based on matplotlib.
+ It provides a high-level interface for drawing attractive statistical graphics. """
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['https://github.com/mwaskom/seaborn/archive/']
+sources = ['v%(version)s.tar.gz']
+
+python = 'Python'
+pyver = '2.7.11'
+pyshortver = '.'.join(pyver.split('.')[:2])
+
+versionsuffix = "-%s-%s" % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('scipy', '0.17.0', versionsuffix),
+    ('matplotlib', '1.5.1', versionsuffix),
+    ('pandas', '0.17.1', versionsuffix),
+]
+
+# algorithms.py  axisgrid.py     crayons.py        __init__.py      matrix.py    palettes.py  timeseries.py  xkcd_rgb.py
+# apionly.py     categorical.py  distributions.py  linearmodels.py  miscplot.py  rcmod.py     utils.py
+
+eggname = '%%(name)s-%%(version)s-py%s.egg' % pyshortver
+
+sanity_check_paths = {
+    'files': ['lib/python%s/site-packages/%s/seaborn/%s' % (pyshortver, eggname, x) for x in ['algorithms.py', 'apionly.py', 'axisgrid.py']],
+    'dirs': [],
+}
+
+
+moduleclass = 'vis'

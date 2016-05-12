@@ -1,0 +1,24 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { PAML is a package of programs for phylogenetic 
+ analyses of DNA or protein sequences using maximum likelihood. - Homepage: http://abacus.gene.ucl.ac.uk/software/paml.html
+    }
+}
+
+module-whatis {Description: PAML is a package of programs for phylogenetic 
+ analyses of DNA or protein sequences using maximum likelihood. - Homepage: http://abacus.gene.ucl.ac.uk/software/paml.html}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/PAML/4.8a-foss-2016a
+
+conflict PAML
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPAML		"$root"
+setenv	EBVERSIONPAML		"4.8a"
+setenv	EBDEVELPAML		"$root/easybuild/PAML-4.8a-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

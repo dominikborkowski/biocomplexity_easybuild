@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Berkeley DB enables the development of custom data management solutions,
+ without the overhead traditionally associated with such custom projects. - Homepage: http://www.oracle.com/technetwork/products/berkeleydb
+    }
+}
+
+module-whatis {Description: Berkeley DB enables the development of custom data management solutions,
+ without the overhead traditionally associated with such custom projects. - Homepage: http://www.oracle.com/technetwork/products/berkeleydb}
+
+set root /apps/easybuild/software/shadowfax-westmere/DB/4.8.30-foss-2016a
+
+conflict DB
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTDB		"$root"
+setenv	EBVERSIONDB		"4.8.30"
+setenv	EBDEVELDB		"$root/easybuild/DB-4.8.30-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

@@ -1,0 +1,66 @@
+# Built with EasyBuild version 2.7.0 on 2016-04-27_09-47-35
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+# Modified by: Robert Schmidt <rjeschmi@gmail.com>
+# Ottawa Hospital Research Institute - Bioinformatics Team
+# Modified by: Adam Huffman <adam.huffman@crick.ac.uk>
+# The Francis Crick Institute
+
+easyblock = 'MakeCp'
+
+name = 'Bowtie2'
+version = '2.2.7'
+
+homepage = 'http://bowtie-bio.sourceforge.net/bowtie2/index.shtml'
+description = """ Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads 
+ to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s 
+ of characters, and particularly good at aligning to relatively long (e.g. mammalian) genomes. 
+ Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, 
+ its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = ['%(namelower)s-%(version)s-source.zip']
+source_urls = [('http://sourceforge.net/projects/bowtie-bio/files/%(namelower)s/%(version)s', 'download')]
+
+files_to_copy = [
+    (["bowtie2", "bowtie2-align-l", "bowtie2-align-s", "bowtie2-build", "bowtie2-build-l", "bowtie2-build-s",
+      "bowtie2-inspect", "bowtie2-inspect-l", "bowtie2-inspect-s"], 'bin'),
+    "doc", "example", "scripts", "MANUAL", "MANUAL.markdown", "NEWS"]
+
+sanity_check_paths = {
+    'files': ["bin/bowtie2-align-l", "bin/bowtie2-build", "bin/bowtie2-inspect"],
+    'dirs': [],
+}
+
+# to add script folder to path just uncomment this line
+#modextrapaths = {'PATH': 'scripts'}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1461764855,
+    "build_time": 95.33,
+    "install_size": 54910001,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--try-toolchain-version=2016a', '--umask=002', 'Bowtie2-2.2.7-foss-2015b.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.055,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

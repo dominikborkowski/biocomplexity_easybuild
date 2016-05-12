@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { A cross-platform Python interface to the IBM SPSS Statistics Input Output Module - Homepage: https://bitbucket.org/fomcl/savreaderwriter
+    }
+}
+
+module-whatis {Description: A cross-platform Python interface to the IBM SPSS Statistics Input Output Module - Homepage: https://bitbucket.org/fomcl/savreaderwriter}
+
+set root /apps/easybuild/software/shadowfax-westmere/savReaderWriter/3.3.0-foss-2016a-Python-2.7.11
+
+conflict savReaderWriter
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+setenv	EBROOTSAVREADERWRITER		"$root"
+setenv	EBVERSIONSAVREADERWRITER		"3.3.0"
+setenv	EBDEVELSAVREADERWRITER		"$root/easybuild/savReaderWriter-3.3.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.7.0

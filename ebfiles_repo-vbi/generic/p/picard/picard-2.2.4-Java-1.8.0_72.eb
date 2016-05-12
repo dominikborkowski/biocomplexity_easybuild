@@ -1,0 +1,34 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2015 Virginia Bioinformatics Institute at Virginia Tech
+# Authors::   Dominik L. Borkowski <dominik.borkowski@gmail.com>
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+name = 'picard'
+version = '2.2.4'
+
+
+homepage = 'http://broadinstitute.github.io/picard/'
+description = """A set of Java command line tools for manipulating high-throughput sequencing data (HTS) data and formats."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+sources = ['%(name)s-tools-%(version)s.zip']
+source_urls = ['https://github.com/broadinstitute/picard/releases/download/%(version)s/']
+
+java = 'Java'
+javaver = '1.8.0_72'
+versionsuffix = '-%s-%s' % (java, javaver)
+
+dependencies = [(java, javaver)]
+
+sanity_check_paths = {
+    'files': ['picard.jar', 'picard-lib.jar', 'htsjdk-%(version)s.jar', 'libIntelDeflater.so'],
+    'dirs':[]
+    }
+
+moduleclass = 'bio'

@@ -1,0 +1,24 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { A programmer-oriented testing framework for Java. - Homepage: http://sourceforge.net/projects/junit
+    }
+}
+
+module-whatis {Description: A programmer-oriented testing framework for Java. - Homepage: http://sourceforge.net/projects/junit}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/JUnit/4.11-Java-1.7.0_80
+
+conflict JUnit
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CLASSPATH		$root/junit-4.11.jar
+setenv	EBROOTJUNIT		"$root"
+setenv	EBVERSIONJUNIT		"4.11"
+setenv	EBDEVELJUNIT		"$root/easybuild/JUnit-4.11-Java-1.7.0_80-easybuild-devel"
+
+prepend-path	PATH		$root
+prepend-path	CLASSPATH		$root/junit-4.11.jar
+# Built with EasyBuild version 2.7.0

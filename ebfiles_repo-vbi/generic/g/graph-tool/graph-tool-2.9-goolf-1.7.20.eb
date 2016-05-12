@@ -27,7 +27,7 @@ pythonversion = '2.7.9'
 versionsuffix = "-Python-%s" % pythonversion
 
 dependencies = [
-    ('Boost', '1.58.0', versionsuffix),
+    ('Boost', '1.60.0', versionsuffix),
     ('CGAL', '4.6.3', versionsuffix),
     ('expat', '2.1.0'),
     ('pycairo', '1.8.10', versionsuffix),

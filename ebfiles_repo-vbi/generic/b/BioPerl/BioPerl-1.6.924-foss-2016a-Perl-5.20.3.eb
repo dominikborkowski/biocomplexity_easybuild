@@ -1,0 +1,28 @@
+easyblock = 'PerlModule'
+
+name = 'BioPerl'
+version = '1.6.924'
+
+homepage = 'http://www.bioperl.org/'
+description = """Bioperl is the product of a community effort to produce Perl code which is useful in biology.
+ Examples include Sequence objects, Alignment objects and database searching objects."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['https://github.com/bioperl/bioperl-live/archive/']
+sources = ['release-%s.tar.gz' % version.replace('.', '-')]
+
+perl = 'Perl'
+perlver = '5.20.3'
+#perl_versionsuffix = '-extended'
+perl_versionsuffix = ''
+db_file_versionsuffix = '-%s-%s' % (perl, perlver)
+
+dependencies = [
+    (perl, perlver, perl_versionsuffix),
+#    ('DB_File', '1.831', db_file_versionsuffix),
+]
+
+options = {'modulename': 'Bio::Perl'}
+
+moduleclass = 'bio'

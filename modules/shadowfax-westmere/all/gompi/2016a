@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { GNU Compiler Collection (GCC) based compiler toolchain,
+ including OpenMPI for MPI support. - Homepage: (none)
+    }
+}
+
+module-whatis {Description: GNU Compiler Collection (GCC) based compiler toolchain,
+ including OpenMPI for MPI support. - Homepage: (none)}
+
+set root /apps/easybuild/software/shadowfax-westmere/gompi/2016a
+
+conflict gompi
+
+if { ![ is-loaded GCC/4.9.3-2.25 ] } {
+    module load GCC/4.9.3-2.25
+}
+
+if { ![ is-loaded OpenMPI/1.10.2-GCC-4.9.3-2.25 ] } {
+    module load OpenMPI/1.10.2-GCC-4.9.3-2.25
+}
+
+setenv	EBROOTGOMPI		"$root"
+setenv	EBVERSIONGOMPI		"2016a"
+setenv	EBDEVELGOMPI		"$root/easybuild/gompi-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
