@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Sodium is a modern, easy-to-use software library for encryption, decryption, signatures,
+ password hashing and more. - Homepage: http://doc.libsodium.org/
+    }
+}
+
+module-whatis {Description: Sodium is a modern, easy-to-use software library for encryption, decryption, signatures,
+ password hashing and more. - Homepage: http://doc.libsodium.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/libsodium/1.0.8-foss-2016a
+
+conflict libsodium
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBSODIUM		"$root"
+setenv	EBVERSIONLIBSODIUM		"1.0.8"
+setenv	EBDEVELLIBSODIUM		"$root/easybuild/libsodium-1.0.8-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

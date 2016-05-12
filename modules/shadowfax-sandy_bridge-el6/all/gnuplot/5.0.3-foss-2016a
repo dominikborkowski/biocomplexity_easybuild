@@ -1,0 +1,51 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Portable interactive, function plotting utility - Homepage: http://gnuplot.sourceforge.net/
+    }
+}
+
+module-whatis {Description: Portable interactive, function plotting utility - Homepage: http://gnuplot.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/gnuplot/5.0.3-foss-2016a
+
+conflict gnuplot
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded cairo/1.14.2-foss-2016a ] } {
+    module load cairo/1.14.2-foss-2016a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.4.2-foss-2016a ] } {
+    module load libjpeg-turbo/1.4.2-foss-2016a
+}
+
+if { ![ is-loaded libpng/1.6.21-foss-2016a ] } {
+    module load libpng/1.6.21-foss-2016a
+}
+
+if { ![ is-loaded libgd/2.1.1-foss-2016a ] } {
+    module load libgd/2.1.1-foss-2016a
+}
+
+if { ![ is-loaded Pango/1.39.0-foss-2016a ] } {
+    module load Pango/1.39.0-foss-2016a
+}
+
+if { ![ is-loaded libcerf/1.4-foss-2016a ] } {
+    module load libcerf/1.4-foss-2016a
+}
+
+if { ![ is-loaded Qt/4.8.7-foss-2016a ] } {
+    module load Qt/4.8.7-foss-2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGNUPLOT		"$root"
+setenv	EBVERSIONGNUPLOT		"5.0.3"
+setenv	EBDEVELGNUPLOT		"$root/easybuild/gnuplot-5.0.3-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
