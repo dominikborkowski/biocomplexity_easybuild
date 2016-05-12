@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { GNU Compiler Collection (GCC) based compiler toolchain, including
+ OpenMPI for MPI support, OpenBLAS (BLAS and LAPACK support), FFTW and ScaLAPACK. - Homepage: (none)
+    }
+}
+
+module-whatis {Description: GNU Compiler Collection (GCC) based compiler toolchain, including
+ OpenMPI for MPI support, OpenBLAS (BLAS and LAPACK support), FFTW and ScaLAPACK. - Homepage: (none)}
+
+set root /apps/easybuild/software/shadowfax-haswell/foss/2016a
+
+conflict foss
+
+if { ![ is-loaded GCC/4.9.3-2.25 ] } {
+    module load GCC/4.9.3-2.25
+}
+
+if { ![ is-loaded OpenMPI/1.10.2-GCC-4.9.3-2.25 ] } {
+    module load OpenMPI/1.10.2-GCC-4.9.3-2.25
+}
+
+if { ![ is-loaded OpenBLAS/0.2.15-GCC-4.9.3-2.25-LAPACK-3.6.0 ] } {
+    module load OpenBLAS/0.2.15-GCC-4.9.3-2.25-LAPACK-3.6.0
+}
+
+if { ![ is-loaded FFTW/3.3.4-gompi-2016a ] } {
+    module load FFTW/3.3.4-gompi-2016a
+}
+
+if { ![ is-loaded ScaLAPACK/2.0.2-gompi-2016a-OpenBLAS-0.2.15-LAPACK-3.6.0 ] } {
+    module load ScaLAPACK/2.0.2-gompi-2016a-OpenBLAS-0.2.15-LAPACK-3.6.0
+}
+
+setenv	EBROOTFOSS		"$root"
+setenv	EBVERSIONFOSS		"2016a"
+setenv	EBDEVELFOSS		"$root/easybuild/foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

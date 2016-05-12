@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The 4MC (4 More Compression) is a library for hadoop providing a new splittable compressed file format (4mc) which lets you leverage the power of LZ4 algorithm. It's been designed to add more features to existing big data solutions like HADOOP/ElephantBir - Homepage: https://github.com/kkos/oniguruma
+    }
+}
+
+module-whatis {Description: The 4MC (4 More Compression) is a library for hadoop providing a new splittable compressed file format (4mc) which lets you leverage the power of LZ4 algorithm. It's been designed to add more features to existing big data solutions like HADOOP/ElephantBir - Homepage: https://github.com/kkos/oniguruma}
+
+set root /apps/easybuild/software/shadowfax-haswell/4mc/1.3.0-GCC-4.9.3-2.25
+
+conflict 4mc
+
+if { ![ is-loaded GCC/4.9.3-2.25 ] } {
+    module load GCC/4.9.3-2.25
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOT4MC		"$root"
+setenv	EBVERSION4MC		"1.3.0"
+setenv	EBDEVEL4MC		"$root/easybuild/4mc-1.3.0-GCC-4.9.3-2.25-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

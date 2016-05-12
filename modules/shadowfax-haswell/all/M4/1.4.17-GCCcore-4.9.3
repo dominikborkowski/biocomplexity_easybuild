@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { GNU M4 is an implementation of the traditional Unix macro processor. It is mostly SVR4 compatible
+  although it has some extensions (for example, handling more than 9 positional parameters to macros).
+ GNU M4 also has built-in functions for including files, running shell commands, doing arithmetic, etc. - Homepage: http://www.gnu.org/software/m4/m4.html
+    }
+}
+
+module-whatis {Description: GNU M4 is an implementation of the traditional Unix macro processor. It is mostly SVR4 compatible
+  although it has some extensions (for example, handling more than 9 positional parameters to macros).
+ GNU M4 also has built-in functions for including files, running shell commands, doing arithmetic, etc. - Homepage: http://www.gnu.org/software/m4/m4.html}
+
+set root /apps/easybuild/software/shadowfax-haswell/M4/1.4.17-GCCcore-4.9.3
+
+conflict M4
+
+if { ![ is-loaded GCCcore/4.9.3 ] } {
+    module load GCCcore/4.9.3
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTM4		"$root"
+setenv	EBVERSIONM4		"1.4.17"
+setenv	EBDEVELM4		"$root/easybuild/M4-1.4.17-GCCcore-4.9.3-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

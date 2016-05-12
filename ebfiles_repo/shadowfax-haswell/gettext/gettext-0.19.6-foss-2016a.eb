@@ -1,0 +1,44 @@
+# Built with EasyBuild version 2.7.0 on 2016-05-12_14-07-16
+easyblock = 'ConfigureMake'
+
+name = 'gettext'
+version = '0.19.6'
+
+homepage = 'http://www.gnu.org/software/gettext/'
+description = """GNU `gettext' is an important step for the GNU Translation Project, as it is an asset on which we may
+build many other steps. This package offers to programmers, translators, and even users, a well integrated set of tools
+and documentation"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = [GNU_SOURCE]
+
+configopts = '--without-emacs'
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1463076436,
+    "build_time": 207.04,
+    "install_size": 16001836,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-haswell', '--installpath-software=/apps/easybuild/software/shadowfax-haswell', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-haswell', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/2.7.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell::/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'gettext-0.19.6-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

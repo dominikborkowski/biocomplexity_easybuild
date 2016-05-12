@@ -1,0 +1,64 @@
+# Built with EasyBuild version 2.7.0 on 2016-05-12_11-16-08
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = "BitSeq"
+version = "0.7.5"
+
+homepage = 'https://github.com/BitSeq/BitSeq'
+description = """ BitSeq (Bayesian Inference of Transcripts from Sequencing Data) is an 
+ application for inferring expression levels of individual transcripts from sequencing (RNA-Seq) 
+ data and estimating differential expression (DE) between conditions. An advantage of this 
+ approach is the ability to account for both technical uncertainty and intrinsic biological 
+ variance in order to avoid false DE calls. The technical contribution to the uncertainty comes 
+ both from finite read-depth and the possibly ambiguous mapping of reads to multiple transcripts."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['https://github.com/BitSeq/BitSeq/archive/']
+sources = ['v%(version)s.tar.gz']
+
+# put here the list of generated executables when compiling
+list_of_executables = ["convertSamples", "estimateDE", "estimateExpression", "estimateHyperPar",
+        "estimateVBExpression", "extractSamples", "getFoldChange", "getGeneExpression",
+        "getPPLR", "getVariance", "getWithinGeneExpression", "parseAlignment", 
+        "transposeLargeFile", "getCounts.py", "extractTranscriptInfo.py"]
+
+# this is the real EasyBuild line to copy all the executables to "bin"
+files_to_copy = [(list_of_executables, "bin")]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in list_of_executables],
+    'dirs': []
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1463066168,
+    "build_time": 6.05,
+    "install_size": 2308386,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-haswell', '--installpath-software=/apps/easybuild/software/shadowfax-haswell', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-haswell', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/2.7.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell::/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'BitSeq-0.7.5-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]

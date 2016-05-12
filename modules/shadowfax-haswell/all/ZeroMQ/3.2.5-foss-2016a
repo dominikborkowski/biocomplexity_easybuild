@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { ZeroMQ looks like an embeddable networking library but acts like a concurrency framework.
+ It gives you sockets that carry atomic messages across various transports like in-process,
+ inter-process, TCP, and multicast. You can connect sockets N-to-N with patterns like fanout,
+ pub-sub, task distribution, and request-reply. It's fast enough to be the fabric for clustered
+ products. Its asynchronous I/O model gives you scalable multicore applications, built as asynchronous
+ message-processing tasks. It has a score of language APIs and runs on most operating systems. - Homepage: http://www.zeromq.org/
+    }
+}
+
+module-whatis {Description: ZeroMQ looks like an embeddable networking library but acts like a concurrency framework.
+ It gives you sockets that carry atomic messages across various transports like in-process,
+ inter-process, TCP, and multicast. You can connect sockets N-to-N with patterns like fanout,
+ pub-sub, task distribution, and request-reply. It's fast enough to be the fabric for clustered
+ products. Its asynchronous I/O model gives you scalable multicore applications, built as asynchronous
+ message-processing tasks. It has a score of language APIs and runs on most operating systems. - Homepage: http://www.zeromq.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/ZeroMQ/3.2.5-foss-2016a
+
+conflict ZeroMQ
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded OpenPGM/5.2.122-foss-2016a ] } {
+    module load OpenPGM/5.2.122-foss-2016a
+}
+
+if { ![ is-loaded util-linux/2.26.1-foss-2016a ] } {
+    module load util-linux/2.26.1-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTZEROMQ		"$root"
+setenv	EBVERSIONZEROMQ		"3.2.5"
+setenv	EBDEVELZEROMQ		"$root/easybuild/ZeroMQ-3.2.5-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

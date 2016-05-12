@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint,
+latency hiding, direct access to the protocol, improved threading support, and extensibility. - Homepage: http://xcb.freedesktop.org/
+    }
+}
+
+module-whatis {Description: The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint,
+latency hiding, direct access to the protocol, improved threading support, and extensibility. - Homepage: http://xcb.freedesktop.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/libpthread-stubs/0.3-foss-2016a
+
+conflict libpthread-stubs
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBPTHREADMINSTUBS		"$root"
+setenv	EBVERSIONLIBPTHREADMINSTUBS		"0.3"
+setenv	EBDEVELLIBPTHREADMINSTUBS		"$root/easybuild/libpthread-stubs-0.3-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
