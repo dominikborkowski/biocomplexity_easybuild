@@ -1,0 +1,25 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Eigen is a C++ template library for linear algebra:
+ matrices, vectors, numerical solvers, and related algorithms. - Homepage: http://eigen.tuxfamily.org/index.php?title=Main_Page
+    }
+}
+
+module-whatis {Description: Eigen is a C++ template library for linear algebra:
+ matrices, vectors, numerical solvers, and related algorithms. - Homepage: http://eigen.tuxfamily.org/index.php?title=Main_Page}
+
+set root /apps/easybuild/software/shadowfax-haswell/Eigen/3.2.3-foss-2016a
+
+conflict Eigen
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	CPLUS_INCLUDE_PATH		$root/include
+setenv	EBROOTEIGEN		"$root"
+setenv	EBVERSIONEIGEN		"3.2.3"
+setenv	EBDEVELEIGEN		"$root/easybuild/Eigen-3.2.3-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

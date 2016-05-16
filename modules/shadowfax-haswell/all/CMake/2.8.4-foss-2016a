@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { CMake, the cross-platform, open-source build system.
+ CMake is a family of tools designed to build, test and package software. - Homepage: http://www.cmake.org
+    }
+}
+
+module-whatis {Description: CMake, the cross-platform, open-source build system.
+ CMake is a family of tools designed to build, test and package software. - Homepage: http://www.cmake.org}
+
+set root /apps/easybuild/software/shadowfax-haswell/CMake/2.8.4-foss-2016a
+
+conflict CMake
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016a ] } {
+    module load ncurses/6.0-foss-2016a
+}
+
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTCMAKE		"$root"
+setenv	EBVERSIONCMAKE		"2.8.4"
+setenv	EBDEVELCMAKE		"$root/easybuild/CMake-2.8.4-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

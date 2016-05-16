@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The GNU Project Debugger - Homepage: http://www.gnu.org/software/gdb/gdb.html
+    }
+}
+
+module-whatis {Description: The GNU Project Debugger - Homepage: http://www.gnu.org/software/gdb/gdb.html}
+
+set root /apps/easybuild/software/shadowfax-haswell/GDB/7.8.2-GCC-4.9.2
+
+conflict GDB
+
+if { ![ is-loaded GCC/4.9.2 ] } {
+    module load GCC/4.9.2
+}
+
+if { ![ is-loaded ncurses/5.9-GCC-4.9.2 ] } {
+    module load ncurses/5.9-GCC-4.9.2
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGDB		"$root"
+setenv	EBVERSIONGDB		"7.8.2"
+setenv	EBDEVELGDB		"$root/easybuild/GDB-7.8.2-GCC-4.9.2-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

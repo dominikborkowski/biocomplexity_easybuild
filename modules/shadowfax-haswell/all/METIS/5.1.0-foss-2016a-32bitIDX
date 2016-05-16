@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { METIS is a set of serial programs for partitioning graphs, partitioning finite element meshes,
+ and producing fill reducing orderings for sparse matrices. The algorithms implemented in METIS are based on the
+ multilevel recursive-bisection, multilevel k-way, and multi-constraint partitioning schemes. - Homepage: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview
+    }
+}
+
+module-whatis {Description: METIS is a set of serial programs for partitioning graphs, partitioning finite element meshes,
+ and producing fill reducing orderings for sparse matrices. The algorithms implemented in METIS are based on the
+ multilevel recursive-bisection, multilevel k-way, and multi-constraint partitioning schemes. - Homepage: http://glaros.dtc.umn.edu/gkhome/metis/metis/overview}
+
+set root /apps/easybuild/software/shadowfax-haswell/METIS/5.1.0-foss-2016a-32bitIDX
+
+conflict METIS
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTMETIS		"$root"
+setenv	EBVERSIONMETIS		"5.1.0"
+setenv	EBDEVELMETIS		"$root/easybuild/METIS-5.1.0-foss-2016a-32bitIDX-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

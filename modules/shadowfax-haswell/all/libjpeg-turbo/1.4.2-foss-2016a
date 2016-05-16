@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
+compression and decompression. libjpeg is a library that implements JPEG image encoding, decoding and transcoding.
+ - Homepage: http://sourceforge.net/projects/libjpeg-turbo/
+    }
+}
+
+module-whatis {Description: libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
+compression and decompression. libjpeg is a library that implements JPEG image encoding, decoding and transcoding.
+ - Homepage: http://sourceforge.net/projects/libjpeg-turbo/}
+
+set root /apps/easybuild/software/shadowfax-haswell/libjpeg-turbo/1.4.2-foss-2016a
+
+conflict libjpeg-turbo
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded NASM/2.11.08-foss-2016a ] } {
+    module load NASM/2.11.08-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTLIBJPEGMINTURBO		"$root"
+setenv	EBVERSIONLIBJPEGMINTURBO		"1.4.2"
+setenv	EBDEVELLIBJPEGMINTURBO		"$root/easybuild/libjpeg-turbo-1.4.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

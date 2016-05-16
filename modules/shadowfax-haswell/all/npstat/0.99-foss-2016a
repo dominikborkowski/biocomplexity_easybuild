@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { npstat implements some population genetics tests and estimators that can be applied
+ to pooled sequences from Next Generation Sequencing experiments. - Homepage: https://code.google.com/archive/p/npstat/
+    }
+}
+
+module-whatis {Description: npstat implements some population genetics tests and estimators that can be applied
+ to pooled sequences from Next Generation Sequencing experiments. - Homepage: https://code.google.com/archive/p/npstat/}
+
+set root /apps/easybuild/software/shadowfax-haswell/npstat/0.99-foss-2016a
+
+conflict npstat
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded GSL/1.16-foss-2016a ] } {
+    module load GSL/1.16-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTNPSTAT		"$root"
+setenv	EBVERSIONNPSTAT		"0.99"
+setenv	EBDEVELNPSTAT		"$root/easybuild/npstat-0.99-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0

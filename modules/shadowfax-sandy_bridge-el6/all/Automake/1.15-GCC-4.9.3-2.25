@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Automake: GNU Standards-compliant Makefile generator - Homepage: http://www.gnu.org/software/automake/automake.html
+    }
+}
+
+module-whatis {Description: Automake: GNU Standards-compliant Makefile generator - Homepage: http://www.gnu.org/software/automake/automake.html}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/Automake/1.15-GCC-4.9.3-2.25
+
+conflict Automake
+
+if { ![ is-loaded GCC/4.9.3-2.25 ] } {
+    module load GCC/4.9.3-2.25
+}
+
+if { ![ is-loaded Autoconf/2.69-GCC-4.9.3-2.25 ] } {
+    module load Autoconf/2.69-GCC-4.9.3-2.25
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTAUTOMAKE		"$root"
+setenv	EBVERSIONAUTOMAKE		"1.15"
+setenv	EBDEVELAUTOMAKE		"$root/easybuild/Automake-1.15-GCC-4.9.3-2.25-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
