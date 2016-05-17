@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SymPy is a Python library for symbolic mathematics. It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries. - Homepage: http://sympy.org/
+    }
+}
+
+module-whatis {Description: SymPy is a Python library for symbolic mathematics. It aims to
+ become a full-featured computer algebra system (CAS) while keeping the code as
+ simple as possible in order to be comprehensible and easily extensible. SymPy
+ is written entirely in Python and does not require any external libraries. - Homepage: http://sympy.org/}
+
+set root /apps/easybuild/software/shadowfax-westmere/sympy/1.0-foss-2016a-Python-2.7.11
+
+conflict sympy
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded mpmath/0.19-foss-2016a-Python-2.7.11 ] } {
+    module load mpmath/0.19-foss-2016a-Python-2.7.11
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSYMPY		"$root"
+setenv	EBVERSIONSYMPY		"1.0"
+setenv	EBDEVELSYMPY		"$root/easybuild/sympy-1.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 2.7.0
