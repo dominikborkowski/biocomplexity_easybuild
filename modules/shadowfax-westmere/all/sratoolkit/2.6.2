@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The SRA Toolkit, and the source-code SRA System Development 
+ Kit (SDK), will allow you to programmatically access data housed within SRA
+ and convert it from the SRA format - Homepage: http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
+    }
+}
+
+module-whatis {Description: The SRA Toolkit, and the source-code SRA System Development 
+ Kit (SDK), will allow you to programmatically access data housed within SRA
+ and convert it from the SRA format - Homepage: http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software}
+
+set root /apps/easybuild/software/shadowfax-westmere/sratoolkit/2.6.2
+
+conflict sratoolkit
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSRATOOLKIT		"$root"
+setenv	EBVERSIONSRATOOLKIT		"2.6.2"
+setenv	EBDEVELSRATOOLKIT		"$root/easybuild/sratoolkit-2.6.2-easybuild-devel"
+
+prepend-path	PATH		$root
+# Built with EasyBuild version 2.8.0
