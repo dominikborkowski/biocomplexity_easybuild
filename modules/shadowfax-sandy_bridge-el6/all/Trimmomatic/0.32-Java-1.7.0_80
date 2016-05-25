@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Trimmomatic performs a variety of useful trimming tasks for illumina 
+ paired-end and single ended data.The selection of trimming steps and their associated 
+ parameters are supplied on the command line.  - Homepage: http://www.usadellab.org/cms/?page=trimmomatic
+    }
+}
+
+module-whatis {Description: Trimmomatic performs a variety of useful trimming tasks for illumina 
+ paired-end and single ended data.The selection of trimming steps and their associated 
+ parameters are supplied on the command line.  - Homepage: http://www.usadellab.org/cms/?page=trimmomatic}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/Trimmomatic/0.32-Java-1.7.0_80
+
+conflict Trimmomatic
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CLASSPATH		$root/trimmomatic-0.32.jar
+setenv	EBROOTTRIMMOMATIC		"$root"
+setenv	EBVERSIONTRIMMOMATIC		"0.32"
+setenv	EBDEVELTRIMMOMATIC		"$root/easybuild/Trimmomatic-0.32-Java-1.7.0_80-easybuild-devel"
+
+
+if { [ module-info mode load ] } {
+    puts stderr "To execute Trimmomatic run: java -jar \$EBROOTTRIMMOMATIC/trimmomatic-0.32.jar"
+}
+# Built with EasyBuild version 2.8.0
