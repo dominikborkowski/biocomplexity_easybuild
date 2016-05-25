@@ -1,0 +1,22 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Singularity is a portable application stack packaging and runtime utility. - Homepage: http://gmkurtzer.github.io/singularity
+    }
+}
+
+module-whatis {Description: Singularity is a portable application stack packaging and runtime utility. - Homepage: http://gmkurtzer.github.io/singularity}
+
+set root /apps/easybuild/software/shadowfax-westmere/Singularity/1.0-GCC-4.9.3-2.25
+
+conflict Singularity
+
+if { ![ is-loaded GCC/4.9.3-2.25 ] } {
+    module load GCC/4.9.3-2.25
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSINGULARITY		"$root"
+setenv	EBVERSIONSINGULARITY		"1.0"
+setenv	EBDEVELSINGULARITY		"$root/easybuild/Singularity-1.0-GCC-4.9.3-2.25-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

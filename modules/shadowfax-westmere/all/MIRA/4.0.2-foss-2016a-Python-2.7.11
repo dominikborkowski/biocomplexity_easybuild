@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { MIRA is a whole genome shotgun and EST sequence assembler for Sanger, 454, Solexa (Illumina),
+    IonTorrent data and PacBio (the later at the moment only CCS and error-corrected CLR reads). - Homepage: http://sourceforge.net/p/mira-assembler/wiki/Home/
+    }
+}
+
+module-whatis {Description: MIRA is a whole genome shotgun and EST sequence assembler for Sanger, 454, Solexa (Illumina),
+    IonTorrent data and PacBio (the later at the moment only CCS and error-corrected CLR reads). - Homepage: http://sourceforge.net/p/mira-assembler/wiki/Home/}
+
+set root /apps/easybuild/software/shadowfax-westmere/MIRA/4.0.2-foss-2016a-Python-2.7.11
+
+conflict MIRA
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Boost/1.60.0-foss-2016a-Python-2.7.11 ] } {
+    module load Boost/1.60.0-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded expat/2.1.0-foss-2016a ] } {
+    module load expat/2.1.0-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+if { ![ is-loaded gperftools/2.4-foss-2016a ] } {
+    module load gperftools/2.4-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMIRA		"$root"
+setenv	EBVERSIONMIRA		"4.0.2"
+setenv	EBDEVELMIRA		"$root/easybuild/MIRA-4.0.2-foss-2016a-Python-2.7.11-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

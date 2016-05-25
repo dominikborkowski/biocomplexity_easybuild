@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  The Integrative Genomics Viewer (IGV) is a high-performance visualization 
+ tool for interactive exploration of large, integrated genomic datasets. It supports a wide 
+ variety of data types, including array-based and next-generation sequence data, and genomic annotations.  - Homepage: http://www.broadinstitute.org/software/igv/
+    }
+}
+
+module-whatis {Description:  The Integrative Genomics Viewer (IGV) is a high-performance visualization 
+ tool for interactive exploration of large, integrated genomic datasets. It supports a wide 
+ variety of data types, including array-based and next-generation sequence data, and genomic annotations.  - Homepage: http://www.broadinstitute.org/software/igv/}
+
+set root /apps/easybuild/software/shadowfax-westmere/IGV/2.3.72-Java-1.7.0_80
+
+conflict IGV
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CLASSPATH		$root/batik-codec__V1.7.jar
+prepend-path	CLASSPATH		$root/goby-io-igv__V1.0.jar
+prepend-path	CLASSPATH		$root/igv.jar
+setenv	EBROOTIGV		"$root"
+setenv	EBVERSIONIGV		"2.3.72"
+setenv	EBDEVELIGV		"$root/easybuild/IGV-2.3.72-Java-1.7.0_80-easybuild-devel"
+
+prepend-path	PATH		$root
+
+if { [ module-info mode load ] } {
+    puts stderr " To execute IGV run igv.sh "
+}
+# Built with EasyBuild version 2.8.0
