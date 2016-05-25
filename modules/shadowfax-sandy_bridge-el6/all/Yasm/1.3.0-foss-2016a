@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Yasm: Complete rewrite of the NASM assembler with BSD license - Homepage: http://www.tortall.net/projects/yasm/
+    }
+}
+
+module-whatis {Description: Yasm: Complete rewrite of the NASM assembler with BSD license - Homepage: http://www.tortall.net/projects/yasm/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/Yasm/1.3.0-foss-2016a
+
+conflict Yasm
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTYASM		"$root"
+setenv	EBVERSIONYASM		"1.3.0"
+setenv	EBDEVELYASM		"$root/easybuild/Yasm-1.3.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

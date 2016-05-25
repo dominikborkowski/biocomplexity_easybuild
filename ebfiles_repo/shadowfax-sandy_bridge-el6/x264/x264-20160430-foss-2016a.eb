@@ -1,0 +1,54 @@
+# Built with EasyBuild version 2.8.0 on 2016-05-25_15-54-52
+easyblock = 'ConfigureMake'
+
+name = 'x264'
+version = '20160430'
+
+homepage = 'http://www.videolan.org/developers/x264.html'
+description = """x264 is a free software library and application for encoding video streams into the H.264/MPEG-4
+ AVC compression format, and is released under the terms of the GNU GPL."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = [
+    'https://download.videolan.org/pub/videolan/x264/snapshots/',
+    'ftp://ftp.videolan.org/pub/videolan/x264/snapshots/',
+]
+sources = ['x264-snapshot-%(version)s-2245-stable.tar.bz2']
+
+dependencies = [('Yasm', '1.3.0')]
+
+configopts = "  --enable-shared --enable-static "
+
+sanity_check_paths = {
+    'files': ['bin/x264', 'include/x264_config.h', 'include/x264.h', 'lib/libx264.a', 'lib/libx264.%s' % SHLIB_EXT],
+    'dirs': [],
+}
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1464206092,
+    "build_time": 18.71,
+    "install_size": 5038581,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge-el6', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge-el6', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/software/shadowfax-sandy_bridge-el6/EasyBuild/2.8.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'FFmpeg-2.8.7-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2900.242,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "sfxlogin3",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "total_memory": 129152,
+}]
