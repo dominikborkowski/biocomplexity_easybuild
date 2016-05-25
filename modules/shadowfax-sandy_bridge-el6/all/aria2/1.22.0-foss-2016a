@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { aria2: Multi-threaded, multi-protocol, flexible download accelerator - Homepage: http://aria2.sourceforge.net/
+    }
+}
+
+module-whatis {Description: aria2: Multi-threaded, multi-protocol, flexible download accelerator - Homepage: http://aria2.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/aria2/1.22.0-foss-2016a
+
+conflict aria2
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTARIA2		"$root"
+setenv	EBVERSIONARIA2		"1.22.0"
+setenv	EBDEVELARIA2		"$root/easybuild/aria2-1.22.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.7.0
