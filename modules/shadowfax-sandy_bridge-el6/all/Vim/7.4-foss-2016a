@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  Vim is an advanced text editor that seeks to provide the power 
+ of the de-facto Unix editor 'Vi', with a more complete feature set.  - Homepage: http://www.vim.org
+    }
+}
+
+module-whatis {Description:  Vim is an advanced text editor that seeks to provide the power 
+ of the de-facto Unix editor 'Vi', with a more complete feature set.  - Homepage: http://www.vim.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/Vim/7.4-foss-2016a
+
+conflict Vim
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded Perl/5.22.1-foss-2016a ] } {
+    module load Perl/5.22.1-foss-2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTVIM		"$root"
+setenv	EBVERSIONVIM		"7.4"
+setenv	EBDEVELVIM		"$root/easybuild/Vim-7.4-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

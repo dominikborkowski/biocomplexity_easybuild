@@ -1,0 +1,61 @@
+# Built with EasyBuild version 2.8.0 on 2016-05-25_08-41-11
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'ConfigureMake'
+
+name = 'Vim'
+version = '7.4'
+
+homepage = 'http://www.vim.org'
+description = """ Vim is an advanced text editor that seeks to provide the power 
+ of the de-facto Unix editor 'Vi', with a more complete feature set. """
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['http://ftp.vim.org/pub/vim/unix/']
+sources = [SOURCELOWER_TAR_BZ2]
+
+# this dependencies are required for --enable-pythoninterp=yes and --enable-perlinterp=yes to work
+# check enabled features running "vim --version" after compilation
+dependencies = [
+    ('Python', '2.7.11'),
+    ('Perl', '5.22.1')
+]
+
+configopts = '--with-features=huge --enable-pythoninterp=yes --enable-perlinterp=yes'
+
+sanity_check_paths = {
+    'files': ['bin/vim', 'bin/vimdiff'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1464180071,
+    "build_time": 91.69,
+    "install_size": 51310744,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge-el6', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge-el6', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/software/shadowfax-sandy_bridge-el6/EasyBuild/2.8.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Vim-7.4-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2900.242,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "sfxlogin3",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/shadowfax-sandy_bridge-el6/Python/2.7.11-foss-2016a/bin/python",
+    "total_memory": 129152,
+}]

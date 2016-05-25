@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Circos is a software package for visualizing data and information. It visualizes data in a circular
+ layout — this makes Circos ideal for exploring relationships between objects or positions. - Homepage: http://www.circos.ca/
+    }
+}
+
+module-whatis {Description: Circos is a software package for visualizing data and information. It visualizes data in a circular
+ layout — this makes Circos ideal for exploring relationships between objects or positions. - Homepage: http://www.circos.ca/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/Circos/0.69-2-foss-2016a-Perl-5.22.1
+
+conflict Circos
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Perl/5.22.1-foss-2016a ] } {
+    module load Perl/5.22.1-foss-2016a
+}
+
+if { ![ is-loaded GD/2.52-foss-2016a-Perl-5.22.1 ] } {
+    module load GD/2.52-foss-2016a-Perl-5.22.1
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTCIRCOS		"$root"
+setenv	EBVERSIONCIRCOS		"0.69-2"
+setenv	EBDEVELCIRCOS		"$root/easybuild/Circos-0.69-2-foss-2016a-Perl-5.22.1-easybuild-devel"
+
+prepend-path	PERL5LIB		$root/lib
+# Built with EasyBuild version 2.8.0

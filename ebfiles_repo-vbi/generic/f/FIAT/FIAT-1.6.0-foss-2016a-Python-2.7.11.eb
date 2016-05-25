@@ -18,7 +18,7 @@ versionsuffix = '-Python-%s' % pyver
 
 dependencies = [
     ('Python', pyver),
-    ('sympy', '0.7.6.1', versionsuffix),
+    ('sympy', '1.0', versionsuffix),
 ]
 
 options = {'modulename': name}

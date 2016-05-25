@@ -24,7 +24,7 @@ dependencies = [
     (parmetis, parmetis_ver),
     ('SCOTCH', '6.0.4'),
     ('SuiteSparse', '4.4.5', '-%s-%s' % (parmetis, parmetis_ver)),
-    ('Hypre', '2.9.0a'),
+    ('Hypre', '2.10.1'),
 ]
 
 builddependencies = [('CMake', '3.4.1')]

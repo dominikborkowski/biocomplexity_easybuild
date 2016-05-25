@@ -9,11 +9,10 @@ description = """Hypre is a library for solving large, sparse linear systems of 
 toolchain = {'name': 'foss', 'version': '2016a'}
 toolchainopts = {'pic': True}
 
-source_urls = ["https://computation.llnl.gov/project/linear_solvers/download/"]
-#sources = [SOURCELOWER_TAR_GZ]
+source_urls = ["https://github.com/LLNL/hypre/archive/"]
 sources = ["v%(version)s.tar.gz"]
 
-patches = ["hypre_%(version)s_with_blas_lapack.patch"]
+#patches = ["hypre_%(version)s_with_blas_lapack.patch"]
 
 start_dir = "src"
 

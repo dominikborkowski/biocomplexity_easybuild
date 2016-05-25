@@ -1,0 +1,116 @@
+# Built with EasyBuild version 2.8.0 on 2016-05-25_08-44-41
+easyblock = 'Bundle'
+
+name = 'IPython'
+version = '3.2.3'
+
+homepage = 'http://ipython.org/index.html'
+description = """IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+python = 'Python'
+pyver = '2.7.11'
+pyshortver = '.'.join(pyver.split('.')[:2])
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('PyZMQ', '15.2.0', '%s-zmq4' % versionsuffix),
+]
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+exts_list = [
+    ('pysqlite', '2.8.1', {
+        'modulename': 'pysqlite2',
+        'source_urls': ['https://pypi.python.org/packages/source/p/pysqlite/'],
+    }),
+    ('requests', '2.9.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/r/requests/'],
+    }),
+    ('Pygments', '2.0.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/P/Pygments/'],
+    }),
+    ('singledispatch', '3.4.0.3', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/singledispatch/'],
+    }),
+    ('backports.ssl_match_hostname', '3.5.0.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/b/backports.ssl_match_hostname/'],
+    }),
+    ('certifi', '2015.11.20.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/c/certifi/'],
+    }),
+    ('backports_abc', '0.4', {
+        'source_urls': ['https://pypi.python.org/packages/source/b/backports_abc/'],
+    }),
+    ('tornado', '4.3', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/tornado/'],
+    }),
+    ('Jinja2', '2.8', {
+        'source_urls': ['https://pypi.python.org/packages/source/J/Jinja2/'],
+    }),
+    ('jsonschema', '2.5.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/j/jsonschema/'],
+    }),
+    ('mistune', '0.7.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/m/mistune/'],
+    }),
+    ('ptyprocess', '0.5', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/ptyprocess/'],
+    }),
+    ('terminado', '0.6', {
+        'source_urls': ['https://pypi.python.org/packages/source/t/terminado/'],
+    }),
+    ('ipython', version, {
+        'source_urls': ['https://pypi.python.org/packages/source/i/ipython/'],
+        'modulename': 'IPython',
+    }),
+]
+
+modextrapaths = {'PYTHONPATH': ['lib/python%s/site-packages' % pyshortver]}
+
+sanity_check_paths = {
+    'files': ['bin/ipython'],
+    'dirs': ['lib/python%s/site-packages/IPython' % pyshortver],
+}
+
+sanity_check_commands = [
+    ('ipython -h', ''),
+    ('ipython notebook --help', ''),
+    ('iptest', ''),
+]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1464180281,
+    "build_time": 301.64,
+    "install_size": 32668230,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge-el6', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge-el6', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/software/shadowfax-sandy_bridge-el6/EasyBuild/2.8.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'IPython-3.2.3-foss-2016a-Python-2.7.11.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2900.242,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "sfxlogin3",
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.6",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/shadowfax-sandy_bridge-el6/Python/2.7.11-foss-2016a/bin/python",
+    "total_memory": 129152,
+}]

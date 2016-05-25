@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { BLAT on DNA is designed to quickly find sequences of 95% and greater similarity of length 25 bases or more. - Homepage: http://genome.ucsc.edu/FAQ/FAQblat.html
+    }
+}
+
+module-whatis {Description: BLAT on DNA is designed to quickly find sequences of 95% and greater similarity of length 25 bases or more. - Homepage: http://genome.ucsc.edu/FAQ/FAQblat.html}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/BLAT/3.5-foss-2016a
+
+conflict BLAT
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libpng/1.6.21-foss-2016a ] } {
+    module load libpng/1.6.21-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTBLAT		"$root"
+setenv	EBVERSIONBLAT		"3.5"
+setenv	EBDEVELBLAT		"$root/easybuild/BLAT-3.5-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

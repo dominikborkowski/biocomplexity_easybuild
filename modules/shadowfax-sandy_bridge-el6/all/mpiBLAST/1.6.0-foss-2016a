@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { mpiBLAST is a freely available, open-source, parallel implementation of NCBI BLAST.
+ By efficiently utilizing distributed computational resources through database fragmentation,
+ query segmentation, intelligent scheduling, and parallel I/O, mpiBLAST improves NCBI BLAST
+ performance by several orders of magnitude while scaling to hundreds of processors.
+ mpiBLAST is also portable across many different platforms and operating systems. - Homepage: http://www.mpiblast.org/
+    }
+}
+
+module-whatis {Description: mpiBLAST is a freely available, open-source, parallel implementation of NCBI BLAST.
+ By efficiently utilizing distributed computational resources through database fragmentation,
+ query segmentation, intelligent scheduling, and parallel I/O, mpiBLAST improves NCBI BLAST
+ performance by several orders of magnitude while scaling to hundreds of processors.
+ mpiBLAST is also portable across many different platforms and operating systems. - Homepage: http://www.mpiblast.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/mpiBLAST/1.6.0-foss-2016a
+
+conflict mpiBLAST
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMPIBLAST		"$root"
+setenv	EBVERSIONMPIBLAST		"1.6.0"
+setenv	EBDEVELMPIBLAST		"$root/easybuild/mpiBLAST-1.6.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

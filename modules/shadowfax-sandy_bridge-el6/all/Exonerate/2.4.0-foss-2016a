@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  Exonerate is a generic tool for pairwise sequence comparison.
+ It allows you to align sequences using a many alignment models, using either 
+ exhaustive dynamic programming, or a variety of heuristics.  - Homepage: http://www.ebi.ac.uk/~guy/exonerate/
+    }
+}
+
+module-whatis {Description:  Exonerate is a generic tool for pairwise sequence comparison.
+ It allows you to align sequences using a many alignment models, using either 
+ exhaustive dynamic programming, or a variety of heuristics.  - Homepage: http://www.ebi.ac.uk/~guy/exonerate/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/Exonerate/2.4.0-foss-2016a
+
+conflict Exonerate
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded GLib/2.47.5-foss-2016a ] } {
+    module load GLib/2.47.5-foss-2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTEXONERATE		"$root"
+setenv	EBVERSIONEXONERATE		"2.4.0"
+setenv	EBDEVELEXONERATE		"$root/easybuild/Exonerate-2.4.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0
