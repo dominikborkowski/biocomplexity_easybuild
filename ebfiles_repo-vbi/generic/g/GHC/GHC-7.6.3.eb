@@ -9,4 +9,6 @@ toolchain = {'name': 'dummy', 'version': 'dummy'}
 sources = ['%(namelower)s-%(version)s-x86_64-unknown-linux.tar.bz2']
 source_urls = ['http://www.haskell.org/ghc/dist/%(version)s/']
 
+skipsteps = ['build']
+
 moduleclass = 'compiler'

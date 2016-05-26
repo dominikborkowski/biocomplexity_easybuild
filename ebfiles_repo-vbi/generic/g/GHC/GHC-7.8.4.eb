@@ -1,5 +1,5 @@
 name = 'GHC'
-version = '7.4.2'
+version = '7.8.4'
 
 homepage = 'http://haskell.org/ghc/'
 description = """The Glorious/Glasgow Haskell Compiler"""
