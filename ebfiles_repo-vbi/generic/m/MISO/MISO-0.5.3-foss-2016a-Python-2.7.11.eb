@@ -1,0 +1,33 @@
+easyblock = "PythonPackage"
+
+name = 'misopy'
+version = '0.5.3'
+
+homepage = 'http://genes.mit.edu/burgelab/miso'
+description = """MISO (Mixture-of-Isoforms) is a probabilistic framework that quantitates the expression level of alternatively spliced genes from RNA-Seq data, and identifies differentially regulated isoforms or exons across samples. By modeling the generative process by which reads are produced from isoforms in RNA-Seq, the MISO model uses Bayesian inference to compute the probability that a read originated from a particular isoform."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+patches = ['misopy.patch']
+python = "Python"
+python_version = "2.7.11"
+versionsuffix = '-%s-%s' % (python, python_version)
+
+dependencies = [
+  ('Python', '2.7.11'),
+  ('pysam', '0.9.0', versionsuffix),
+  ('matplotlib', '1.5.1', versionsuffix),
+]
+
+py_short_ver = ".".join(python_version.split(".")[0:2])
+pylibdir = "lib/python%s/site-packages" % (py_short_ver)
+
+sanity_check_paths = {
+                      'files': [],
+                      'dirs': [pylibdir]
+                     }
+
+moduleclass = 'bio'
+
