@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  STAR aligns RNA-seq reads to a reference genome using 
+ uncompressed suffix arrays.  - Homepage: https://github.com/alexdobin/STAR
+    }
+}
+
+module-whatis {Description:  STAR aligns RNA-seq reads to a reference genome using 
+ uncompressed suffix arrays.  - Homepage: https://github.com/alexdobin/STAR}
+
+set root /apps/easybuild/software/shadowfax-westmere/STAR/2.5.2a-foss-2016a
+
+conflict STAR
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSTAR		"$root"
+setenv	EBVERSIONSTAR		"2.5.2a"
+setenv	EBDEVELSTAR		"$root/easybuild/STAR-2.5.2a-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.2
