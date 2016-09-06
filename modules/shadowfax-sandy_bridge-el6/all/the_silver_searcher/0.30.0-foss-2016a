@@ -28,4 +28,4 @@ setenv	EBROOTTHE_SILVER_SEARCHER		"$root"
 setenv	EBVERSIONTHE_SILVER_SEARCHER		"0.30.0"
 setenv	EBDEVELTHE_SILVER_SEARCHER		"$root/easybuild/the_silver_searcher-0.30.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

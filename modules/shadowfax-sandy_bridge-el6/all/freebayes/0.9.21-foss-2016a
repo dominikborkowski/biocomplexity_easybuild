@@ -20,4 +20,4 @@ setenv	EBVERSIONFREEBAYES		"0.9.21"
 setenv	EBDEVELFREEBAYES		"$root/easybuild/freebayes-0.9.21-foss-2016a-easybuild-devel"
 
 prepend-path	PATH		$root/scripts
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

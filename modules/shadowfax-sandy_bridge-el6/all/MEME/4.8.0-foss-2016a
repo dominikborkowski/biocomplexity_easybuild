@@ -1,18 +1,18 @@
 #%Module
 proc ModulesHelp { } {
     puts stderr { The MEME Suite allows you to: * discover motifs using MEME, DREME (DNA only) or
-  GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
-  MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
-  motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
-  using SpaMo or CentriMo. - Homepage: http://meme.nbcr.net/
+ GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
+ MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
+ motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
+ using SpaMo or CentriMo. - Homepage: http://meme.nbcr.net/
     }
 }
 
 module-whatis {Description: The MEME Suite allows you to: * discover motifs using MEME, DREME (DNA only) or
-  GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
-  MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
-  motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
-  using SpaMo or CentriMo. - Homepage: http://meme.nbcr.net/}
+ GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
+ MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
+ motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
+ using SpaMo or CentriMo. - Homepage: http://meme.nbcr.net/}
 
 set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/MEME/4.8.0-foss-2016a
 
@@ -41,4 +41,4 @@ setenv	EBROOTMEME		"$root"
 setenv	EBVERSIONMEME		"4.8.0"
 setenv	EBDEVELMEME		"$root/easybuild/MEME-4.8.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

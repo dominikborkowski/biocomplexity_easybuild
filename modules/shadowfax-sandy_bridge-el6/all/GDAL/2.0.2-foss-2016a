@@ -45,4 +45,4 @@ setenv	EBROOTGDAL		"$root"
 setenv	EBVERSIONGDAL		"2.0.2"
 setenv	EBDEVELGDAL		"$root/easybuild/GDAL-2.0.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

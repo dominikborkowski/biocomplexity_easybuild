@@ -25,4 +25,4 @@ setenv	EBROOTLIBXAU		"$root"
 setenv	EBVERSIONLIBXAU		"1.0.8"
 setenv	EBDEVELLIBXAU		"$root/easybuild/libXau-1.0.8-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

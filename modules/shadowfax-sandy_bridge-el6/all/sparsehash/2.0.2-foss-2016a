@@ -28,4 +28,4 @@ setenv	EBROOTSPARSEHASH		"$root"
 setenv	EBVERSIONSPARSEHASH		"2.0.2"
 setenv	EBDEVELSPARSEHASH		"$root/easybuild/sparsehash-2.0.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

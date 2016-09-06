@@ -25,4 +25,4 @@ setenv	EBROOTBLAT		"$root"
 setenv	EBVERSIONBLAT		"3.5"
 setenv	EBDEVELBLAT		"$root/easybuild/BLAT-3.5-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

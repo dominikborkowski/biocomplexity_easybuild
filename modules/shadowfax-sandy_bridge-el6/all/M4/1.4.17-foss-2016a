@@ -24,4 +24,4 @@ setenv	EBROOTM4		"$root"
 setenv	EBVERSIONM4		"1.4.17"
 setenv	EBDEVELM4		"$root/easybuild/M4-1.4.17-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

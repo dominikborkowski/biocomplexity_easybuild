@@ -22,4 +22,4 @@ setenv	EBROOTKBPROTO		"$root"
 setenv	EBVERSIONKBPROTO		"1.0.7"
 setenv	EBDEVELKBPROTO		"$root/easybuild/kbproto-1.0.7-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

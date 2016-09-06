@@ -27,4 +27,4 @@ setenv	EBROOTQT		"$root"
 setenv	EBVERSIONQT		"4.8.6"
 setenv	EBDEVELQT		"$root/easybuild/Qt-4.8.6-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

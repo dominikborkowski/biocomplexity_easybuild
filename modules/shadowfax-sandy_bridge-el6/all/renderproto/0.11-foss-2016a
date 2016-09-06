@@ -22,4 +22,4 @@ setenv	EBROOTRENDERPROTO		"$root"
 setenv	EBVERSIONRENDERPROTO		"0.11"
 setenv	EBDEVELRENDERPROTO		"$root/easybuild/renderproto-0.11-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

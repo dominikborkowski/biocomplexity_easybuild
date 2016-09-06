@@ -24,4 +24,4 @@ setenv	EBVERSIONIGVTOOLS		"2.3.72"
 setenv	EBDEVELIGVTOOLS		"$root/easybuild/IGVTools-2.3.72-Java-1.7.0_80-easybuild-devel"
 
 prepend-path	PATH		$root
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

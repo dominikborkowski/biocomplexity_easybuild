@@ -21,4 +21,4 @@ setenv	EBROOTPHYLIP		"$root"
 setenv	EBVERSIONPHYLIP		"3.696"
 setenv	EBDEVELPHYLIP		"$root/easybuild/PHYLIP-3.696-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

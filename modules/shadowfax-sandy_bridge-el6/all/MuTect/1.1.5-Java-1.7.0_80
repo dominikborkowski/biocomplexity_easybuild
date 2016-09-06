@@ -29,4 +29,4 @@ if { [ module-info mode load ] } {
     to execute: java -jar \$EBROOTMUTECT/muTect-1.1.5.jar
     "
 }
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

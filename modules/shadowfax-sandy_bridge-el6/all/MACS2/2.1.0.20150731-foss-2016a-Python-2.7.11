@@ -28,4 +28,4 @@ setenv	EBVERSIONMACS2		"2.1.0.20150731"
 setenv	EBDEVELMACS2		"$root/easybuild/MACS2-2.1.0.20150731-foss-2016a-Python-2.7.11-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

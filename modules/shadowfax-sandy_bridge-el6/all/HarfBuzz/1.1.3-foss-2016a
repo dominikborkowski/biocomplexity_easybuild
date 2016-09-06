@@ -41,4 +41,4 @@ setenv	EBDEVELHARFBUZZ		"$root/easybuild/HarfBuzz-1.1.3-foss-2016a-easybuild-dev
 
 prepend-path	XDG_DATA_DIRS		$root/share
 prepend-path	GI_TYPELIB_PATH		$root/share
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

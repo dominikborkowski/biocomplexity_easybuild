@@ -36,4 +36,4 @@ setenv	EBROOTNETCDF		"$root"
 setenv	EBVERSIONNETCDF		"4.3.3.1"
 setenv	EBDEVELNETCDF		"$root/easybuild/netCDF-4.3.3.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

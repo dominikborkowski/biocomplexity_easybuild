@@ -26,4 +26,4 @@ setenv	EBROOTFFTW		"$root"
 setenv	EBVERSIONFFTW		"3.3.4"
 setenv	EBDEVELFFTW		"$root/easybuild/FFTW-3.3.4-gompi-2015a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

@@ -29,4 +29,4 @@ setenv	EBROOTGSL		"$root"
 setenv	EBVERSIONGSL		"1.16"
 setenv	EBDEVELGSL		"$root/easybuild/GSL-1.16-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

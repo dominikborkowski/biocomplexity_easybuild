@@ -20,4 +20,4 @@ setenv	EBVERSIONEASYBUILD		"2.7.0"
 setenv	EBDEVELEASYBUILD		"$root/easybuild/EasyBuild-2.7.0-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/python2.6/site-packages
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

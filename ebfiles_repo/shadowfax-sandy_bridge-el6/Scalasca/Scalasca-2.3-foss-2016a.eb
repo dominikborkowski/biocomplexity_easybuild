@@ -1,4 +1,4 @@
-# Built with EasyBuild version 2.7.0 on 2016-05-11_23-35-34
+# Built with EasyBuild version 2.8.2 on 2016-09-06_14-50-03
 # This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
 # Copyright:: Copyright 2013 Juelich Supercomputing Centre, Germany
 # Authors::   Bernd Mohr <b.mohr@fz-juelich.de>
@@ -42,20 +42,19 @@ moduleclass = 'perf'
 
 # Build statistics
 buildstats = [{
-    "easybuild-framework_version": "2.7.0",
-    "easybuild-easyblocks_version": "2.7.0",
-    "timestamp": 1463024134,
-    "build_time": 84.34,
-    "install_size": 98894561,
-    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge-el6', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge-el6', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/software/shadowfax-sandy_bridge-el6/EasyBuild/2.7.0/lib/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs:/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6::/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Scalasca-2.3-foss-2016a.eb'],
-    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "build_time": 2.17,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge-el6', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge-el6', '--module-only', '--rebuild', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:/apps/easybuild/software/shadowfax-sandy_bridge-el6/EasyBuild/2.8.2/lib/python2.6/site-packages/easybuild_easyconfigs-2.8.2-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge-el6:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge-el6:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Scalasca-2.3-foss-2016a.eb'],
     "core_count": 16,
     "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
-    "cpu_speed": 2900.242,
+    "cpu_speed": 2899.871,
     "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.8.2",
+    "easybuild-framework_version": "2.8.2",
     "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
     "glibc_version": "2.12",
     "hostname": "sfxlogin3",
+    "install_size": 99258744,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
     "os_name": "centos",
     "os_type": "Linux",
     "os_version": "6.6",
@@ -63,4 +62,6 @@ buildstats = [{
     "python_version": "2.6.6 (r266:84292, Jan 22 2014, 09:42:36) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]",
     "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge-el6/GCCcore/4.9.3/bin/gcc",
     "system_python_path": "/usr/bin/python",
+    "timestamp": 1473187803,
+    "total_memory": 129152,
 }]

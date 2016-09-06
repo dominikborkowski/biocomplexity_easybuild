@@ -49,4 +49,4 @@ setenv	EBVERSIONPANGO		"1.39.0"
 setenv	EBDEVELPANGO		"$root/easybuild/Pango-1.39.0-foss-2016a-easybuild-devel"
 
 prepend-path	XDG_DATA_DIRS		$root/share
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

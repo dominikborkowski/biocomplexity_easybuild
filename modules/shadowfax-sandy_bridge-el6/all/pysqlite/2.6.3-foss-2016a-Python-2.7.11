@@ -29,4 +29,4 @@ setenv	EBVERSIONPYSQLITE		"2.6.3"
 setenv	EBDEVELPYSQLITE		"$root/easybuild/pysqlite-2.6.3-foss-2016a-Python-2.7.11-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

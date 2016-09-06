@@ -38,4 +38,4 @@ setenv	EBROOTLLVM		"$root"
 setenv	EBVERSIONLLVM		"3.7.1"
 setenv	EBDEVELLLVM		"$root/easybuild/LLVM-3.7.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

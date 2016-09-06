@@ -21,4 +21,4 @@ setenv	EBROOTCDMINHIT		"$root"
 setenv	EBVERSIONCDMINHIT		"4.6.4"
 setenv	EBDEVELCDMINHIT		"$root/easybuild/CD-HIT-4.6.4-foss-2016a-2015-0603-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

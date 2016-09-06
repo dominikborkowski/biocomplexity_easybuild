@@ -59,4 +59,4 @@ setenv	EBDEVELGOBJECTMININTROSPECTION		"$root/easybuild/GObject-Introspection-1.
 
 prepend-path	XDG_DATA_DIRS		$root/share
 prepend-path	GI_TYPELIB_PATH		$root/share
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

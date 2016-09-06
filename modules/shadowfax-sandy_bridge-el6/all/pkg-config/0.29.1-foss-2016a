@@ -27,4 +27,4 @@ setenv	EBROOTPKGMINCONFIG		"$root"
 setenv	EBVERSIONPKGMINCONFIG		"0.29.1"
 setenv	EBDEVELPKGMINCONFIG		"$root/easybuild/pkg-config-0.29.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

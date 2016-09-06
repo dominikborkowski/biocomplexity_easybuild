@@ -26,4 +26,4 @@ setenv	EBROOTLIBXDMCP		"$root"
 setenv	EBVERSIONLIBXDMCP		"1.1.2"
 setenv	EBDEVELLIBXDMCP		"$root/easybuild/libXdmcp-1.1.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

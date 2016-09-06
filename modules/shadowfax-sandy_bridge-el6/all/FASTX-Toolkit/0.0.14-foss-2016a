@@ -26,4 +26,4 @@ setenv	EBROOTFASTXMINTOOLKIT		"$root"
 setenv	EBVERSIONFASTXMINTOOLKIT		"0.0.14"
 setenv	EBDEVELFASTXMINTOOLKIT		"$root/easybuild/FASTX-Toolkit-0.0.14-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

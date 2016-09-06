@@ -24,4 +24,4 @@ setenv	EBVERSIONPYGMENTS		"2.0.2"
 setenv	EBDEVELPYGMENTS		"$root/easybuild/Pygments-2.0.2-foss-2016a-Python-2.7.11-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

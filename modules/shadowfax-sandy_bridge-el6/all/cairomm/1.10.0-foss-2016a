@@ -34,4 +34,4 @@ setenv	EBROOTCAIROMM		"$root"
 setenv	EBVERSIONCAIROMM		"1.10.0"
 setenv	EBDEVELCAIROMM		"$root/easybuild/cairomm-1.10.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

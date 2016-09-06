@@ -30,4 +30,4 @@ setenv	EBROOTVIM		"$root"
 setenv	EBVERSIONVIM		"7.4"
 setenv	EBDEVELVIM		"$root/easybuild/Vim-7.4-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

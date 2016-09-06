@@ -30,4 +30,4 @@ setenv	EBROOTPARMETIS		"$root"
 setenv	EBVERSIONPARMETIS		"4.0.3"
 setenv	EBDEVELPARMETIS		"$root/easybuild/ParMETIS-4.0.3-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

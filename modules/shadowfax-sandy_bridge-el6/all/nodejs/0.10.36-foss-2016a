@@ -33,4 +33,4 @@ setenv	EBROOTNODEJS		"$root"
 setenv	EBVERSIONNODEJS		"0.10.36"
 setenv	EBDEVELNODEJS		"$root/easybuild/nodejs-0.10.36-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

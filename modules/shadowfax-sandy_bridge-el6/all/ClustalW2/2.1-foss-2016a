@@ -20,4 +20,4 @@ setenv	EBROOTCLUSTALW2		"$root"
 setenv	EBVERSIONCLUSTALW2		"2.1"
 setenv	EBDEVELCLUSTALW2		"$root/easybuild/ClustalW2-2.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

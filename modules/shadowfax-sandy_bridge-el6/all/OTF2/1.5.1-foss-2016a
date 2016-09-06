@@ -26,4 +26,4 @@ setenv	EBROOTOTF2		"$root"
 setenv	EBVERSIONOTF2		"1.5.1"
 setenv	EBDEVELOTF2		"$root/easybuild/OTF2-1.5.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

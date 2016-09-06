@@ -27,4 +27,4 @@ setenv	EBROOTMPIBLAST		"$root"
 setenv	EBVERSIONMPIBLAST		"1.6.0"
 setenv	EBDEVELMPIBLAST		"$root/easybuild/mpiBLAST-1.6.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

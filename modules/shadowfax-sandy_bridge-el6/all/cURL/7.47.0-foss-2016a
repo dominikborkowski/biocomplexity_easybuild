@@ -36,4 +36,4 @@ setenv	EBVERSIONCURL		"7.47.0"
 setenv	EBDEVELCURL		"$root/easybuild/cURL-7.47.0-foss-2016a-easybuild-devel"
 
 setenv	CURL_INCLUDES		"/apps/easybuild/software/shadowfax-sandy_bridge-el6/cURL/7.47.0-foss-2016a/include"
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

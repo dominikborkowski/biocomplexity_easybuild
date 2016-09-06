@@ -29,4 +29,4 @@ setenv	EBROOTBITSEQ		"$root"
 setenv	EBVERSIONBITSEQ		"0.7.5"
 setenv	EBDEVELBITSEQ		"$root/easybuild/BitSeq-0.7.5-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

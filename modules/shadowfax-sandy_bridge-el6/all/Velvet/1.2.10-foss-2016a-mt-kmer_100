@@ -19,4 +19,4 @@ setenv	EBROOTVELVET		"$root"
 setenv	EBVERSIONVELVET		"1.2.10"
 setenv	EBDEVELVELVET		"$root/easybuild/Velvet-1.2.10-foss-2016a-mt-kmer_100-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

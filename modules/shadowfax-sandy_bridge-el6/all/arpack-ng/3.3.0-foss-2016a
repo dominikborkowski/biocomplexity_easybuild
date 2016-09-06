@@ -21,4 +21,4 @@ setenv	EBROOTARPACKMINNG		"$root"
 setenv	EBVERSIONARPACKMINNG		"3.3.0"
 setenv	EBDEVELARPACKMINNG		"$root/easybuild/arpack-ng-3.3.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2
