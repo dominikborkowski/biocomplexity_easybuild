@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The Open MPI Project is an open source MPI-2 implementation. - Homepage: http://www.open-mpi.org/
+    }
+}
+
+module-whatis {Description: The Open MPI Project is an open source MPI-2 implementation. - Homepage: http://www.open-mpi.org/}
+
+set root /apps/easybuild/software/shadowfax-westmere/OpenMPI/1.10.3-GCC-5.4.0-2.26
+
+conflict OpenMPI
+
+if { ![ is-loaded GCC/5.4.0-2.26 ] } {
+    module load GCC/5.4.0-2.26
+}
+
+if { ![ is-loaded hwloc/1.11.3-GCC-5.4.0-2.26 ] } {
+    module load hwloc/1.11.3-GCC-5.4.0-2.26
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTOPENMPI		"$root"
+setenv	EBVERSIONOPENMPI		"1.10.3"
+setenv	EBDEVELOPENMPI		"$root/easybuild/OpenMPI-1.10.3-GCC-5.4.0-2.26-easybuild-devel"
+
+# Built with EasyBuild version 2.8.2

@@ -1,0 +1,57 @@
+# Built with EasyBuild version 2.8.2 on 2016-09-07_21-09-58
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2014-2015 The Cyprus Institute
+# Authors:: Thekla Loizou <t.loizou@cyi.ac.cy>
+# License:: MIT/GPL
+#
+##
+easyblock = 'ConfigureMake'
+
+name = 'PROJ'
+version = '4.9.2'
+
+homepage = 'http://trac.osgeo.org/proj/'
+description = """Program proj is a standard Unix filter function which converts 
+geographic longitude and latitude coordinates into cartesian coordinates"""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'pic': True, 'usempi': True}
+
+source_urls = ['http://download.osgeo.org/proj/']
+sources = [SOURCELOWER_TAR_GZ]
+
+sanity_check_paths = {
+    'files': ['bin/cs2cs', 'bin/geod', 'bin/invgeod', 'bin/invproj',
+              'bin/nad2bin', 'bin/proj'],
+    'dirs': [],
+}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 16.2,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.8.2/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.2-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'R-3.3.1-foss-2016b.eb'],
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.055,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.8.2",
+    "easybuild-framework_version": "2.8.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "install_size": 3809387,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1473296998,
+    "total_memory": 96866,
+}]

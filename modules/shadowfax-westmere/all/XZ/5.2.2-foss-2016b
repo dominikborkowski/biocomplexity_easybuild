@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { xz: XZ utilities - Homepage: http://tukaani.org/xz/
+    }
+}
+
+module-whatis {Description: xz: XZ utilities - Homepage: http://tukaani.org/xz/}
+
+set root /apps/easybuild/software/shadowfax-westmere/XZ/5.2.2-foss-2016b
+
+conflict XZ
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded gettext/0.19.8-foss-2016b ] } {
+    module load gettext/0.19.8-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXZ		"$root"
+setenv	EBVERSIONXZ		"5.2.2"
+setenv	EBDEVELXZ		"$root/easybuild/XZ-5.2.2-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 2.8.2

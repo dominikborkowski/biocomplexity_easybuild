@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { This bundle collect the standard GNU build tools: Autoconf, Automake and libtool - Homepage: http://autotools.io
+    }
+}
+
+module-whatis {Description: This bundle collect the standard GNU build tools: Autoconf, Automake and libtool - Homepage: http://autotools.io}
+
+set root /apps/easybuild/software/shadowfax-westmere/Autotools/20150215-foss-2016b
+
+conflict Autotools
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Autoconf/2.69-foss-2016b ] } {
+    module load Autoconf/2.69-foss-2016b
+}
+
+if { ![ is-loaded Automake/1.15-foss-2016b ] } {
+    module load Automake/1.15-foss-2016b
+}
+
+if { ![ is-loaded libtool/2.4.6-foss-2016b ] } {
+    module load libtool/2.4.6-foss-2016b
+}
+
+setenv	EBROOTAUTOTOOLS		"$root"
+setenv	EBVERSIONAUTOTOOLS		"20150215"
+setenv	EBDEVELAUTOTOOLS		"$root/easybuild/Autotools-20150215-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 2.8.2

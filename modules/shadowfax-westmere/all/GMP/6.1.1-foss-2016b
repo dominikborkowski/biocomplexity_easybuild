@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { GMP is a free library for arbitrary precision arithmetic, 
+operating on signed integers, rational numbers, and floating point numbers.  - Homepage: http://gmplib.org/
+    }
+}
+
+module-whatis {Description: GMP is a free library for arbitrary precision arithmetic, 
+operating on signed integers, rational numbers, and floating point numbers.  - Homepage: http://gmplib.org/}
+
+set root /apps/easybuild/software/shadowfax-westmere/GMP/6.1.1-foss-2016b
+
+conflict GMP
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTGMP		"$root"
+setenv	EBVERSIONGMP		"6.1.1"
+setenv	EBDEVELGMP		"$root/easybuild/GMP-6.1.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 2.8.2
