@@ -18,7 +18,6 @@ if { ![ is-loaded ParMETIS/4.0.3-foss-2016a ] } {
     module load ParMETIS/4.0.3-foss-2016a
 }
 
-prepend-path	CPATH		$root/SuiteSparse_config
 prepend-path	LD_LIBRARY_PATH		$root/AMD/lib
 prepend-path	LD_LIBRARY_PATH		$root/BTF/lib
 prepend-path	LD_LIBRARY_PATH		$root/CAMD/lib
@@ -31,7 +30,6 @@ prepend-path	LD_LIBRARY_PATH		$root/KLU/lib
 prepend-path	LD_LIBRARY_PATH		$root/LDL/lib
 prepend-path	LD_LIBRARY_PATH		$root/RBio/lib
 prepend-path	LD_LIBRARY_PATH		$root/UMFPACK/lib
-prepend-path	LD_LIBRARY_PATH		$root/SuiteSparse_config
 prepend-path	LIBRARY_PATH		$root/AMD/lib
 prepend-path	LIBRARY_PATH		$root/BTF/lib
 prepend-path	LIBRARY_PATH		$root/CAMD/lib
@@ -44,9 +42,8 @@ prepend-path	LIBRARY_PATH		$root/KLU/lib
 prepend-path	LIBRARY_PATH		$root/LDL/lib
 prepend-path	LIBRARY_PATH		$root/RBio/lib
 prepend-path	LIBRARY_PATH		$root/UMFPACK/lib
-prepend-path	LIBRARY_PATH		$root/SuiteSparse_config
 setenv	EBROOTSUITESPARSE		"$root"
 setenv	EBVERSIONSUITESPARSE		"4.4.6"
 setenv	EBDEVELSUITESPARSE		"$root/easybuild/SuiteSparse-4.4.6-foss-2016a-ParMETIS-4.0.3-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

@@ -34,4 +34,4 @@ setenv	EBROOTCUBE		"$root"
 setenv	EBVERSIONCUBE		"4.3.2"
 setenv	EBDEVELCUBE		"$root/easybuild/Cube-4.3.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

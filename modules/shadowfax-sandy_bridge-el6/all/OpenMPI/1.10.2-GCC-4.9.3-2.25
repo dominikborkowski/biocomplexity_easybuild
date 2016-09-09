@@ -28,4 +28,4 @@ setenv	EBROOTOPENMPI		"$root"
 setenv	EBVERSIONOPENMPI		"1.10.2"
 setenv	EBDEVELOPENMPI		"$root/easybuild/OpenMPI-1.10.2-GCC-4.9.3-2.25-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

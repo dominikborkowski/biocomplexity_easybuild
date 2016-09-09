@@ -39,4 +39,4 @@ setenv	EBROOTHWLOC		"$root"
 setenv	EBVERSIONHWLOC		"1.11.2"
 setenv	EBDEVELHWLOC		"$root/easybuild/hwloc-1.11.2-GCC-4.9.3-2.25-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

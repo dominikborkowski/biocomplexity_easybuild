@@ -24,4 +24,4 @@ setenv	EBROOTSCONS		"$root"
 setenv	EBVERSIONSCONS		"2.3.6"
 setenv	EBDEVELSCONS		"$root/easybuild/SCons-2.3.6-foss-2016a-Python-2.7.11-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

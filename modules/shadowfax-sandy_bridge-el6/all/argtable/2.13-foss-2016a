@@ -25,4 +25,4 @@ setenv	EBROOTARGTABLE		"$root"
 setenv	EBVERSIONARGTABLE		"2.13"
 setenv	EBDEVELARGTABLE		"$root/easybuild/argtable-2.13-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

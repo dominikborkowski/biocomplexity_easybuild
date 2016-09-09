@@ -22,4 +22,4 @@ setenv	EBVERSIONPICARD		"2.2.4"
 setenv	EBDEVELPICARD		"$root/easybuild/picard-2.2.4-Java-1.8.0_72-easybuild-devel"
 
 prepend-path	PATH		$root
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

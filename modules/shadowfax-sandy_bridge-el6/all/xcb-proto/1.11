@@ -19,4 +19,4 @@ setenv	EBROOTXCBMINPROTO		"$root"
 setenv	EBVERSIONXCBMINPROTO		"1.11"
 setenv	EBDEVELXCBMINPROTO		"$root/easybuild/xcb-proto-1.11-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

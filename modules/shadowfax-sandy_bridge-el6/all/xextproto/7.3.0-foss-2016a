@@ -22,4 +22,4 @@ setenv	EBROOTXEXTPROTO		"$root"
 setenv	EBVERSIONXEXTPROTO		"7.3.0"
 setenv	EBDEVELXEXTPROTO		"$root/easybuild/xextproto-7.3.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

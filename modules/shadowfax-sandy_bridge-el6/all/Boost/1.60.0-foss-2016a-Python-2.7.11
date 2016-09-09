@@ -33,4 +33,4 @@ setenv	EBROOTBOOST		"$root"
 setenv	EBVERSIONBOOST		"1.60.0"
 setenv	EBDEVELBOOST		"$root/easybuild/Boost-1.60.0-foss-2016a-Python-2.7.11-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

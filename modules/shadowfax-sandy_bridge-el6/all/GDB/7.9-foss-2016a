@@ -27,4 +27,4 @@ setenv	EBROOTGDB		"$root"
 setenv	EBVERSIONGDB		"7.9"
 setenv	EBDEVELGDB		"$root/easybuild/GDB-7.9-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

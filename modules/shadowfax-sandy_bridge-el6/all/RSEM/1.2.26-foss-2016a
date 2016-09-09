@@ -27,4 +27,4 @@ setenv	EBROOTRSEM		"$root"
 setenv	EBVERSIONRSEM		"1.2.26"
 setenv	EBDEVELRSEM		"$root/easybuild/RSEM-1.2.26-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

@@ -33,4 +33,4 @@ setenv	EBROOTFONTCONFIG		"$root"
 setenv	EBVERSIONFONTCONFIG		"2.11.94"
 setenv	EBDEVELFONTCONFIG		"$root/easybuild/fontconfig-2.11.94-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

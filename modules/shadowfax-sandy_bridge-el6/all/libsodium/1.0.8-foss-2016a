@@ -24,4 +24,4 @@ setenv	EBROOTLIBSODIUM		"$root"
 setenv	EBVERSIONLIBSODIUM		"1.0.8"
 setenv	EBDEVELLIBSODIUM		"$root/easybuild/libsodium-1.0.8-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

@@ -22,4 +22,4 @@ setenv	EBROOTRNAZ		"$root"
 setenv	EBVERSIONRNAZ		"2.1"
 setenv	EBDEVELRNAZ		"$root/easybuild/RNAz-2.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

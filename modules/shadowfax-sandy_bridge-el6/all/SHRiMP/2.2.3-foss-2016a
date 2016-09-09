@@ -25,4 +25,4 @@ setenv	EBVERSIONSHRIMP		"2.2.3"
 setenv	EBDEVELSHRIMP		"$root/easybuild/SHRiMP-2.2.3-foss-2016a-easybuild-devel"
 
 setenv	SHRIMP_FOLDER		"/apps/easybuild/software/shadowfax-sandy_bridge-el6/SHRiMP/2.2.3-foss-2016a"
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

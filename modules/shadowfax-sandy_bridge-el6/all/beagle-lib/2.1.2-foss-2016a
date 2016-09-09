@@ -34,4 +34,4 @@ setenv	EBROOTBEAGLEMINLIB		"$root"
 setenv	EBVERSIONBEAGLEMINLIB		"2.1.2"
 setenv	EBDEVELBEAGLEMINLIB		"$root/easybuild/beagle-lib-2.1.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

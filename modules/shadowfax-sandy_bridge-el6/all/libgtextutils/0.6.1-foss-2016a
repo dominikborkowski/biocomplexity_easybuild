@@ -23,4 +23,4 @@ setenv	EBROOTLIBGTEXTUTILS		"$root"
 setenv	EBVERSIONLIBGTEXTUTILS		"0.6.1"
 setenv	EBDEVELLIBGTEXTUTILS		"$root/easybuild/libgtextutils-0.6.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

@@ -27,4 +27,4 @@ setenv	EBROOTSOAPDENOVO2		"$root"
 setenv	EBVERSIONSOAPDENOVO2		"r240"
 setenv	EBDEVELSOAPDENOVO2		"$root/easybuild/SOAPdenovo2-r240-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

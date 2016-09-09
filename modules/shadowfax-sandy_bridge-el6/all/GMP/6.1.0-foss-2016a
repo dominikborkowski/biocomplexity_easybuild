@@ -23,4 +23,4 @@ setenv	EBROOTGMP		"$root"
 setenv	EBVERSIONGMP		"6.1.0"
 setenv	EBDEVELGMP		"$root/easybuild/GMP-6.1.0-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

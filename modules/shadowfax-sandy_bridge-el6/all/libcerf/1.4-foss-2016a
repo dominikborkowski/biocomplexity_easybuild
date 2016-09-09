@@ -25,4 +25,4 @@ setenv	EBROOTLIBCERF		"$root"
 setenv	EBVERSIONLIBCERF		"1.4"
 setenv	EBDEVELLIBCERF		"$root/easybuild/libcerf-1.4-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

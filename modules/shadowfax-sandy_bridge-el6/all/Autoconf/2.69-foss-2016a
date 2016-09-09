@@ -32,4 +32,4 @@ setenv	EBROOTAUTOCONF		"$root"
 setenv	EBVERSIONAUTOCONF		"2.69"
 setenv	EBDEVELAUTOCONF		"$root/easybuild/Autoconf-2.69-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

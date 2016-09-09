@@ -27,4 +27,4 @@ setenv	EBROOTSCALAPACK		"$root"
 setenv	EBVERSIONSCALAPACK		"2.0.2"
 setenv	EBDEVELSCALAPACK		"$root/easybuild/ScaLAPACK-2.0.2-gompi-2016a-OpenBLAS-0.2.15-LAPACK-3.6.0-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

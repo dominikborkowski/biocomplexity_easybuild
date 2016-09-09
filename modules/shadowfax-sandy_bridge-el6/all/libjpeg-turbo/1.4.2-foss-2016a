@@ -31,4 +31,4 @@ setenv	EBROOTLIBJPEGMINTURBO		"$root"
 setenv	EBVERSIONLIBJPEGMINTURBO		"1.4.2"
 setenv	EBDEVELLIBJPEGMINTURBO		"$root/easybuild/libjpeg-turbo-1.4.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

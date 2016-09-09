@@ -36,4 +36,4 @@ setenv	EBROOTFFMPEG		"$root"
 setenv	EBVERSIONFFMPEG		"2.8.7"
 setenv	EBDEVELFFMPEG		"$root/easybuild/FFmpeg-2.8.7-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

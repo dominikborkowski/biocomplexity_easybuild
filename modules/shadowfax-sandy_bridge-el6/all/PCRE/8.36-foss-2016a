@@ -26,4 +26,4 @@ setenv	EBROOTPCRE		"$root"
 setenv	EBVERSIONPCRE		"8.36"
 setenv	EBDEVELPCRE		"$root/easybuild/PCRE-8.36-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

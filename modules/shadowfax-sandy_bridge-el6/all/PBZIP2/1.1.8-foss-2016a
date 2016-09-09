@@ -26,4 +26,4 @@ setenv	EBROOTPBZIP2		"$root"
 setenv	EBVERSIONPBZIP2		"1.1.8"
 setenv	EBDEVELPBZIP2		"$root/easybuild/PBZIP2-1.1.8-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

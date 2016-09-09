@@ -31,4 +31,4 @@ setenv	EBROOTBIOPERL		"$root"
 setenv	EBVERSIONBIOPERL		"1.6.924"
 setenv	EBDEVELBIOPERL		"$root/easybuild/BioPerl-1.6.924-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

@@ -27,4 +27,4 @@ setenv	EBROOTZLIB		"$root"
 setenv	EBVERSIONZLIB		"1.2.8"
 setenv	EBDEVELZLIB		"$root/easybuild/zlib-1.2.8-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

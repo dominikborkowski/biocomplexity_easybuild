@@ -21,4 +21,4 @@ setenv	EBROOTOASES		"$root"
 setenv	EBVERSIONOASES		"0.2.08"
 setenv	EBDEVELOASES		"$root/easybuild/Oases-0.2.08-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

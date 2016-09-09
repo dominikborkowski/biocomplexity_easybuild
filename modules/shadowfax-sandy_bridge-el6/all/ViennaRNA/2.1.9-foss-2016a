@@ -26,4 +26,4 @@ setenv	EBROOTVIENNARNA		"$root"
 setenv	EBVERSIONVIENNARNA		"2.1.9"
 setenv	EBDEVELVIENNARNA		"$root/easybuild/ViennaRNA-2.1.9-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

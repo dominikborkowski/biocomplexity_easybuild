@@ -24,4 +24,4 @@ setenv	EBDEVELMUMMER		"$root/easybuild/MUMmer-3.23-foss-2016a-easybuild-devel"
 prepend-path	PATH		$root/bin
 prepend-path	PATH		$root/bin/aux_bin
 prepend-path	PERL5LIB		$root/bin/scripts
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

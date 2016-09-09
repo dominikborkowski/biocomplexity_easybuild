@@ -32,4 +32,4 @@ setenv	EBROOTGPERFTOOLS		"$root"
 setenv	EBVERSIONGPERFTOOLS		"2.4"
 setenv	EBDEVELGPERFTOOLS		"$root/easybuild/gperftools-2.4-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

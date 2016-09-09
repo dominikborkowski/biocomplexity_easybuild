@@ -30,4 +30,4 @@ setenv	EBROOTHTSLIB		"$root"
 setenv	EBVERSIONHTSLIB		"1.2.1"
 setenv	EBDEVELHTSLIB		"$root/easybuild/HTSlib-1.2.1-foss-2015a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

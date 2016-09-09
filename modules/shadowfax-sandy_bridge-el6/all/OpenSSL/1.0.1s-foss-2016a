@@ -31,4 +31,4 @@ setenv	EBROOTOPENSSL		"$root"
 setenv	EBVERSIONOPENSSL		"1.0.1s"
 setenv	EBDEVELOPENSSL		"$root/easybuild/OpenSSL-1.0.1s-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

@@ -36,4 +36,4 @@ setenv	EBROOTGLIB		"$root"
 setenv	EBVERSIONGLIB		"2.46.2"
 setenv	EBDEVELGLIB		"$root/easybuild/GLib-2.46.2-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

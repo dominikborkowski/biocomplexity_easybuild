@@ -35,4 +35,4 @@ setenv	EBROOTCUFFLINKS		"$root"
 setenv	EBVERSIONCUFFLINKS		"2.2.1"
 setenv	EBDEVELCUFFLINKS		"$root/easybuild/Cufflinks-2.2.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

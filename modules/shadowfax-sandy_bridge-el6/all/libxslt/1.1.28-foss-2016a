@@ -35,4 +35,4 @@ setenv	EBROOTLIBXSLT		"$root"
 setenv	EBVERSIONLIBXSLT		"1.1.28"
 setenv	EBDEVELLIBXSLT		"$root/easybuild/libxslt-1.1.28-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

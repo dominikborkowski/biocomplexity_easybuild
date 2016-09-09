@@ -36,4 +36,4 @@ setenv	EBROOTPANDASEQ		"$root"
 setenv	EBVERSIONPANDASEQ		"2.8.1"
 setenv	EBDEVELPANDASEQ		"$root/easybuild/PANDAseq-2.8.1-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

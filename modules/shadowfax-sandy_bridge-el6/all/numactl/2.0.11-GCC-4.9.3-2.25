@@ -27,4 +27,4 @@ setenv	EBROOTNUMACTL		"$root"
 setenv	EBVERSIONNUMACTL		"2.0.11"
 setenv	EBDEVELNUMACTL		"$root/easybuild/numactl-2.0.11-GCC-4.9.3-2.25-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

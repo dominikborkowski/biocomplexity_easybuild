@@ -24,4 +24,4 @@ setenv	EBROOTDB		"$root"
 setenv	EBVERSIONDB		"4.8.30"
 setenv	EBDEVELDB		"$root/easybuild/DB-4.8.30-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

@@ -28,4 +28,4 @@ setenv	EBVERSIONHTSEQ		"0.6.1p1"
 setenv	EBDEVELHTSEQ		"$root/easybuild/HTSeq-0.6.1p1-foss-2016a-Python-2.7.11-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

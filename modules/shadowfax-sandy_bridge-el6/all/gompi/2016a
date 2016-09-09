@@ -24,4 +24,4 @@ setenv	EBROOTGOMPI		"$root"
 setenv	EBVERSIONGOMPI		"2016a"
 setenv	EBDEVELGOMPI		"$root/easybuild/gompi-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

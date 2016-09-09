@@ -30,4 +30,4 @@ prepend-path	PATH		$root
 if { [ module-info mode load ] } {
     puts stderr " To execute IGV run igv.sh "
 }
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

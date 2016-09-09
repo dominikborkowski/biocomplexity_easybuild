@@ -29,4 +29,4 @@ setenv	EBROOTX264		"$root"
 setenv	EBVERSIONX264		"20160430"
 setenv	EBDEVELX264		"$root/easybuild/x264-20160430-foss-2016a-easybuild-devel"
 
-# Built with EasyBuild version 2.8.0
+# Built with EasyBuild version 2.8.2

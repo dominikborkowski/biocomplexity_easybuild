@@ -32,4 +32,4 @@ setenv	EBVERSIONFASTQC		"0.11.5"
 setenv	EBDEVELFASTQC		"$root/easybuild/FastQC-0.11.5-foss-2016a-easybuild-devel"
 
 prepend-path	PATH		$root
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2

@@ -36,4 +36,4 @@ setenv	EBROOTFOSS		"$root"
 setenv	EBVERSIONFOSS		"2015a"
 setenv	EBDEVELFOSS		"$root/easybuild/foss-2015a-easybuild-devel"
 
-# Built with EasyBuild version 2.7.0
+# Built with EasyBuild version 2.8.2
