@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  A modular framework to analyze RNA-Seq data using compact 
+ and anonymized data summaries. - Homepage: http://rseqtools.gersteinlab.org
+    }
+}
+
+module-whatis {Description:  A modular framework to analyze RNA-Seq data using compact 
+ and anonymized data summaries. - Homepage: http://rseqtools.gersteinlab.org}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge-el6/RSEQtools/0.6-foss-2016a
+
+conflict RSEQtools
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded BLAT/3.5-foss-2016a ] } {
+    module load BLAT/3.5-foss-2016a
+}
+
+if { ![ is-loaded GSL/1.16-foss-2016a ] } {
+    module load GSL/1.16-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTRSEQTOOLS		"$root"
+setenv	EBVERSIONRSEQTOOLS		"0.6"
+setenv	EBDEVELRSEQTOOLS		"$root/easybuild/RSEQtools-0.6-foss-2016a-easybuild-devel"
+
+setenv	BIOINFOCONFDIR		"/apps/easybuild/software/shadowfax-sandy_bridge-el6/RSEQtools/0.6-foss-2016a/bios/conf"
+# Built with EasyBuild version 2.8.2
