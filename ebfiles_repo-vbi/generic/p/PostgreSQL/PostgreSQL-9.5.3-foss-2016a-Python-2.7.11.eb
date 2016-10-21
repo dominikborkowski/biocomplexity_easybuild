@@ -19,7 +19,7 @@ sources = [SOURCELOWER_TAR_GZ]
 
 toolchain = {'name': 'foss', 'version': '2016a'}
 
-osdependencies = [('openssl-devel', 'libssl-dev')]
+osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
 
 dependencies = [
     ('libreadline', '6.3'),
