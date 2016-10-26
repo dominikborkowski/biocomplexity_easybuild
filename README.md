@@ -62,7 +62,7 @@ Now you can run `eb` to search and install new software.
   ```
   * install cufflinks
   ```
-  eb Cufflinks-2.2.1-goolf-1.4.10.eb --robot
+  eb Cufflinks-2.2.1-foss-2016a.eb --robot
   ```
 
 #### system administrators
@@ -89,7 +89,7 @@ module load EasyBuild
   ```
   * install cufflinks
   ```
-  eb Cufflinks-2.2.1-goolf-1.4.10.eb --robot
+  eb Cufflinks-2.2.1-foss-2016a.eb --robot
   ```
 
 * review and commit your changes after installing software:
@@ -98,7 +98,7 @@ module load EasyBuild
 cd /apps/easybuild
 git status
 git add <appropriate dirs or files>
-git commit -m 'installed Cufflinks-2.2.1-goolf-1.4.10'
+git commit -m 'installed Cufflinks-2.2.1-foss-2016a.eb'
 ```
 
 ## Installation documentation
