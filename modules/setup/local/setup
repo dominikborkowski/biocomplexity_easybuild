@@ -60,6 +60,9 @@ setenv EASYBUILD_REPOSITORY FileRepository
 setenv EASYBUILD_MODULE_NAMING_SCHEME EasyBuildMNS
 # setenv EASYBUILD_ALLOW_MODULES_TOOL_MISMATCH 1
 
+# starting with EasyBuild 3.0, default module tool and syntax is Lmod. We have to switch to Tcl for our environment
+setenv EASYBUILD_MODULE_SYNTAX Tcl
+setenv EASYBUILD_MODULES_TOOL EnvironmentModulesC
 
 # allow EasyBuild to find the modulecmd binary directly
 append-path     PATH    "$::env(MODULESHOME)/bin"
