@@ -1,0 +1,39 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'Repast'
+version = '2.2.0'
+
+homepage = 'https://repast.github.io'
+description = "Repast for HPC is C++-based modeling system for use on large computing clusters and supercomputers"
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {"usempi": True}
+
+
+source_urls = ['https://github.com/%(name)s/%(namelower)s.hpc/releases/download/v%(version)s/']
+sources = ['%(namelower)s_hpc-%(version)s.tgz']
+
+
+dependencies = [
+    ('Boost', '1.60.0'),
+    ('cURL', '7.47.0'),
+    ('netCDF-C++', '4.2'),
+]
+
+
+sanity_check_paths = {
+    'files': ["bin/rumor/rumor_model", "bin/zombie/zombie_model", "lib/librepast_hpc-%(version)s.so"],
+    'dirs': ["lib", "include/repast_hpc", "include/relogo" ]
+}
+
+
+moduleclass = 'math'
+
