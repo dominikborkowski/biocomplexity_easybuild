@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { TopHat is a fast splice junction mapper for RNA-Seq reads. - Homepage: http://ccb.jhu.edu/software/tophat/
+    }
+}
+
+module-whatis {Description: TopHat is a fast splice junction mapper for RNA-Seq reads. - Homepage: http://ccb.jhu.edu/software/tophat/}
+
+set root /apps/easybuild/software/shadowfax-haswell/TopHat/2.1.1-foss-2016a
+
+conflict TopHat
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Boost/1.60.0-foss-2016a ] } {
+    module load Boost/1.60.0-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTTOPHAT		"$root"
+setenv	EBVERSIONTOPHAT		"2.1.1"
+setenv	EBDEVELTOPHAT		"$root/easybuild/TopHat-2.1.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.0.2

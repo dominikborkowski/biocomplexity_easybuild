@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing. - Homepage: http://ipython.org/index.html
+    }
+}
+
+module-whatis {Description: IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing. - Homepage: http://ipython.org/index.html}
+
+set root /apps/easybuild/software/shadowfax-haswell/IPython/3.2.3-foss-2016a-Python-2.7.11
+
+conflict IPython
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded PyZMQ/15.2.0-foss-2016a-Python-2.7.11-zmq4 ] } {
+    module load PyZMQ/15.2.0-foss-2016a-Python-2.7.11-zmq4
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTIPYTHON		"$root"
+setenv	EBVERSIONIPYTHON		"3.2.3"
+setenv	EBDEVELIPYTHON		"$root/easybuild/IPython-3.2.3-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.0.2
+setenv	EBEXTSLISTIPYTHON		"pysqlite-2.8.1,requests-2.9.1,Pygments-2.0.2,singledispatch-3.4.0.3,backports.ssl_match_hostname-3.5.0.1,certifi-2015.11.20.1,backports_abc-0.4,tornado-4.3,Jinja2-2.8,jsonschema-2.5.1,mistune-0.7.1,ptyprocess-0.5,terminado-0.6,ipython-3.2.3"

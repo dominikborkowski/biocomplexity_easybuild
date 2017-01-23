@@ -1,0 +1,29 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  PBZIP2 is a parallel implementation of the bzip2 block-sorting file 
+ compressor that uses pthreads and achieves near-linear speedup on SMP machines. The output 
+ of this version is fully compatible with bzip2 v1.0.2 or newer (ie: anything compressed 
+ with pbzip2 can be decompressed with bzip2). - Homepage: http://compression.ca/pbzip2/
+    }
+}
+
+module-whatis {Description:  PBZIP2 is a parallel implementation of the bzip2 block-sorting file 
+ compressor that uses pthreads and achieves near-linear speedup on SMP machines. The output 
+ of this version is fully compatible with bzip2 v1.0.2 or newer (ie: anything compressed 
+ with pbzip2 can be decompressed with bzip2). - Homepage: http://compression.ca/pbzip2/}
+
+set root /apps/easybuild/software/shadowfax-haswell/PBZIP2/1.1.8-foss-2016a
+
+conflict PBZIP2
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTPBZIP2		"$root"
+setenv	EBVERSIONPBZIP2		"1.1.8"
+setenv	EBDEVELPBZIP2		"$root/easybuild/PBZIP2-1.1.8-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.0.2

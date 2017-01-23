@@ -1,0 +1,52 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SuiteSparse is a collection of libraries manipulate sparse matrices. - Homepage: http://faculty.cse.tamu.edu/davis/suitesparse.html
+    }
+}
+
+module-whatis {Description: SuiteSparse is a collection of libraries manipulate sparse matrices. - Homepage: http://faculty.cse.tamu.edu/davis/suitesparse.html}
+
+set root /apps/easybuild/software/shadowfax-haswell/SuiteSparse/4.4.6-foss-2016a-METIS-5.1.0
+
+conflict SuiteSparse
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded METIS/5.1.0-foss-2016a ] } {
+    module load METIS/5.1.0-foss-2016a
+}
+
+prepend-path	CPATH		$root/SuiteSparse_config
+prepend-path	LD_LIBRARY_PATH		$root/AMD/lib
+prepend-path	LD_LIBRARY_PATH		$root/BTF/lib
+prepend-path	LD_LIBRARY_PATH		$root/CAMD/lib
+prepend-path	LD_LIBRARY_PATH		$root/CCOLAMD/lib
+prepend-path	LD_LIBRARY_PATH		$root/CHOLMOD/lib
+prepend-path	LD_LIBRARY_PATH		$root/COLAMD/lib/
+prepend-path	LD_LIBRARY_PATH		$root/CSparse/lib
+prepend-path	LD_LIBRARY_PATH		$root/CXSparse/lib
+prepend-path	LD_LIBRARY_PATH		$root/KLU/lib
+prepend-path	LD_LIBRARY_PATH		$root/LDL/lib
+prepend-path	LD_LIBRARY_PATH		$root/RBio/lib
+prepend-path	LD_LIBRARY_PATH		$root/UMFPACK/lib
+prepend-path	LD_LIBRARY_PATH		$root/SuiteSparse_config
+prepend-path	LIBRARY_PATH		$root/AMD/lib
+prepend-path	LIBRARY_PATH		$root/BTF/lib
+prepend-path	LIBRARY_PATH		$root/CAMD/lib
+prepend-path	LIBRARY_PATH		$root/CCOLAMD/lib
+prepend-path	LIBRARY_PATH		$root/CHOLMOD/lib
+prepend-path	LIBRARY_PATH		$root/COLAMD/lib/
+prepend-path	LIBRARY_PATH		$root/CSparse/lib
+prepend-path	LIBRARY_PATH		$root/CXSparse/lib
+prepend-path	LIBRARY_PATH		$root/KLU/lib
+prepend-path	LIBRARY_PATH		$root/LDL/lib
+prepend-path	LIBRARY_PATH		$root/RBio/lib
+prepend-path	LIBRARY_PATH		$root/UMFPACK/lib
+prepend-path	LIBRARY_PATH		$root/SuiteSparse_config
+setenv	EBROOTSUITESPARSE		"$root"
+setenv	EBVERSIONSUITESPARSE		"4.4.6"
+setenv	EBDEVELSUITESPARSE		"$root/easybuild/SuiteSparse-4.4.6-foss-2016a-METIS-5.1.0-easybuild-devel"
+
+# Built with EasyBuild version 3.0.2
