@@ -1,0 +1,57 @@
+# Built with EasyBuild version 3.0.2 on 2017-01-23_10-06-43
+easyblock = 'ConfigureMake'
+
+name = 'FFmpeg'
+version = '3.0.2'
+
+homepage = 'https://www.ffmpeg.org/'
+description = """A complete, cross-platform solution to record, convert and stream audio and video."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['http://ffmpeg.org/releases/']
+
+dependencies = [
+    ('NASM', '2.12.01'),
+    ('zlib', '1.2.8'),
+    ('x264', '20160430'),
+]
+
+configopts = '--enable-pic --enable-shared --enable-gpl --enable-version3 --enable-nonfree --cc="$CC" --cxx="$CXX" '
+configopts += '--enable-libx264'
+
+sanity_check_paths = {
+    'files': ['bin/ff%s' % x for x in ['mpeg', 'probe', 'server']] +
+             ['lib/lib%s.%s' % (x, y) for x in ['avdevice', 'avfilter', 'avformat', 'avcodec', 'postproc',
+                                                'swresample', 'swscale', 'avutil'] for y in [SHLIB_EXT, 'a']],
+    'dirs': ['include']
+}
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "build_time": 80.0,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.0.2/lib/python2.6/site-packages/easybuild_easyconfigs-3.0.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'FFmpeg-3.0.2-foss-2016a.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.0.2",
+    "easybuild-framework_version": "3.0.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "install_size": 293603879,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1485184003,
+    "total_memory": 129090,
+}]

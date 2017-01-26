@@ -1,0 +1,60 @@
+# Built with EasyBuild version 3.0.2 on 2017-01-23_10-43-34
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = 'PBZIP2'
+version = '1.1.8'
+
+homepage = 'http://compression.ca/pbzip2/'
+description = """ PBZIP2 is a parallel implementation of the bzip2 block-sorting file 
+ compressor that uses pthreads and achieves near-linear speedup on SMP machines. The output 
+ of this version is fully compatible with bzip2 v1.0.2 or newer (ie: anything compressed 
+ with pbzip2 can be decompressed with bzip2)."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['http://compression.ca/pbzip2/']
+sources = [SOURCELOWER_TAR_GZ]
+
+buildopts = " CC=$CXX"
+
+parallel = 1
+
+files_to_copy = [(["pbzip2"], "bin"), (["pbzip2.1"], "man/man1"), "README", "ChangeLog"]
+
+sanity_check_paths = {
+    'files': ["bin/pbzip2"],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 2.49,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.0.2/lib/python2.6/site-packages/easybuild_easyconfigs-3.0.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'PBZIP2-1.1.8-foss-2016a.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.0.2",
+    "easybuild-framework_version": "3.0.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "install_size": 115768,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1485186214,
+    "total_memory": 129090,
+}]
