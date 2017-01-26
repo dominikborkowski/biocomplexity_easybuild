@@ -1,0 +1,53 @@
+# Built with EasyBuild version 2.8.0 on 2017-01-23_10-06-36
+easyblock = 'ConfigureMake'
+
+name = 'Autoconf'
+version = '2.69'
+
+homepage = 'http://www.gnu.org/software/autoconf/'
+description = """Autoconf is an extensible package of M4 macros that produce shell scripts
+ to automatically configure software source code packages. These scripts can adapt the
+ packages to many kinds of UNIX-like systems without manual user intervention. Autoconf
+ creates a configuration script for a package from a template file that lists the
+ operating system features that the package can use, in the form of M4 macro calls."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [('M4', '1.4.17')]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in ["autoconf", "autoheader", "autom4te", "autoreconf", "autoscan",
+                                     "autoupdate", "ifnames"]],
+    'dirs': [],
+}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1485183996,
+    "build_time": 5.54,
+    "install_size": 3183825,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.8.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'libharu-2.3.0-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2499.971,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin2",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "total_memory": 129091,
+}]

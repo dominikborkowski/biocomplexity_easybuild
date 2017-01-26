@@ -1,0 +1,23 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { NASM: General-purpose x86 assembler - Homepage: http://www.nasm.us/
+    }
+}
+
+module-whatis {Description: NASM: General-purpose x86 assembler - Homepage: http://www.nasm.us/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/NASM/2.11.08-foss-2016a
+
+conflict NASM
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNASM		"$root"
+setenv	EBVERSIONNASM		"2.11.08"
+setenv	EBDEVELNASM		"$root/easybuild/NASM-2.11.08-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

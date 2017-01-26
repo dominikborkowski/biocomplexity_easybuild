@@ -1,0 +1,62 @@
+# Built with EasyBuild version 2.8.0 on 2017-01-23_10-54-51
+easyblock = 'Toolchain'
+
+name = 'foss'
+version = '2016a'
+
+homepage = '(none)'
+description = """GNU Compiler Collection (GCC) based compiler toolchain, including
+ OpenMPI for MPI support, OpenBLAS (BLAS and LAPACK support), FFTW and ScaLAPACK."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+gccver = '4.9.3-2.25'
+
+blaslib = 'OpenBLAS'
+blasver = '0.2.15'
+blas = '%s-%s' % (blaslib, blasver)
+blassuff = '-LAPACK-3.6.0'
+
+# toolchain used to build foss dependencies
+comp_mpi_tc_name = 'gompi'
+comp_mpi_tc = (comp_mpi_tc_name, version)
+
+# compiler toolchain depencies
+# we need GCC and OpenMPI as explicit dependencies instead of gompi toolchain
+# because of toolchain preperation functions
+# For binutils, stick to http://wiki.osdev.org/Cross-Compiler_Successful_Builds
+dependencies = [
+    ('GCC', gccver),
+    ('OpenMPI', '1.10.2', '', ('GCC', gccver)),
+    (blaslib, blasver, blassuff, ('GCC', gccver)),
+    ('FFTW', '3.3.4', '', comp_mpi_tc),
+    ('ScaLAPACK', '2.0.2', '-%s%s' % (blas, blassuff), comp_mpi_tc),
+]
+
+moduleclass = 'toolchain'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1485186891,
+    "build_time": 1.49,
+    "install_size": 2709,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.8.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'libharu-2.3.0-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2499.971,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin2",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "total_memory": 129091,
+}]

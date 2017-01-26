@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {  BitSeq (Bayesian Inference of Transcripts from Sequencing Data) is an 
+ application for inferring expression levels of individual transcripts from sequencing (RNA-Seq) 
+ data and estimating differential expression (DE) between conditions. An advantage of this 
+ approach is the ability to account for both technical uncertainty and intrinsic biological 
+ variance in order to avoid false DE calls. The technical contribution to the uncertainty comes 
+ both from finite read-depth and the possibly ambiguous mapping of reads to multiple transcripts. - Homepage: https://github.com/BitSeq/BitSeq
+    }
+}
+
+module-whatis {Description:  BitSeq (Bayesian Inference of Transcripts from Sequencing Data) is an 
+ application for inferring expression levels of individual transcripts from sequencing (RNA-Seq) 
+ data and estimating differential expression (DE) between conditions. An advantage of this 
+ approach is the ability to account for both technical uncertainty and intrinsic biological 
+ variance in order to avoid false DE calls. The technical contribution to the uncertainty comes 
+ both from finite read-depth and the possibly ambiguous mapping of reads to multiple transcripts. - Homepage: https://github.com/BitSeq/BitSeq}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/BitSeq/0.7.5-foss-2016a
+
+conflict BitSeq
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTBITSEQ		"$root"
+setenv	EBVERSIONBITSEQ		"0.7.5"
+setenv	EBDEVELBITSEQ		"$root/easybuild/BitSeq-0.7.5-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

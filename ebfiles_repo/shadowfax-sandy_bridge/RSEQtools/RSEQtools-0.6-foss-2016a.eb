@@ -1,0 +1,86 @@
+# Built with EasyBuild version 2.8.0 on 2017-01-24_16-38-48
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = 'RSEQtools'
+version = '0.6'
+
+homepage = 'http://rseqtools.gersteinlab.org'
+description = """ A modular framework to analyze RNA-Seq data using compact 
+ and anonymized data summaries."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['http://archive.gersteinlab.org/proj/rnaseq/rseqtools/']
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('BLAT', '3.5'),
+    ('GSL', '1.16'),
+]
+
+# this apps is tricky to compile so we will do everything in prebuildopts
+#
+# firt define required environment variables
+prebuildopts = 'export BIOINFOGSLDIR=$EBROOTGSL && export BIOINFOCONFDIR=conf && '
+# now move to "bios" folder and run "make && make prod". Then come back to root folder
+prebuildopts += 'cd bios && make && make prod && cd - && '
+# now move to "mrf" folder, re-export the needed env var and run make
+prebuildopts += 'cd mrf && export BIOINFOCONFDIR=../bios/conf/ && '
+
+parallel = 1
+
+# these are all the binaries compiled in "mrf" folder
+binary_files = ["psl2mrf", "bowtie2mrf", "singleExport2mrf", "mrfSubsetByTargetName",
+                "mrfQuantifier", "mrfAnnotationCoverage", "mrf2wig", "mrf2gff", "mrfSampler",
+                "mrf2bgr", "wigSegmenter", "mrfMappingBias", "mrfSelectRegion", "mrfSelectSpliced",
+                "mrfSelectAnnotated", "createSpliceJunctionLibrary", "gff2interval", "export2fastq",
+                "mergeTranscripts", "interval2gff", "interval2sequences", "bed2interval",
+                "interval2bed", "mrf2sam", "sam2mrf", "mrfValidate", "bgrQuantifier",
+                "bgrSegmenter", "mrfCountRegion"]
+
+files_to_copy = [
+    (['mrf/%s' % x for x in binary_files], "bin"),
+    "LICENSE", "README", "bios", "mrf", "test"
+]
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in binary_files],
+    'dirs': []
+}
+
+modextravars = {
+    'BIOINFOCONFDIR': '%(installdir)s/bios/conf',
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1485293928,
+    "build_time": 10.11,
+    "install_size": 13576555,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.8.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'RSEQtools-0.6-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2499.971,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin2",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "total_memory": 129091,
+}]

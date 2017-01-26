@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { XQilla is an XQuery and XPath 2 library and command line
+utility written in C++, implemented on top of the Xerces-C++ library. - Homepage: http://xqilla.sourceforge.net/HomePage
+    }
+}
+
+module-whatis {Description: XQilla is an XQuery and XPath 2 library and command line
+utility written in C++, implemented on top of the Xerces-C++ library. - Homepage: http://xqilla.sourceforge.net/HomePage}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/XQilla/2.3.2-foss-2016a
+
+conflict XQilla
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Xerces-C++/3.1.2-foss-2016a ] } {
+    module load Xerces-C++/3.1.2-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTXQILLA		"$root"
+setenv	EBVERSIONXQILLA		"2.3.2"
+setenv	EBDEVELXQILLA		"$root/easybuild/XQilla-2.3.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

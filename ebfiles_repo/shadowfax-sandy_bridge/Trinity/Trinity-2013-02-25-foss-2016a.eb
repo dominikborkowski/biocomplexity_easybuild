@@ -1,0 +1,62 @@
+# Built with EasyBuild version 2.8.0 on 2017-01-24_11-23-38
+name = 'Trinity'
+version = '2013-02-25'
+
+homepage = 'http://trinityrnaseq.sourceforge.net/'
+description = """Trinity represents a novel method for the efficient and robust de novo reconstruction
+ of transcriptomes from RNA-Seq data. Trinity combines three independent software modules: Inchworm,
+ Chrysalis, and Butterfly, applied sequentially to process large volumes of RNA-Seq reads."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {'optarch': True}
+
+source_urls = [('http://sourceforge.net/projects/trinityrnaseq/files', 'download')]
+sources = ['trinityrnaseq_r%s.tgz' % version]
+
+patches = [
+    'chrysalis_commandline_noconsts_2012-10-05.patch',
+    'cmd_forker_taskset_2012-10-05.patch',
+    'trinitypl_increase_max_cpu_2013-02-25.patch',
+    'rsem-plugin_makefile-cxx-2013-02-25.patch',
+]
+
+java = 'Java'
+javaver = '1.7.0_80'
+
+dependencies = [
+    (java, javaver, '', True),
+    ('ant', '1.9.3', '-%s-%s' % (java, javaver), True),
+    ('ncurses', '6.0'),
+    ('zlib', '1.2.8'),
+]
+
+bwapluginver = "0.5.7"
+RSEMmod = True
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1485275018,
+    "build_time": 198.99,
+    "install_size": 199803167,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.8.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'Trinity-2013-02-25-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2499.971,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin2",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "total_memory": 129091,
+}]

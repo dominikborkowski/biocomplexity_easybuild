@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { ligtextutils is a dependency of fastx-toolkit and is provided via the same upstream - Homepage: http://hannonlab.cshl.edu/fastx_toolkit/
+    }
+}
+
+module-whatis {Description: ligtextutils is a dependency of fastx-toolkit and is provided via the same upstream - Homepage: http://hannonlab.cshl.edu/fastx_toolkit/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/libgtextutils/0.6.1-foss-2016a
+
+conflict libgtextutils
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBGTEXTUTILS		"$root"
+setenv	EBVERSIONLIBGTEXTUTILS		"0.6.1"
+setenv	EBDEVELLIBGTEXTUTILS		"$root/easybuild/libgtextutils-0.6.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

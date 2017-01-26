@@ -1,0 +1,68 @@
+# Built with EasyBuild version 2.8.0 on 2017-01-23_16-17-56
+# authors: Kenneth Hoste (Ghent University), George Tsouloupas <g.tsouloupas@cyi.ac.cy>, Fotis Georgatos <fotis@cern.ch>
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-94.html
+
+easyblock = 'ConfigureMake'
+
+name = 'EMBOSS'
+version = '6.5.7'
+
+homepage = 'http://emboss.sourceforge.net/'
+description = """EMBOSS is 'The European Molecular Biology Open Software Suite'.
+ EMBOSS is a free Open Source software analysis package specially developed for
+ the needs of the molecular biology (e.g. EMBnet) user community."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['ftp://emboss.open-bio.org/pub/EMBOSS/']
+sources = [SOURCE_TAR_GZ]
+
+patches = ['EMBOSS_disable-embossupdate.patch']
+
+dependencies = [
+    ('libharu', '2.3.0'),
+    ('Java', '1.7.0_80', '', True),
+]
+
+configopts = " --with-hpdf=$EBROOTLIBHARU "
+
+# jemboss.jar does not build in a parallel build
+parallel = 1
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in ['seqret', 'aligncopy', 'profit', 'prophet']] + 
+             ['lib/lib%s.a' % x for x in ['acd', 'ajax', 'ajaxdb', 'ajaxg', 'eexpat', 'ensembl',
+                                          'epcre', 'eplplot', 'ezlib', 'nucleus']] +
+             ['share/EMBOSS/jemboss/lib/jemboss.jar'],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.8.0",
+    "easybuild-easyblocks_version": "2.8.0",
+    "timestamp": 1485206276,
+    "build_time": 522.97,
+    "install_size": 450751692,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-sandy_bridge', '--installpath-software=/apps/easybuild/software/shadowfax-sandy_bridge', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/2.8.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.8.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'EMBOSS-6.5.7-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2499.971,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin2",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "total_memory": 129091,
+}]

@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { TCP and UDP bandwidth performance measurement tool - Homepage: http://iperf.sourceforge.net/
+    }
+}
+
+module-whatis {Description: TCP and UDP bandwidth performance measurement tool - Homepage: http://iperf.sourceforge.net/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Iperf/3.1.2-foss-2016a
+
+conflict Iperf
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTIPERF		"$root"
+setenv	EBVERSIONIPERF		"3.1.2"
+setenv	EBDEVELIPERF		"$root/easybuild/Iperf-3.1.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

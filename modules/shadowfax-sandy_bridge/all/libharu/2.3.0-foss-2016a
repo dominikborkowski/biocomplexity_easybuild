@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { libHaru is a free, cross platform, open source library for generating PDF files. - Homepage: http://libharu.org/
+    }
+}
+
+module-whatis {Description: libHaru is a free, cross platform, open source library for generating PDF files. - Homepage: http://libharu.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/libharu/2.3.0-foss-2016a
+
+conflict libharu
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libpng/1.6.21-foss-2016a ] } {
+    module load libpng/1.6.21-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTLIBHARU		"$root"
+setenv	EBVERSIONLIBHARU		"2.3.0"
+setenv	EBDEVELLIBHARU		"$root/easybuild/libharu-2.3.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0

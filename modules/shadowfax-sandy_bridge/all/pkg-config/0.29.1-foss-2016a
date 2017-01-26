@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { pkg-config is a helper tool used when compiling applications and libraries. It helps you insert the
+ correct compiler options on the command line so an application can use
+  gcc -o test test.c `pkg-config --libs --cflags glib-2.0`
+ for instance, rather than hard-coding values on where to find glib (or other libraries). - Homepage: http://www.freedesktop.org/wiki/Software/pkg-config/
+    }
+}
+
+module-whatis {Description: pkg-config is a helper tool used when compiling applications and libraries. It helps you insert the
+ correct compiler options on the command line so an application can use
+  gcc -o test test.c `pkg-config --libs --cflags glib-2.0`
+ for instance, rather than hard-coding values on where to find glib (or other libraries). - Homepage: http://www.freedesktop.org/wiki/Software/pkg-config/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/pkg-config/0.29.1-foss-2016a
+
+conflict pkg-config
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTPKGMINCONFIG		"$root"
+setenv	EBVERSIONPKGMINCONFIG		"0.29.1"
+setenv	EBDEVELPKGMINCONFIG		"$root/easybuild/pkg-config-0.29.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 2.8.0
