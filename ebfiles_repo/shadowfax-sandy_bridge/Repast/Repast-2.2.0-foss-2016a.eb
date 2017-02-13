@@ -1,0 +1,66 @@
+# Built with EasyBuild version 3.0.2 on 2017-02-13_10-35-54
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'Repast'
+version = '2.2.0'
+
+homepage = 'https://repast.github.io'
+description = "Repast for HPC is C++-based modeling system for use on large computing clusters and supercomputers"
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {"usempi": True}
+
+
+source_urls = ['https://github.com/%(name)s/%(namelower)s.hpc/releases/download/v%(version)s/']
+sources = ['%(namelower)s_hpc-%(version)s.tgz']
+
+
+dependencies = [
+    ('Boost', '1.60.0'),
+    ('cURL', '7.47.0'),
+    ('netCDF-C++', '4.2'),
+]
+
+
+sanity_check_paths = {
+    'files': ["bin/rumor/rumor_model", "bin/zombie/zombie_model", "lib/librepast_hpc-%(version)s.so"],
+    'dirs': ["lib", "include/repast_hpc", "include/relogo" ]
+}
+
+
+moduleclass = 'math'
+
+
+# Build statistics
+buildstats = [{
+    "build_time": 63.66,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-sandy_bridge'", "--installpath-software='/apps/easybuild/software/shadowfax-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/3.0.2/lib64/python2.6/site-packages/easybuild_easyconfigs-3.0.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'Repast-2.2.0-foss-2016a.eb'],
+    "core_count": 24,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz",
+    "cpu_speed": 2499.971,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.0.2",
+    "easybuild-framework_version": "3.0.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin2",
+    "install_size": 17527300,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-sandy_bridge/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1487000154,
+    "total_memory": 129091,
+}]
