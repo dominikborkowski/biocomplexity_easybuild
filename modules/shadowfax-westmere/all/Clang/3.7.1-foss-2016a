@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { C, C++, Objective-C compiler, based on LLVM.  Does not
+ include C++ standard library -- use libstdc++ from GCC. - Homepage: http://clang.llvm.org/
+    }
+}
+
+module-whatis {Description: C, C++, Objective-C compiler, based on LLVM.  Does not
+ include C++ standard library -- use libstdc++ from GCC. - Homepage: http://clang.llvm.org/}
+
+set root /apps/easybuild/software/shadowfax-westmere/Clang/3.7.1-foss-2016a
+
+conflict Clang
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded GMP/6.1.0-foss-2016a ] } {
+    module load GMP/6.1.0-foss-2016a
+}
+
+if { ![ is-loaded ISL/0.17-foss-2016a ] } {
+    module load ISL/0.17-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTCLANG		"$root"
+setenv	EBVERSIONCLANG		"3.7.1"
+setenv	EBDEVELCLANG		"$root/easybuild/Clang-3.7.1-foss-2016a-easybuild-devel"
+
+setenv	ASAN_SYMBOLIZER_PATH		"/apps/easybuild/software/shadowfax-westmere/Clang/3.7.1-foss-2016a/bin/llvm-symbolizer"
+# Built with EasyBuild version 3.0.2
