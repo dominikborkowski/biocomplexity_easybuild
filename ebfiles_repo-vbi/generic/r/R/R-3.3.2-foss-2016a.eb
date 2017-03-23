@@ -481,6 +481,8 @@ exts_list = [
     ('lubridate', '1.6.0', ext_options),
     ('biom', '0.3.12', ext_options),
     ('pim', '2.0.0.2', ext_options),
+    ('venn', '1.2', ext_options),
+    ('RcppParallel', '4.3.20', ext_options),
 ]
 
 moduleclass = 'lang'
