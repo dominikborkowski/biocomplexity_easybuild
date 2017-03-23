@@ -1,0 +1,64 @@
+# Built with EasyBuild version 3.1.2 on 2017-03-23_00-10-53
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Robert Schmidt <roschmidt@ohri.ca>, Cedric Laczny <cedric.laczny@uni.lu>, Fotis Georgatos <fotis@cern.ch>
+# License::   MIT/GPL
+# $Id$
+#
+# Modified by: Adam Huffman
+# The Francis Crick Institute
+#
+# Modified for version 1.4 by: Kurt Lust, UAntwerpen
+#
+##
+name = 'SAMtools'
+version = '1.4'
+
+homepage = 'http://www.htslib.org/'
+description = """SAM Tools provide various utilities for manipulating alignments in the SAM format, 
+ including sorting, merging, indexing and generating alignments in a per-position format."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://github.com/samtools/%(namelower)s/releases/download/%(version)s']
+sources = [SOURCELOWER_TAR_BZ2]
+
+# The htslib component of SAMtools 1.4 uses zlib, bzip2 and lzma compression.
+# The latter is currently provided by XZ.
+dependencies = [
+    ('ncurses', '6.0'),
+    ('zlib',    '1.2.8'),
+    ('bzip2',   '1.0.6'),
+    ('XZ',      '5.2.2'),
+]
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 13.63,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.1.2/lib64/python2.6/site-packages/easybuild_easyconfigs-3.1.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'SAMtools-1.4-foss-2016b.eb'],
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2925.864,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.2",
+    "easybuild-framework_version": "3.1.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "install_size": 1483682,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1490242253,
+    "total_memory": 96866,
+}]
