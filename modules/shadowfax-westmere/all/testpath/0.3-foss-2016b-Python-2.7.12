@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Test utilities for code working with files and commands - Homepage: https://github.com/jupyter/testpath
+    }
+}
+
+module-whatis {Description: Test utilities for code working with files and commands - Homepage: https://github.com/jupyter/testpath}
+
+set root /apps/easybuild/software/shadowfax-westmere/testpath/0.3-foss-2016b-Python-2.7.12
+
+conflict testpath
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+setenv	EBROOTTESTPATH		"$root"
+setenv	EBVERSIONTESTPATH		"0.3"
+setenv	EBDEVELTESTPATH		"$root/easybuild/testpath-0.3-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.1.2
