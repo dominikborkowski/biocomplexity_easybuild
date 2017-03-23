@@ -26,6 +26,7 @@ source_urls = [
 sources = [
     'vsc-install-0.10.25.tar.gz',
     'vsc-base-2.5.7.tar.gz',
+    'setuptools-29.0.1.zip',
     'easybuild-framework-%(version)s.tar.gz',
     'easybuild-easyblocks-%(version)s.tar.gz',
     'easybuild-easyconfigs-%(version)s.tar.gz',
