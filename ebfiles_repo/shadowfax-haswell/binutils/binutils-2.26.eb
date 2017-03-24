@@ -1,0 +1,46 @@
+# Built with EasyBuild version 3.1.2 on 2017-03-23_15-08-33
+name = 'binutils'
+version = '2.26'
+
+homepage = 'http://directory.fsf.org/project/binutils/'
+description = "binutils: GNU binary utilities"
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = [GNU_SOURCE]
+
+builddependencies = [
+    ('flex', '2.6.0'),
+    ('Bison', '3.0.4'),
+    # zlib required, but being linked instatically, so not a runtime dep
+    ('zlib', '1.2.8'),
+]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 81.05,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.1.2/lib/python2.6/site-packages/easybuild_easyconfigs-3.1.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'IPython-5.1.0-foss-2016b-Python-2.7.12.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.2",
+    "easybuild-framework_version": "3.1.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/shared/apps/gcc/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../gcc-4.8.4/configure --prefix=/cm/shared/apps/gcc/4.8.4 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src/.libs; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "install_size": 290811335,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/cm/shared/apps/gcc/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1490296113,
+    "total_memory": 129090,
+}]

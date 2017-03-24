@@ -1,0 +1,82 @@
+# Built with EasyBuild version 3.1.2 on 2017-03-23_15-32-36
+easyblock = 'ConfigureMake'
+
+name = 'OpenBLAS'
+version = '0.2.18'
+
+lapackver = '3.6.1'
+versionsuffix = '-LAPACK-%s' % lapackver
+
+homepage = 'http://xianyi.github.com/OpenBLAS/'
+description = """OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version."""
+
+toolchain = {'name': 'GCC', 'version': '5.4.0-2.26'}
+
+lapack_src = 'lapack-%s.tgz' % lapackver
+large_src = 'large.tgz'
+timing_src = 'timing.tgz'
+
+lapack_unpack_cmd = 'cd %(name)s-%(version)s; rm -rf lapack-netlib;'
+lapack_unpack_cmd += 'mkdir lapack-netlib;'
+lapack_unpack_cmd += 'tar -C lapack-netlib --strip-components=1 -zxf %s; cd -'
+
+sources = [
+    'v%(version)s.tar.gz',
+    (lapack_src, lapack_unpack_cmd),
+    large_src,
+    timing_src,
+]
+source_urls = [
+    # order matters, trying to download the LAPACK tarball from GitHub causes trouble
+    "http://www.netlib.org/lapack/",
+    "http://www.netlib.org/lapack/timing/",
+    "https://github.com/xianyi/OpenBLAS/archive/",
+]
+
+patches = [
+    (large_src, '.'),
+    (timing_src, '.'),
+]
+
+skipsteps = ['configure']
+
+buildopts = 'BINARY=64 USE_THREAD=1 CC="$CC" FC="$F77" NO_AFFINITY=1'
+installopts = "USE_THREAD=1 PREFIX=%(installdir)s"
+
+# extensive testing can be enabled by uncommenting the line below
+# runtest = 'PATH=.:$PATH lapack-timing'
+
+sanity_check_paths = {
+    'files': ['include/cblas.h', 'include/f77blas.h', 'include/lapacke_config.h', 'include/lapacke.h',
+              'include/lapacke_mangling.h', 'include/lapacke_utils.h', 'include/openblas_config.h',
+              'lib/libopenblas.a', 'lib/libopenblas.%s' % SHLIB_EXT],
+    'dirs': [],
+}
+
+moduleclass = 'numlib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 61.15,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.1.2/lib/python2.6/site-packages/easybuild_easyconfigs-3.1.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'IPython-5.1.0-foss-2016b-Python-2.7.12.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.2",
+    "easybuild-framework_version": "3.1.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "install_size": 94664351,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1490297556,
+    "total_memory": 129090,
+}]

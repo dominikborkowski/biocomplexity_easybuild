@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...). - Homepage: http://gcc.gnu.org/
+    }
+}
+
+module-whatis {Description: The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...). - Homepage: http://gcc.gnu.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/GCC/5.4.0-2.26
+
+conflict GCC
+
+if { ![ is-loaded GCCcore/5.4.0 ] } {
+    module load GCCcore/5.4.0
+}
+
+if { ![ is-loaded binutils/2.26-GCCcore-5.4.0 ] } {
+    module load binutils/2.26-GCCcore-5.4.0
+}
+
+setenv	EBROOTGCC		"/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0"
+setenv	EBVERSIONGCC		"5.4.0"
+setenv	EBDEVELGCC		"$root/easybuild/GCC-5.4.0-2.26-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2

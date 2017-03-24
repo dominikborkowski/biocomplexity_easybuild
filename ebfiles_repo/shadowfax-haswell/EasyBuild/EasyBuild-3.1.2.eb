@@ -1,0 +1,65 @@
+# Built with EasyBuild version 3.0.2 on 2017-03-23_15-06-15
+easyblock = 'EB_EasyBuildMeta'
+
+name = 'EasyBuild'
+version = '3.1.2'
+
+homepage = 'http://hpcugent.github.com/easybuild/'
+description = """EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [
+    # vsc-install
+    'https://pypi.python.org/packages/ef/c7/640c6d791ba452321c0d1371b6626486bb495e0645bb896d33c78a09f810',
+    # vsc-base
+    'https://pypi.python.org/packages/da/90/ee40b1a6a5bfed24139042c737500a9b45db0373a6735e76481fc860fe37',
+    # easybuild-framework
+    'https://pypi.python.org/packages/fa/00/6a47862b38e6d921071d305deab4c494ae2eae58556c90c95e520fea28b9/',
+    # easybuild-easyblocks
+    'https://pypi.python.org/packages/d6/55/9b6634b01fbc26edb9f5af39b06acbe7ec843da438ba5ac3063937934b3e',
+    # easybuild-easyconfigs
+    'https://pypi.python.org/packages/5a/4c/ea8faa46c7874a3d20f28e2d222a1f4a5e97a4f8052add338a785755ec89',
+]
+# order matters a lot, to avoid having dependencies auto-resolved (--no-deps easy_install option doesn't work?)
+sources = [
+    'vsc-install-0.10.25.tar.gz',
+    'vsc-base-2.5.7.tar.gz',
+    'easybuild-framework-%(version)s.tar.gz',
+    'easybuild-easyblocks-%(version)s.tar.gz',
+    'easybuild-easyconfigs-%(version)s.tar.gz',
+]
+
+# EasyBuild is a (set of) Python packages, so it depends on Python
+# usually, we want to use the system Python, so no actual Python dependency is listed
+allow_system_deps = [('Python', SYS_PYTHON_VERSION)]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 39.99,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.0.2/lib/python2.6/site-packages/easybuild_easyconfigs-3.0.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'EasyBuild-3.1.2.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.0.2",
+    "easybuild-framework_version": "3.0.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/shared/apps/gcc/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../gcc-4.8.4/configure --prefix=/cm/shared/apps/gcc/4.8.4 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src/.libs; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "install_size": 23667996,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/cm/shared/apps/gcc/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1490295974,
+    "total_memory": 129090,
+}]

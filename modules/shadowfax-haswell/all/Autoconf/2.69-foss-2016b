@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Autoconf is an extensible package of M4 macros that produce shell scripts
+ to automatically configure software source code packages. These scripts can adapt the
+ packages to many kinds of UNIX-like systems without manual user intervention. Autoconf
+ creates a configuration script for a package from a template file that lists the
+ operating system features that the package can use, in the form of M4 macro calls. - Homepage: http://www.gnu.org/software/autoconf/
+    }
+}
+
+module-whatis {Description: Autoconf is an extensible package of M4 macros that produce shell scripts
+ to automatically configure software source code packages. These scripts can adapt the
+ packages to many kinds of UNIX-like systems without manual user intervention. Autoconf
+ creates a configuration script for a package from a template file that lists the
+ operating system features that the package can use, in the form of M4 macro calls. - Homepage: http://www.gnu.org/software/autoconf/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Autoconf/2.69-foss-2016b
+
+conflict Autoconf
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded M4/1.4.17-foss-2016b ] } {
+    module load M4/1.4.17-foss-2016b
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTAUTOCONF		"$root"
+setenv	EBVERSIONAUTOCONF		"2.69"
+setenv	EBDEVELAUTOCONF		"$root/easybuild/Autoconf-2.69-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2
