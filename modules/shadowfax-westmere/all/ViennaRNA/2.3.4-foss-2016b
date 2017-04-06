@@ -1,0 +1,31 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The Vienna RNA Package consists of a C code library and several
+stand-alone programs for the prediction and comparison of RNA secondary structures. - Homepage: http://www.tbi.univie.ac.at/RNA/
+    }
+}
+
+module-whatis {Description: The Vienna RNA Package consists of a C code library and several
+stand-alone programs for the prediction and comparison of RNA secondary structures. - Homepage: http://www.tbi.univie.ac.at/RNA/}
+
+set root /apps/easybuild/software/shadowfax-westmere/ViennaRNA/2.3.4-foss-2016b
+
+conflict ViennaRNA
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTVIENNARNA		"$root"
+setenv	EBVERSIONVIENNARNA		"2.3.4"
+setenv	EBDEVELVIENNARNA		"$root/easybuild/ViennaRNA-2.3.4-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2
