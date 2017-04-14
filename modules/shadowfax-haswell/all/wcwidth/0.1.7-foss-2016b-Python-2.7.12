@@ -1,0 +1,26 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { wcwidth is a low-level Python library to simplify Terminal emulation. - Homepage: https://github.com/jquast/wcwidth
+    }
+}
+
+module-whatis {Description: wcwidth is a low-level Python library to simplify Terminal emulation. - Homepage: https://github.com/jquast/wcwidth}
+
+set root /apps/easybuild/software/shadowfax-haswell/wcwidth/0.1.7-foss-2016b-Python-2.7.12
+
+conflict wcwidth
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+setenv	EBROOTWCWIDTH		"$root"
+setenv	EBVERSIONWCWIDTH		"0.1.7"
+setenv	EBDEVELWCWIDTH		"$root/easybuild/wcwidth-0.1.7-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.1.2

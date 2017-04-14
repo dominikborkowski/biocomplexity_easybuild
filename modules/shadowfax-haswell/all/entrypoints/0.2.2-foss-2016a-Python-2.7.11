@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Entry points are a way for Python packages to advertise objects with some common interface. - Homepage: https://github.com/takluyver/entrypoints
+    }
+}
+
+module-whatis {Description: Entry points are a way for Python packages to advertise objects with some common interface. - Homepage: https://github.com/takluyver/entrypoints}
+
+set root /apps/easybuild/software/shadowfax-haswell/entrypoints/0.2.2-foss-2016a-Python-2.7.11
+
+conflict entrypoints
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded configparser/3.5.0-foss-2016a-Python-2.7.11 ] } {
+    module load configparser/3.5.0-foss-2016a-Python-2.7.11
+}
+
+setenv	EBROOTENTRYPOINTS		"$root"
+setenv	EBVERSIONENTRYPOINTS		"0.2.2"
+setenv	EBDEVELENTRYPOINTS		"$root/easybuild/entrypoints-0.2.2-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.1.2

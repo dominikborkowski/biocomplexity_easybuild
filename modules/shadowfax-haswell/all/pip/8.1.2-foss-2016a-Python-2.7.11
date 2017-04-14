@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The PyPA recommended tool for installing Python packages. - Homepage: https://pip.pypa.io
+    }
+}
+
+module-whatis {Description: The PyPA recommended tool for installing Python packages. - Homepage: https://pip.pypa.io}
+
+set root /apps/easybuild/software/shadowfax-haswell/pip/8.1.2-foss-2016a-Python-2.7.11
+
+conflict pip
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPIP		"$root"
+setenv	EBVERSIONPIP		"8.1.2"
+setenv	EBDEVELPIP		"$root/easybuild/pip-8.1.2-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.1.2

@@ -1,0 +1,67 @@
+# Built with EasyBuild version 3.1.2 on 2017-04-14_18-09-31
+easyblock = 'PythonPackage'
+
+name = 'configparser'
+version = '3.5.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://docs.python.org/3/library/configparser.html'
+description = "configparser is a Python library that brings the updated configparser from Python 3.5 to Python 2.6-3.5"
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['https://pypi.python.org/packages/7c/69/c2ce7e91c89dc073eb1aa74c0621c3eefbffe8216b3f9af9d3885265c01c/']
+sources = ['configparser-%(version)s.tar.gz']
+
+dependencies = [
+    ('Python', '2.7.11'),
+]
+builddependencies = [
+    ('pip', '8.1.2', versionsuffix),
+]
+
+use_pip = True
+unpack_sources = False
+
+sanity_check_paths = {
+    'files': ['lib/python%(pyshortver)s/site-packages/configparser.py'],
+    'dirs': ['lib/python%(pyshortver)s/site-packages/backports/configparser'],
+}
+
+# XXX: hack! for some reason the sanity check imports fail, even though the
+# PYTHONPATH seems to point to the right directory?!? Creating the __init__.py
+# in backports makes it pass and hopefully does not break anything.
+postinstallcmds = ['touch %(installdir)s/lib/python%(pyshortver)s/site-packages/backports/__init__.py']
+
+sanity_check_commands = [
+    ('python', "-c 'import configparser'"),
+    ('python', "-c 'from backports import configparser'"),
+]
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 4.99,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.1.2/lib/python2.6/site-packages/easybuild_easyconfigs-3.1.2-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'IPython-5.0.0-foss-2016a-Python-2.7.11.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.2",
+    "easybuild-framework_version": "3.1.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin1",
+    "install_size": 169820,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/shadowfax-haswell/Python/2.7.11-foss-2016a/bin/python",
+    "timestamp": 1492207771,
+    "total_memory": 129090,
+}]
