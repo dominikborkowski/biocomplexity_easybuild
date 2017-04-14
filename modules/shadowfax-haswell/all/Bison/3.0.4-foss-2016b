@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Bison is a general-purpose parser generator that converts an annotated context-free grammar
+ into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables. - Homepage: http://www.gnu.org/software/bison
+    }
+}
+
+module-whatis {Description: Bison is a general-purpose parser generator that converts an annotated context-free grammar
+ into a deterministic LR or generalized LR (GLR) parser employing LALR(1) parser tables. - Homepage: http://www.gnu.org/software/bison}
+
+set root /apps/easybuild/software/shadowfax-haswell/Bison/3.0.4-foss-2016b
+
+conflict Bison
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBISON		"$root"
+setenv	EBVERSIONBISON		"3.0.4"
+setenv	EBDEVELBISON		"$root/easybuild/Bison-3.0.4-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2
