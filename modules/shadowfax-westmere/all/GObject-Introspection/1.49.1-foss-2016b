@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { GObject introspection is a middleware layer between C libraries
+ (using GObject) and language bindings. The C library can be scanned at
+ compile time and generate a metadata file, in addition to the actual
+ native C library. Then at runtime, language bindings can read this
+ metadata and automatically provide bindings to call into the C library. - Homepage: https://wiki.gnome.org/GObjectIntrospection/
+    }
+}
+
+module-whatis {Description: GObject introspection is a middleware layer between C libraries
+ (using GObject) and language bindings. The C library can be scanned at
+ compile time and generate a metadata file, in addition to the actual
+ native C library. Then at runtime, language bindings can read this
+ metadata and automatically provide bindings to call into the C library. - Homepage: https://wiki.gnome.org/GObjectIntrospection/}
+
+set root /apps/easybuild/software/shadowfax-westmere/GObject-Introspection/1.49.1-foss-2016b
+
+conflict GObject-Introspection
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+if { ![ is-loaded GLib/2.49.5-foss-2016b ] } {
+    module load GLib/2.49.5-foss-2016b
+}
+
+if { ![ is-loaded libffi/3.2.1-foss-2016b ] } {
+    module load libffi/3.2.1-foss-2016b
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGOBJECTMININTROSPECTION		"$root"
+setenv	EBVERSIONGOBJECTMININTROSPECTION		"1.49.1"
+setenv	EBDEVELGOBJECTMININTROSPECTION		"$root/easybuild/GObject-Introspection-1.49.1-foss-2016b-easybuild-devel"
+
+prepend-path	XDG_DATA_DIRS		$root/share
+prepend-path	GI_TYPELIB_PATH		$root/share
+# Built with EasyBuild version 3.1.2
