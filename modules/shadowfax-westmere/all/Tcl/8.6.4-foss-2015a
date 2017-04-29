@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language,
+suitable for a very wide range of uses, including web and desktop applications, networking, administration,
+testing and many more. - Homepage: http://www.tcl.tk/
+    }
+}
+
+module-whatis {Description: Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language,
+suitable for a very wide range of uses, including web and desktop applications, networking, administration,
+testing and many more. - Homepage: http://www.tcl.tk/}
+
+set root /apps/easybuild/software/shadowfax-westmere/Tcl/8.6.4-foss-2015a
+
+conflict Tcl
+
+if { ![ is-loaded foss/2015a ] } {
+    module load foss/2015a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2015a ] } {
+    module load zlib/1.2.8-foss-2015a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTTCL		"$root"
+setenv	EBVERSIONTCL		"8.6.4"
+setenv	EBDEVELTCL		"$root/easybuild/Tcl-8.6.4-foss-2015a-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2

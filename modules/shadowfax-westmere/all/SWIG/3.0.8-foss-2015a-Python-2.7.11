@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SWIG is a software development tool that connects programs written in C and C++ with
+ a variety of high-level programming languages. - Homepage: http://www.swig.org/
+    }
+}
+
+module-whatis {Description: SWIG is a software development tool that connects programs written in C and C++ with
+ a variety of high-level programming languages. - Homepage: http://www.swig.org/}
+
+set root /apps/easybuild/software/shadowfax-westmere/SWIG/3.0.8-foss-2015a-Python-2.7.11
+
+conflict SWIG
+
+if { ![ is-loaded foss/2015a ] } {
+    module load foss/2015a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2015a ] } {
+    module load Python/2.7.11-foss-2015a
+}
+
+if { ![ is-loaded PCRE/8.37-foss-2015a ] } {
+    module load PCRE/8.37-foss-2015a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSWIG		"$root"
+setenv	EBVERSIONSWIG		"3.0.8"
+setenv	EBDEVELSWIG		"$root/easybuild/SWIG-3.0.8-foss-2015a-Python-2.7.11-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2

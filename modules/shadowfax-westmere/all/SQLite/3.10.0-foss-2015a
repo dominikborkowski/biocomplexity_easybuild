@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { SQLite: SQL Database Engine in a C Library - Homepage: http://www.sqlite.org/
+    }
+}
+
+module-whatis {Description: SQLite: SQL Database Engine in a C Library - Homepage: http://www.sqlite.org/}
+
+set root /apps/easybuild/software/shadowfax-westmere/SQLite/3.10.0-foss-2015a
+
+conflict SQLite
+
+if { ![ is-loaded foss/2015a ] } {
+    module load foss/2015a
+}
+
+if { ![ is-loaded libreadline/6.3-foss-2015a ] } {
+    module load libreadline/6.3-foss-2015a
+}
+
+if { ![ is-loaded Tcl/8.6.4-foss-2015a ] } {
+    module load Tcl/8.6.4-foss-2015a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSQLITE		"$root"
+setenv	EBVERSIONSQLITE		"3.10.0"
+setenv	EBDEVELSQLITE		"$root/easybuild/SQLite-3.10.0-foss-2015a-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2
