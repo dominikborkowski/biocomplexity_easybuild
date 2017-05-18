@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { The JasPer Project is an open-source initiative to provide a free
+ software-based reference implementation of the codec specified in the JPEG-2000 Part-1 standard. - Homepage: http://www.ece.uvic.ca/~frodo/jasper/
+    }
+}
+
+module-whatis {Description: The JasPer Project is an open-source initiative to provide a free
+ software-based reference implementation of the codec specified in the JPEG-2000 Part-1 standard. - Homepage: http://www.ece.uvic.ca/~frodo/jasper/}
+
+set root /apps/easybuild/software/shadowfax-westmere/JasPer/1.900.1-foss-2016b
+
+conflict JasPer
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTJASPER		"$root"
+setenv	EBVERSIONJASPER		"1.900.1"
+setenv	EBDEVELJASPER		"$root/easybuild/JasPer-1.900.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.1.2
