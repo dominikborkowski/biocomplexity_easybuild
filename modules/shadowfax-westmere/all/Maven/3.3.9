@@ -1,0 +1,27 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr { Binary maven install, Apache Maven is a software project management and comprehension tool. Based on
+the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a
+central piece of information.
+ - Homepage: http://maven.apache.org/index.html
+    }
+}
+
+module-whatis {Description: Binary maven install, Apache Maven is a software project management and comprehension tool. Based on
+the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a
+central piece of information.
+ - Homepage: http://maven.apache.org/index.html}
+
+set root /apps/easybuild/software/shadowfax-westmere/Maven/3.3.9
+
+conflict Maven
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTMAVEN		"$root"
+setenv	EBVERSIONMAVEN		"3.3.9"
+setenv	EBDEVELMAVEN		"$root/easybuild/Maven-3.3.9-easybuild-devel"
+
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.1.2
