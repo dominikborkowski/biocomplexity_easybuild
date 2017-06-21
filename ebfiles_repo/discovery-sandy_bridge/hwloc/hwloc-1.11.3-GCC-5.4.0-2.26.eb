@@ -1,0 +1,50 @@
+# Built with EasyBuild version 3.2.1 on 2017-06-21_12-01-55
+easyblock = 'ConfigureMake'
+
+name = 'hwloc'
+version = '1.11.3'
+
+homepage = 'http://www.open-mpi.org/projects/hwloc/'
+description = """The Portable Hardware Locality (hwloc) software package provides a portable abstraction
+ (across OS, versions, architectures, ...) of the hierarchical topology of modern architectures, including
+ NUMA memory nodes, sockets, shared caches, cores and simultaneous multithreading. It also gathers various
+ system attributes such as cache and memory information as well as the locality of I/O devices such as
+ network interfaces, InfiniBand HCAs or GPUs. It primarily aims at helping applications with gathering
+ information about modern computing hardware so as to exploit it accordingly and efficiently."""
+
+toolchain = {'name': 'GCC', 'version': '5.4.0-2.26'}
+
+source_urls = ['http://www.open-mpi.org/software/hwloc/v%(version_major_minor)s/downloads/']
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [('numactl', '2.0.11')]
+
+configopts = "--enable-libnuma=$EBROOTNUMACTL"
+
+moduleclass = 'system'
+
+# Build statistics
+buildstats = [{
+    "build_time": 30.13,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.2.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.2.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'zlib-1.2.8-foss-2016b.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.2.1",
+    "easybuild-framework_version": "3.2.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery1",
+    "install_size": 3765308,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1498060915,
+    "total_memory": 64403,
+}]
