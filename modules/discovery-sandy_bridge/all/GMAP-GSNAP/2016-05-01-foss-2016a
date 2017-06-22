@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GMAP: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
+ GSNAP: Genomic Short-read Nucleotide Alignment Program
+
+
+More information
+================
+ - Homepage: http://research-pub.gene.com/gmap/
+    }
+}
+
+module-whatis {Description: GMAP: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
+ GSNAP: Genomic Short-read Nucleotide Alignment Program}
+module-whatis {Homepage: http://research-pub.gene.com/gmap/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/GMAP-GSNAP/2016-05-01-foss-2016a
+
+conflict GMAP-GSNAP
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016a ] } {
+    module load bzip2/1.0.6-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTGMAPMINGSNAP		"$root"
+setenv	EBVERSIONGMAPMINGSNAP		"2016-05-01"
+setenv	EBDEVELGMAPMINGSNAP		"$root/easybuild/GMAP-GSNAP-2016-05-01-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

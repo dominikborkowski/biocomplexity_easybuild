@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+zsync-0.6.2: Optimising file distribution program, a 1-to-many rsync
+
+
+More information
+================
+ - Homepage: http://zsync.moria.org.uk/
+    }
+}
+
+module-whatis {Description: zsync-0.6.2: Optimising file distribution program, a 1-to-many rsync}
+module-whatis {Homepage: http://zsync.moria.org.uk/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/zsync/0.6.2-foss-2016a
+
+conflict zsync
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTZSYNC		"$root"
+setenv	EBVERSIONZSYNC		"0.6.2"
+setenv	EBDEVELZSYNC		"$root/easybuild/zsync-0.6.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

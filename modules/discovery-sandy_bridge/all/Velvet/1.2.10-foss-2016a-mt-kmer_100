@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Sequence assembler for very short reads
+
+
+More information
+================
+ - Homepage: http://www.ebi.ac.uk/~zerbino/velvet/
+    }
+}
+
+module-whatis {Description: Sequence assembler for very short reads}
+module-whatis {Homepage: http://www.ebi.ac.uk/~zerbino/velvet/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Velvet/1.2.10-foss-2016a-mt-kmer_100
+
+conflict Velvet
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTVELVET		"$root"
+setenv	EBVERSIONVELVET		"1.2.10"
+setenv	EBDEVELVELVET		"$root/easybuild/Velvet-1.2.10-foss-2016a-mt-kmer_100-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

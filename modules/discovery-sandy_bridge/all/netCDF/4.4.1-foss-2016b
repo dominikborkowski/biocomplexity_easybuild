@@ -1,0 +1,53 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NetCDF (network Common Data Form) is a set of software libraries 
+ and machine-independent data formats that support the creation, access, and sharing of array-oriented 
+ scientific data.
+
+
+More information
+================
+ - Homepage: http://www.unidata.ucar.edu/software/netcdf/
+    }
+}
+
+module-whatis {Description: NetCDF (network Common Data Form) is a set of software libraries 
+ and machine-independent data formats that support the creation, access, and sharing of array-oriented 
+ scientific data.}
+module-whatis {Homepage: http://www.unidata.ucar.edu/software/netcdf/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/netCDF/4.4.1-foss-2016b
+
+conflict netCDF
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded HDF5/1.8.17-foss-2016b ] } {
+    module load HDF5/1.8.17-foss-2016b
+}
+
+if { ![ is-loaded cURL/7.49.1-foss-2016b ] } {
+    module load cURL/7.49.1-foss-2016b
+}
+
+if { ![ is-loaded Szip/2.1-foss-2016b ] } {
+    module load Szip/2.1-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib64/pkgconfig
+setenv	EBROOTNETCDF		"$root"
+setenv	EBVERSIONNETCDF		"4.4.1"
+setenv	EBDEVELNETCDF		"$root/easybuild/netCDF-4.4.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

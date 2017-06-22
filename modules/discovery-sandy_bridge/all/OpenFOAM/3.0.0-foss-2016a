@@ -1,0 +1,64 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+OpenFOAM is a free, open source CFD software package. 
+ OpenFOAM has an extensive range of features to solve anything from complex fluid flows
+ involving chemical reactions, turbulence and heat transfer, 
+ to solid dynamics and electromagnetics.
+
+
+More information
+================
+ - Homepage: http://www.openfoam.com/
+    }
+}
+
+module-whatis {Description: OpenFOAM is a free, open source CFD software package. 
+ OpenFOAM has an extensive range of features to solve anything from complex fluid flows
+ involving chemical reactions, turbulence and heat transfer, 
+ to solid dynamics and electromagnetics.}
+module-whatis {Homepage: http://www.openfoam.com/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/OpenFOAM/3.0.0-foss-2016a
+
+conflict OpenFOAM
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libreadline/6.3-foss-2016a ] } {
+    module load libreadline/6.3-foss-2016a
+}
+
+if { ![ is-loaded METIS/5.1.0-foss-2016a-32bitIDX ] } {
+    module load METIS/5.1.0-foss-2016a-32bitIDX
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016a ] } {
+    module load ncurses/6.0-foss-2016a
+}
+
+if { ![ is-loaded SCOTCH/6.0.4-foss-2016a ] } {
+    module load SCOTCH/6.0.4-foss-2016a
+}
+
+if { ![ is-loaded Boost/1.60.0-foss-2016a ] } {
+    module load Boost/1.60.0-foss-2016a
+}
+
+setenv	EBROOTOPENFOAM		"$root"
+setenv	EBVERSIONOPENFOAM		"3.0.0"
+setenv	EBDEVELOPENFOAM		"$root/easybuild/OpenFOAM-3.0.0-foss-2016a-easybuild-devel"
+
+setenv	WM_PROJECT_VERSION		"3.0.0"
+setenv	FOAM_INST_DIR		"/apps/easybuild/software/discovery-sandy_bridge/OpenFOAM/3.0.0-foss-2016a"
+setenv	WM_COMPILER		"Gcc"
+setenv	WM_MPLIB		"EASYBUILDMPI"
+setenv	FOAM_BASH		"/apps/easybuild/software/discovery-sandy_bridge/OpenFOAM/3.0.0-foss-2016a/OpenFOAM-3.0.0/etc/bashrc"
+setenv	FOAM_CSH		"/apps/easybuild/software/discovery-sandy_bridge/OpenFOAM/3.0.0-foss-2016a/OpenFOAM-3.0.0/etc/cshrc"
+setenv	WM_LABEL_SIZE		"32"
+# Built with EasyBuild version 3.2.1

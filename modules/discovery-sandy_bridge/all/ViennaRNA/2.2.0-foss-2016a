@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The Vienna RNA Package consists of a C code library and several
+stand-alone programs for the prediction and comparison of RNA secondary structures.
+
+
+More information
+================
+ - Homepage: http://www.tbi.univie.ac.at/~ronny/RNA/vrna2.html
+    }
+}
+
+module-whatis {Description: The Vienna RNA Package consists of a C code library and several
+stand-alone programs for the prediction and comparison of RNA secondary structures.}
+module-whatis {Homepage: http://www.tbi.univie.ac.at/~ronny/RNA/vrna2.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/ViennaRNA/2.2.0-foss-2016a
+
+conflict ViennaRNA
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTVIENNARNA		"$root"
+setenv	EBVERSIONVIENNARNA		"2.2.0"
+setenv	EBDEVELVIENNARNA		"$root/easybuild/ViennaRNA-2.2.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

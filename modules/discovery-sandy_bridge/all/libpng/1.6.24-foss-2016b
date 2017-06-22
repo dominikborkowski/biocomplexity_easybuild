@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+libpng is the official PNG reference library
+
+
+More information
+================
+ - Homepage: http://www.libpng.org/pub/png/libpng.html
+    }
+}
+
+module-whatis {Description: libpng is the official PNG reference library}
+module-whatis {Homepage: http://www.libpng.org/pub/png/libpng.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libpng/1.6.24-foss-2016b
+
+conflict libpng
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBPNG		"$root"
+setenv	EBVERSIONLIBPNG		"1.6.24"
+setenv	EBDEVELLIBPNG		"$root/easybuild/libpng-1.6.24-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

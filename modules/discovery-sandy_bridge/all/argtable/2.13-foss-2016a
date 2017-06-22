@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Argtable is an ANSI C library for parsing GNU style 
+ command line options with a minimum of fuss.
+
+
+More information
+================
+ - Homepage: http://argtable.sourceforge.net/
+    }
+}
+
+module-whatis {Description:  Argtable is an ANSI C library for parsing GNU style 
+ command line options with a minimum of fuss. }
+module-whatis {Homepage: http://argtable.sourceforge.net/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/argtable/2.13-foss-2016a
+
+conflict argtable
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTARGTABLE		"$root"
+setenv	EBVERSIONARGTABLE		"2.13"
+setenv	EBDEVELARGTABLE		"$root/easybuild/argtable-2.13-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

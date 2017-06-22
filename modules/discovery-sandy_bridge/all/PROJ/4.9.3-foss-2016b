@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Program proj is a standard Unix filter function which converts 
+geographic longitude and latitude coordinates into cartesian coordinates
+
+
+More information
+================
+ - Homepage: http://trac.osgeo.org/proj/
+    }
+}
+
+module-whatis {Description: Program proj is a standard Unix filter function which converts 
+geographic longitude and latitude coordinates into cartesian coordinates}
+module-whatis {Homepage: http://trac.osgeo.org/proj/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/PROJ/4.9.3-foss-2016b
+
+conflict PROJ
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPROJ		"$root"
+setenv	EBVERSIONPROJ		"4.9.3"
+setenv	EBDEVELPROJ		"$root/easybuild/PROJ-4.9.3-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

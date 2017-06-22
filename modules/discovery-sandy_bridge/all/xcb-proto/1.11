@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint,
+latency hiding, direct access to the protocol, improved threading support, and extensibility.
+
+
+More information
+================
+ - Homepage: http://xcb.freedesktop.org/
+    }
+}
+
+module-whatis {Description: The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint,
+latency hiding, direct access to the protocol, improved threading support, and extensibility.}
+module-whatis {Homepage: http://xcb.freedesktop.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/xcb-proto/1.11
+
+conflict xcb-proto
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXCBMINPROTO		"$root"
+setenv	EBVERSIONXCBMINPROTO		"1.11"
+setenv	EBDEVELXCBMINPROTO		"$root/easybuild/xcb-proto-1.11-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1
