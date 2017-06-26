@@ -1,7 +1,7 @@
 easyblock = 'ConfigureMake'
 
 name = "libunwind"
-version = "1.1"
+version = "1.2.1"
 
 homepage = 'http://www.nongnu.org/libunwind/'
 description = """The primary goal of libunwind is to define a portable and efficient C programming interface
