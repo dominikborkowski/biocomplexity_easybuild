@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+beagle-lib is a high-performance library that can perform the core
+calculations at the heart of most Bayesian and Maximum Likelihood
+phylogenetics packages.
+
+
+More information
+================
+ - Homepage: https://github.com/beagle-dev/beagle-lib
+    }
+}
+
+module-whatis {Description: 
+beagle-lib is a high-performance library that can perform the core
+calculations at the heart of most Bayesian and Maximum Likelihood
+phylogenetics packages.
+}
+module-whatis {Homepage: https://github.com/beagle-dev/beagle-lib}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/beagle-lib/2.1.2-foss-2016a
+
+conflict beagle-lib
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Java/1.8.0_92 ] } {
+    module load Java/1.8.0_92
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTBEAGLEMINLIB		"$root"
+setenv	EBVERSIONBEAGLEMINLIB		"2.1.2"
+setenv	EBDEVELBEAGLEMINLIB		"$root/easybuild/beagle-lib-2.1.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

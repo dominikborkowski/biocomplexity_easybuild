@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+MrBayes is a program for the Bayesian estimation of phylogeny.
+
+
+More information
+================
+ - Homepage: http://mrbayes.csit.fsu.edu
+    }
+}
+
+module-whatis {Description: MrBayes is a program for the Bayesian estimation of phylogeny.}
+module-whatis {Homepage: http://mrbayes.csit.fsu.edu}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/MrBayes/3.2.6-foss-2016a
+
+conflict MrBayes
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded beagle-lib/2.1.2-foss-2016a ] } {
+    module load beagle-lib/2.1.2-foss-2016a
+}
+
+if { ![ is-loaded libreadline/6.3-foss-2016a ] } {
+    module load libreadline/6.3-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMRBAYES		"$root"
+setenv	EBVERSIONMRBAYES		"3.2.6"
+setenv	EBDEVELMRBAYES		"$root/easybuild/MrBayes-3.2.6-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

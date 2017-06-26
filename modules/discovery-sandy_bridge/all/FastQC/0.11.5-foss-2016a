@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+FastQC is a quality control application for high throughput sequence data.
+ It reads in sequence data in a variety of formats and can either provide an interactive
+ application to review the results of several different QC checks, or create an HTML based
+ report which can be integrated into a pipeline.
+
+
+More information
+================
+ - Homepage: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+    }
+}
+
+module-whatis {Description: FastQC is a quality control application for high throughput sequence data.
+ It reads in sequence data in a variety of formats and can either provide an interactive
+ application to review the results of several different QC checks, or create an HTML based
+ report which can be integrated into a pipeline.}
+module-whatis {Homepage: http://www.bioinformatics.babraham.ac.uk/projects/fastqc/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/FastQC/0.11.5-foss-2016a
+
+conflict FastQC
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Java/1.8.0_92 ] } {
+    module load Java/1.8.0_92
+}
+
+prepend-path	CLASSPATH		$root/cisd-jhdf5.jar
+prepend-path	CLASSPATH		$root/jbzip2-0.9.jar
+prepend-path	CLASSPATH		$root/sam-1.103.jar
+setenv	EBROOTFASTQC		"$root"
+setenv	EBVERSIONFASTQC		"0.11.5"
+setenv	EBDEVELFASTQC		"$root/easybuild/FastQC-0.11.5-foss-2016a-easybuild-devel"
+
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.2.1

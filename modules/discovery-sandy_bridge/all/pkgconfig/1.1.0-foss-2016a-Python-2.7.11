@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+pkgconfig is a Python module to interface with the pkg-config command line tool
+
+
+More information
+================
+ - Homepage: http://github.com/matze/pkgconfig
+    }
+}
+
+module-whatis {Description: pkgconfig is a Python module to interface with the pkg-config command line tool}
+module-whatis {Homepage: http://github.com/matze/pkgconfig}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/pkgconfig/1.1.0-foss-2016a-Python-2.7.11
+
+conflict pkgconfig
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded pkg-config/0.29-foss-2016a ] } {
+    module load pkg-config/0.29-foss-2016a
+}
+
+setenv	EBROOTPKGCONFIG		"$root"
+setenv	EBVERSIONPKGCONFIG		"1.1.0"
+setenv	EBDEVELPKGCONFIG		"$root/easybuild/pkgconfig-1.1.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.2.1

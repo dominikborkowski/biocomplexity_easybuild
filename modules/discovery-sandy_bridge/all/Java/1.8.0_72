@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers.
+
+
+More information
+================
+ - Homepage: http://java.com/
+    }
+}
+
+module-whatis {Description: Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers.}
+module-whatis {Homepage: http://java.com/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Java/1.8.0_72
+
+conflict Java
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTJAVA		"$root"
+setenv	EBVERSIONJAVA		"1.8.0_72"
+setenv	EBDEVELJAVA		"$root/easybuild/Java-1.8.0_72-easybuild-devel"
+
+prepend-path	PATH		$root
+setenv	JAVA_HOME		"/apps/easybuild/software/discovery-sandy_bridge/Java/1.8.0_72"
+# Built with EasyBuild version 3.2.1
