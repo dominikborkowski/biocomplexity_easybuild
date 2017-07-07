@@ -1,0 +1,68 @@
+# Built with EasyBuild version 3.2.1 on 2017-07-07_18-32-48
+# Built with EasyBuild version 3.2.1 on 2017-06-26_09-40-40
+easyblock = 'EB_EasyBuildMeta'
+
+name = 'EasyBuild'
+version = '3.3.0'
+
+homepage = 'http://hpcugent.github.com/easybuild/'
+description = """EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [
+    # vsc-install
+    'https://pypi.python.org/packages/82/ec/19d85d2bb91b562195d00db9ac82d7529904e7eabc0597720966bf74714f/',
+    # vsc-base
+    'https://pypi.python.org/packages/f7/66/1ff7ecc4a93ba37e063f5bfbe395e95a547b1dec73b017c2724f4475a958/',
+    # easybuild-framework
+    'https://pypi.python.org/packages/b6/8b/383298ddd7718b8455b26719d39c686105ccdba55b66bdd0971ac0a69d70/',
+    # easybuild-easyblocks
+    'https://pypi.python.org/packages/1d/3d/53ea1c02d7a77fcc6c1aa6620a8a6f2e45d3fddf9657919b749c4834b4fb/',
+    # easybuild-easyconfigs
+    'https://pypi.python.org/packages/c8/c0/829c6ddd864f9980c09eb5acec7dc8ece747831f6f3b76852f2796a563fb/',
+]
+# order matters a lot, to avoid having dependencies auto-resolved (--no-deps easy_install option doesn't work?)
+sources = [
+    'setuptools-29.0.1.zip',
+    'vsc-install-0.10.26.tar.gz',
+    'vsc-base-2.5.8.tar.gz',
+    'easybuild-framework-%(version)s.tar.gz',
+    'easybuild-easyblocks-%(version)s.tar.gz',
+    'easybuild-easyconfigs-%(version)s.tar.gz',
+]
+
+# EasyBuild is a (set of) Python packages, so it depends on Python
+# usually, we want to use the system Python, so no actual Python dependency is listed
+allow_system_deps = [('Python', SYS_PYTHON_VERSION)]
+
+moduleclass = 'tools'
+
+
+# Build statistics
+buildstats = [{
+    "build_time": 45.88,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.2.1/lib64/python2.6/site-packages/easybuild_easyconfigs-3.2.1-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'EasyBuild-3.3.0.eb'],
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2925.864,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.2.1",
+    "easybuild-framework_version": "3.2.1",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "install_size": 25613660,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1499466766,
+    "total_memory": 96866,
+}]
