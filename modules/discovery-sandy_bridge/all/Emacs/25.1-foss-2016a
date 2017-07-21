@@ -1,0 +1,53 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GNU Emacs is an extensible, customizable text editor—and more.
+ At its core is an interpreter for Emacs Lisp, a dialect of the Lisp programming language
+ with extensions to support text editing.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/emacs/
+    }
+}
+
+module-whatis {Description: GNU Emacs is an extensible, customizable text editor—and more.
+ At its core is an interpreter for Emacs Lisp, a dialect of the Lisp programming language
+ with extensions to support text editing.}
+module-whatis {Homepage: http://www.gnu.org/software/emacs/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Emacs/25.1-foss-2016a
+
+conflict Emacs
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+if { ![ is-loaded libpng/1.6.23-foss-2016a ] } {
+    module load libpng/1.6.23-foss-2016a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.0-foss-2016a ] } {
+    module load libjpeg-turbo/1.5.0-foss-2016a
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016a ] } {
+    module load ncurses/6.0-foss-2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTEMACS		"$root"
+setenv	EBVERSIONEMACS		"25.1"
+setenv	EBDEVELEMACS		"$root/easybuild/Emacs-25.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.3.0
