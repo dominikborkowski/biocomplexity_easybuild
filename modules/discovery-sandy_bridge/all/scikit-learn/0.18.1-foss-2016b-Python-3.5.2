@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Scikit-learn integrates machine learning algorithms in the tightly-knit scientific Python world,
+building upon numpy, scipy, and matplotlib. As a machine-learning module,
+it provides versatile tools for data mining and analysis in any field of science and engineering.
+It strives to be simple and efficient, accessible to everybody, and reusable in various contexts.
+
+
+More information
+================
+ - Homepage: http://scikit-learn.org/stable/index.html
+    }
+}
+
+module-whatis {Description: Scikit-learn integrates machine learning algorithms in the tightly-knit scientific Python world,
+building upon numpy, scipy, and matplotlib. As a machine-learning module,
+it provides versatile tools for data mining and analysis in any field of science and engineering.
+It strives to be simple and efficient, accessible to everybody, and reusable in various contexts.}
+module-whatis {Homepage: http://scikit-learn.org/stable/index.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/scikit-learn/0.18.1-foss-2016b-Python-3.5.2
+
+conflict scikit-learn
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+if { ![ is-loaded matplotlib/1.5.3-foss-2016b-Python-3.5.2 ] } {
+    module load matplotlib/1.5.3-foss-2016b-Python-3.5.2
+}
+
+setenv	EBROOTSCIKITMINLEARN		"$root"
+setenv	EBVERSIONSCIKITMINLEARN		"0.18.1"
+setenv	EBDEVELSCIKITMINLEARN		"$root/easybuild/scikit-learn-0.18.1-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.3.1
