@@ -1,0 +1,13 @@
+diff --git a/easybuild/easyblocks/e/easybuildmeta.py b/easybuild/easyblocks/e/easybuildmeta.py
+index 30022a5..d3e6d57 100644
+--- a/easybuild/easyblocks/e/easybuildmeta.py
++++ b/easybuild/easyblocks/e/easybuildmeta.py
+@@ -81,7 +81,7 @@ class EB_EasyBuildMeta(PythonPackage):
+         """Install EasyBuild packages one by one."""
+         try:
+             subdirs = os.listdir(self.builddir)
+-            for pkg in self.easybuild_pkgs:
++            for pkg in ['setuptools'] + self.easybuild_pkgs:
+                 seldirs = [x for x in subdirs if x.startswith(pkg)]
+                 if len(seldirs) != 1:
+                     # vsc-install and vsc-base sources are optional,
