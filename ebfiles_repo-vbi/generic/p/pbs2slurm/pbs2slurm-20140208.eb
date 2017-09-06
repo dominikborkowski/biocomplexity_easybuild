@@ -1,0 +1,43 @@
+##
+# EasyBuild reciPY for pbs2slurm - https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2017 Biocomplexity Institute of Virginia Tech
+# Authors::   Dominik L. Borkowski
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'Tarball'
+
+name = 'pbs2slurm'
+version = '20140208'
+
+homepage = 'https://github.com/bjpop/pbs2slurm'
+description = """Convert a Torque/PBS job script into SLURM notation"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://github.com/bjpop/pbs2slurm/archive/']
+sources = ['master.tar.gz']
+
+checksums = ['8cdd8d34565ac4ecdd5fb980a3e67899']
+
+sources = [{
+    'filename': 'pbs2slurm-%(version)s.tar.gz',
+    'download_filename': 'master.tar.gz', 
+    'extract_cmd': "tar xfvz %s", 
+}]
+
+postinstallcmds = [
+    "mkdir %(installdir)s/bin",
+    "ln -s %(installdir)s/%(name)s.py %(installdir)s/bin/%(name)s",
+]
+
+sanity_check_paths = {
+    'files': ['bin/%(name)s', '%(name)s.py'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
+
