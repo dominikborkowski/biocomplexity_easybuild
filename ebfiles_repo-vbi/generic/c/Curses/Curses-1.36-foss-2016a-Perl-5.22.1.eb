@@ -1,0 +1,33 @@
+easyblock = 'PerlModule'
+
+name = 'Curses'
+version = '1.36'
+
+homepage = 'http://search.cpan.org/~giraffed/Curses-1.36/Curses.pm'
+description = """terminal screen handling and optimization"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+
+source_urls = ['http://cpan.metacpan.org/authors/id/G/GI/GIRAFFED/']
+sources = [SOURCE_TAR_GZ]
+
+perl = 'Perl'
+perlver = '5.22.1'
+versionsuffix = '-%s-%s' % (perl, perlver)
+
+dependencies = [
+    (perl, perlver),
+    ("ncurses", "6.0"),
+]
+
+
+options = {'modulename': 'Curses'}
+
+perlmajver = perlver.split('.')[0]
+sanity_check_paths = {
+    'files': ['lib/perl%s/site_perl/%s/x86_64-linux-thread-multi/Curses.pm' % (perlmajver, perlver)],
+    'dirs': [],
+}
+
+moduleclass = 'devel'
