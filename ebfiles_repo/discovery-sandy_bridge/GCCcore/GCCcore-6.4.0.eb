@@ -1,0 +1,87 @@
+# Built with EasyBuild version 3.4.0 on 2017-09-11_16-47-09
+easyblock = 'EB_GCC'
+
+name = 'GCCcore'
+version = '6.4.0'
+
+homepage = 'http://gcc.gnu.org/'
+
+description = """
+ The GNU Compiler Collection includes front ends for C, C++, Objective-C,
+ Fortran, Java, and Ada, as well as libraries for these languages (libstdc++,
+ libgcj,...).  [NOTE: This module does not include Objective-C, Java or Ada]
+"""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+mpfr_version = '3.1.5'
+
+source_urls = [
+    'http://ftpmirror.gnu.org/gnu/gcc/gcc-%(version)s',  # GCC auto-resolving HTTP mirror
+    'http://ftpmirror.gnu.org/gnu/gmp',  # idem for GMP
+    'http://ftpmirror.gnu.org/gnu/mpfr',  # idem for MPFR
+    'http://www.multiprecision.org/mpc/download',  # MPC official
+    'ftp://gcc.gnu.org/pub/gcc/infrastructure/',  # GCC dependencies
+    'http://gcc.cybermirror.org/infrastructure/',  # HTTP mirror for GCC dependencies
+    'http://isl.gforge.inria.fr/',  # original HTTP source for ISL
+]
+
+sources = [
+    'gcc-%(version)s.tar.gz',
+    'gmp-6.1.2.tar.bz2',
+    'mpfr-%s.tar.bz2' % mpfr_version,
+    'mpc-1.0.3.tar.gz',
+    'isl-0.16.1.tar.bz2',
+]
+
+builddependencies = [
+    ('M4', '1.4.18'),
+    ('binutils', '2.28'),
+]
+
+patches = [
+    ('mpfr-%s-allpatches-20170606.patch' % mpfr_version, '../mpfr-%s' % mpfr_version),
+    'GCCcore-6.2.0-fix-find-isl.patch',
+]
+
+checksums = [
+    '4715f02413f8a91d02d967521c084990c99ce1a671b8a450a80fbd4245f4b728',  # gcc-6.4.0.tar.gz
+    '5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2',  # gmp-6.1.2.tar.bz2
+    'ca498c1c7a74dd37a576f353312d1e68d490978de4395fa28f1cbd46a364e658',  # mpfr-3.1.5.tar.gz
+    '617decc6ea09889fb08ede330917a00b16809b8db88c29c31bfbb49cbf88ecc3',  # mpc-1.0.3.tar.gz
+    '412538bb65c799ac98e17e8cfcdacbb257a57362acfaaff254b0fcae970126d2',  # isl-0.16.1.tar.bz2
+    '137108952139486755e8c1bee30314ffa9233cc05cddfd848aa85503a6fea9d7',  # mpfr-3.1.5-allpatches-20170606.patch
+    '5ad909606d17d851c6ad629b4fddb6c1621844218b8d139fed18c502a7696c68',  # GCCcore-6.2.0-fix-find-isl.patch
+]
+
+languages = ['c', 'c++', 'fortran']
+
+withisl = True
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "build_time": 1488.26,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.4.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.4.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'gzip-1.8-GCCcore-6.4.0.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.4.0",
+    "easybuild-framework_version": "3.4.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/local/apps/gcc/6.1.0/libexec/gcc/x86_64-pc-linux-gnu/6.1.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../gcc-6.1.0/configure --prefix=/cm/local/apps/gcc/6.1.0 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpfr/src/.libs; Thread model: posix; gcc version 6.1.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery1",
+    "install_size": 939161003,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/cm/local/apps/gcc/6.1.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1505162828,
+    "total_memory": 64403,
+}]

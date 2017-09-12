@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+gzip (GNU zip) is a popular data compression program as
+ a replacement for compress
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/gzip/
+    }
+}
+
+module-whatis {Description: 
+ gzip (GNU zip) is a popular data compression program as
+ a replacement for compress
+}
+module-whatis {Homepage: http://www.gnu.org/software/gzip/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/gzip/1.8-GCCcore-6.4.0
+
+conflict gzip
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGZIP		"$root"
+setenv	EBVERSIONGZIP		"1.8"
+setenv	EBDEVELGZIP		"$root/easybuild/gzip-1.8-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0
