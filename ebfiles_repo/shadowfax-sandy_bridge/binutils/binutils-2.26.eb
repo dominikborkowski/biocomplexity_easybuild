@@ -1,0 +1,46 @@
+# Built with EasyBuild version 3.3.1 on 2017-08-31_10-56-23
+name = 'binutils'
+version = '2.26'
+
+homepage = 'http://directory.fsf.org/project/binutils/'
+description = "binutils: GNU binary utilities"
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+sources = [SOURCE_TAR_GZ]
+source_urls = [GNU_SOURCE]
+
+builddependencies = [
+    ('flex', '2.6.0'),
+    ('Bison', '3.0.4'),
+    # zlib required, but being linked instatically, so not a runtime dep
+    ('zlib', '1.2.8'),
+]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 90.07,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-sandy_bridge'", "--installpath-software='/apps/easybuild/software/shadowfax-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/software/shadowfax-sandy_bridge/EasyBuild/3.3.1/lib64/python2.6/site-packages/easybuild_easyconfigs-3.3.1-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/shadowfax-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'git-2.13.1-foss-2016b.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 2899.755,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.3.1",
+    "easybuild-framework_version": "3.3.1",
+    "gcc_version": "Using built-in specs.; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.3 --enable-ssp --disable-libssp --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --program-suffix=-4.3 --enable-linux-futex --without-system-libunwind --with-cpu=generic --build=x86_64-suse-linux; Thread model: posix; gcc version 4.3.4 [gcc-4_3-branch revision 152973] (SUSE Linux) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin3",
+    "install_size": 218003797,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1504191383,
+    "total_memory": 129153,
+}]

@@ -1,0 +1,60 @@
+# Built with EasyBuild version 3.2.1 on 2017-06-21_13-42-36
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Fotis Georgatos <fotis@cern.ch>
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'Automake'
+version = "1.15"
+
+homepage = 'http://www.gnu.org/software/automake/automake.html'
+description = "Automake: GNU Standards-compliant Makefile generator"
+
+toolchain = {'name': 'GCC', 'version': '4.9.2'}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [('Autoconf', '2.69')]
+
+sanity_check_paths = {
+    'files': ['bin/automake', 'bin/aclocal'],
+    'dirs': []
+}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "build_time": 5.05,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.2.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.2.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './Autoconf/Autoconf-2.69-foss-2015a.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.2.1",
+    "easybuild-framework_version": "3.2.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCC/4.9.2 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery1",
+    "install_size": 2389825,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1498066956,
+    "total_memory": 64403,
+}]

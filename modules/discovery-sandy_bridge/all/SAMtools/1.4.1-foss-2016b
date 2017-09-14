@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SAM Tools provide various utilities for manipulating alignments in the SAM format, 
+ including sorting, merging, indexing and generating alignments in a per-position format.
+
+
+More information
+================
+ - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Description: SAM Tools provide various utilities for manipulating alignments in the SAM format, 
+ including sorting, merging, indexing and generating alignments in a per-position format.}
+module-whatis {Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/SAMtools/1.4.1-foss-2016b
+
+conflict SAMtools
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016b ] } {
+    module load ncurses/6.0-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+if { ![ is-loaded XZ/5.2.2-foss-2016b ] } {
+    module load XZ/5.2.2-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTSAMTOOLS		"$root"
+setenv	EBVERSIONSAMTOOLS		"1.4.1"
+setenv	EBDEVELSAMTOOLS		"$root/easybuild/SAMtools-1.4.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0

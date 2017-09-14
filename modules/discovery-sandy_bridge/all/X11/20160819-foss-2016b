@@ -1,0 +1,55 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The X Window System (X11) is a windowing system for bitmap displays
+
+
+More information
+================
+ - Homepage: https://www.x.org
+    }
+}
+
+module-whatis {Description: The X Window System (X11) is a windowing system for bitmap displays}
+module-whatis {Homepage: https://www.x.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/X11/20160819-foss-2016b
+
+conflict X11
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded freetype/2.6.5-foss-2016b ] } {
+    module load freetype/2.6.5-foss-2016b
+}
+
+if { ![ is-loaded fontconfig/2.12.1-foss-2016b ] } {
+    module load fontconfig/2.12.1-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+prepend-path	PKG_CONFIG_PATH		$root/share/pkgconfig
+setenv	EBROOTX11		"$root"
+setenv	EBVERSIONX11		"20160819"
+setenv	EBDEVELX11		"$root/easybuild/X11-20160819-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

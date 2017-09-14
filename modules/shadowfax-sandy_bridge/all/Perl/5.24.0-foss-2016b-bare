@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Larry Wall's Practical Extraction and Report Language
+
+
+More information
+================
+ - Homepage: http://www.perl.org/
+    }
+}
+
+module-whatis {Description: Larry Wall's Practical Extraction and Report Language}
+module-whatis {Homepage: http://www.perl.org/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/Perl/5.24.0-foss-2016b-bare
+
+conflict Perl
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTPERL		"$root"
+setenv	EBVERSIONPERL		"5.24.0"
+setenv	EBDEVELPERL		"$root/easybuild/Perl-5.24.0-foss-2016b-bare-easybuild-devel"
+
+# Built with EasyBuild version 3.3.1

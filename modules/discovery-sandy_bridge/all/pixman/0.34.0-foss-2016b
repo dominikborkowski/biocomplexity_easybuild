@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Pixman is a low-level software library for pixel manipulation, providing features such as image
+compositing and trapezoid rasterization. Important users of pixman are the cairo graphics library and the X server.
+
+
+More information
+================
+ - Homepage: http://www.pixman.org/
+    }
+}
+
+module-whatis {Description: Pixman is a low-level software library for pixel manipulation, providing features such as image
+compositing and trapezoid rasterization. Important users of pixman are the cairo graphics library and the X server.}
+module-whatis {Homepage: http://www.pixman.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/pixman/0.34.0-foss-2016b
+
+conflict pixman
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPIXMAN		"$root"
+setenv	EBVERSIONPIXMAN		"0.34.0"
+setenv	EBDEVELPIXMAN		"$root/easybuild/pixman-0.34.0-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

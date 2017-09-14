@@ -35,7 +35,7 @@ author: Kenneth Hoste (HPC-UGent)
  
  bcftools: $(HTSLIB) $(OBJS)
 -	$(CC) $(ALL_LDFLAGS) -o $@ $(OBJS) $(HTSLIB) -lpthread $(HTSLIB_LIBS) $(GSL_LIBS) $(ALL_LIBS)
-+	$(CC) $(ALL_LDFLAGS) -o $@ $(OBJS) $(HTSLIB) -lpthread -L${EBROOTZLIB}/lib -lz -lm -ldl $(GSL_LIBS) $(LIBS)
++	$(CC) $(ALL_LDFLAGS) -o $@ $(OBJS) $(HTSLIB) -lpthread -L${EBROOTZLIB}/lib -lz -llzma -lbz2 -lcurl -lm -ldl $(GSL_LIBS) $(LIBS)
  
  doc/bcftools.1: doc/bcftools.txt
  	cd doc && a2x -adate="$(DOC_DATE)" -aversion=$(DOC_VERSION) --doctype manpage --format manpage bcftools.txt

@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+InterProScan is a sequence analysis application (nucleotide and protein sequences) that combines
+ different protein signature recognition methods into one resource.
+
+
+More information
+================
+ - Homepage: http://www.ebi.ac.uk/interpro/
+    }
+}
+
+module-whatis {Description: InterProScan is a sequence analysis application (nucleotide and protein sequences) that combines
+ different protein signature recognition methods into one resource.}
+module-whatis {Homepage: http://www.ebi.ac.uk/interpro/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/InterProScan/5.25-64.0-foss-2016b
+
+conflict InterProScan
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Java/1.8.0_121 ] } {
+    module load Java/1.8.0_121
+}
+
+if { ![ is-loaded Perl/5.24.0-foss-2016b ] } {
+    module load Perl/5.24.0-foss-2016b
+}
+
+if { ![ is-loaded libgd/2.2.4-foss-2016b ] } {
+    module load libgd/2.2.4-foss-2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+prepend-path	CLASSPATH		$root/interproscan-5.jar
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTINTERPROSCAN		"$root"
+setenv	EBVERSIONINTERPROSCAN		"5.25-64.0"
+setenv	EBDEVELINTERPROSCAN		"$root/easybuild/InterProScan-5.25-64.0-foss-2016b-easybuild-devel"
+
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.4.0

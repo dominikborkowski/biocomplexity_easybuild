@@ -1,0 +1,61 @@
+# Built with EasyBuild version 3.3.0 on 2017-08-02_21-59-09
+easyblock = 'ConfigureMake'
+
+name = 'OpenMPI'
+version = '2.0.2'
+
+homepage = 'http://www.open-mpi.org/'
+description = """The Open MPI Project is an open source MPI-2 implementation."""
+
+toolchain = {'name': 'GCC', 'version': '6.3.0-2.27'}
+
+source_urls = ['http://www.open-mpi.org/software/ompi/v%(version_major_minor)s/downloads']
+sources = [SOURCELOWER_TAR_GZ]
+
+checksums = ['886698becc5bea8c151c0af2074b8392']
+
+dependencies = [('hwloc', '1.11.5')]
+
+configopts = '--enable-shared --enable-mpi-thread-multiple --with-verbs '
+configopts += '--enable-mpirun-prefix-by-default '  # suppress failure modes in relation to mpirun path
+configopts += '--with-hwloc=$EBROOTHWLOC '  # hwloc support
+configopts += '--disable-dlopen '  # statically link component, don't do dynamic loading
+
+# needed for --with-verbs
+osdependencies = [('libibverbs-dev', 'libibverbs-devel')]
+
+libs = ["mpi_mpifh", "mpi", "ompitrace", "open-pal", "open-rte"]
+sanity_check_paths = {
+    'files': ["bin/%s" % binfile for binfile in ["ompi_info", "opal_wrapper", "orterun"]] +
+             ["lib/lib%s.%s" % (libfile, SHLIB_EXT) for libfile in libs] +
+             ["include/%s.h" % x for x in ["mpi-ext", "mpif-config", "mpif", "mpi", "mpi_portable_platform"]],
+    'dirs': [],
+}
+
+moduleclass = 'mpi'
+
+# Build statistics
+buildstats = [{
+    "build_time": 500.0,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-3.3.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'Check-0.11.0-foss-2017a.eb'],
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2925.864,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.3.0",
+    "easybuild-framework_version": "3.3.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/6.3.0/libexec/gcc/x86_64-pc-linux-gnu/6.3.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/6.3.0 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/6.3.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.3.0/dummy-/gcc-6.3.0/stage2_stuff; Thread model: posix; gcc version 6.3.0 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "install_size": 25935242,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/6.3.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1501725549,
+    "total_memory": 96866,
+}]

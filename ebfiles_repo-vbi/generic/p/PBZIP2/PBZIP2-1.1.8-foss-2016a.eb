@@ -21,6 +21,10 @@ sources = [SOURCELOWER_TAR_GZ]
 
 buildopts = " CC=$CXX"
 
+dependencies = [
+    ('bzip2', '1.0.6'),
+]
+
 parallel = 1
 
 files_to_copy = [(["pbzip2"], "bin"), (["pbzip2.1"], "man/man1"), "README", "ChangeLog"]

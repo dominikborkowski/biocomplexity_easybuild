@@ -1,0 +1,112 @@
+# Built with EasyBuild version 3.2.1 on 2017-06-21_16-56-03
+# Built with EasyBuild version 2.7.0 on 2016-05-10_13-00-36
+# This is an easyconfig file for EasyBuild, see https://github.com/hpcugent/easybuild
+# Copyright:: Copyright 2013 Juelich Supercomputing Centre, Germany
+# Authors::   Bernd Mohr <b.mohr@fz-juelich.de>
+# License::   New BSD
+#
+# This work is based from experiences from the UNITE project
+# http://apps.fz-juelich.de/unite/
+##
+easyblock = 'EB_Score_minus_P'
+
+name = "OTF2"
+version = "1.5.1"
+
+homepage = 'http://www.score-p.org'
+description = """The Open Trace Format 2 is a highly scalable, memory efficient event
+ trace data format plus support library. It will become the new standard trace format
+ for Scalasca, Vampir, and Tau and is open for other tools."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = ['http://www.vi-hps.org/upload/packages/otf2/']
+
+checksums = [
+    '16a9df46e0da78e374f5d12c8cdc1109',     # otf2-1.5.1.tar.gz
+]
+
+sanity_check_paths = {
+    # note by Bernd Mohr: on some systems libraries end up in lib/
+    'files': ["bin/otf2-config", "include/otf2/otf2.h", ("lib64/libotf2.a", "lib/libotf2.a")],
+    'dirs': [],
+}
+
+moduleclass = 'perf'
+
+# Build statistics
+buildstats = [{
+    "easybuild-framework_version": "2.7.0",
+    "easybuild-easyblocks_version": "2.7.0",
+    "timestamp": 1462899636,
+    "build_time": 16.17,
+    "install_size": 22484310,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'OTF2-1.5.1-foss-2016a.eb'],
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.055,
+    "cpu_vendor": "Intel",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+}]
+
+# Build statistics
+buildstats = [
+{
+    "build_time": 16.17,
+    "command_line": ['--buildpath=/dev/shm/dom/build', '--group-writable-installdir', '--installpath-modules=/apps/easybuild/modules/shadowfax-westmere', '--installpath-software=/apps/easybuild/software/shadowfax-westmere', '--repositorypath=/apps/easybuild/ebfiles_repo/shadowfax-westmere', '--robot=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/2.7.0/lib64/python2.6/site-packages/easybuild_easyconfigs-2.7.0-py2.6.egg/easybuild/easyconfigs', '--robot-paths=/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:', '--set-gid-bit', '--sourcepath=/apps/easybuild/sources', '--sticky-bit', '--umask=002', 'OTF2-1.5.1-foss-2016a.eb'],
+    "core_count": 12,
+    "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
+    "cpu_speed": 2926.055,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "2.7.0",
+    "easybuild-framework_version": "2.7.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.11.3",
+    "hostname": "sfxlogin1",
+    "install_size": 22484310,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "11_SP3",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1462899636,
+},
+{
+    "build_time": 24.48,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.2.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.2.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './OTF2/OTF2-1.5.1-foss-2016a.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.2.1",
+    "easybuild-framework_version": "3.2.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery1",
+    "install_size": 22473045,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1498078563,
+    "total_memory": 64403,
+},
+]

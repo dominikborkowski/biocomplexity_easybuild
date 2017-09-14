@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+xz: XZ utilities
+
+
+More information
+================
+ - Homepage: http://tukaani.org/xz/
+    }
+}
+
+module-whatis {Description: xz: XZ utilities}
+module-whatis {Homepage: http://tukaani.org/xz/}
+
+set root /apps/easybuild/software/shadowfax-sandy_bridge/XZ/5.2.2-foss-2016b
+
+conflict XZ
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXZ		"$root"
+setenv	EBVERSIONXZ		"5.2.2"
+setenv	EBDEVELXZ		"$root/easybuild/XZ-5.2.2-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.3.1

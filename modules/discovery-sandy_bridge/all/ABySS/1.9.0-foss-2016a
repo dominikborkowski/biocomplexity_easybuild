@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
+
+
+More information
+================
+ - Homepage: http://www.bcgsc.ca/platform/bioinfo/software/abyss
+    }
+}
+
+module-whatis {Description: Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler}
+module-whatis {Homepage: http://www.bcgsc.ca/platform/bioinfo/software/abyss}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/ABySS/1.9.0-foss-2016a
+
+conflict ABySS
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Boost/1.60.0-foss-2016a ] } {
+    module load Boost/1.60.0-foss-2016a
+}
+
+if { ![ is-loaded SQLite/3.9.2-foss-2016a ] } {
+    module load SQLite/3.9.2-foss-2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTABYSS		"$root"
+setenv	EBVERSIONABYSS		"1.9.0"
+setenv	EBDEVELABYSS		"$root/easybuild/ABySS-1.9.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

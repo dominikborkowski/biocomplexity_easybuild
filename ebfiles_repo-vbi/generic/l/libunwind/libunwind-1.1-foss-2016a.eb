@@ -20,4 +20,6 @@ sanity_check_paths = {
     'dirs': []
 }
 
+dependencies = [ ('XZ', '5.2.2') ]
+
 moduleclass = 'lib'

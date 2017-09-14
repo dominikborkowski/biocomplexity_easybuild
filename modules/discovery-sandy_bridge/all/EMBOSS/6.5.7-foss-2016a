@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+EMBOSS is 'The European Molecular Biology Open Software Suite'.
+ EMBOSS is a free Open Source software analysis package specially developed for
+ the needs of the molecular biology (e.g. EMBnet) user community.
+
+
+More information
+================
+ - Homepage: http://emboss.sourceforge.net/
+    }
+}
+
+module-whatis {Description: EMBOSS is 'The European Molecular Biology Open Software Suite'.
+ EMBOSS is a free Open Source software analysis package specially developed for
+ the needs of the molecular biology (e.g. EMBnet) user community.}
+module-whatis {Homepage: http://emboss.sourceforge.net/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/EMBOSS/6.5.7-foss-2016a
+
+conflict EMBOSS
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libharu/2.3.0-foss-2016a ] } {
+    module load libharu/2.3.0-foss-2016a
+}
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTEMBOSS		"$root"
+setenv	EBVERSIONEMBOSS		"6.5.7"
+setenv	EBDEVELEMBOSS		"$root/easybuild/EMBOSS-6.5.7-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

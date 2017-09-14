@@ -1,0 +1,44 @@
+# EasyConfig for InterProScan
+
+easyblock = 'Tarball'
+
+name = 'InterProScan'
+version = '5.25-64.0'
+
+homepage = 'http://www.ebi.ac.uk/interpro/'
+description = """InterProScan is a sequence analysis application (nucleotide and protein sequences) that combines
+ different protein signature recognition methods into one resource."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = [
+    'http://ftp.ebi.ac.uk/pub/software/unix/iprscan/%(version_major)s/%(version)s/',
+]
+
+sources = [
+    '%(namelower)s-%(version)s-64-bit.tar.gz',
+]
+
+checksums = [
+    '4b4f7b8f1e04ca3c7fa94bd311e6d07c',
+]
+
+dependencies = [
+    ('Java', '1.8.0_121', '', True),
+    ('Perl', '5.24.0'),
+    ('libgd', '2.2.4'),
+    ('Python', '2.7.12'),
+]
+
+# InterProScan has an unusal method of execution via interproscan.sh script, which is in the root
+#  installation directory, rather than bin dir. Since EasyBuild creates $PATH entry only if it detects
+#  files in bin/, we have to explicitly tell it to add the root of the install path
+modextrapaths = {'PATH': ''}
+
+
+sanity_check_paths = {
+    'files': ['interproscan-%(version_major)s.jar', 'interproscan.sh', 'interproscan.properties'],
+    'dirs': ['bin', 'lib', 'data'],
+}
+
+moduleclass = 'bio'

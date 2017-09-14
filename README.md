@@ -101,7 +101,9 @@ git add <appropriate dirs or files>
 git commit -m 'installed Cufflinks-2.2.1-foss-2016a.eb'
 ```
 
-## Installation documentation
+## Documentation
+
+### Random installation docs
 
 * [Original design goals](docs/original_design.md)
 * [Detailed setup description and installation notes for this repository](docs/installation.md)
@@ -110,7 +112,9 @@ git commit -m 'installed Cufflinks-2.2.1-foss-2016a.eb'
 * [Using distributed jobs to compile software with EasyBuild ](docs/distributed_jobs.md)
 * [Examples of EasyConfigs](docs/example_easyconfigs.md)
 
+## Presentations
 
+* [Presentation on EasyBuild at Biocomplexity Institute](docs/introduction_to_easybuild-2017.09.11.pdf)
 
 
 

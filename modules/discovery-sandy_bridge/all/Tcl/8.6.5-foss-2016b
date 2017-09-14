@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language,
+suitable for a very wide range of uses, including web and desktop applications, networking, administration,
+testing and many more.
+
+
+More information
+================
+ - Homepage: http://www.tcl.tk/
+    }
+}
+
+module-whatis {Description: Tcl (Tool Command Language) is a very powerful but easy to learn dynamic programming language,
+suitable for a very wide range of uses, including web and desktop applications, networking, administration,
+testing and many more.}
+module-whatis {Homepage: http://www.tcl.tk/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Tcl/8.6.5-foss-2016b
+
+conflict Tcl
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTTCL		"$root"
+setenv	EBVERSIONTCL		"8.6.5"
+setenv	EBDEVELTCL		"$root/easybuild/Tcl-8.6.5-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

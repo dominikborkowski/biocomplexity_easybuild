@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+zlib is designed to be a free, general-purpose, legally unencumbered -- that
+ is, not covered by any patents -- lossless data-compression library for use
+ on virtually any computer hardware and operating system.
+
+
+More information
+================
+ - Homepage: http://www.zlib.net/
+    }
+}
+
+module-whatis {Description: 
+ zlib is designed to be a free, general-purpose, legally unencumbered -- that
+ is, not covered by any patents -- lossless data-compression library for use
+ on virtually any computer hardware and operating system.
+}
+module-whatis {Homepage: http://www.zlib.net/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/zlib/1.2.11
+
+conflict zlib
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTZLIB		"$root"
+setenv	EBVERSIONZLIB		"1.2.11"
+setenv	EBDEVELZLIB		"$root/easybuild/zlib-1.2.11-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0

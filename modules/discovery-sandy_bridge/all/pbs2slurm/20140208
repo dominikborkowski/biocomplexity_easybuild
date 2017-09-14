@@ -1,0 +1,28 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Convert a Torque/PBS job script into SLURM notation
+
+
+More information
+================
+ - Homepage: https://github.com/bjpop/pbs2slurm
+    }
+}
+
+module-whatis {Description: Convert a Torque/PBS job script into SLURM notation}
+module-whatis {Homepage: https://github.com/bjpop/pbs2slurm}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/pbs2slurm/20140208
+
+conflict pbs2slurm
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPBS2SLURM		"$root"
+setenv	EBVERSIONPBS2SLURM		"20140208"
+setenv	EBDEVELPBS2SLURM		"$root/easybuild/pbs2slurm-20140208-easybuild-devel"
+
+# Built with EasyBuild version 3.3.1

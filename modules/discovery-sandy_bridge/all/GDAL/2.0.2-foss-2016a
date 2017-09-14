@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GDAL is a translator library for raster geospatial data formats that is released under an X/MIT style
+ Open Source license by the Open Source Geospatial Foundation. As a library, it presents a single abstract data model
+ to the calling application for all supported formats. It also comes with a variety of useful commandline utilities for
+ data translation and processing.
+
+
+More information
+================
+ - Homepage: http://www.gdal.org/
+    }
+}
+
+module-whatis {Description: GDAL is a translator library for raster geospatial data formats that is released under an X/MIT style
+ Open Source license by the Open Source Geospatial Foundation. As a library, it presents a single abstract data model
+ to the calling application for all supported formats. It also comes with a variety of useful commandline utilities for
+ data translation and processing.}
+module-whatis {Homepage: http://www.gdal.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/GDAL/2.0.2-foss-2016a
+
+conflict GDAL
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded netCDF/4.3.3.1-foss-2016a ] } {
+    module load netCDF/4.3.3.1-foss-2016a
+}
+
+if { ![ is-loaded expat/2.1.0-foss-2016a ] } {
+    module load expat/2.1.0-foss-2016a
+}
+
+if { ![ is-loaded libxml2/2.9.3-foss-2016a ] } {
+    module load libxml2/2.9.3-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGDAL		"$root"
+setenv	EBVERSIONGDAL		"2.0.2"
+setenv	EBDEVELGDAL		"$root/easybuild/GDAL-2.0.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1

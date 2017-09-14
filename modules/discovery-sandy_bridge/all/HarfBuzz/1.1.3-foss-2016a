@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HarfBuzz is an OpenType text shaping engine.
+
+
+More information
+================
+ - Homepage: http://www.freedesktop.org/wiki/Software/HarfBuzz
+    }
+}
+
+module-whatis {Description: HarfBuzz is an OpenType text shaping engine.}
+module-whatis {Homepage: http://www.freedesktop.org/wiki/Software/HarfBuzz}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/HarfBuzz/1.1.3-foss-2016a
+
+conflict HarfBuzz
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded GLib/2.47.5-foss-2016a ] } {
+    module load GLib/2.47.5-foss-2016a
+}
+
+if { ![ is-loaded cairo/1.14.2-foss-2016a ] } {
+    module load cairo/1.14.2-foss-2016a
+}
+
+if { ![ is-loaded freetype/2.6.2-foss-2016a ] } {
+    module load freetype/2.6.2-foss-2016a
+}
+
+if { ![ is-loaded GObject-Introspection/1.47.1-foss-2016a ] } {
+    module load GObject-Introspection/1.47.1-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTHARFBUZZ		"$root"
+setenv	EBVERSIONHARFBUZZ		"1.1.3"
+setenv	EBDEVELHARFBUZZ		"$root/easybuild/HarfBuzz-1.1.3-foss-2016a-easybuild-devel"
+
+prepend-path	XDG_DATA_DIRS		$root/share
+prepend-path	GI_TYPELIB_PATH		$root/share
+# Built with EasyBuild version 3.2.1

@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+X protocol and ancillary headers
+
+
+More information
+================
+ - Homepage: http://www.freedesktop.org/wiki/Software/xlibs
+    }
+}
+
+module-whatis {Description: X protocol and ancillary headers}
+module-whatis {Homepage: http://www.freedesktop.org/wiki/Software/xlibs}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/xproto/7.0.28-foss-2016a
+
+conflict xproto
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXPROTO		"$root"
+setenv	EBVERSIONXPROTO		"7.0.28"
+setenv	EBDEVELXPROTO		"$root/easybuild/xproto-7.0.28-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.2.1
