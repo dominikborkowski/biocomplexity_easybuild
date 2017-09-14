@@ -3,7 +3,7 @@
 easyblock = 'Tarball'
 
 name = 'InterProScan'
-version = '5.25-64.0'
+version = '5.21-60.0'
 
 homepage = 'http://www.ebi.ac.uk/interpro/'
 description = """InterProScan is a sequence analysis application (nucleotide and protein sequences) that combines
@@ -13,14 +13,17 @@ toolchain = {'name': 'foss', 'version': '2016b'}
 
 source_urls = [
     'http://ftp.ebi.ac.uk/pub/software/unix/iprscan/%(version_major)s/%(version)s/',
+    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/bin/',
 ]
 
 sources = [
     '%(namelower)s-%(version)s-64-bit.tar.gz',
+    'sfld_binary.zip',
 ]
 
 checksums = [
-    '4b4f7b8f1e04ca3c7fa94bd311e6d07c',
+    '8090ff00ba75bce1383a257ff2b8d196',
+    '17ff8224789b9f35dd9304dcb7dc6a68',
 ]
 
 dependencies = [
@@ -30,11 +33,17 @@ dependencies = [
     ('Python', '2.7.12'),
 ]
 
+# Workaround required for CentOS 6 systems. Details here:
+# https://github.com/ebi-pf-team/interproscan/issues/16
+postinstallcmds = [
+    "cp -f %(builddir)s/sfld_postprocess %(installdir)s/bin/sfld/",
+    "cp -f %(builddir)s/sfld_preprocess %(installdir)s/bin/sfld/",
+]
+
 # InterProScan has an unusal method of execution via interproscan.sh script, which is in the root
 #  installation directory, rather than bin dir. Since EasyBuild creates $PATH entry only if it detects
 #  files in bin/, we have to explicitly tell it to add the root of the install path
 modextrapaths = {'PATH': ''}
-
 
 sanity_check_paths = {
     'files': ['interproscan-%(version_major)s.jar', 'interproscan.sh', 'interproscan.properties'],
