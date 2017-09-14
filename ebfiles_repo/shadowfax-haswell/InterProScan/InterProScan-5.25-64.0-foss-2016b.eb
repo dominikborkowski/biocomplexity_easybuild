@@ -1,0 +1,80 @@
+# Built with EasyBuild version 3.4.0 on 2017-09-14_19-22-16
+# EasyConfig for InterProScan
+
+easyblock = 'Tarball'
+
+name = 'InterProScan'
+version = '5.25-64.0'
+
+homepage = 'http://www.ebi.ac.uk/interpro/'
+description = """InterProScan is a sequence analysis application (nucleotide and protein sequences) that combines
+ different protein signature recognition methods into one resource."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+source_urls = [
+    'http://ftp.ebi.ac.uk/pub/software/unix/iprscan/%(version_major)s/%(version)s/',
+    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/bin/',
+]
+
+sources = [
+    '%(namelower)s-%(version)s-64-bit.tar.gz',
+    'sfld_binary.zip',
+]
+
+checksums = [
+    '4b4f7b8f1e04ca3c7fa94bd311e6d07c',
+    '216290aa4ba37807e93aa88c232d1de7',
+]
+
+dependencies = [
+    ('Java', '1.8.0_121', '', True),
+    ('Perl', '5.24.0'),
+    ('libgd', '2.2.4'),
+    ('Python', '2.7.12'),
+]
+
+# Workaround required for CentOS 6 systems. Details here:
+# https://github.com/ebi-pf-team/interproscan/issues/16
+postinstallcmds = [
+    "cp -f %(builddir)s/sfld_postprocess %(installdir)s/bin/sfld/",
+    "cp -f %(builddir)s/sfld_preprocess %(installdir)s/bin/sfld/",
+]
+
+# InterProScan has an unusal method of execution via interproscan.sh script, which is in the root
+#  installation directory, rather than bin dir. Since EasyBuild creates $PATH entry only if it detects
+#  files in bin/, we have to explicitly tell it to add the root of the install path
+modextrapaths = {'PATH': ''}
+
+sanity_check_paths = {
+    'files': ['interproscan-%(version_major)s.jar', 'interproscan.sh', 'interproscan.properties'],
+    'dirs': ['bin', 'lib', 'data'],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 760.41,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.4.0/lib/python2.6/site-packages/easybuild_easyconfigs-3.4.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'InterProScan-5.25-64.0-foss-2016b-Python-2.7.12.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.4.0",
+    "easybuild-framework_version": "3.4.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin2",
+    "install_size": 15518396002,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/shadowfax-haswell/Python/2.7.12-foss-2016b/bin/python",
+    "timestamp": 1505431336,
+    "total_memory": 129083,
+}]

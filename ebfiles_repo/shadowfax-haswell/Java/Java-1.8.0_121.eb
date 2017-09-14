@@ -1,0 +1,42 @@
+# Built with EasyBuild version 3.4.0 on 2017-09-14_19-09-18
+name = 'Java'
+version = '1.8.0_121'
+
+homepage = 'http://java.com/'
+description = """Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+# download the tar.gz directly from http://www.oracle.com/technetwork/java/javase/downloads/index.html
+(vp, vs) = version.split('_')
+altver = '%su%s' % (vp.split('.')[1], vs)
+sources = ['jdk-%s-linux-x64.tar.gz' % altver]
+
+moduleclass = 'lang'
+
+# Build statistics
+buildstats = [{
+    "build_time": 13.29,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.4.0/lib/python2.6/site-packages/easybuild_easyconfigs-3.4.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'InterProScan-5.25-64.0-foss-2016b-Python-2.7.12.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.4.0",
+    "easybuild-framework_version": "3.4.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/shared/apps/gcc/4.8.4/libexec/gcc/x86_64-unknown-linux-gnu/4.8.4/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../gcc-4.8.4/configure --prefix=/cm/shared/apps/gcc/4.8.4 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-4.8.4-obj/../gcc-4.8.4/our-mpfr/src/.libs; Thread model: posix; gcc version 4.8.4 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin2",
+    "install_size": 371202447,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/cm/shared/apps/gcc/4.8.4/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1505430557,
+    "total_memory": 129083,
+}]
