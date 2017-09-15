@@ -1,0 +1,150 @@
+# Built with EasyBuild version 3.4.0 on 2017-09-14_20-25-09
+name = 'Python'
+version = '3.5.2'
+
+homepage = 'http://python.org/'
+description = """Python is a programming language that lets you work more quickly and integrate your systems
+ more effectively."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'pic': True}
+
+source_urls = ['http://www.python.org/ftp/%(namelower)s/%(version)s/']
+sources = [SOURCE_TGZ]
+
+# python needs bzip2 to build the bz2 package
+dependencies = [
+    ('bzip2', '1.0.6'),
+    ('zlib', '1.2.8'),
+    ('libreadline', '6.3'),
+    ('ncurses', '6.0'),
+    ('SQLite', '3.13.0'),
+    ('Tk', '8.6.5'),  # this requires a full X11 stack
+    ('GMP', '6.1.1'),
+    ('XZ', '5.2.2'),
+    ('libffi', '3.2.1'),
+    # OS dependency should be preferred if the os version is more recent then this version,
+    # it's nice to have an up to date openssl for security reasons
+    # ('OpenSSL', '1.0.2h'),
+]
+
+osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
+
+# order is important!
+# package versions updated May 28th 2015
+exts_list = [
+    ('setuptools', '23.1.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/setuptools/'],
+    }),
+    ('pip', '8.1.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pip/'],
+    }),
+    ('nose', '1.3.7', {
+        'source_urls': ['https://pypi.python.org/packages/source/n/nose/'],
+    }),
+    ('numpy', '1.11.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/n/numpy'],
+        'patches': ['numpy-1.8.0-mkl.patch'],
+    }),
+    ('scipy', '0.17.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/scipy'],
+    }),
+    ('blist', '1.3.6', {
+        'source_urls': ['https://pypi.python.org/packages/source/b/blist/'],
+    }),
+    ('mpi4py', '1.3.1', {
+        'source_urls': ['http://bitbucket.org/mpi4py/mpi4py/downloads/'],
+    }),
+    ('paycheck', '1.0.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/paycheck/'],
+        'patches': [
+            'paycheck-1.0.2_setup-open-README-utf8.patch',
+        ],
+    }),
+    ('pbr', '1.10.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pbr/'],
+    }),
+    ('lockfile', '0.12.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/l/lockfile/'],
+    }),
+    ('Cython', '0.24', {
+        'source_urls': ['https://pypi.python.org/packages/source/c/cython/'],
+    }),
+    ('six', '1.10.0', {
+        'source_urls': ['https://pypi.python.org/packages/source/s/six/'],
+    }),
+    ('dateutil', '2.5.3', {
+        'source_tmpl': 'python-%(name)s-%(version)s.tar.gz',
+        'source_urls': ['https://pypi.python.org/packages/source/p/python-dateutil/'],
+    }),
+    ('deap', '1.0.2', {
+        'source_tmpl': '%(name)s-%(version)s.post2.tar.gz',
+        'source_urls': ['https://pypi.python.org/packages/source/d/deap/'],
+        'patches': [
+            'deap-1.0.2_setup-open-README-utf8.patch',
+        ],
+    }),
+    ('decorator', '4.0.10', {
+        'source_urls': ['https://pypi.python.org/packages/source/d/decorator/'],
+    }),
+    ('arff', '2.1.0', {
+        'source_tmpl': 'liac-%(name)s-%(version)s.zip',
+        'source_urls': ['https://pypi.python.org/packages/source/l/liac-arff/'],
+    }),
+    ('pycrypto', '2.6.1', {
+        'modulename': 'Crypto',
+        'source_urls': ['https://pypi.python.org/packages/source/p/pycrypto/'],
+    }),
+    ('ecdsa', '0.13', {
+        'source_urls': ['https://pypi.python.org/packages/source/e/ecdsa/'],
+    }),
+    ('cryptography', '1.4', {
+        'source_urls': ['https://pypi.python.org/packages/source/c/cryptography/'],
+    }),
+    ('paramiko', '2.0.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/paramiko/'],
+    }),
+    ('pyparsing', '2.1.5', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pyparsing/'],
+    }),
+    ('netifaces', '0.10.4', {
+        'source_urls': ['https://pypi.python.org/packages/source/n/netifaces'],
+    }),
+    ('netaddr', '0.7.18', {
+        'source_urls': ['https://pypi.python.org/packages/source/n/netaddr'],
+    }),
+    ('pandas', '0.18.1', {
+        'source_urls': ['https://pypi.python.org/packages/source/p/pandas'],
+    }),
+    ('virtualenv', '15.0.2', {
+        'source_urls': ['https://pypi.python.org/packages/source/v/virtualenv'],
+    }),
+]
+
+moduleclass = 'lang'
+
+# Build statistics
+buildstats = [{
+    "build_time": 1028.34,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-haswell'", "--installpath-software='/apps/easybuild/software/shadowfax-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/software/shadowfax-haswell/EasyBuild/3.4.0/lib/python2.6/site-packages/easybuild_easyconfigs-3.4.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/shadowfax-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'Tensorflow-1.0.1-foss-2016b-Python-3.5.2.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 2301.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.4.0",
+    "easybuild-framework_version": "3.4.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.12",
+    "hostname": "hswlogin2",
+    "install_size": 410887319,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos",
+    "os_type": "Linux",
+    "os_version": "6.8",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.6.6 (r266:84292, Aug 18 2016, 15:13:37) ; [GCC 4.4.7 20120313 (Red Hat 4.4.7-17)]",
+    "system_gcc_path": "/apps/easybuild/software/shadowfax-haswell/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1505435108,
+    "total_memory": 129083,
+}]
