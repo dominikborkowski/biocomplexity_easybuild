@@ -22,11 +22,8 @@ dependencies = [
 files_to_copy = []
 
 postinstallcmds = [
-    "npm install --prefix=%(installdir)s -g %(namelower)s",
+    "npm install -g --prefix=%(installdir)s %(namelower)s@%(version)s",
 ]
-
-# I don't think we'll need that
-# modextrapaths = {'NODE_PATH': 'lib/node_modules'}
 
 sanity_check_paths = {
     'files': ['bin/rafter', 'lib/node_modules/%(namelower)s/package.json'],
