@@ -24,7 +24,7 @@ sources = [
 ]
 
 checksums = [
-    '8090ff00ba75bce1383a257ff2b8d196',
+    '4b4f7b8f1e04ca3c7fa94bd311e6d07c',
     '543abb66c2a4fb0441ddeade136911fc',
     '15e0ff72253d57e1876361081fbcd961'
 ]
@@ -42,8 +42,8 @@ dependencies = [
 postinstallcmds = [
     "cp -f %(builddir)s/sfld_postprocess %(installdir)s/bin/sfld/",
     "cp -f %(builddir)s/sfld_preprocess %(installdir)s/bin/sfld/",
-    "cp -f %(builddir)s/rpsblast %(installdir)s/bin/blast/ncbi-blast-2.3.0+/",
-    "cp -f %(builddir)s/rpsbproc %(installdir)s/bin/blast/ncbi-blast-2.3.0+/",
+    "cp -f %(builddir)s/rpsblast %(installdir)s/bin/blast/ncbi-blast-2.6.0+/",
+    "cp -f %(builddir)s/rpsbproc %(installdir)s/bin/blast/ncbi-blast-2.6.0+/",
 
 ]
 
