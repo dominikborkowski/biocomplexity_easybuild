@@ -13,17 +13,20 @@ toolchain = {'name': 'foss', 'version': '2016b'}
 
 source_urls = [
     'http://ftp.ebi.ac.uk/pub/software/unix/iprscan/%(version_major)s/%(version)s/',
-    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/bin/',
+    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/%(version_major)s/bin/rh6/',
+    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/%(version_major)s/bin/rh6/'
 ]
 
 sources = [
     '%(namelower)s-%(version)s-64-bit.tar.gz',
     'sfld_binary.zip',
+    'rpsblast_binary.zip'
 ]
 
 checksums = [
-    '4b4f7b8f1e04ca3c7fa94bd311e6d07c',
-    '216290aa4ba37807e93aa88c232d1de7',
+    '8090ff00ba75bce1383a257ff2b8d196',
+    '543abb66c2a4fb0441ddeade136911fc',
+    '15e0ff72253d57e1876361081fbcd961'
 ]
 
 dependencies = [
@@ -35,10 +38,15 @@ dependencies = [
 
 # Workaround required for CentOS 6 systems. Details here:
 # https://github.com/ebi-pf-team/interproscan/issues/16
+# https://github.com/ebi-pf-team/interproscan/wiki/Interproscan5_24_63_ReleaseNotes
 postinstallcmds = [
     "cp -f %(builddir)s/sfld_postprocess %(installdir)s/bin/sfld/",
     "cp -f %(builddir)s/sfld_preprocess %(installdir)s/bin/sfld/",
+    "cp -f %(builddir)s/rpsblast %(installdir)s/bin/blast/ncbi-blast-2.3.0+/",
+    "cp -f %(builddir)s/rpsbproc %(installdir)s/bin/blast/ncbi-blast-2.3.0+/",
+
 ]
+
 
 # InterProScan has an unusal method of execution via interproscan.sh script, which is in the root
 #  installation directory, rather than bin dir. Since EasyBuild creates $PATH entry only if it detects

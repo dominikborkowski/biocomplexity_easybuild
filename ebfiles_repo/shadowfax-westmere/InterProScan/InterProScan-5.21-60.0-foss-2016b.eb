@@ -1,4 +1,4 @@
-# Built with EasyBuild version 3.3.0 on 2017-09-14_16-46-01
+# Built with EasyBuild version 3.3.0 on 2017-09-19_10-02-32
 # EasyConfig for InterProScan
 
 easyblock = 'Tarball'
@@ -14,17 +14,20 @@ toolchain = {'name': 'foss', 'version': '2016b'}
 
 source_urls = [
     'http://ftp.ebi.ac.uk/pub/software/unix/iprscan/%(version_major)s/%(version)s/',
-    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/bin/',
+    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/%(version_major)s/bin/rh6/',
+    'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/%(version_major)s/bin/rh6/'
 ]
 
 sources = [
     '%(namelower)s-%(version)s-64-bit.tar.gz',
     'sfld_binary.zip',
+    'rpsblast_binary.zip'
 ]
 
 checksums = [
     '8090ff00ba75bce1383a257ff2b8d196',
-    '216290aa4ba37807e93aa88c232d1de7',
+    '543abb66c2a4fb0441ddeade136911fc',
+    '15e0ff72253d57e1876361081fbcd961'
 ]
 
 dependencies = [
@@ -36,10 +39,15 @@ dependencies = [
 
 # Workaround required for CentOS 6 systems. Details here:
 # https://github.com/ebi-pf-team/interproscan/issues/16
+# https://github.com/ebi-pf-team/interproscan/wiki/Interproscan5_24_63_ReleaseNotes
 postinstallcmds = [
     "cp -f %(builddir)s/sfld_postprocess %(installdir)s/bin/sfld/",
     "cp -f %(builddir)s/sfld_preprocess %(installdir)s/bin/sfld/",
+    "cp -f %(builddir)s/rpsblast %(installdir)s/bin/blast/ncbi-blast-2.3.0+/",
+    "cp -f %(builddir)s/rpsbproc %(installdir)s/bin/blast/ncbi-blast-2.3.0+/",
+
 ]
+
 
 # InterProScan has an unusal method of execution via interproscan.sh script, which is in the root
 #  installation directory, rather than bin dir. Since EasyBuild creates $PATH entry only if it detects
@@ -55,8 +63,8 @@ moduleclass = 'bio'
 
 # Build statistics
 buildstats = [{
-    "build_time": 255.18,
-    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-3.3.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'InterProScan-5.21-60.0-foss-2016b-Python-2.7.12.eb'],
+    "build_time": 270.73,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", '--rebuild', "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-3.3.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './InterProScan-5.21-60.0-foss-2016b-Python-2.7.12.eb'],
     "core_count": 12,
     "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
     "cpu_speed": 2925.864,
@@ -66,7 +74,7 @@ buildstats = [{
     "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
     "glibc_version": "2.11.3",
     "hostname": "sfxlogin1",
-    "install_size": 11647011301,
+    "install_size": 11637111611,
     "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd', '3.2.10'),
     "os_name": "SLES",
     "os_type": "Linux",
@@ -75,6 +83,6 @@ buildstats = [{
     "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
     "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/bin/gcc",
     "system_python_path": "/apps/easybuild/software/shadowfax-westmere/Python/2.7.12-foss-2016b/bin/python",
-    "timestamp": 1505421961,
+    "timestamp": 1505829751,
     "total_memory": 96866,
 }]
