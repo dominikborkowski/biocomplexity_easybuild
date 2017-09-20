@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The MPFR library is a C library for multiple-precision 
+ floating-point computations with correct rounding.
+
+
+More information
+================
+ - Homepage: http://www.mpfr.org
+    }
+}
+
+module-whatis {Description: The MPFR library is a C library for multiple-precision 
+ floating-point computations with correct rounding.}
+module-whatis {Homepage: http://www.mpfr.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/MPFR/3.1.4-foss-2016b
+
+conflict MPFR
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded GMP/6.1.1-foss-2016b ] } {
+    module load GMP/6.1.1-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTMPFR		"$root"
+setenv	EBVERSIONMPFR		"3.1.4"
+setenv	EBDEVELMPFR		"$root/easybuild/MPFR-3.1.4-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0
