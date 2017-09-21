@@ -1,0 +1,52 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Qt is a comprehensive cross-platform C++ application framework.
+
+
+More information
+================
+ - Homepage: http://qt.io/
+    }
+}
+
+module-whatis {Description: Qt is a comprehensive cross-platform C++ application framework.}
+module-whatis {Homepage: http://qt.io/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Qt5/5.7.0-foss-2016b
+
+conflict Qt5
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded GLib/2.49.5-foss-2016b ] } {
+    module load GLib/2.49.5-foss-2016b
+}
+
+if { ![ is-loaded libpng/1.6.24-foss-2016b ] } {
+    module load libpng/1.6.24-foss-2016b
+}
+
+if { ![ is-loaded X11/20160819-foss-2016b ] } {
+    module load X11/20160819-foss-2016b
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2016b ] } {
+    module load libGLU/9.0.0-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTQT5		"$root"
+setenv	EBVERSIONQT5		"5.7.0"
+setenv	EBDEVELQT5		"$root/easybuild/Qt5-5.7.0-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0

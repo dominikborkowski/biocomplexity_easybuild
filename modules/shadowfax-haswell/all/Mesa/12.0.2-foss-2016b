@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Mesa is an open-source implementation of the OpenGL specification -
+ a system for rendering interactive 3D graphics.
+
+
+More information
+================
+ - Homepage: http://www.mesa3d.org/
+    }
+}
+
+module-whatis {Description: Mesa is an open-source implementation of the OpenGL specification -
+ a system for rendering interactive 3D graphics.}
+module-whatis {Homepage: http://www.mesa3d.org/}
+
+set root /apps/easybuild/software/shadowfax-haswell/Mesa/12.0.2-foss-2016b
+
+conflict Mesa
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded nettle/3.2-foss-2016b ] } {
+    module load nettle/3.2-foss-2016b
+}
+
+if { ![ is-loaded libdrm/2.4.70-foss-2016b ] } {
+    module load libdrm/2.4.70-foss-2016b
+}
+
+if { ![ is-loaded LLVM/3.8.1-foss-2016b ] } {
+    module load LLVM/3.8.1-foss-2016b
+}
+
+if { ![ is-loaded X11/20160819-foss-2016b ] } {
+    module load X11/20160819-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTMESA		"$root"
+setenv	EBVERSIONMESA		"12.0.2"
+setenv	EBDEVELMESA		"$root/easybuild/Mesa-12.0.2-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0
