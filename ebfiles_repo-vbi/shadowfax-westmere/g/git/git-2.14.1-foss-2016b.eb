@@ -13,7 +13,7 @@ sources = ['v%(version)s.tar.gz']
 source_urls = ['https://github.com/git/git/archive']
 
 dependencies = [
-    ('cURL', '7.49.1'),
+    ('cURL', '7.49.1', '-OpenSSL-1.0.2h'),
     ('expat', '2.2.0'),
     ('gettext', '0.19.8'),
     ('OpenSSL', '1.0.2h'),
