@@ -1,0 +1,34 @@
+# EasyConfig for rafter-cli
+
+easyblock = 'CmdCp'
+
+name = 'rafter-cli'
+version = '0.9.4'
+nodejsver = '6.11.3'
+
+versionsuffix = "-nodejs-%s" % nodejsver
+
+homepage = 'https://www.npmjs.com/package/rafter-cli'
+description = """CLI interface for Rafter"""
+
+toolchain = {'name': 'foss', 'version': '2017a'}
+
+skipsteps = ['source','build']
+
+dependencies = [
+    ('nodejs', nodejsver),
+]
+
+files_to_copy = []
+
+postinstallcmds = [
+    "npm install -g --prefix=%(installdir)s %(namelower)s@%(version)s",
+]
+
+sanity_check_paths = {
+    'files': ['bin/rafter', 'lib/node_modules/%(namelower)s/package.json'],
+    'dirs': ['bin', 'lib'],
+}
+
+moduleclass = 'tools'
+
