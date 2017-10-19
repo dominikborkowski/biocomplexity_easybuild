@@ -38,6 +38,10 @@ if { ![ is-loaded gettext/0.19.8-foss-2016b ] } {
     module load gettext/0.19.8-foss-2016b
 }
 
+if { ![ is-loaded OpenSSL/1.0.2k-foss-2016b ] } {
+    module load OpenSSL/1.0.2k-foss-2016b
+}
+
 if { ![ is-loaded Perl/5.24.0-foss-2016b-bare ] } {
     module load Perl/5.24.0-foss-2016b-bare
 }

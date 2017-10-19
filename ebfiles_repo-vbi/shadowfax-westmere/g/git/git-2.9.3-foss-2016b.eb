@@ -16,6 +16,7 @@ dependencies = [
     ('cURL', '7.55.1', '-OpenSSL-1.0.2k'),
     ('expat', '2.2.0'),
     ('gettext', '0.19.8'),
+    ('OpenSSL', '1.0.2k'),
     ('Perl', '5.24.0', '-bare'),
 ]
 
