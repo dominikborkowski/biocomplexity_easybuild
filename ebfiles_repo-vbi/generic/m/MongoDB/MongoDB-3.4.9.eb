@@ -1,0 +1,23 @@
+# mongoDB eaysconfig
+
+easyblock = 'Tarball'
+name = 'MongoDB'
+version = '3.4.9'
+
+homepage = 'https://www.mongodb.com/'
+description = """MongoDB (from humongous) is a free and open-source cross-platform document-oriented database program. 
+Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://fastdl.mongodb.org/linux/']
+sources = ['mongodb-linux-x86_64-%(version)s.tgz']
+
+checksums = ['001a6e1a65de8002f565ebb8d54eb9d5']
+
+sanity_check_paths = {
+    'files': ['bin/mongo', 'bin/mongod', 'bin/mongos'],
+    'dirs': [],
+}
+
+moduleclass = 'data'

@@ -1,4 +1,4 @@
-# Built with EasyBuild version 3.3.0 on 2017-09-19_10-43-26
+# Built with EasyBuild version 3.3.0 on 2017-10-19_14-38-16
 # EasyConfig for InterProScan
 
 easyblock = 'Tarball'
@@ -63,11 +63,11 @@ moduleclass = 'bio'
 
 # Build statistics
 buildstats = [{
-    "build_time": 376.64,
-    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-3.3.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'InterProScan-5.25-64.0-foss-2016b-Python-2.7.12.eb'],
+    "build_time": 416.8,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/shadowfax-westmere'", "--installpath-software='/apps/easybuild/software/shadowfax-westmere'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", '--rebuild', "--repositorypath='/apps/easybuild/ebfiles_repo/shadowfax-westmere'", "--robot='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/software/shadowfax-westmere/EasyBuild/3.3.0/lib64/python2.6/site-packages/easybuild_easyconfigs-3.3.0-py2.6.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/shadowfax-westmere:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/shadowfax-westmere:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'InterProScan-5.25-64.0-foss-2016b-Python-2.7.12.eb'],
     "core_count": 12,
     "cpu_model": "Intel(R) Xeon(R) CPU           X5670  @ 2.93GHz",
-    "cpu_speed": 2925.864,
+    "cpu_speed": 2925.766,
     "cpu_vendor": "Intel",
     "easybuild-easyblocks_version": "3.3.0",
     "easybuild-framework_version": "3.3.0",
@@ -83,6 +83,6 @@ buildstats = [{
     "python_version": "2.6.9 (unknown, Nov 19 2014, 15:44:49) ; [GCC 4.3.4 [gcc-4_3-branch revision 152973]]",
     "system_gcc_path": "/apps/easybuild/software/shadowfax-westmere/GCCcore/5.4.0/bin/gcc",
     "system_python_path": "/apps/easybuild/software/shadowfax-westmere/Python/2.7.12-foss-2016b/bin/python",
-    "timestamp": 1505832205,
+    "timestamp": 1508438295,
     "total_memory": 96866,
 }]
