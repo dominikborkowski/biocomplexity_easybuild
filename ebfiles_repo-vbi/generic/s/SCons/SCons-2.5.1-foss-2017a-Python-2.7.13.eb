@@ -1,0 +1,25 @@
+easyblock = 'PythonPackage'
+
+name = 'SCons'
+version = '2.5.1'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.scons.org/'
+description = "SCons is a software construction tool."
+
+toolchain = {'name': 'foss', 'version': '2017a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['3eac81e5e8206304a9b4683c57665aa4']
+
+dependencies = [('Python', '2.7.13')]
+
+sanity_check_paths = {
+    'files': ['bin/scons', 'bin/scons-time', 'bin/sconsign'],
+    'dirs': ['lib/%(namelower)s-%(version)s/%(name)s'],
+}
+
+options = {'modulename': False}
+
+moduleclass = 'devel'

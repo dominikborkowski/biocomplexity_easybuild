@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GEOS (Geometry Engine - Open Source) is a C++ port of the  Java Topology Suite (JTS)
+
+
+More information
+================
+ - Homepage: http://trac.osgeo.org/geos
+    }
+}
+
+module-whatis {Description: GEOS (Geometry Engine - Open Source) is a C++ port of the  Java Topology Suite (JTS)}
+module-whatis {Homepage: http://trac.osgeo.org/geos}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/GEOS/3.6.1-foss-2016b-Python-3.5.2
+
+conflict GEOS
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTGEOS		"$root"
+setenv	EBVERSIONGEOS		"3.6.1"
+setenv	EBDEVELGEOS		"$root/easybuild/GEOS-3.6.1-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.4.0

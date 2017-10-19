@@ -1,0 +1,30 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+MongoDB (from humongous) is a free and open-source cross-platform document-oriented database program. 
+Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.
+
+
+More information
+================
+ - Homepage: https://www.mongodb.com/
+    }
+}
+
+module-whatis {Description: MongoDB (from humongous) is a free and open-source cross-platform document-oriented database program. 
+Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.}
+module-whatis {Homepage: https://www.mongodb.com/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/MongoDB/3.4.9
+
+conflict MongoDB
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMONGODB		"$root"
+setenv	EBVERSIONMONGODB		"3.4.9"
+setenv	EBDEVELMONGODB		"$root/easybuild/MongoDB-3.4.9-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1
