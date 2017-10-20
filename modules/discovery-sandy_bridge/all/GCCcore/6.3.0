@@ -34,4 +34,4 @@ setenv	EBROOTGCCCORE		"$root"
 setenv	EBVERSIONGCCCORE		"6.3.0"
 setenv	EBDEVELGCCCORE		"$root/easybuild/GCCcore-6.3.0-easybuild-devel"
 
-# Built with EasyBuild version 3.3.0
+# Built with EasyBuild version 3.4.1

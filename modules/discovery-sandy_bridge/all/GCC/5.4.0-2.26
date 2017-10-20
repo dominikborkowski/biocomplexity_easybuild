@@ -34,4 +34,4 @@ setenv	EBROOTGCC		"/apps/easybuild/software/discovery-sandy_bridge/GCCcore/5.4.0
 setenv	EBVERSIONGCC		"5.4.0"
 setenv	EBDEVELGCC		"$root/easybuild/GCC-5.4.0-2.26-easybuild-devel"
 
-# Built with EasyBuild version 3.2.1
+# Built with EasyBuild version 3.4.0
