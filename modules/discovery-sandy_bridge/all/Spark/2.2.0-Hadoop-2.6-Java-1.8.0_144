@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Spark is Hadoop MapReduce done in memory
+
+
+More information
+================
+ - Homepage: http://spark.apache.org
+    }
+}
+
+module-whatis {Description: Spark is Hadoop MapReduce done in memory}
+module-whatis {Homepage: http://spark.apache.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Spark/2.2.0-Hadoop-2.6-Java-1.8.0_144
+
+conflict Spark
+
+if { ![ is-loaded Java/1.8.0_144 ] } {
+    module load Java/1.8.0_144
+}
+
+prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/sbin
+setenv	EBROOTSPARK		"$root"
+setenv	EBVERSIONSPARK		"2.2.0"
+setenv	EBDEVELSPARK		"$root/easybuild/Spark-2.2.0-Hadoop-2.6-Java-1.8.0_144-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/python
+# Built with EasyBuild version 3.4.1
