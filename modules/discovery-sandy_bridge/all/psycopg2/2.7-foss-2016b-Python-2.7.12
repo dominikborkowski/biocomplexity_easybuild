@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Psycopg is the most popular PostgreSQL adapter for the Python programming language.
+
+
+More information
+================
+ - Homepage: http://initd.org/psycopg/
+    }
+}
+
+module-whatis {Description: Psycopg is the most popular PostgreSQL adapter for the Python programming language.}
+module-whatis {Homepage: http://initd.org/psycopg/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/psycopg2/2.7-foss-2016b-Python-2.7.12
+
+conflict psycopg2
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+if { ![ is-loaded PostgreSQL/9.6.2-foss-2016b-Python-2.7.12 ] } {
+    module load PostgreSQL/9.6.2-foss-2016b-Python-2.7.12
+}
+
+setenv	EBROOTPSYCOPG2		"$root"
+setenv	EBVERSIONPSYCOPG2		"2.7"
+setenv	EBDEVELPSYCOPG2		"$root/easybuild/psycopg2-2.7-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.4.1
