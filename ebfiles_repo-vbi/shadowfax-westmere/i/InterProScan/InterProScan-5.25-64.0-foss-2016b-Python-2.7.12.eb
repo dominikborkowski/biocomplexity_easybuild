@@ -15,6 +15,7 @@ source_urls = [
     'http://ftp.ebi.ac.uk/pub/software/unix/iprscan/%(version_major)s/%(version)s/',
     'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/%(version_major)s/bin/rh6/',
     'http://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/%(version_major)s/bin/rh6/'
+    'https://github.com/UCLOrengoGroup/cath-tools/releases/download/v0.15.3/cath-resolve-hits.centos6'
 ]
 
 sources = [
@@ -26,7 +27,8 @@ sources = [
 checksums = [
     '4b4f7b8f1e04ca3c7fa94bd311e6d07c',
     '543abb66c2a4fb0441ddeade136911fc',
-    '15e0ff72253d57e1876361081fbcd961'
+    '15e0ff72253d57e1876361081fbcd961',
+    '4ca024306f18f769850639a055aac634'
 ]
 
 dependencies = [
@@ -44,6 +46,7 @@ postinstallcmds = [
     "cp -f %(builddir)s/sfld_preprocess %(installdir)s/bin/sfld/",
     "cp -f %(builddir)s/rpsblast %(installdir)s/bin/blast/ncbi-blast-2.6.0+/",
     "cp -f %(builddir)s/rpsbproc %(installdir)s/bin/blast/ncbi-blast-2.6.0+/",
+    "cp -f %(builddir)s/cath-resolve-hits.centos6 %(installdir)s/bin/bin/gene3d/4.1.0/cath-resolve-hits",
 
 ]
 

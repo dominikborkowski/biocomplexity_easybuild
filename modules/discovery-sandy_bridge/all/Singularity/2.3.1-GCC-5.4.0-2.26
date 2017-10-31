@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Singularity is a portable application stack packaging and runtime utility.
+
+
+More information
+================
+ - Homepage: http://gmkurtzer.github.io/singularity
+    }
+}
+
+module-whatis {Description: Singularity is a portable application stack packaging and runtime utility.}
+module-whatis {Homepage: http://gmkurtzer.github.io/singularity}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Singularity/2.3.1-GCC-5.4.0-2.26
+
+conflict Singularity
+
+if { ![ is-loaded GCC/5.4.0-2.26 ] } {
+    module load GCC/5.4.0-2.26
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTSINGULARITY		"$root"
+setenv	EBVERSIONSINGULARITY		"2.3.1"
+setenv	EBDEVELSINGULARITY		"$root/easybuild/Singularity-2.3.1-GCC-5.4.0-2.26-easybuild-devel"
+
+# Built with EasyBuild version 3.4.0
