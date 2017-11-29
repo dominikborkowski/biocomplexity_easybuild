@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+X Fixes extension library
+
+
+More information
+================
+ - Homepage: http://www.freedesktop.org/wiki/Software/xlibs
+    }
+}
+
+module-whatis {Description: X Fixes extension library}
+module-whatis {Homepage: http://www.freedesktop.org/wiki/Software/xlibs}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libXfixes/5.0.1-foss-2016a
+
+conflict libXfixes
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libX11/1.6.3-foss-2016a ] } {
+    module load libX11/1.6.3-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBXFIXES		"$root"
+setenv	EBVERSIONLIBXFIXES		"5.0.1"
+setenv	EBDEVELLIBXFIXES		"$root/easybuild/libXfixes-5.0.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1

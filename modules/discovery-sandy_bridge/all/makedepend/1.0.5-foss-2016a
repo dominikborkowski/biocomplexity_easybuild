@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The makedepend package contains a C-preprocessor like utility to determine build-time dependencies.
+
+
+More information
+================
+ - Homepage: http://www.linuxfromscratch.org/blfs/view/svn/x/makedepend.html
+    }
+}
+
+module-whatis {Description: The makedepend package contains a C-preprocessor like utility to determine build-time dependencies.}
+module-whatis {Homepage: http://www.linuxfromscratch.org/blfs/view/svn/x/makedepend.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/makedepend/1.0.5-foss-2016a
+
+conflict makedepend
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTMAKEDEPEND		"$root"
+setenv	EBVERSIONMAKEDEPEND		"1.0.5"
+setenv	EBDEVELMAKEDEPEND		"$root/easybuild/makedepend-1.0.5-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1

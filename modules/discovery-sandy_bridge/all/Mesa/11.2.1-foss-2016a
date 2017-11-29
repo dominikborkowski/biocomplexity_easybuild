@@ -1,0 +1,73 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Mesa is an open-source implementation of the OpenGL specification -
+ a system for rendering interactive 3D graphics.
+
+
+More information
+================
+ - Homepage: http://www.mesa3d.org/
+    }
+}
+
+module-whatis {Description: Mesa is an open-source implementation of the OpenGL specification -
+ a system for rendering interactive 3D graphics.}
+module-whatis {Homepage: http://www.mesa3d.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Mesa/11.2.1-foss-2016a
+
+conflict Mesa
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libxml2/2.9.3-foss-2016a ] } {
+    module load libxml2/2.9.3-foss-2016a
+}
+
+if { ![ is-loaded libdrm/2.4.68-foss-2016a ] } {
+    module load libdrm/2.4.68-foss-2016a
+}
+
+if { ![ is-loaded libX11/1.6.3-foss-2016a ] } {
+    module load libX11/1.6.3-foss-2016a
+}
+
+if { ![ is-loaded libXext/1.3.3-foss-2016a ] } {
+    module load libXext/1.3.3-foss-2016a
+}
+
+if { ![ is-loaded libXfixes/5.0.1-foss-2016a ] } {
+    module load libXfixes/5.0.1-foss-2016a
+}
+
+if { ![ is-loaded libXdamage/1.1.4-foss-2016a ] } {
+    module load libXdamage/1.1.4-foss-2016a
+}
+
+if { ![ is-loaded libXfont/1.5.1-foss-2016a-freetype-2.6.3 ] } {
+    module load libXfont/1.5.1-foss-2016a-freetype-2.6.3
+}
+
+if { ![ is-loaded LLVM/3.8.0-foss-2016a ] } {
+    module load LLVM/3.8.0-foss-2016a
+}
+
+if { ![ is-loaded eudev/3.1.5-foss-2016a ] } {
+    module load eudev/3.1.5-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTMESA		"$root"
+setenv	EBVERSIONMESA		"11.2.1"
+setenv	EBDEVELMESA		"$root/easybuild/Mesa-11.2.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1

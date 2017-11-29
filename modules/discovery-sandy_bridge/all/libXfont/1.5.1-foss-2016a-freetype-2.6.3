@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+X font libary
+
+
+More information
+================
+ - Homepage: http://www.freedesktop.org/wiki/Software/xlibs
+    }
+}
+
+module-whatis {Description: X font libary}
+module-whatis {Homepage: http://www.freedesktop.org/wiki/Software/xlibs}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libXfont/1.5.1-foss-2016a-freetype-2.6.3
+
+conflict libXfont
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libX11/1.6.3-foss-2016a ] } {
+    module load libX11/1.6.3-foss-2016a
+}
+
+if { ![ is-loaded freetype/2.6.3-foss-2016a ] } {
+    module load freetype/2.6.3-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBXFONT		"$root"
+setenv	EBVERSIONLIBXFONT		"1.5.1"
+setenv	EBDEVELLIBXFONT		"$root/easybuild/libXfont-1.5.1-foss-2016a-freetype-2.6.3-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1

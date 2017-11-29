@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NLopt is a free/open-source library for nonlinear optimization, 
+ providing a common interface for a number of different free optimization routines 
+ available online as well as original implementations of various other algorithms.
+
+
+More information
+================
+ - Homepage: http://ab-initio.mit.edu/wiki/index.php/NLopt
+    }
+}
+
+module-whatis {Description:  NLopt is a free/open-source library for nonlinear optimization, 
+ providing a common interface for a number of different free optimization routines 
+ available online as well as original implementations of various other algorithms. }
+module-whatis {Homepage: http://ab-initio.mit.edu/wiki/index.php/NLopt}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/NLopt/2.4.2-foss-2016a
+
+conflict NLopt
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTNLOPT		"$root"
+setenv	EBVERSIONNLOPT		"2.4.2"
+setenv	EBDEVELNLOPT		"$root/easybuild/NLopt-2.4.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1
