@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+UDUNITS supports conversion of unit specifications between formatted and binary forms,
+ arithmetic manipulation of units, and conversion of values between compatible scales of measurement.
+
+
+More information
+================
+ - Homepage: http://www.unidata.ucar.edu/software/udunits/
+    }
+}
+
+module-whatis {Description: UDUNITS supports conversion of unit specifications between formatted and binary forms,
+ arithmetic manipulation of units, and conversion of values between compatible scales of measurement.}
+module-whatis {Homepage: http://www.unidata.ucar.edu/software/udunits/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/UDUNITS/2.2.25-foss-2017a
+
+conflict UDUNITS
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded expat/2.2.0-foss-2017a ] } {
+    module load expat/2.2.0-foss-2017a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTUDUNITS		"$root"
+setenv	EBVERSIONUDUNITS		"2.2.25"
+setenv	EBDEVELUDUNITS		"$root/easybuild/UDUNITS-2.2.25-foss-2017a-easybuild-devel"
+
+# Built with EasyBuild version 3.4.1
