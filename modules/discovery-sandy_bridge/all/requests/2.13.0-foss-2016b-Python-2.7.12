@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Python http for humans
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/requests
+    }
+}
+
+module-whatis {Description: Python http for humans}
+module-whatis {Homepage: https://pypi.python.org/pypi/requests}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/requests/2.13.0-foss-2016b-Python-2.7.12
+
+conflict requests
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+setenv	EBROOTREQUESTS		"$root"
+setenv	EBVERSIONREQUESTS		"2.13.0"
+setenv	EBDEVELREQUESTS		"$root/easybuild/requests-2.13.0-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.4.1
