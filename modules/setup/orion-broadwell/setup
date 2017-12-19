@@ -53,6 +53,15 @@ module-whatis "Module for setting up EasyBuild development end-user environment 
 #    puts stderr "* Setting environment variables for EasyBuild's directories"
 #}
 
+
+# accounting for problems on SLES 12 because of how they handle readline
+# see: https://build.opensuse.org/package/view_file/Base:System/bash/bash.spec?expand=1 , line 171
+# see: https://build.opensuse.org/package/view_file/Base:System/readline6/readline6.spec?expand=1 ,line 390
+setenv EASYBUILD_FILTER_DEPS libreadline
+# accounting for autotools trying to use make -j 432, while some software (like boost) limits it to 256
+setenv EASYBUILD_PARALLEL 256
+#
+
 # originally started by providing EASYBUILD_PREFIX, then switched to more split view
 # setenv EASYBUILD_PREFIX $global/$site-$arch
 # setenv EASYBUILD_INSTALLPATH $global/$site-arch
