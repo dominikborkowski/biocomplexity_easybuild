@@ -1,0 +1,52 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Trinity represents a novel method for the efficient and robust de novo reconstruction
+ of transcriptomes from RNA-Seq data. Trinity combines three independent software modules: Inchworm,
+ Chrysalis, and Butterfly, applied sequentially to process large volumes of RNA-Seq reads.
+
+
+More information
+================
+ - Homepage: http://trinityrnaseq.sourceforge.net/
+    }
+}
+
+module-whatis {Description: Trinity represents a novel method for the efficient and robust de novo reconstruction
+ of transcriptomes from RNA-Seq data. Trinity combines three independent software modules: Inchworm,
+ Chrysalis, and Butterfly, applied sequentially to process large volumes of RNA-Seq reads.}
+module-whatis {Homepage: http://trinityrnaseq.sourceforge.net/}
+
+set root /apps/easybuild/software/orion-broadwell/Trinity/2013-02-25-foss-2016a
+
+conflict Trinity
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+if { ![ is-loaded ant/1.9.3-Java-1.7.0_80 ] } {
+    module load ant/1.9.3-Java-1.7.0_80
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016a ] } {
+    module load ncurses/6.0-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	PATH		$root/trinityrnaseq_r2013-02-25
+setenv	EBROOTTRINITY		"$root"
+setenv	EBVERSIONTRINITY		"2013-02-25"
+setenv	EBDEVELTRINITY		"$root/easybuild/Trinity-2013-02-25-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,10 @@
+diff -ru misopy-0.5.3/setup.py misopy-0.5.3.new/setup.py
+--- misopy-0.5.3/setup.py	2015-03-10 22:40:51.000000000 -0400
++++ misopy-0.5.3.new/setup.py	2016-04-20 15:35:24.255703766 -0400
+@@ -1,4 +1,5 @@
+-from distutils.core import setup, Extension
++#from distutils.core import setup, Extension
++from setuptools import setup, find_packages, Extension
+ import distutils.ccompiler
+ import glob
+ import os

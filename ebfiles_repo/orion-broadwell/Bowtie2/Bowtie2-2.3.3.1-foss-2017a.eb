@@ -1,0 +1,60 @@
+# Built with EasyBuild version 3.5.0 on 2017-12-19_01-17-04
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+# Modified by: Robert Schmidt <rjeschmi@gmail.com>
+# Ottawa Hospital Research Institute - Bioinformatics Team
+# Modified by: Adam Huffman <adam.huffman@crick.ac.uk>
+# The Francis Crick Institute
+# Modified by: Kurt Lust, UAntwerp
+
+name = 'Bowtie2'
+version = '2.3.3.1'
+
+homepage = 'http://bowtie-bio.sourceforge.net/bowtie2/index.shtml'
+description = """ Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads 
+ to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s 
+ of characters, and particularly good at aligning to relatively long (e.g. mammalian) genomes. 
+ Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, 
+ its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes."""
+
+toolchain = {'name': 'foss', 'version': '2017a'}
+toolchainopts = {'pic': True, 'cstd': 'gnu++98'}
+
+sources = ['%(namelower)s-%(version)s-source.zip']
+source_urls = [('http://sourceforge.net/projects/bowtie-bio/files/%(namelower)s/%(version)s', 'download')]
+checksums = ['f2b8db67982976f6b21cb426fcdb52a2']
+
+dependencies = [('tbb', '2017_U6')]
+
+# to add script folder to path just uncomment this line
+# modextrapaths = {'PATH': 'scripts'}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 56.65,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.5.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './b/Bowtie2/Bowtie2-2.3.3.1-foss-2017a.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.0",
+    "easybuild-framework_version": "3.5.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/6.3.0/libexec/gcc/x86_64-pc-linux-gnu/6.3.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.3.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.3.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.3.0/dummy-/gcc-6.3.0/stage2_stuff; Thread model: posix; gcc version 6.3.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 21512911,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/6.3.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1513664224,
+    "total_memory": 8901828,
+}]

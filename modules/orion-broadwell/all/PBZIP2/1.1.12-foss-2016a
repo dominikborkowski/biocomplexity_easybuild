@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PBZIP2 is a parallel implementation of the bzip2 block-sorting file 
+ compressor that uses pthreads and achieves near-linear speedup on SMP machines. The output 
+ of this version is fully compatible with bzip2 v1.0.2 or newer (ie: anything compressed 
+ with pbzip2 can be decompressed with bzip2).
+
+
+More information
+================
+ - Homepage: http://compression.ca/pbzip2/
+    }
+}
+
+module-whatis {Description:  PBZIP2 is a parallel implementation of the bzip2 block-sorting file 
+ compressor that uses pthreads and achieves near-linear speedup on SMP machines. The output 
+ of this version is fully compatible with bzip2 v1.0.2 or newer (ie: anything compressed 
+ with pbzip2 can be decompressed with bzip2).}
+module-whatis {Homepage: http://compression.ca/pbzip2/}
+
+set root /apps/easybuild/software/orion-broadwell/PBZIP2/1.1.12-foss-2016a
+
+conflict PBZIP2
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016a ] } {
+    module load bzip2/1.0.6-foss-2016a
+}
+
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTPBZIP2		"$root"
+setenv	EBVERSIONPBZIP2		"1.1.12"
+setenv	EBDEVELPBZIP2		"$root/easybuild/PBZIP2-1.1.12-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,51 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ BCFtools - Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence
+ variants
+
+
+More information
+================
+ - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Description: Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ BCFtools - Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence
+ variants}
+module-whatis {Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/orion-broadwell/BCFtools/1.3-foss-2016a
+
+conflict BCFtools
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded HTSlib/1.3-foss-2016a ] } {
+    module load HTSlib/1.3-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+if { ![ is-loaded GSL/2.1-foss-2016a ] } {
+    module load GSL/2.1-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBCFTOOLS		"$root"
+setenv	EBVERSIONBCFTOOLS		"1.3"
+setenv	EBDEVELBCFTOOLS		"$root/easybuild/BCFtools-1.3-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Command-line tools for processing biological sequencing data.
+Barcode demultiplexing, adapter trimming, etc.
+
+Primarily written to support an Illumina based pipeline - 
+but should work with any FASTQs.
+
+
+More information
+================
+ - Homepage: http://expressionanalysis.github.io/ea-utils/
+    }
+}
+
+module-whatis {Description: Command-line tools for processing biological sequencing data.
+Barcode demultiplexing, adapter trimming, etc.
+
+Primarily written to support an Illumina based pipeline - 
+but should work with any FASTQs.}
+module-whatis {Homepage: http://expressionanalysis.github.io/ea-utils/}
+
+set root /apps/easybuild/software/orion-broadwell/ea-utils/1.04.807-foss-2016b
+
+conflict ea-utils
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded GSL/2.1-foss-2016b ] } {
+    module load GSL/2.1-foss-2016b
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTEAMINUTILS		"$root"
+setenv	EBVERSIONEAMINUTILS		"1.04.807"
+setenv	EBDEVELEAMINUTILS		"$root/easybuild/ea-utils-1.04.807-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

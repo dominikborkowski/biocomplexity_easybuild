@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A framework to process and analyze data from high-throughput sequencing (HTS) assays
+
+
+More information
+================
+ - Homepage: http://www-huber.embl.de/users/anders/HTSeq/
+    }
+}
+
+module-whatis {Description: A framework to process and analyze data from high-throughput sequencing (HTS) assays}
+module-whatis {Homepage: http://www-huber.embl.de/users/anders/HTSeq/}
+
+set root /apps/easybuild/software/orion-broadwell/HTSeq/0.6.1p1-foss-2016a-Python-2.7.11
+
+conflict HTSeq
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded matplotlib/1.5.1-foss-2016a-Python-2.7.11 ] } {
+    module load matplotlib/1.5.1-foss-2016a-Python-2.7.11
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTHTSEQ		"$root"
+setenv	EBVERSIONHTSEQ		"0.6.1p1"
+setenv	EBDEVELHTSEQ		"$root/easybuild/HTSeq-0.6.1p1-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.0

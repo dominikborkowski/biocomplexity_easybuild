@@ -1,0 +1,68 @@
+# Built with EasyBuild version 3.5.0 on 2017-12-19_03-55-32
+# Built with EasyBuild version 2.3.0 on 2015-10-14_20-08-59
+# Built with EasyBuild version 2.2.0 on 2015-08-25_10-06-46
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Cyprus Institute / CaSToRC, Uni.Lu/LCSB, NTUA
+# Authors::   George Tsouloupas <g.tsouloupas@cyi.ac.cy>, Fotis Georgatos <fotis@cern.ch>, Kenneth Hoste (UGent)
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-94.html
+##
+
+easyblock = 'MakeCp'
+
+name = 'PAML'
+version = "4.8a"
+
+homepage = 'http://abacus.gene.ucl.ac.uk/software/paml.html'
+description = """PAML is a package of programs for phylogenetic 
+ analyses of DNA or protein sequences using maximum likelihood."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {'optarch': False}
+
+# eg. http://abacus.gene.ucl.ac.uk/software/paml4.7.tgz
+sources = ['%(namelower)s%(version)s.tgz']
+source_urls = ['http://abacus.gene.ucl.ac.uk/software/']
+
+buildopts = 'CC="$CC" CFLAGS="$CFLAGS"'
+
+start_dir = 'src'
+files_to_copy = [(["baseml", "basemlg", "codeml", "pamp", "evolver", "yn00", "chi2"], 'bin')]
+
+sanity_check_paths = {
+    'files': ['bin/baseml'],
+    'dirs': ['bin']
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 10.86,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.5.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './p/PAML/PAML-4.8a-foss-2016a.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.0",
+    "easybuild-framework_version": "3.5.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 1840846,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1513673732,
+    "total_memory": 8901828,
+}]

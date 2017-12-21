@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SHRiMP is a software package for aligning genomic reads against a target genome.
+It was primarily developed with the multitudinous short reads of next generation sequencing machines in mind,
+as well as Applied Biosystem's colourspace genomic representation.
+
+
+More information
+================
+ - Homepage: http://compbio.cs.toronto.edu/shrimp/
+    }
+}
+
+module-whatis {Description: SHRiMP is a software package for aligning genomic reads against a target genome.
+It was primarily developed with the multitudinous short reads of next generation sequencing machines in mind,
+as well as Applied Biosystem's colourspace genomic representation.}
+module-whatis {Homepage: http://compbio.cs.toronto.edu/shrimp/}
+
+set root /apps/easybuild/software/orion-broadwell/SHRiMP/2.2.3-foss-2016a
+
+conflict SHRiMP
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/utils
+setenv	EBROOTSHRIMP		"$root"
+setenv	EBVERSIONSHRIMP		"2.2.3"
+setenv	EBDEVELSHRIMP		"$root/easybuild/SHRiMP-2.2.3-foss-2016a-easybuild-devel"
+
+setenv	SHRIMP_FOLDER		"/apps/easybuild/software/orion-broadwell/SHRiMP/2.2.3-foss-2016a"
+# Built with EasyBuild version 3.5.0

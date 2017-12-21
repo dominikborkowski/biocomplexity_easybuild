@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ZeroMQ looks like an embeddable networking library but acts like a concurrency framework.
+ It gives you sockets that carry atomic messages across various transports like in-process,
+ inter-process, TCP, and multicast. You can connect sockets N-to-N with patterns like fanout,
+ pub-sub, task distribution, and request-reply. It's fast enough to be the fabric for clustered
+ products. Its asynchronous I/O model gives you scalable multicore applications, built as asynchronous
+ message-processing tasks. It has a score of language APIs and runs on most operating systems.
+
+
+More information
+================
+ - Homepage: http://www.zeromq.org/
+    }
+}
+
+module-whatis {Description: ZeroMQ looks like an embeddable networking library but acts like a concurrency framework.
+ It gives you sockets that carry atomic messages across various transports like in-process,
+ inter-process, TCP, and multicast. You can connect sockets N-to-N with patterns like fanout,
+ pub-sub, task distribution, and request-reply. It's fast enough to be the fabric for clustered
+ products. Its asynchronous I/O model gives you scalable multicore applications, built as asynchronous
+ message-processing tasks. It has a score of language APIs and runs on most operating systems.}
+module-whatis {Homepage: http://www.zeromq.org/}
+
+set root /apps/easybuild/software/orion-broadwell/ZeroMQ/4.2.0-foss-2016b
+
+conflict ZeroMQ
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded OpenPGM/5.2.122-foss-2016b ] } {
+    module load OpenPGM/5.2.122-foss-2016b
+}
+
+if { ![ is-loaded util-linux/2.29-foss-2016b ] } {
+    module load util-linux/2.29-foss-2016b
+}
+
+if { ![ is-loaded libsodium/1.0.11-foss-2016b ] } {
+    module load libsodium/1.0.11-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTZEROMQ		"$root"
+setenv	EBVERSIONZEROMQ		"4.2.0"
+setenv	EBDEVELZEROMQ		"$root/easybuild/ZeroMQ-4.2.0-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

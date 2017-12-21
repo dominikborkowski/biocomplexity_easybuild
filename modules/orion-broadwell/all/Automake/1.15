@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Automake: GNU Standards-compliant Makefile generator
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/automake/automake.html
+    }
+}
+
+module-whatis {Description: Automake: GNU Standards-compliant Makefile generator}
+module-whatis {Homepage: http://www.gnu.org/software/automake/automake.html}
+
+set root /apps/easybuild/software/orion-broadwell/Automake/1.15
+
+conflict Automake
+
+if { ![ is-loaded Autoconf/2.69 ] } {
+    module load Autoconf/2.69
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTAUTOMAKE		"$root"
+setenv	EBVERSIONAUTOMAKE		"1.15"
+setenv	EBDEVELAUTOMAKE		"$root/easybuild/Automake-1.15-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

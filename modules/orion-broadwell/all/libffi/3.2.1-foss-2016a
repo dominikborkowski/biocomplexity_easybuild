@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The libffi library provides a portable, high level programming interface to various calling
+conventions. This allows a programmer to call any function specified by a call interface description at run-time.
+
+
+More information
+================
+ - Homepage: http://sourceware.org/libffi/
+    }
+}
+
+module-whatis {Description: The libffi library provides a portable, high level programming interface to various calling
+conventions. This allows a programmer to call any function specified by a call interface description at run-time.}
+module-whatis {Homepage: http://sourceware.org/libffi/}
+
+set root /apps/easybuild/software/orion-broadwell/libffi/3.2.1-foss-2016a
+
+conflict libffi
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBFFI		"$root"
+setenv	EBVERSIONLIBFFI		"3.2.1"
+setenv	EBDEVELLIBFFI		"$root/easybuild/libffi-3.2.1-foss-2016a-easybuild-devel"
+
+prepend-path	CPATH		$root/lib/libffi-3.2.1/include
+# Built with EasyBuild version 3.5.0

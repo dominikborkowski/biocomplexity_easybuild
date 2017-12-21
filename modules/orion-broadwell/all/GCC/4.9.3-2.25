@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...).
+
+
+More information
+================
+ - Homepage: http://gcc.gnu.org/
+    }
+}
+
+module-whatis {Description: The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...).}
+module-whatis {Homepage: http://gcc.gnu.org/}
+
+set root /apps/easybuild/software/orion-broadwell/GCC/4.9.3-2.25
+
+conflict GCC
+
+if { ![ is-loaded GCCcore/4.9.3 ] } {
+    module load GCCcore/4.9.3
+}
+
+if { ![ is-loaded binutils/2.25-GCCcore-4.9.3 ] } {
+    module load binutils/2.25-GCCcore-4.9.3
+}
+
+setenv	EBROOTGCC		"/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3"
+setenv	EBVERSIONGCC		"4.9.3"
+setenv	EBDEVELGCC		"$root/easybuild/GCC-4.9.3-2.25-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+CUDA (formerly Compute Unified Device Architecture) is a parallel
+ computing platform and programming model created by NVIDIA and implemented by the
+ graphics processing units (GPUs) that they produce. CUDA gives developers access
+ to the virtual instruction set and memory of the parallel computational elements in CUDA GPUs.
+
+
+More information
+================
+ - Homepage: https://developer.nvidia.com/cuda-toolkit
+    }
+}
+
+module-whatis {Description: CUDA (formerly Compute Unified Device Architecture) is a parallel
+ computing platform and programming model created by NVIDIA and implemented by the
+ graphics processing units (GPUs) that they produce. CUDA gives developers access
+ to the virtual instruction set and memory of the parallel computational elements in CUDA GPUs.}
+module-whatis {Homepage: https://developer.nvidia.com/cuda-toolkit}
+
+set root /apps/easybuild/software/orion-broadwell/CUDA/8.0.61
+
+conflict CUDA
+
+prepend-path	CPATH		$root/include
+prepend-path	CUDA_HOME		$root
+prepend-path	CUDA_PATH		$root
+prepend-path	CUDA_ROOT		$root
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	PATH		$root/bin
+setenv	EBROOTCUDA		"$root"
+setenv	EBVERSIONCUDA		"8.0.61"
+setenv	EBDEVELCUDA		"$root/easybuild/CUDA-8.0.61-easybuild-devel"
+
+setenv	CUDA_HOME		"/apps/easybuild/software/orion-broadwell/CUDA/8.0.61"
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.5.0

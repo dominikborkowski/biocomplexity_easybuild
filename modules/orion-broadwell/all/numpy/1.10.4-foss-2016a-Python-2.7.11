@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NumPy is the fundamental package for scientific computing with Python. It contains among other things:
+ a powerful N-dimensional array object, sophisticated (broadcasting) functions, tools for integrating C/C++ and Fortran
+ code, useful linear algebra, Fourier transform, and random number capabilities. Besides its obvious scientific uses,
+ NumPy can also be used as an efficient multi-dimensional container of generic data. Arbitrary data-types can be
+ defined. This allows NumPy to seamlessly and speedily integrate with a wide variety of databases.
+
+
+More information
+================
+ - Homepage: http://www.numpy.org
+    }
+}
+
+module-whatis {Description: NumPy is the fundamental package for scientific computing with Python. It contains among other things:
+ a powerful N-dimensional array object, sophisticated (broadcasting) functions, tools for integrating C/C++ and Fortran
+ code, useful linear algebra, Fourier transform, and random number capabilities. Besides its obvious scientific uses,
+ NumPy can also be used as an efficient multi-dimensional container of generic data. Arbitrary data-types can be
+ defined. This allows NumPy to seamlessly and speedily integrate with a wide variety of databases.}
+module-whatis {Homepage: http://www.numpy.org}
+
+set root /apps/easybuild/software/orion-broadwell/numpy/1.10.4-foss-2016a-Python-2.7.11
+
+conflict numpy
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTNUMPY		"$root"
+setenv	EBVERSIONNUMPY		"1.10.4"
+setenv	EBDEVELNUMPY		"$root/easybuild/numpy-1.10.4-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+prepend-path	CPATH		$root/lib/python2.7/site-packages/numpy/core/include
+prepend-path	LD_LIBRARY_PATH		$root/lib/python2.7/site-packages/numpy/core/lib
+prepend-path	LIBRARY_PATH		$root/lib/python2.7/site-packages/numpy/core/lib
+# Built with EasyBuild version 3.5.0

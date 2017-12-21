@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures
+ and data analysis tools for the Python programming language.
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/pandas/
+    }
+}
+
+module-whatis {Description: pandas is an open source, BSD-licensed library providing high-performance, easy-to-use data structures
+ and data analysis tools for the Python programming language.}
+module-whatis {Homepage: https://pypi.python.org/pypi/pandas/}
+
+set root /apps/easybuild/software/orion-broadwell/pandas/0.17.1-foss-2016a-Python-2.7.11
+
+conflict pandas
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+setenv	EBROOTPANDAS		"$root"
+setenv	EBVERSIONPANDAS		"0.17.1"
+setenv	EBDEVELPANDAS		"$root/easybuild/pandas-0.17.1-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.0

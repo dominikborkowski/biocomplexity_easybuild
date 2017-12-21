@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Test utilities for code working with files and commands
+
+
+More information
+================
+ - Homepage: https://github.com/jupyter/testpath
+    }
+}
+
+module-whatis {Description: Test utilities for code working with files and commands}
+module-whatis {Homepage: https://github.com/jupyter/testpath}
+
+set root /apps/easybuild/software/orion-broadwell/testpath/0.3-foss-2016b-Python-3.5.2
+
+conflict testpath
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+setenv	EBROOTTESTPATH		"$root"
+setenv	EBVERSIONTESTPATH		"0.3"
+setenv	EBDEVELTESTPATH		"$root/easybuild/testpath-0.3-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.5.0

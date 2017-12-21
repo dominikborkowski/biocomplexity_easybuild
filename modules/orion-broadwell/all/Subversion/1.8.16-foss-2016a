@@ -1,0 +1,56 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Subversion is an open source version control system.
+
+
+More information
+================
+ - Homepage: http://subversion.apache.org/
+    }
+}
+
+module-whatis {Description:  Subversion is an open source version control system.}
+module-whatis {Homepage: http://subversion.apache.org/}
+
+set root /apps/easybuild/software/orion-broadwell/Subversion/1.8.16-foss-2016a
+
+conflict Subversion
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded APR/1.5.2-foss-2016a ] } {
+    module load APR/1.5.2-foss-2016a
+}
+
+if { ![ is-loaded APR-util/1.5.4-foss-2016a ] } {
+    module load APR-util/1.5.4-foss-2016a
+}
+
+if { ![ is-loaded SQLite/3.9.2-foss-2016a ] } {
+    module load SQLite/3.9.2-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+if { ![ is-loaded Serf/1.3.8-foss-2016a ] } {
+    module load Serf/1.3.8-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTSUBVERSION		"$root"
+setenv	EBVERSIONSUBVERSION		"1.8.16"
+setenv	EBDEVELSUBVERSION		"$root/easybuild/Subversion-1.8.16-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,65 @@
+# Built with EasyBuild version 3.5.0 on 2017-12-19_02-29-27
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2013 The Cyprus Institute
+# Authors:: Andreas Panteli <a.panteli@cyi.ac.cy>, Thekla Loizou <t.loizou@cyi.ac.cy>
+# License::   MIT/GPL
+#
+##
+easyblock = "PackedBinary"
+
+name = 'FastQC'
+version = '0.11.5'
+
+homepage = 'http://www.bioinformatics.babraham.ac.uk/projects/fastqc/'
+description = """FastQC is a quality control application for high throughput sequence data.
+ It reads in sequence data in a variety of formats and can either provide an interactive
+ application to review the results of several different QC checks, or create an HTML based
+ report which can be integrated into a pipeline."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = ['%(namelower)s_v%(version)s.zip']
+source_urls = ['http://www.bioinformatics.babraham.ac.uk/projects/%(namelower)s']
+
+java = 'Java'
+javaver = '1.8.0_92'
+
+dependencies = [('Java', '1.8.0_92', '', True)]
+
+install_cmd = "cp -a FastQC/* %(installdir)s && chmod +x %(installdir)s/fastqc"
+
+sanity_check_paths = {
+    'files': ["fastqc", "fastqc_icon.ico", "INSTALL.txt", "jbzip2-0.9.jar", "LICENSE.txt",
+                "README.txt", "RELEASE_NOTES.txt", "run_fastqc.bat", "sam-1.103.jar"],
+    'dirs': [ "Help", "Templates", "uk"],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 0.8,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.5.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './f/FastQC/FastQC-0.11.5-foss-2016a.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.0",
+    "easybuild-framework_version": "3.5.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 11076096,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1513668567,
+    "total_memory": 8901828,
+}]

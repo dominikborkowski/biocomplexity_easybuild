@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and
+ portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display
+ servers, font conversion tools, text image generation tools, and many other products as well.
+
+
+More information
+================
+ - Homepage: http://freetype.org
+    }
+}
+
+module-whatis {Description: FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and
+ portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display
+ servers, font conversion tools, text image generation tools, and many other products as well.}
+module-whatis {Homepage: http://freetype.org}
+
+set root /apps/easybuild/software/orion-broadwell/freetype/2.6.2-foss-2016a
+
+conflict freetype
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libpng/1.6.21-foss-2016a ] } {
+    module load libpng/1.6.21-foss-2016a
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include/freetype2
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTFREETYPE		"$root"
+setenv	EBVERSIONFREETYPE		"2.6.2"
+setenv	EBDEVELFREETYPE		"$root/easybuild/freetype-2.6.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

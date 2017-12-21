@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A code searching tool similar to ack, with a focus on speed.
+
+
+More information
+================
+ - Homepage: https://github.com/ggreer/the_silver_searcher
+    }
+}
+
+module-whatis {Description: A code searching tool similar to ack, with a focus on speed.}
+module-whatis {Homepage: https://github.com/ggreer/the_silver_searcher}
+
+set root /apps/easybuild/software/orion-broadwell/the_silver_searcher/0.31.0-foss-2016a
+
+conflict the_silver_searcher
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded PCRE/8.38-foss-2016a ] } {
+    module load PCRE/8.38-foss-2016a
+}
+
+if { ![ is-loaded XZ/5.2.2-foss-2016a ] } {
+    module load XZ/5.2.2-foss-2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTTHE_SILVER_SEARCHER		"$root"
+setenv	EBVERSIONTHE_SILVER_SEARCHER		"0.31.0"
+setenv	EBDEVELTHE_SILVER_SEARCHER		"$root/easybuild/the_silver_searcher-0.31.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

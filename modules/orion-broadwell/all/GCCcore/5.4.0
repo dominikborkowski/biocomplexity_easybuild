@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...).
+
+
+More information
+================
+ - Homepage: http://gcc.gnu.org/
+    }
+}
+
+module-whatis {Description: The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...).}
+module-whatis {Homepage: http://gcc.gnu.org/}
+
+set root /apps/easybuild/software/orion-broadwell/GCCcore/5.4.0
+
+conflict GCCcore
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LD_LIBRARY_PATH		$root/lib/gcc/x86_64-unknown-linux-gnu/5.4.0
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGCCCORE		"$root"
+setenv	EBVERSIONGCCCORE		"5.4.0"
+setenv	EBDEVELGCCCORE		"$root/easybuild/GCCcore-5.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

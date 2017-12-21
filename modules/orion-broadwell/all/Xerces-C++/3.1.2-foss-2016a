@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Xerces-C++ is a validating XML parser written in a portable subset of C++. Xerces-C++ makes it easy to give your application the ability to read and write XML data. A shared library is provided for parsing, generating, manipulating, and validating XML documents using the DOM, SAX, and SAX2 APIs.
+
+
+More information
+================
+ - Homepage: http://xerces.apache.org/xerces-c/
+    }
+}
+
+module-whatis {Description: Xerces-C++ is a validating XML parser written in a portable subset of C++. Xerces-C++ makes it easy to give your application the ability to read and write XML data. A shared library is provided for parsing, generating, manipulating, and validating XML documents using the DOM, SAX, and SAX2 APIs.}
+module-whatis {Homepage: http://xerces.apache.org/xerces-c/}
+
+set root /apps/easybuild/software/orion-broadwell/Xerces-C++/3.1.2-foss-2016a
+
+conflict Xerces-C++
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded cURL/7.47.0-foss-2016a ] } {
+    module load cURL/7.47.0-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXERCESMINCPLUSPLUS		"$root"
+setenv	EBVERSIONXERCESMINCPLUSPLUS		"3.1.2"
+setenv	EBDEVELXERCESMINCPLUSPLUS		"$root/easybuild/Xerces-C++-3.1.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,64 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing.
+
+
+More information
+================
+ - Homepage: http://ipython.org/index.html
+    }
+}
+
+module-whatis {Description: IPython provides a rich architecture for interactive computing with:
+ Powerful interactive shells (terminal and Qt-based).
+ A browser-based notebook with support for code, text, mathematical expressions, inline plots and other rich media.
+ Support for interactive data visualization and use of GUI toolkits.
+ Flexible, embeddable interpreters to load into your own projects.
+ Easy to use, high performance tools for parallel computing.}
+module-whatis {Homepage: http://ipython.org/index.html}
+
+set root /apps/easybuild/software/orion-broadwell/IPython/3.2.0-foss-2016a-Python-2.7.11
+
+conflict IPython
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded pysqlite/2.6.3-foss-2016a-Python-2.7.11 ] } {
+    module load pysqlite/2.6.3-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded PyZMQ/14.7.0-foss-2016a-Python-2.7.11-zmq3 ] } {
+    module load PyZMQ/14.7.0-foss-2016a-Python-2.7.11-zmq3
+}
+
+if { ![ is-loaded requests/2.7.0-foss-2016a-Python-2.7.11 ] } {
+    module load requests/2.7.0-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded Pygments/2.0.2-foss-2016a-Python-2.7.11 ] } {
+    module load Pygments/2.0.2-foss-2016a-Python-2.7.11
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTIPYTHON		"$root"
+setenv	EBVERSIONIPYTHON		"3.2.0"
+setenv	EBDEVELIPYTHON		"$root/easybuild/IPython-3.2.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.0

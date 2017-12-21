@@ -1,0 +1,82 @@
+# Built with EasyBuild version 3.5.0 on 2017-12-18_22-31-55
+easyblock = 'ConfigureMake'
+
+name = 'OpenBLAS'
+version = '0.2.18'
+
+lapackver = '3.6.1'
+versionsuffix = '-LAPACK-%s' % lapackver
+
+homepage = 'http://xianyi.github.com/OpenBLAS/'
+description = """OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version."""
+
+toolchain = {'name': 'GCC', 'version': '5.4.0-2.26'}
+
+lapack_src = 'lapack-%s.tgz' % lapackver
+large_src = 'large.tgz'
+timing_src = 'timing.tgz'
+
+lapack_unpack_cmd = 'cd %(name)s-%(version)s; rm -rf lapack-netlib;'
+lapack_unpack_cmd += 'mkdir lapack-netlib;'
+lapack_unpack_cmd += 'tar -C lapack-netlib --strip-components=1 -zxf %s; cd -'
+
+sources = [
+    'v%(version)s.tar.gz',
+    {'filename': lapack_src, 'extract_cmd': lapack_unpack_cmd},
+    large_src,
+    timing_src,
+]
+source_urls = [
+    # order matters, trying to download the LAPACK tarball from GitHub causes trouble
+    "http://www.netlib.org/lapack/",
+    "http://www.netlib.org/lapack/timing/",
+    "https://github.com/xianyi/OpenBLAS/archive/",
+]
+
+patches = [
+    (large_src, '.'),
+    (timing_src, '.'),
+]
+
+skipsteps = ['configure']
+
+buildopts = 'BINARY=64 USE_THREAD=1 CC="$CC" FC="$F77" NO_AFFINITY=1'
+installopts = "USE_THREAD=1 PREFIX=%(installdir)s"
+
+# extensive testing can be enabled by uncommenting the line below
+# runtest = 'PATH=.:$PATH lapack-timing'
+
+sanity_check_paths = {
+    'files': ['include/cblas.h', 'include/f77blas.h', 'include/lapacke_config.h', 'include/lapacke.h',
+              'include/lapacke_mangling.h', 'include/lapacke_utils.h', 'include/openblas_config.h',
+              'lib/libopenblas.a', 'lib/libopenblas.%s' % SHLIB_EXT],
+    'dirs': [],
+}
+
+moduleclass = 'numlib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 24.34,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.5.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'foss-2016b.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.0",
+    "easybuild-framework_version": "3.5.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 94976767,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1513654315,
+    "total_memory": 8901828,
+}]

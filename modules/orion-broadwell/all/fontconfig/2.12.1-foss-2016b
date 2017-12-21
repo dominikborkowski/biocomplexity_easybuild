@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Fontconfig is a library designed to provide system-wide font configuration, customization and
+application access.
+
+
+More information
+================
+ - Homepage: http://www.freedesktop.org/software/fontconfig
+    }
+}
+
+module-whatis {Description: Fontconfig is a library designed to provide system-wide font configuration, customization and
+application access.}
+module-whatis {Homepage: http://www.freedesktop.org/software/fontconfig}
+
+set root /apps/easybuild/software/orion-broadwell/fontconfig/2.12.1-foss-2016b
+
+conflict fontconfig
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded expat/2.2.0-foss-2016b ] } {
+    module load expat/2.2.0-foss-2016b
+}
+
+if { ![ is-loaded freetype/2.6.5-foss-2016b ] } {
+    module load freetype/2.6.5-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTFONTCONFIG		"$root"
+setenv	EBVERSIONFONTCONFIG		"2.12.1"
+setenv	EBDEVELFONTCONFIG		"$root/easybuild/fontconfig-2.12.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0
