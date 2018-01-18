@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+path.py is a Python library implementing path objects as first-class entities,
+ allowing common operations on files to be invoked on those path objects directly.
+
+
+More information
+================
+ - Homepage: https://github.com/jaraco/path.py
+    }
+}
+
+module-whatis {Description: path.py is a Python library implementing path objects as first-class entities,
+ allowing common operations on files to be invoked on those path objects directly.}
+module-whatis {Homepage: https://github.com/jaraco/path.py}
+
+set root /apps/easybuild/software/orion-broadwell/path.py/8.2.1-foss-2016b-Python-2.7.12
+
+conflict path.py
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+setenv	EBROOTPATHPY		"$root"
+setenv	EBVERSIONPATHPY		"8.2.1"
+setenv	EBDEVELPATHPY		"$root/easybuild/path.py-8.2.1-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.0

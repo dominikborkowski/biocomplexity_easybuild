@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Scalasca is a software tool that supports the performance optimization of
+ parallel programs by measuring and analyzing their runtime behavior. The analysis identifies
+ potential performance bottlenecks -- in particular those concerning communication and
+ synchronization -- and offers guidance in exploring their causes.
+
+
+More information
+================
+ - Homepage: http://www.scalasca.org/
+    }
+}
+
+module-whatis {Description: Scalasca is a software tool that supports the performance optimization of
+ parallel programs by measuring and analyzing their runtime behavior. The analysis identifies
+ potential performance bottlenecks -- in particular those concerning communication and
+ synchronization -- and offers guidance in exploring their causes.}
+module-whatis {Homepage: http://www.scalasca.org/}
+
+set root /apps/easybuild/software/orion-broadwell/Scalasca/2.3-foss-2016a
+
+conflict Scalasca
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Cube/4.3.4-foss-2016a ] } {
+    module load Cube/4.3.4-foss-2016a
+}
+
+if { ![ is-loaded OTF2/2.0-foss-2016a ] } {
+    module load OTF2/2.0-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSCALASCA		"$root"
+setenv	EBVERSIONSCALASCA		"2.3"
+setenv	EBDEVELSCALASCA		"$root/easybuild/Scalasca-2.3-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

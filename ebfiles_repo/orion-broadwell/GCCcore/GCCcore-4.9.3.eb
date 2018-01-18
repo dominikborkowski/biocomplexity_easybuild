@@ -1,0 +1,71 @@
+# Built with EasyBuild version 3.5.0 on 2017-12-18_22-31-19
+easyblock = 'EB_GCC'
+
+name = 'GCCcore'
+version = '4.9.3'
+
+homepage = 'http://gcc.gnu.org/'
+description = """The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...)."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+mpfr_version = '3.1.2'
+
+source_urls = [
+    'http://ftpmirror.gnu.org/gnu/gcc/gcc-%s' % version,  # GCC auto-resolving HTTP mirror
+    'http://ftpmirror.gnu.org/gnu/gmp',  # idem for GMP
+    'http://ftpmirror.gnu.org/gnu/mpfr',  # idem for MPFR
+    'http://www.multiprecision.org/mpc/download',  # MPC official
+]
+sources = [
+    'gcc-%(version)s.tar.bz2',
+    'gmp-6.0.0a.tar.bz2',
+    'mpfr-%s.tar.gz' % mpfr_version,
+    'mpc-1.0.2.tar.gz',
+]
+
+builddependencies = [
+    ('Autotools', '20150215'),
+    ('binutils', '2.25'),
+]
+
+patches = [('mpfr-%s-allpatches-20141204.patch' % mpfr_version, '../mpfr-%s' % mpfr_version)]
+
+checksums = [
+    '6f831b4d251872736e8e9cc09746f327',     # gcc-4.9.3.tar.bz2
+    'b7ff2d88cae7f8085bd5006096eed470',     # gmp-6.0.0a.tar.bz2
+    '181aa7bb0e452c409f2788a4a7f38476',     # mpfr-3.1.2.tar.gz
+    '68fadff3358fb3e7976c7a398a0af4c3',     # mpc-1.0.2.tar.gz
+    '58aec98d15982f9744a043d2f1c5af82',     # mpfr-3.1.2-allpatches-20141204.patch
+]
+
+languages = ['c', 'c++', 'fortran']
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "build_time": 550.88,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.5.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'foss-2016a.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.0",
+    "easybuild-framework_version": "3.5.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.8 --enable-ssp --disable-libssp --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --enable-linux-futex --program-suffix=-4.8 --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux; Thread model: posix; gcc version 4.8.5 (SUSE Linux) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 622095143,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1513654279,
+    "total_memory": 8901828,
+}]

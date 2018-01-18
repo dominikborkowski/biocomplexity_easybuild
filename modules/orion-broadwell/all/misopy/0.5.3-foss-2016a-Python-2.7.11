@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+MISO (Mixture-of-Isoforms) is a probabilistic framework that quantitates the expression level of alternatively spliced genes from RNA-Seq data, and identifies differentially regulated isoforms or exons across samples. By modeling the generative process by which reads are produced from isoforms in RNA-Seq, the MISO model uses Bayesian inference to compute the probability that a read originated from a particular isoform.
+
+
+More information
+================
+ - Homepage: http://genes.mit.edu/burgelab/miso
+    }
+}
+
+module-whatis {Description: MISO (Mixture-of-Isoforms) is a probabilistic framework that quantitates the expression level of alternatively spliced genes from RNA-Seq data, and identifies differentially regulated isoforms or exons across samples. By modeling the generative process by which reads are produced from isoforms in RNA-Seq, the MISO model uses Bayesian inference to compute the probability that a read originated from a particular isoform.}
+module-whatis {Homepage: http://genes.mit.edu/burgelab/miso}
+
+set root /apps/easybuild/software/orion-broadwell/misopy/0.5.3-foss-2016a-Python-2.7.11
+
+conflict misopy
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded pysam/0.9.0-foss-2016a-Python-2.7.11 ] } {
+    module load pysam/0.9.0-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded matplotlib/1.5.1-foss-2016a-Python-2.7.11 ] } {
+    module load matplotlib/1.5.1-foss-2016a-Python-2.7.11
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMISOPY		"$root"
+setenv	EBVERSIONMISOPY		"0.5.3"
+setenv	EBDEVELMISOPY		"$root/easybuild/misopy-0.5.3-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.0

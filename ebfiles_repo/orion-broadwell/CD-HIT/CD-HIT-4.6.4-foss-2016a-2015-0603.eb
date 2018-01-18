@@ -1,0 +1,63 @@
+# Built with EasyBuild version 3.5.0 on 2017-12-19_01-17-29
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+# Author: Pablo Escobar Lopez
+# Swiss Institute of Bioinformatics
+# Biozentrum - University of Basel
+
+easyblock = 'MakeCp'
+
+name = "CD-HIT"
+version = "4.6.4"
+versionsuffix = "-2015-0603"
+
+homepage = 'http://weizhong-lab.ucsd.edu/cd-hit/'
+description = """ CD-HIT is a very widely used program for clustering and 
+ comparing protein or nucleotide sequences."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+toolchainopts = {'openmp': True}
+
+source_urls = ['https://github.com/weizhongli/cdhit/releases/download/V%(version)s/']
+sources = ['%(namelower)s-v%(version)s%(versionsuffix)s.tar.gz']
+
+# make sure compilation flags are passed down (e.g. to enable OpenMP)
+buildopts = ' CC="$CXX" CCFLAGS="$CPPFLAGS $CXXFLAGS"'
+
+# put here the list of generated executables when compiling
+list_of_executables = ["cd-hit", "cd-hit-est", "cd-hit-2d", "cd-hit-est-2d", "cd-hit-div", "cd-hit-454"]
+
+# this is the real EasyBuild line to copy all the executables and perl scripts to "bin"
+files_to_copy = [(list_of_executables, "bin"), (["*.pl"], 'bin'), "README", "doc", "license.txt" ]
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in list_of_executables],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 3.41,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.5.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", './c/CD-HIT/CD-HIT-4.6.4-foss-2016a-2015-0603.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.0",
+    "easybuild-framework_version": "3.5.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 2254434,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1513664249,
+    "total_memory": 8901828,
+}]

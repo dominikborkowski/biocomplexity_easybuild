@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A set of Java command line tools for manipulating high-throughput sequencing data (HTS) data and formats.
+
+
+More information
+================
+ - Homepage: http://broadinstitute.github.io/picard/
+    }
+}
+
+module-whatis {Description: A set of Java command line tools for manipulating high-throughput sequencing data (HTS) data and formats.}
+module-whatis {Homepage: http://broadinstitute.github.io/picard/}
+
+set root /apps/easybuild/software/orion-broadwell/picard/2.2.4-Java-1.8.0_72
+
+conflict picard
+
+if { ![ is-loaded Java/1.8.0_72 ] } {
+    module load Java/1.8.0_72
+}
+
+prepend-path	CLASSPATH		$root/htsjdk-2.2.4.jar
+prepend-path	CLASSPATH		$root/picard-lib.jar
+prepend-path	CLASSPATH		$root/picard.jar
+setenv	EBROOTPICARD		"$root"
+setenv	EBVERSIONPICARD		"2.2.4"
+setenv	EBDEVELPICARD		"$root/easybuild/picard-2.2.4-Java-1.8.0_72-easybuild-devel"
+
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.5.0

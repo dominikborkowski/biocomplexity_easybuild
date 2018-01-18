@@ -30,6 +30,8 @@ dependencies = [
     ('GDAL', '2.0.2'),  # for rgdal
     ('PROJ', '4.9.2'), # for rgdal
     ('GMP', '6.1.0'),  # for igraph
+    ('NLopt', '2.4.2'),  # for nloptr
+    ('cairo', '1.14.2'), # for cairo
     # OS dependency should be preferred if the os version is more recent then this version,
     # it's nice to have an up to date openssl for security reasons.
     # we also need it to compile R's openssl module on SLE 11 SP2/3, see RT#97015

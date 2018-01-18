@@ -1,14 +1,24 @@
 #%Module
 proc ModulesHelp { } {
-    puts stderr { Cairo is a 2D graphics library with support for multiple output devices.
+    puts stderr {
+
+Description
+===========
+Cairo is a 2D graphics library with support for multiple output devices.
  Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
- PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB - Homepage: http://cairographics.org
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB
+
+
+More information
+================
+ - Homepage: http://cairographics.org
     }
 }
 
 module-whatis {Description: Cairo is a 2D graphics library with support for multiple output devices.
  Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
- PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB - Homepage: http://cairographics.org}
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB}
+module-whatis {Homepage: http://cairographics.org}
 
 set root /apps/easybuild/software/shadowfax-westmere/cairo/1.14.6-foss-2016b
 
@@ -50,6 +60,10 @@ if { ![ is-loaded X11/20160819-foss-2016b ] } {
     module load X11/20160819-foss-2016b
 }
 
+if { ![ is-loaded fontconfig/2.12.1-foss-2016b ] } {
+    module load fontconfig/2.12.1-foss-2016b
+}
+
 prepend-path	CPATH		$root/include
 prepend-path	LD_LIBRARY_PATH		$root/lib
 prepend-path	LIBRARY_PATH		$root/lib
@@ -59,4 +73,4 @@ setenv	EBROOTCAIRO		"$root"
 setenv	EBVERSIONCAIRO		"1.14.6"
 setenv	EBDEVELCAIRO		"$root/easybuild/cairo-1.14.6-foss-2016b-easybuild-devel"
 
-# Built with EasyBuild version 3.1.2
+# Built with EasyBuild version 3.5.0

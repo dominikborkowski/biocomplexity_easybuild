@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Doxygen is a documentation system for C++, C, Java, Objective-C, Python, 
+ IDL (Corba and Microsoft flavors), Fortran, VHDL, PHP, C#, and to some extent D.
+
+
+More information
+================
+ - Homepage: http://www.doxygen.org
+    }
+}
+
+module-whatis {Description: Doxygen is a documentation system for C++, C, Java, Objective-C, Python, 
+ IDL (Corba and Microsoft flavors), Fortran, VHDL, PHP, C#, and to some extent D.}
+module-whatis {Homepage: http://www.doxygen.org}
+
+set root /apps/easybuild/software/orion-broadwell/Doxygen/1.8.11-foss-2016a
+
+conflict Doxygen
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTDOXYGEN		"$root"
+setenv	EBVERSIONDOXYGEN		"1.8.11"
+setenv	EBDEVELDOXYGEN		"$root/easybuild/Doxygen-1.8.11-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The primary goal of libunwind is to define a portable and efficient C programming interface
+ (API) to determine the call-chain of a program. The API additionally provides the means to manipulate the
+ preserved (callee-saved) state of each call-frame and to resume execution at any point in the call-chain
+ (non-local goto). The API supports both local (same-process) and remote (across-process) operation.
+ As such, the API is useful in a number of applications
+
+
+More information
+================
+ - Homepage: http://www.nongnu.org/libunwind/
+    }
+}
+
+module-whatis {Description: The primary goal of libunwind is to define a portable and efficient C programming interface
+ (API) to determine the call-chain of a program. The API additionally provides the means to manipulate the
+ preserved (callee-saved) state of each call-frame and to resume execution at any point in the call-chain
+ (non-local goto). The API supports both local (same-process) and remote (across-process) operation.
+ As such, the API is useful in a number of applications}
+module-whatis {Homepage: http://www.nongnu.org/libunwind/}
+
+set root /apps/easybuild/software/orion-broadwell/libunwind/1.2.1-foss-2016a
+
+conflict libunwind
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded XZ/5.2.2-foss-2016a ] } {
+    module load XZ/5.2.2-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBUNWIND		"$root"
+setenv	EBVERSIONLIBUNWIND		"1.2.1"
+setenv	EBDEVELLIBUNWIND		"$root/easybuild/libunwind-1.2.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

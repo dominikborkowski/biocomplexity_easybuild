@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ALLPATHS-LG, the new short read genome assembler.
+
+
+More information
+================
+ - Homepage: http://www.broadinstitute.org/software/allpaths-lg/blog/
+    }
+}
+
+module-whatis {Description: ALLPATHS-LG, the new short read genome assembler.}
+module-whatis {Homepage: http://www.broadinstitute.org/software/allpaths-lg/blog/}
+
+set root /apps/easybuild/software/orion-broadwell/ALLPATHS-LG/52488-foss-2016a
+
+conflict ALLPATHS-LG
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTALLPATHSMINLG		"$root"
+setenv	EBVERSIONALLPATHSMINLG		"52488"
+setenv	EBDEVELALLPATHSMINLG		"$root/easybuild/ALLPATHS-LG-52488-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

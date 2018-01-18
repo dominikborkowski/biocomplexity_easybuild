@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+libcerf is a self-contained numeric library that provides an efficient and accurate
+ implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.
+
+
+More information
+================
+ - Homepage: http://gnuplot.sourceforge.net/
+    }
+}
+
+module-whatis {Description: libcerf is a self-contained numeric library that provides an efficient and accurate
+ implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.}
+module-whatis {Homepage: http://gnuplot.sourceforge.net/}
+
+set root /apps/easybuild/software/orion-broadwell/libcerf/1.4-foss-2016a
+
+conflict libcerf
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBCERF		"$root"
+setenv	EBVERSIONLIBCERF		"1.4"
+setenv	EBDEVELLIBCERF		"$root/easybuild/libcerf-1.4-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

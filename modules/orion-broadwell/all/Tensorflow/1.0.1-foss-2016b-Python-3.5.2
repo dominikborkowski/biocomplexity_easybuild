@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+An open-source software library for Machine intelligence
+
+
+More information
+================
+ - Homepage: https://www.tensorflow.org/
+    }
+}
+
+module-whatis {Description: An open-source software library for Machine intelligence}
+module-whatis {Homepage: https://www.tensorflow.org/}
+
+set root /apps/easybuild/software/orion-broadwell/Tensorflow/1.0.1-foss-2016b-Python-3.5.2
+
+conflict Tensorflow
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+if { ![ is-loaded protobuf-python/3.2.0-foss-2016b-Python-3.5.2 ] } {
+    module load protobuf-python/3.2.0-foss-2016b-Python-3.5.2
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTTENSORFLOW		"$root"
+setenv	EBVERSIONTENSORFLOW		"1.0.1"
+setenv	EBDEVELTENSORFLOW		"$root/easybuild/Tensorflow-1.0.1-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.5.0

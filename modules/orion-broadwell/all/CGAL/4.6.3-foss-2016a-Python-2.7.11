@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The goal of the CGAL Open Source Project is to provide easy access to efficient 
+ and reliable geometric algorithms in the form of a C++ library.
+
+
+More information
+================
+ - Homepage: http://www.cgal.org/
+    }
+}
+
+module-whatis {Description: The goal of the CGAL Open Source Project is to provide easy access to efficient 
+ and reliable geometric algorithms in the form of a C++ library.}
+module-whatis {Homepage: http://www.cgal.org/}
+
+set root /apps/easybuild/software/orion-broadwell/CGAL/4.6.3-foss-2016a-Python-2.7.11
+
+conflict CGAL
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Boost/1.59.0-foss-2016a-Python-2.7.11 ] } {
+    module load Boost/1.59.0-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded MPFR/3.1.3-foss-2016a-GMP-6.1.0 ] } {
+    module load MPFR/3.1.3-foss-2016a-GMP-6.1.0
+}
+
+if { ![ is-loaded Qt/4.8.7-foss-2016a ] } {
+    module load Qt/4.8.7-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTCGAL		"$root"
+setenv	EBVERSIONCGAL		"4.6.3"
+setenv	EBDEVELCGAL		"$root/easybuild/CGAL-4.6.3-foss-2016a-Python-2.7.11-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

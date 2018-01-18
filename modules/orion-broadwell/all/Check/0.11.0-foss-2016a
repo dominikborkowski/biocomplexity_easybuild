@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Check is a unit testing framework for C. It features a simple interface 
+ for defining unit tests, putting little in the way of the developer. Tests are run in a 
+ separate address space, so both assertion failures and code errors that cause segmentation 
+ faults or other signals can be caught. Test results are reportable in the following: 
+ Subunit, TAP, XML, and a generic logging format.
+
+
+More information
+================
+ - Homepage: https://libcheck.github.io/check/
+    }
+}
+
+module-whatis {Description:  Check is a unit testing framework for C. It features a simple interface 
+ for defining unit tests, putting little in the way of the developer. Tests are run in a 
+ separate address space, so both assertion failures and code errors that cause segmentation 
+ faults or other signals can be caught. Test results are reportable in the following: 
+ Subunit, TAP, XML, and a generic logging format.}
+module-whatis {Homepage: https://libcheck.github.io/check/}
+
+set root /apps/easybuild/software/orion-broadwell/Check/0.11.0-foss-2016a
+
+conflict Check
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTCHECK		"$root"
+setenv	EBVERSIONCHECK		"0.11.0"
+setenv	EBDEVELCHECK		"$root/easybuild/Check-0.11.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

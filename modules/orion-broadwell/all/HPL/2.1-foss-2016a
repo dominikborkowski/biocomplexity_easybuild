@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HPL is a software package that solves a (random) dense linear system in double precision (64 bits)
+ arithmetic on distributed-memory computers. It can thus be regarded as a portable as well as freely available
+ implementation of the High Performance Computing Linpack Benchmark.
+
+
+More information
+================
+ - Homepage: http://www.netlib.org/benchmark/hpl/
+    }
+}
+
+module-whatis {Description: HPL is a software package that solves a (random) dense linear system in double precision (64 bits)
+ arithmetic on distributed-memory computers. It can thus be regarded as a portable as well as freely available
+ implementation of the High Performance Computing Linpack Benchmark.}
+module-whatis {Homepage: http://www.netlib.org/benchmark/hpl/}
+
+set root /apps/easybuild/software/orion-broadwell/HPL/2.1-foss-2016a
+
+conflict HPL
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTHPL		"$root"
+setenv	EBVERSIONHPL		"2.1"
+setenv	EBDEVELHPL		"$root/easybuild/HPL-2.1-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

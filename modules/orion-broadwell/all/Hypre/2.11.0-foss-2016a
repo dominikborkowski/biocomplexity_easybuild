@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Hypre is a library for solving large, sparse linear systems of equations on massively parallel computers.
+ The problems of interest arise in the simulation codes being developed at LLNL and elsewhere 
+ to study physical phenomena in the defense, environmental, energy, and biological sciences.
+
+
+More information
+================
+ - Homepage: https://computation.llnl.gov/casc/linear_solvers/sls_hypre.html
+    }
+}
+
+module-whatis {Description: Hypre is a library for solving large, sparse linear systems of equations on massively parallel computers.
+ The problems of interest arise in the simulation codes being developed at LLNL and elsewhere 
+ to study physical phenomena in the defense, environmental, energy, and biological sciences.}
+module-whatis {Homepage: https://computation.llnl.gov/casc/linear_solvers/sls_hypre.html}
+
+set root /apps/easybuild/software/orion-broadwell/Hypre/2.11.0-foss-2016a
+
+conflict Hypre
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTHYPRE		"$root"
+setenv	EBVERSIONHYPRE		"2.11.0"
+setenv	EBDEVELHYPRE		"$root/easybuild/Hypre-2.11.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

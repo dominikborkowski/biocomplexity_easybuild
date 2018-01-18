@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries
+ behind a consistent, portable interface.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/libtool
+    }
+}
+
+module-whatis {Description: GNU libtool is a generic library support script. Libtool hides the complexity of using shared libraries
+ behind a consistent, portable interface.}
+module-whatis {Homepage: http://www.gnu.org/software/libtool}
+
+set root /apps/easybuild/software/orion-broadwell/libtool/2.4.6-GCC-4.9.3-2.25
+
+conflict libtool
+
+if { ![ is-loaded GCC/4.9.3-2.25 ] } {
+    module load GCC/4.9.3-2.25
+}
+
+if { ![ is-loaded M4/1.4.17-GCC-4.9.3-2.25 ] } {
+    module load M4/1.4.17-GCC-4.9.3-2.25
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTLIBTOOL		"$root"
+setenv	EBVERSIONLIBTOOL		"2.4.6"
+setenv	EBDEVELLIBTOOL		"$root/easybuild/libtool-2.4.6-GCC-4.9.3-2.25-easybuild-devel"
+
+# Built with EasyBuild version 3.5.0

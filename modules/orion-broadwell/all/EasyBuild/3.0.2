@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way.
+
+
+More information
+================
+ - Homepage: http://hpcugent.github.com/easybuild/
+    }
+}
+
+module-whatis {Description: EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way.}
+module-whatis {Homepage: http://hpcugent.github.com/easybuild/}
+
+set root /apps/easybuild/software/orion-broadwell/EasyBuild/3.0.2
+
+conflict EasyBuild
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTEASYBUILD		"$root"
+setenv	EBVERSIONEASYBUILD		"3.0.2"
+setenv	EBDEVELEASYBUILD		"$root/easybuild/EasyBuild-3.0.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.0
