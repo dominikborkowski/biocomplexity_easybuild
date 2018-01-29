@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+log4cplus is a simple to use C++ logging API providing thread-safe, flexible, and arbitrarily
+granular control over log management and configuration. It is modelled after the Java log4j API.
+
+
+More information
+================
+ - Homepage: http://sourceforge.net/p/log4cplus
+    }
+}
+
+module-whatis {Description: log4cplus is a simple to use C++ logging API providing thread-safe, flexible, and arbitrarily
+granular control over log management and configuration. It is modelled after the Java log4j API.}
+module-whatis {Homepage: http://sourceforge.net/p/log4cplus}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/log4cplus/1.2.0-foss-2016b
+
+conflict log4cplus
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLOG4CPLUS		"$root"
+setenv	EBVERSIONLOG4CPLUS		"1.2.0"
+setenv	EBDEVELLOG4CPLUS		"$root/easybuild/log4cplus-1.2.0-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1
