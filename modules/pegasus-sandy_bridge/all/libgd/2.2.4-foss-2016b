@@ -1,0 +1,52 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GD is an open source code library for the dynamic creation of images by programmers.
+
+
+More information
+================
+ - Homepage: https://libgd.github.io
+    }
+}
+
+module-whatis {Description: GD is an open source code library for the dynamic creation of images by programmers.}
+module-whatis {Homepage: https://libgd.github.io}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/libgd/2.2.4-foss-2016b
+
+conflict libgd
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded fontconfig/2.12.1-foss-2016b ] } {
+    module load fontconfig/2.12.1-foss-2016b
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.0-foss-2016b ] } {
+    module load libjpeg-turbo/1.5.0-foss-2016b
+}
+
+if { ![ is-loaded libpng/1.6.24-foss-2016b ] } {
+    module load libpng/1.6.24-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBGD		"$root"
+setenv	EBVERSIONLIBGD		"2.2.4"
+setenv	EBDEVELLIBGD		"$root/easybuild/libgd-2.2.4-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

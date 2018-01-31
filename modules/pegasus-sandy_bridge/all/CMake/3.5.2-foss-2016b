@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+CMake, the cross-platform, open-source build system.
+ CMake is a family of tools designed to build, test and package software.
+
+
+More information
+================
+ - Homepage: http://www.cmake.org
+    }
+}
+
+module-whatis {Description: CMake, the cross-platform, open-source build system.
+ CMake is a family of tools designed to build, test and package software.}
+module-whatis {Homepage: http://www.cmake.org}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/CMake/3.5.2-foss-2016b
+
+conflict CMake
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016b ] } {
+    module load ncurses/6.0-foss-2016b
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	PATH		$root/bin
+setenv	EBROOTCMAKE		"$root"
+setenv	EBVERSIONCMAKE		"3.5.2"
+setenv	EBDEVELCMAKE		"$root/easybuild/CMake-3.5.2-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

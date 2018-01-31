@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NASM: General-purpose x86 assembler
+
+
+More information
+================
+ - Homepage: http://www.nasm.us/
+    }
+}
+
+module-whatis {Description: NASM: General-purpose x86 assembler}
+module-whatis {Homepage: http://www.nasm.us/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/NASM/2.12.02-foss-2016b
+
+conflict NASM
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNASM		"$root"
+setenv	EBVERSIONNASM		"2.12.02"
+setenv	EBDEVELNASM		"$root/easybuild/NASM-2.12.02-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

@@ -1,0 +1,53 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Git is a free and open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiency.
+
+
+More information
+================
+ - Homepage: http://git-scm.com/
+    }
+}
+
+module-whatis {Description: Git is a free and open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiency.}
+module-whatis {Homepage: http://git-scm.com/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/git/2.14.1-foss-2017a
+
+conflict git
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded cURL/7.49.1-foss-2017a ] } {
+    module load cURL/7.49.1-foss-2017a
+}
+
+if { ![ is-loaded expat/2.2.0-foss-2017a ] } {
+    module load expat/2.2.0-foss-2017a
+}
+
+if { ![ is-loaded gettext/0.19.8-foss-2017a ] } {
+    module load gettext/0.19.8-foss-2017a
+}
+
+if { ![ is-loaded Perl/5.24.1-foss-2017a ] } {
+    module load Perl/5.24.1-foss-2017a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGIT		"$root"
+setenv	EBVERSIONGIT		"2.14.1"
+setenv	EBDEVELGIT		"$root/easybuild/git-2.14.1-foss-2017a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

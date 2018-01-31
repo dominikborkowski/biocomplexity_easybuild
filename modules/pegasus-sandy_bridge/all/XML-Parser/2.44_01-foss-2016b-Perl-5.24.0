@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+This is a Perl extension interface to James Clark's XML parser, expat.
+
+
+More information
+================
+ - Homepage: http://search.cpan.org/~toddr/XML-Parser-2.41/
+    }
+}
+
+module-whatis {Description: This is a Perl extension interface to James Clark's XML parser, expat.}
+module-whatis {Homepage: http://search.cpan.org/~toddr/XML-Parser-2.41/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/XML-Parser/2.44_01-foss-2016b-Perl-5.24.0
+
+conflict XML-Parser
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Perl/5.24.0-foss-2016b ] } {
+    module load Perl/5.24.0-foss-2016b
+}
+
+if { ![ is-loaded expat/2.2.0-foss-2016b ] } {
+    module load expat/2.2.0-foss-2016b
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PERL5LIB		$root
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.24.0/x86_64-linux-thread-multi
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.24.0
+setenv	EBROOTXMLMINPARSER		"$root"
+setenv	EBVERSIONXMLMINPARSER		"2.44_01"
+setenv	EBDEVELXMLMINPARSER		"$root/easybuild/XML-Parser-2.44_01-foss-2016b-Perl-5.24.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Dask provides multi-core execution on larger-than-memory datasets using blocked algorithms
+ and task scheduling.
+
+
+More information
+================
+ - Homepage: http://github.com/dask/dask/
+
+
+Included extensions
+===================
+dask-0.12.0, toolz-0.8.0
+    }
+}
+
+module-whatis {Description: Dask provides multi-core execution on larger-than-memory datasets using blocked algorithms
+ and task scheduling.}
+module-whatis {Homepage: http://github.com/dask/dask/}
+module-whatis {Extensions: dask-0.12.0, toolz-0.8.0}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/dask/0.12.0-foss-2016b-Python-2.7.12
+
+conflict dask
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTDASK		"$root"
+setenv	EBVERSIONDASK		"0.12.0"
+setenv	EBDEVELDASK		"$root/easybuild/dask-0.12.0-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1
+setenv	EBEXTSLISTDASK		"toolz-0.8.0,dask-0.12.0"
