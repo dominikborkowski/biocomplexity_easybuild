@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+xz: XZ utilities
+
+
+More information
+================
+ - Homepage: http://tukaani.org/xz/
+    }
+}
+
+module-whatis {Description: xz: XZ utilities}
+module-whatis {Homepage: http://tukaani.org/xz/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/XZ/5.2.3-GCCcore-6.3.0
+
+conflict XZ
+
+if { ![ is-loaded GCCcore/6.3.0 ] } {
+    module load GCCcore/6.3.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXZ		"$root"
+setenv	EBVERSIONXZ		"5.2.3"
+setenv	EBDEVELXZ		"$root/easybuild/XZ-5.2.3-GCCcore-6.3.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

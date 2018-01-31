@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+configparser is a Python library that brings the updated configparser from Python 3.5 to Python 2.6-3.5
+
+
+More information
+================
+ - Homepage: http://docs.python.org/3/library/configparser.html
+    }
+}
+
+module-whatis {Description: configparser is a Python library that brings the updated configparser from Python 3.5 to Python 2.6-3.5}
+module-whatis {Homepage: http://docs.python.org/3/library/configparser.html}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/configparser/3.5.0-foss-2016b-Python-2.7.12
+
+conflict configparser
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+setenv	EBROOTCONFIGPARSER		"$root"
+setenv	EBVERSIONCONFIGPARSER		"3.5.0"
+setenv	EBDEVELCONFIGPARSER		"$root/easybuild/configparser-3.5.0-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

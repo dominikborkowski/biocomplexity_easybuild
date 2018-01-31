@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The PyPA recommended tool for installing Python packages.
+
+
+More information
+================
+ - Homepage: https://pip.pypa.io
+    }
+}
+
+module-whatis {Description: The PyPA recommended tool for installing Python packages.}
+module-whatis {Homepage: https://pip.pypa.io}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/pip/8.1.2-foss-2016b-Python-2.7.12
+
+conflict pip
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPIP		"$root"
+setenv	EBVERSIONPIP		"8.1.2"
+setenv	EBDEVELPIP		"$root/easybuild/pip-8.1.2-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

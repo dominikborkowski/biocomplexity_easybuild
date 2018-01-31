@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Boost provides free peer-reviewed portable C++ source libraries.
+
+
+More information
+================
+ - Homepage: http://www.boost.org/
+    }
+}
+
+module-whatis {Description: Boost provides free peer-reviewed portable C++ source libraries.}
+module-whatis {Homepage: http://www.boost.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Boost/1.63.0-foss-2016b-Python-2.7.12
+
+conflict Boost
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTBOOST		"$root"
+setenv	EBVERSIONBOOST		"1.63.0"
+setenv	EBDEVELBOOST		"$root/easybuild/Boost-1.63.0-foss-2016b-Python-2.7.12-easybuild-devel"
+
+setenv	BOOST_ROOT		"/apps/easybuild/software/pegasus-sandy_bridge/Boost/1.63.0-foss-2016b-Python-2.7.12"
+# Built with EasyBuild version 3.5.1

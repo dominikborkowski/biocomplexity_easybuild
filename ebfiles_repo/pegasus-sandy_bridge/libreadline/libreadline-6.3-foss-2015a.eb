@@ -1,0 +1,59 @@
+# Built with EasyBuild version 3.5.1 on 2018-01-30_16-16-09
+easyblock = 'ConfigureMake'
+
+name = 'libreadline'
+version = '6.3'
+
+homepage = 'http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html'
+description = """The GNU Readline library provides a set of functions for use by applications that
+ allow users to edit command lines as they are typed in. Both Emacs and vi editing modes are available.
+ The Readline library includes additional functions to maintain a list of previously-entered command lines,
+ to recall and perhaps reedit those lines, and perform csh-like history expansion on previous commands."""
+
+toolchain = {'name': 'foss', 'version': '2015a'}
+toolchainopts = {'pic': True}
+
+sources = ['readline-%(version)s.tar.gz']
+source_urls = ['http://ftp.gnu.org/gnu/readline']
+
+patches = ['libreadline-%(version)s-bugfix.patch']
+
+dependencies = [('ncurses', '5.9')]
+
+# for the termcap symbols, use EB ncurses
+preconfigopts = "env LDFLAGS='-lncurses'"
+
+sanity_check_paths = {
+    'files': ['lib/libreadline.a', 'lib/libhistory.a'] +
+             ['include/readline/%s' % x for x in ['chardefs.h', 'history.h', 'keymaps.h', 'readline.h', 'rlconf.h',
+                                                  'rlstdc.h', 'rltypedefs.h', 'tilde.h']],
+    'dirs': [],
+}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 18.01,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.5.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'GEOS-3.5.0-foss-2015a-Python-2.7.11.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.1",
+    "easybuild-framework_version": "3.5.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCC/4.9.2/libexec/gcc/x86_64-unknown-linux-gnu/4.9.2/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCC/4.9.2 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCC/4.9.2; Thread model: posix; gcc version 4.9.2 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 2419054,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  4 2017, 00:39:18) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCC/4.9.2/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1517346969,
+    "total_memory": 128894,
+}]

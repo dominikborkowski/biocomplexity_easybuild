@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+This bundle collect the standard GNU build tools: Autoconf, Automake and libtool
+
+
+More information
+================
+ - Homepage: http://autotools.io
+    }
+}
+
+module-whatis {Description: This bundle collect the standard GNU build tools: Autoconf, Automake and libtool}
+module-whatis {Homepage: http://autotools.io}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Autotools/20150215-foss-2017a
+
+conflict Autotools
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded Autoconf/2.69-GCCcore-6.3.0 ] } {
+    module load Autoconf/2.69-GCCcore-6.3.0
+}
+
+if { ![ is-loaded Automake/1.15-GCCcore-6.3.0 ] } {
+    module load Automake/1.15-GCCcore-6.3.0
+}
+
+if { ![ is-loaded libtool/2.4.6-GCCcore-6.3.0 ] } {
+    module load libtool/2.4.6-GCCcore-6.3.0
+}
+
+setenv	EBROOTAUTOTOOLS		"$root"
+setenv	EBVERSIONAUTOTOOLS		"20150215"
+setenv	EBDEVELAUTOTOOLS		"$root/easybuild/Autotools-20150215-foss-2017a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

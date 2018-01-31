@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+prompt_toolkit is a Python library for building powerful interactive command lines and
+ terminal applications.
+
+
+More information
+================
+ - Homepage: https://github.com/jonathanslenders/python-prompt-toolkit
+    }
+}
+
+module-whatis {Description: prompt_toolkit is a Python library for building powerful interactive command lines and
+ terminal applications.}
+module-whatis {Homepage: https://github.com/jonathanslenders/python-prompt-toolkit}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/prompt-toolkit/1.0.6-foss-2016b-Python-3.5.2
+
+conflict prompt-toolkit
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+if { ![ is-loaded wcwidth/0.1.7-foss-2016b-Python-3.5.2 ] } {
+    module load wcwidth/0.1.7-foss-2016b-Python-3.5.2
+}
+
+setenv	EBROOTPROMPTMINTOOLKIT		"$root"
+setenv	EBVERSIONPROMPTMINTOOLKIT		"1.0.6"
+setenv	EBDEVELPROMPTMINTOOLKIT		"$root/easybuild/prompt-toolkit-1.0.6-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.5.1

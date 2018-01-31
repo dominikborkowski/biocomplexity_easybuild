@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+wcwidth is a low-level Python library to simplify Terminal emulation.
+
+
+More information
+================
+ - Homepage: https://github.com/jquast/wcwidth
+    }
+}
+
+module-whatis {Description: wcwidth is a low-level Python library to simplify Terminal emulation.}
+module-whatis {Homepage: https://github.com/jquast/wcwidth}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/wcwidth/0.1.7-foss-2016b-Python-3.5.2
+
+conflict wcwidth
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+setenv	EBROOTWCWIDTH		"$root"
+setenv	EBVERSIONWCWIDTH		"0.1.7"
+setenv	EBDEVELWCWIDTH		"$root/easybuild/wcwidth-0.1.7-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.5.1

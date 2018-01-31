@@ -1,0 +1,56 @@
+# Built with EasyBuild version 3.5.1 on 2018-01-30_09-24-52
+easyblock = 'ConfigureMake'
+
+name = 'XZ'
+version = '5.2.2'
+
+homepage = 'http://tukaani.org/xz/'
+description = "xz: XZ utilities"
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = [SOURCELOWER_TAR_BZ2]
+source_urls = ['http://tukaani.org/xz/']
+
+patches = ['XZ-%(version)s_compat-libs.patch']
+
+builddependencies = [
+    ('Autotools', '20150215'),
+    ('gettext', '0.19.8', '', True),
+]
+
+# may become useful in non-x86 archs
+# configopts = ' --disable-assembler '
+
+sanity_check_paths = {
+    'files': ["bin/xz", "bin/lzmainfo"],
+    'dirs': []
+}
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 32.01,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.5.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'R-3.3.3-foss-2016b-X11-20160819.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.1",
+    "easybuild-framework_version": "3.5.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 2362253,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  4 2017, 00:39:18) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1517322292,
+    "total_memory": 128894,
+}]
