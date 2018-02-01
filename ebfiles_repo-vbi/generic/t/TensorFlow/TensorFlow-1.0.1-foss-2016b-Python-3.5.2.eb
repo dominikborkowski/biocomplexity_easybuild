@@ -1,6 +1,6 @@
 easyblock = 'PythonPackage'
 
-name = 'Tensorflow'
+name = 'TensorFlow'
 version = '1.0.1'
 versionsuffix = '-Python-%(pyver)s'
 
