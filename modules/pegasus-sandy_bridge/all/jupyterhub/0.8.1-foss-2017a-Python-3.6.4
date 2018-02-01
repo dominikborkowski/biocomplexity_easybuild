@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+JupyterHub is a multiuser version of the Jupyter (IPython) notebook designed
+ for centralized deployments in companies, university classrooms and research labs.
+
+
+More information
+================
+ - Homepage: http://jupyter.org
+
+
+Included extensions
+===================
+alembic-0.9.7, certifi-2018.1.18, chardet-3.0.4, jupyterhub-0.8.1, Mako-1.0.7,
+pamela-0.3.0, python-editor-1.0.3, python-oauth2-1.0.1, requests-2.18.4,
+SQLAlchemy-1.1.15, urllib3-1.22
+    }
+}
+
+module-whatis {Description: JupyterHub is a multiuser version of the Jupyter (IPython) notebook designed
+ for centralized deployments in companies, university classrooms and research labs.}
+module-whatis {Homepage: http://jupyter.org}
+module-whatis {Extensions: alembic-0.9.7, certifi-2018.1.18, chardet-3.0.4, jupyterhub-0.8.1, Mako-1.0.7, pamela-0.3.0, python-editor-1.0.3, python-oauth2-1.0.1, requests-2.18.4, SQLAlchemy-1.1.15, urllib3-1.22}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/jupyterhub/0.8.1-foss-2017a-Python-3.6.4
+
+conflict jupyterhub
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2017a ] } {
+    module load Python/3.6.4-foss-2017a
+}
+
+if { ![ is-loaded IPython/6.2.1-foss-2017a-Python-3.6.4 ] } {
+    module load IPython/6.2.1-foss-2017a-Python-3.6.4
+}
+
+if { ![ is-loaded configurable-http-proxy/3.1.1-foss-2017a-nodejs-8.9.4 ] } {
+    module load configurable-http-proxy/3.1.1-foss-2017a-nodejs-8.9.4
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTJUPYTERHUB		"$root"
+setenv	EBVERSIONJUPYTERHUB		"0.8.1"
+setenv	EBDEVELJUPYTERHUB		"$root/easybuild/jupyterhub-0.8.1-foss-2017a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.5.1
+setenv	EBEXTSLISTJUPYTERHUB		"pamela-0.3.0,SQLAlchemy-1.1.15,alembic-0.9.7,requests-2.18.4,python-oauth2-1.0.1,Mako-1.0.7,python-editor-1.0.3,urllib3-1.22,certifi-2018.1.18,chardet-3.0.4,jupyterhub-0.8.1"
