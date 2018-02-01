@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SOAPdenovo is a novel short-read assembly method that can build a 
+ de novo draft assembly for human-sized genomes. The program is specially designed to 
+ assemble Illumina short reads. It creates new opportunities for building reference 
+ sequences and carrying out accurate analyses of unexplored genomes in a cost effective way. 
+ SOAPdenovo2 is the successor of SOAPdenovo.
+
+
+More information
+================
+ - Homepage: http://soap.genomics.org.cn/index.html
+    }
+}
+
+module-whatis {Description: SOAPdenovo is a novel short-read assembly method that can build a 
+ de novo draft assembly for human-sized genomes. The program is specially designed to 
+ assemble Illumina short reads. It creates new opportunities for building reference 
+ sequences and carrying out accurate analyses of unexplored genomes in a cost effective way. 
+ SOAPdenovo2 is the successor of SOAPdenovo.}
+module-whatis {Homepage: http://soap.genomics.org.cn/index.html}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/SOAPdenovo2/r240-foss-2016a
+
+conflict SOAPdenovo2
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSOAPDENOVO2		"$root"
+setenv	EBVERSIONSOAPDENOVO2		"r240"
+setenv	EBDEVELSOAPDENOVO2		"$root/easybuild/SOAPdenovo2-r240-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+tiff: Library and tools for reading and writing TIFF data files
+
+
+More information
+================
+ - Homepage: http://www.remotesensing.org/libtiff/
+    }
+}
+
+module-whatis {Description: tiff: Library and tools for reading and writing TIFF data files}
+module-whatis {Homepage: http://www.remotesensing.org/libtiff/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/LibTIFF/4.0.9-foss-2017b
+
+conflict LibTIFF
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBTIFF		"$root"
+setenv	EBVERSIONLIBTIFF		"4.0.9"
+setenv	EBDEVELLIBTIFF		"$root/easybuild/LibTIFF-4.0.9-foss-2017b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+pysam is a lightweight wrapper of the htslib C-API and provides facilities to read and write SAM/BAM/VCF/BCF/BED/GFF/GTF/FASTA/FASTQ files as well as access to the command line functionality of the samtools and bcftools packages. The module supports compression and random access through indexing.
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/pysam
+    }
+}
+
+module-whatis {Description: pysam is a lightweight wrapper of the htslib C-API and provides facilities to read and write SAM/BAM/VCF/BCF/BED/GFF/GTF/FASTA/FASTQ files as well as access to the command line functionality of the samtools and bcftools packages. The module supports compression and random access through indexing.}
+module-whatis {Homepage: https://pypi.python.org/pypi/pysam}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/pysam/0.9.0-foss-2016a-Python-2.7.11
+
+conflict pysam
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded cURL/7.47.0-foss-2016a ] } {
+    module load cURL/7.47.0-foss-2016a
+}
+
+setenv	EBROOTPYSAM		"$root"
+setenv	EBVERSIONPYSAM		"0.9.0"
+setenv	EBDEVELPYSAM		"$root/easybuild/pysam-0.9.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

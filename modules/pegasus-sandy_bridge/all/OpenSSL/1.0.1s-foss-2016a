@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The OpenSSL Project is a collaborative effort to develop a robust, commercial-grade, full-featured,
+ and Open Source toolchain implementing the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS v1) 
+ protocols as well as a full-strength general purpose cryptography library.
+
+
+More information
+================
+ - Homepage: http://www.openssl.org/
+    }
+}
+
+module-whatis {Description: The OpenSSL Project is a collaborative effort to develop a robust, commercial-grade, full-featured,
+ and Open Source toolchain implementing the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS v1) 
+ protocols as well as a full-strength general purpose cryptography library. }
+module-whatis {Homepage: http://www.openssl.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/OpenSSL/1.0.1s-foss-2016a
+
+conflict OpenSSL
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTOPENSSL		"$root"
+setenv	EBVERSIONOPENSSL		"1.0.1s"
+setenv	EBDEVELOPENSSL		"$root/easybuild/OpenSSL-1.0.1s-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

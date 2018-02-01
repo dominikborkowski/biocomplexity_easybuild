@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ScientificPython is a collection of Python modules for scientific computing.
+ It contains support for geometry, mathematical functions, statistics, physical units, IO, visualization,
+ and parallelization.
+
+
+More information
+================
+ - Homepage: https://sourcesup.cru.fr/projects/scientific-py/
+    }
+}
+
+module-whatis {Description: ScientificPython is a collection of Python modules for scientific computing.
+ It contains support for geometry, mathematical functions, statistics, physical units, IO, visualization,
+ and parallelization.}
+module-whatis {Homepage: https://sourcesup.cru.fr/projects/scientific-py/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/ScientificPython/2.9.4-foss-2016a-Python-2.7.11
+
+conflict ScientificPython
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded numpy/1.9.2-foss-2016a-Python-2.7.11 ] } {
+    module load numpy/1.9.2-foss-2016a-Python-2.7.11
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	PATH		$root/bin
+setenv	EBROOTSCIENTIFICPYTHON		"$root"
+setenv	EBVERSIONSCIENTIFICPYTHON		"2.9.4"
+setenv	EBDEVELSCIENTIFICPYTHON		"$root/easybuild/ScientificPython-2.9.4-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

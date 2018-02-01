@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The BEDTools utilities allow one to address common genomics tasks such as finding feature overlaps
+ and computing coverage. The utilities are largely based on four widely-used file formats: BED, GFF/GTF, VCF,
+ and SAM/BAM.
+
+
+More information
+================
+ - Homepage: https://github.com/arq5x/bedtools2
+    }
+}
+
+module-whatis {Description: The BEDTools utilities allow one to address common genomics tasks such as finding feature overlaps
+ and computing coverage. The utilities are largely based on four widely-used file formats: BED, GFF/GTF, VCF,
+ and SAM/BAM.}
+module-whatis {Homepage: https://github.com/arq5x/bedtools2}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/BEDTools/2.27.1-foss-2016b
+
+conflict BEDTools
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTBEDTOOLS		"$root"
+setenv	EBVERSIONBEDTOOLS		"2.27.1"
+setenv	EBDEVELBEDTOOLS		"$root/easybuild/BEDTools-2.27.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

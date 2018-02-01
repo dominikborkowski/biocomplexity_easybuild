@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The aim of VCFtools is to provide 
+ easily accessible methods for working with complex 
+ genetic variation data in the form of VCF files.
+
+
+More information
+================
+ - Homepage: https://vcftools.github.io
+    }
+}
+
+module-whatis {Description: The aim of VCFtools is to provide 
+ easily accessible methods for working with complex 
+ genetic variation data in the form of VCF files.}
+module-whatis {Homepage: https://vcftools.github.io}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/VCFtools/0.1.14-foss-2016a-Perl-5.22.1
+
+conflict VCFtools
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Perl/5.22.1-foss-2016a ] } {
+    module load Perl/5.22.1-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTVCFTOOLS		"$root"
+setenv	EBVERSIONVCFTOOLS		"0.1.14"
+setenv	EBDEVELVCFTOOLS		"$root/easybuild/VCFtools-0.1.14-foss-2016a-Perl-5.22.1-easybuild-devel"
+
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl
+# Built with EasyBuild version 3.5.1

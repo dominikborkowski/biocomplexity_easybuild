@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PICOS is a user friendly interface to several conic and integer 
+programming solvers, very much like YALMIP or CVX under MATLAB.
+
+
+More information
+================
+ - Homepage: http://picos.zib.de/
+    }
+}
+
+module-whatis {Description: PICOS is a user friendly interface to several conic and integer 
+programming solvers, very much like YALMIP or CVX under MATLAB.}
+module-whatis {Homepage: http://picos.zib.de/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/PICOS/1.1.1-foss-2016a-Python-2.7.11
+
+conflict PICOS
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded CVXOPT/1.1.5-foss-2016a-Python-2.7.11 ] } {
+    module load CVXOPT/1.1.5-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded numpy/1.9.2-foss-2016a-Python-2.7.11 ] } {
+    module load numpy/1.9.2-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded six/1.10.0-foss-2016a-Python-2.7.11 ] } {
+    module load six/1.10.0-foss-2016a-Python-2.7.11
+}
+
+setenv	EBROOTPICOS		"$root"
+setenv	EBVERSIONPICOS		"1.1.1"
+setenv	EBDEVELPICOS		"$root/easybuild/PICOS-1.1.1-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

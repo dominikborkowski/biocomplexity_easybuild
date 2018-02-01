@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+RNA-Seq by Expectation-Maximization)
+
+
+More information
+================
+ - Homepage: http://deweylab.github.io/RSEM/
+    }
+}
+
+module-whatis {Description: RNA-Seq by Expectation-Maximization)}
+module-whatis {Homepage: http://deweylab.github.io/RSEM/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/RSEM/1.2.30-foss-2016a
+
+conflict RSEM
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016a ] } {
+    module load ncurses/6.0-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTRSEM		"$root"
+setenv	EBVERSIONRSEM		"1.2.30"
+setenv	EBDEVELRSEM		"$root/easybuild/RSEM-1.2.30-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

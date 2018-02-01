@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Six provides simple utilities for wrapping over differences 
+between Python 2 and Python 3. It is intended to support codebases that work 
+on both Python 2 and 3 without modification.
+
+
+More information
+================
+ - Homepage: http://pythonhosted.org//six/
+    }
+}
+
+module-whatis {Description: Six provides simple utilities for wrapping over differences 
+between Python 2 and Python 3. It is intended to support codebases that work 
+on both Python 2 and 3 without modification.}
+module-whatis {Homepage: http://pythonhosted.org//six/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/six/1.10.0-foss-2016a-Python-2.7.11
+
+conflict six
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+setenv	EBROOTSIX		"$root"
+setenv	EBVERSIONSIX		"1.10.0"
+setenv	EBDEVELSIX		"$root/easybuild/six-1.10.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

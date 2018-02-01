@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GD.pm - Interface to Gd Graphics Library
+
+
+More information
+================
+ - Homepage: http://search.cpan.org/~lds/GD/
+    }
+}
+
+module-whatis {Description: GD.pm - Interface to Gd Graphics Library}
+module-whatis {Homepage: http://search.cpan.org/~lds/GD/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/GD/2.52-foss-2016a-Perl-5.22.1
+
+conflict GD
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Perl/5.22.1-foss-2016a ] } {
+    module load Perl/5.22.1-foss-2016a
+}
+
+if { ![ is-loaded libgd/2.1.1-foss-2016a ] } {
+    module load libgd/2.1.1-foss-2016a
+}
+
+if { ![ is-loaded libpng/1.6.21-foss-2016a ] } {
+    module load libpng/1.6.21-foss-2016a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.4.2-foss-2016a ] } {
+    module load libjpeg-turbo/1.4.2-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+prepend-path	PERL5LIB		$root
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.22.1/x86_64-linux-thread-multi
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.22.1
+setenv	EBROOTGD		"$root"
+setenv	EBVERSIONGD		"2.52"
+setenv	EBDEVELGD		"$root/easybuild/GD-2.52-foss-2016a-Perl-5.22.1-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

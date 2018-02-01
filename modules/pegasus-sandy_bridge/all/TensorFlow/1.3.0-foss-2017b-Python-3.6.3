@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+An open-source software library for Machine Intelligence
+
+
+More information
+================
+ - Homepage: https://www.tensorflow.org/
+
+
+Included extensions
+===================
+backports.weakref-1.0.post1, TensorFlow-1.3.0
+    }
+}
+
+module-whatis {Description: An open-source software library for Machine Intelligence}
+module-whatis {Homepage: https://www.tensorflow.org/}
+module-whatis {Extensions: backports.weakref-1.0.post1, TensorFlow-1.3.0}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/TensorFlow/1.3.0-foss-2017b-Python-3.6.3
+
+conflict TensorFlow
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded Python/3.6.3-foss-2017b ] } {
+    module load Python/3.6.3-foss-2017b
+}
+
+if { ![ is-loaded protobuf-python/3.4.0-foss-2017b-Python-3.6.3 ] } {
+    module load protobuf-python/3.4.0-foss-2017b-Python-3.6.3
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTTENSORFLOW		"$root"
+setenv	EBVERSIONTENSORFLOW		"1.3.0"
+setenv	EBDEVELTENSORFLOW		"$root/easybuild/TensorFlow-1.3.0-foss-2017b-Python-3.6.3-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.5.1
+setenv	EBEXTSLISTTENSORFLOW		"backports.weakref-1.0.post1,TensorFlow-1.3.0"

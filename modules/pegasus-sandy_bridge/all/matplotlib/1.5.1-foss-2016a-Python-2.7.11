@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits.
+
+
+More information
+================
+ - Homepage: http://matplotlib.org
+
+
+Included extensions
+===================
+Cycler-0.9.0, matplotlib-1.5.1
+    }
+}
+
+module-whatis {Description: matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits.}
+module-whatis {Homepage: http://matplotlib.org}
+module-whatis {Extensions: Cycler-0.9.0, matplotlib-1.5.1}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/matplotlib/1.5.1-foss-2016a-Python-2.7.11
+
+conflict matplotlib
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded freetype/2.6.2-foss-2016a ] } {
+    module load freetype/2.6.2-foss-2016a
+}
+
+if { ![ is-loaded libpng/1.6.21-foss-2016a ] } {
+    module load libpng/1.6.21-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTMATPLOTLIB		"$root"
+setenv	EBVERSIONMATPLOTLIB		"1.5.1"
+setenv	EBDEVELMATPLOTLIB		"$root/easybuild/matplotlib-1.5.1-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1
+setenv	EBEXTSLISTMATPLOTLIB		"Cycler-0.9.0,matplotlib-1.5.1"

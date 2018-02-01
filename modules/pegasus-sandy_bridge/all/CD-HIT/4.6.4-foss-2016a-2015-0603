@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+CD-HIT is a very widely used program for clustering and 
+ comparing protein or nucleotide sequences.
+
+
+More information
+================
+ - Homepage: http://weizhong-lab.ucsd.edu/cd-hit/
+    }
+}
+
+module-whatis {Description:  CD-HIT is a very widely used program for clustering and 
+ comparing protein or nucleotide sequences.}
+module-whatis {Homepage: http://weizhong-lab.ucsd.edu/cd-hit/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/CD-HIT/4.6.4-foss-2016a-2015-0603
+
+conflict CD-HIT
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTCDMINHIT		"$root"
+setenv	EBVERSIONCDMINHIT		"4.6.4"
+setenv	EBDEVELCDMINHIT		"$root/easybuild/CD-HIT-4.6.4-foss-2016a-2015-0603-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

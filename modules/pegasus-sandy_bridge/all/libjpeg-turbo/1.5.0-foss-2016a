@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
+compression and decompression. libjpeg is a library that implements JPEG image encoding, decoding and transcoding.
+
+
+More information
+================
+ - Homepage: http://sourceforge.net/projects/libjpeg-turbo/
+    }
+}
+
+module-whatis {Description: libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG
+compression and decompression. libjpeg is a library that implements JPEG image encoding, decoding and transcoding.
+}
+module-whatis {Homepage: http://sourceforge.net/projects/libjpeg-turbo/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/libjpeg-turbo/1.5.0-foss-2016a
+
+conflict libjpeg-turbo
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded NASM/2.12.02-foss-2016a ] } {
+    module load NASM/2.12.02-foss-2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBJPEGMINTURBO		"$root"
+setenv	EBVERSIONLIBJPEGMINTURBO		"1.5.0"
+setenv	EBDEVELLIBJPEGMINTURBO		"$root/easybuild/libjpeg-turbo-1.5.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

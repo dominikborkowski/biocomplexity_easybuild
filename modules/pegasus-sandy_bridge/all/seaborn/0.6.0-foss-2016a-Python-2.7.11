@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Seaborn is a Python visualization library based on matplotlib.
+ It provides a high-level interface for drawing attractive statistical graphics.
+
+
+More information
+================
+ - Homepage: http://stanford.edu/~mwaskom/software/seaborn/
+    }
+}
+
+module-whatis {Description:  Seaborn is a Python visualization library based on matplotlib.
+ It provides a high-level interface for drawing attractive statistical graphics. }
+module-whatis {Homepage: http://stanford.edu/~mwaskom/software/seaborn/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/seaborn/0.6.0-foss-2016a-Python-2.7.11
+
+conflict seaborn
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded scipy/0.17.0-foss-2016a-Python-2.7.11 ] } {
+    module load scipy/0.17.0-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded matplotlib/1.5.1-foss-2016a-Python-2.7.11 ] } {
+    module load matplotlib/1.5.1-foss-2016a-Python-2.7.11
+}
+
+if { ![ is-loaded pandas/0.17.1-foss-2016a-Python-2.7.11 ] } {
+    module load pandas/0.17.1-foss-2016a-Python-2.7.11
+}
+
+setenv	EBROOTSEABORN		"$root"
+setenv	EBVERSIONSEABORN		"0.6.0"
+setenv	EBDEVELSEABORN		"$root/easybuild/seaborn-0.6.0-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

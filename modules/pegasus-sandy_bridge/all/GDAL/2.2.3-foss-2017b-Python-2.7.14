@@ -1,0 +1,99 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GDAL is a translator library for raster geospatial data formats that is released under an X/MIT style
+ Open Source license by the Open Source Geospatial Foundation. As a library, it presents a single abstract data model
+ to the calling application for all supported formats. It also comes with a variety of useful commandline utilities for
+ data translation and processing.
+
+
+More information
+================
+ - Homepage: http://www.gdal.org/
+    }
+}
+
+module-whatis {Description: GDAL is a translator library for raster geospatial data formats that is released under an X/MIT style
+ Open Source license by the Open Source Geospatial Foundation. As a library, it presents a single abstract data model
+ to the calling application for all supported formats. It also comes with a variety of useful commandline utilities for
+ data translation and processing.}
+module-whatis {Homepage: http://www.gdal.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/GDAL/2.2.3-foss-2017b-Python-2.7.14
+
+conflict GDAL
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2017b ] } {
+    module load Python/2.7.14-foss-2017b
+}
+
+if { ![ is-loaded netCDF/4.5.0-foss-2017b ] } {
+    module load netCDF/4.5.0-foss-2017b
+}
+
+if { ![ is-loaded expat/2.2.4-GCCcore-6.4.0 ] } {
+    module load expat/2.2.4-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GEOS/3.6.2-foss-2017b-Python-2.7.14 ] } {
+    module load GEOS/3.6.2-foss-2017b-Python-2.7.14
+}
+
+if { ![ is-loaded SQLite/3.20.1-GCCcore-6.4.0 ] } {
+    module load SQLite/3.20.1-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libxml2/2.9.4-GCCcore-6.4.0 ] } {
+    module load libxml2/2.9.4-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.32-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.32-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.2-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.2-GCCcore-6.4.0
+}
+
+if { ![ is-loaded JasPer/2.0.14-GCCcore-6.4.0 ] } {
+    module load JasPer/2.0.14-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-foss-2017b ] } {
+    module load LibTIFF/4.0.9-foss-2017b
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded cURL/7.55.1-GCCcore-6.4.0 ] } {
+    module load cURL/7.55.1-GCCcore-6.4.0
+}
+
+if { ![ is-loaded PCRE/8.41-GCCcore-6.4.0 ] } {
+    module load PCRE/8.41-GCCcore-6.4.0
+}
+
+if { ![ is-loaded PROJ/4.9.3-foss-2017b ] } {
+    module load PROJ/4.9.3-foss-2017b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGDAL		"$root"
+setenv	EBVERSIONGDAL		"2.2.3"
+setenv	EBDEVELGDAL		"$root/easybuild/GDAL-2.2.3-foss-2017b-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

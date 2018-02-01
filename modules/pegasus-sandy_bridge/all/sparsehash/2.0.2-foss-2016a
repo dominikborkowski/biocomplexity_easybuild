@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+An extremely memory-efficient hash_map
+ implementation. 2 bits/entry overhead! The SparseHash library
+ contains several hash-map implementations, including
+ implementations that optimize for space or speed.
+
+
+More information
+================
+ - Homepage: https://code.google.com/p/sparsehash/
+    }
+}
+
+module-whatis {Description: An extremely memory-efficient hash_map
+ implementation. 2 bits/entry overhead! The SparseHash library
+ contains several hash-map implementations, including
+ implementations that optimize for space or speed.}
+module-whatis {Homepage: https://code.google.com/p/sparsehash/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/sparsehash/2.0.2-foss-2016a
+
+conflict sparsehash
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSPARSEHASH		"$root"
+setenv	EBVERSIONSPARSEHASH		"2.0.2"
+setenv	EBDEVELSPARSEHASH		"$root/easybuild/sparsehash-2.0.2-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1
