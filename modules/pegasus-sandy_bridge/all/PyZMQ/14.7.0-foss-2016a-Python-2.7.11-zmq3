@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Python bindings for ZeroMQ
+
+
+More information
+================
+ - Homepage: http://www.zeromq.org/bindings:python
+    }
+}
+
+module-whatis {Description: Python bindings for ZeroMQ}
+module-whatis {Homepage: http://www.zeromq.org/bindings:python}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/PyZMQ/14.7.0-foss-2016a-Python-2.7.11-zmq3
+
+conflict PyZMQ
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+if { ![ is-loaded ZeroMQ/3.2.5-foss-2016a ] } {
+    module load ZeroMQ/3.2.5-foss-2016a
+}
+
+setenv	EBROOTPYZMQ		"$root"
+setenv	EBVERSIONPYZMQ		"14.7.0"
+setenv	EBDEVELPYZMQ		"$root/easybuild/PyZMQ-14.7.0-foss-2016a-Python-2.7.11-zmq3-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

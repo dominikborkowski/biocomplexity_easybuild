@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PHYLIP is a free package of programs for inferring phylogenies.
+
+
+More information
+================
+ - Homepage: http://evolution.genetics.washington.edu/phylip
+    }
+}
+
+module-whatis {Description: PHYLIP is a free package of programs for inferring phylogenies.}
+module-whatis {Homepage: http://evolution.genetics.washington.edu/phylip}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/PHYLIP/3.696-foss-2016a
+
+conflict PHYLIP
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTPHYLIP		"$root"
+setenv	EBVERSIONPHYLIP		"3.696"
+setenv	EBDEVELPHYLIP		"$root/easybuild/PHYLIP-3.696-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

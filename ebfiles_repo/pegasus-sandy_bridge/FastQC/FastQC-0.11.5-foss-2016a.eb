@@ -1,0 +1,65 @@
+# Built with EasyBuild version 3.5.1 on 2018-01-31_15-43-10
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2013 The Cyprus Institute
+# Authors:: Andreas Panteli <a.panteli@cyi.ac.cy>, Thekla Loizou <t.loizou@cyi.ac.cy>
+# License::   MIT/GPL
+#
+##
+easyblock = "PackedBinary"
+
+name = 'FastQC'
+version = '0.11.5'
+
+homepage = 'http://www.bioinformatics.babraham.ac.uk/projects/fastqc/'
+description = """FastQC is a quality control application for high throughput sequence data.
+ It reads in sequence data in a variety of formats and can either provide an interactive
+ application to review the results of several different QC checks, or create an HTML based
+ report which can be integrated into a pipeline."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = ['%(namelower)s_v%(version)s.zip']
+source_urls = ['http://www.bioinformatics.babraham.ac.uk/projects/%(namelower)s']
+
+java = 'Java'
+javaver = '1.8.0_92'
+
+dependencies = [('Java', '1.8.0_92', '', True)]
+
+install_cmd = "cp -a FastQC/* %(installdir)s && chmod +x %(installdir)s/fastqc"
+
+sanity_check_paths = {
+    'files': ["fastqc", "fastqc_icon.ico", "INSTALL.txt", "jbzip2-0.9.jar", "LICENSE.txt",
+                "README.txt", "RELEASE_NOTES.txt", "run_fastqc.bat", "sam-1.103.jar"],
+    'dirs': [ "Help", "Templates", "uk"],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 3.14,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.5.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'FastQC-0.11.5-foss-2016a.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.1",
+    "easybuild-framework_version": "3.5.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/4.9.3/libexec/gcc/x86_64-unknown-linux-gnu/4.9.3/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --enable-bootstrap --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/4.9.3 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/4.9.3; Thread model: posix; gcc version 4.9.3 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 11077064,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  4 2017, 00:39:18) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/4.9.3/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1517431390,
+    "total_memory": 128894,
+}]

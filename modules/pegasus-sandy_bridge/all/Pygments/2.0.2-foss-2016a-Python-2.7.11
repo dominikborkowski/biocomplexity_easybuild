@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Python http for humans
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/requests/2.6.0
+    }
+}
+
+module-whatis {Description: Python http for humans}
+module-whatis {Homepage: https://pypi.python.org/pypi/requests/2.6.0}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Pygments/2.0.2-foss-2016a-Python-2.7.11
+
+conflict Pygments
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPYGMENTS		"$root"
+setenv	EBVERSIONPYGMENTS		"2.0.2"
+setenv	EBDEVELPYGMENTS		"$root/easybuild/Pygments-2.0.2-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

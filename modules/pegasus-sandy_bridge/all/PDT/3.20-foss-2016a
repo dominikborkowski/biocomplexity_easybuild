@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Program Database Toolkit (PDT) is a framework for analyzing source
+ code written in several programming languages and for making rich program knowledge
+ accessible to developers of static and dynamic analysis tools. PDT implements a standard
+ program representation, the program database (PDB), that can be accessed in a uniform way
+ through a class library supporting common PDB operations.
+
+
+More information
+================
+ - Homepage: http://www.cs.uoregon.edu/research/pdt/
+    }
+}
+
+module-whatis {Description: Program Database Toolkit (PDT) is a framework for analyzing source
+ code written in several programming languages and for making rich program knowledge
+ accessible to developers of static and dynamic analysis tools. PDT implements a standard
+ program representation, the program database (PDB), that can be accessed in a uniform way
+ through a class library supporting common PDB operations.}
+module-whatis {Homepage: http://www.cs.uoregon.edu/research/pdt/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/PDT/3.20-foss-2016a
+
+conflict PDT
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/x86_64/lib
+prepend-path	PATH		$root/x86_64/bin
+setenv	EBROOTPDT		"$root"
+setenv	EBVERSIONPDT		"3.20"
+setenv	EBDEVELPDT		"$root/easybuild/PDT-3.20-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

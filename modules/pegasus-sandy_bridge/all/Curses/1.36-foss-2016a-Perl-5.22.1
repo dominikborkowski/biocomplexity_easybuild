@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+terminal screen handling and optimization
+
+
+More information
+================
+ - Homepage: http://search.cpan.org/~giraffed/Curses-1.36/Curses.pm
+    }
+}
+
+module-whatis {Description: terminal screen handling and optimization}
+module-whatis {Homepage: http://search.cpan.org/~giraffed/Curses-1.36/Curses.pm}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Curses/1.36-foss-2016a-Perl-5.22.1
+
+conflict Curses
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Perl/5.22.1-foss-2016a ] } {
+    module load Perl/5.22.1-foss-2016a
+}
+
+if { ![ is-loaded ncurses/6.0-foss-2016a ] } {
+    module load ncurses/6.0-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PERL5LIB		$root
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.22.1/x86_64-linux-thread-multi
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.22.1
+setenv	EBROOTCURSES		"$root"
+setenv	EBVERSIONCURSES		"1.36"
+setenv	EBDEVELCURSES		"$root/easybuild/Curses-1.36-foss-2016a-Perl-5.22.1-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

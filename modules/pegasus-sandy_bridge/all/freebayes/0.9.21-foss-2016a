@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Bayesian haplotype-based polymorphism discovery and genotyping.
+
+
+More information
+================
+ - Homepage: https://github.com/ekg/freebayes
+    }
+}
+
+module-whatis {Description:  Bayesian haplotype-based polymorphism discovery and genotyping. }
+module-whatis {Homepage: https://github.com/ekg/freebayes}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/freebayes/0.9.21-foss-2016a
+
+conflict freebayes
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTFREEBAYES		"$root"
+setenv	EBVERSIONFREEBAYES		"0.9.21"
+setenv	EBDEVELFREEBAYES		"$root/easybuild/freebayes-0.9.21-foss-2016a-easybuild-devel"
+
+prepend-path	PATH		$root/scripts
+# Built with EasyBuild version 3.5.1

@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+mpmath can be used as an arbitrary-precision substitute for Python's float/complex 
+ types and math/cmath modules, but also does much more advanced mathematics. Almost any calculation
+ can be performed just as well at 10-digit or 1000-digit precision, with either real or complex 
+ numbers, and in many cases mpmath implements efficient algorithms that scale well for extremely 
+ high precision work.
+
+
+More information
+================
+ - Homepage: http://mpmath.org/
+    }
+}
+
+module-whatis {Description: mpmath can be used as an arbitrary-precision substitute for Python's float/complex 
+ types and math/cmath modules, but also does much more advanced mathematics. Almost any calculation
+ can be performed just as well at 10-digit or 1000-digit precision, with either real or complex 
+ numbers, and in many cases mpmath implements efficient algorithms that scale well for extremely 
+ high precision work.}
+module-whatis {Homepage: http://mpmath.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/mpmath/0.19-foss-2016a-Python-2.7.11
+
+conflict mpmath
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded Python/2.7.11-foss-2016a ] } {
+    module load Python/2.7.11-foss-2016a
+}
+
+setenv	EBROOTMPMATH		"$root"
+setenv	EBVERSIONMPMATH		"0.19"
+setenv	EBDEVELMPMATH		"$root/easybuild/mpmath-0.19-foss-2016a-Python-2.7.11-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.1

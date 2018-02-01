@@ -12,7 +12,7 @@ toolchain = {'name': 'foss', 'version': '2017b'}
 dependencies = [
     ('R', '3.4.3', '-X11-20171023'),
     ('HDF5', '1.10.1'),  # for rhdf5
-#    ('MariaDB-connector-c', '2.3.4'),  # for RMySQL
+    ('MariaDB-connector-c', '2.3.4'),  # for RMySQL
 ]
 
 exts_default_options = {
@@ -172,9 +172,9 @@ exts_list = [
     ('biomaRt', '2.34.2', {
         'checksums': ['e978cd04756e4aad9b150e75103852b34f4b463db6942b4e99b652f0bed08ffe'],
     }),
-#    ('RMySQL', '0.10.13', {
-#        'checksums': ['02396db92a2fa3e25ba448f0ae0b8244ca6b92a277e4f7a1784c004da8c81bc8'],
-#    }),
+    ('RMySQL', '0.10.13', {
+        'checksums': ['02396db92a2fa3e25ba448f0ae0b8244ca6b92a277e4f7a1784c004da8c81bc8'],
+    }),
     ('GenomicFeatures', '1.30.2', {
         'checksums': ['d5244600fbf38a5862662bc733c595c4d7fde92876abf30781833eacceca4034'],
     }),
