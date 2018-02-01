@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The GNU Compiler Collection includes front ends for C, C++, Objective-C,
+ Fortran, Java, and Ada, as well as libraries for these languages (libstdc++,
+ libgcj,...).  \[NOTE: This module does not include Objective-C, Java or Ada\]
+
+
+More information
+================
+ - Homepage: http://gcc.gnu.org/
+    }
+}
+
+module-whatis {Description: 
+ The GNU Compiler Collection includes front ends for C, C++, Objective-C,
+ Fortran, Java, and Ada, as well as libraries for these languages (libstdc++,
+ libgcj,...).  \[NOTE: This module does not include Objective-C, Java or Ada\]
+}
+module-whatis {Homepage: http://gcc.gnu.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/GCC/6.4.0-2.28
+
+conflict GCC
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded binutils/2.28-GCCcore-6.4.0 ] } {
+    module load binutils/2.28-GCCcore-6.4.0
+}
+
+setenv	EBROOTGCC		"/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0"
+setenv	EBVERSIONGCC		"6.4.0"
+setenv	EBDEVELGCC		"$root/easybuild/GCC-6.4.0-2.28-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

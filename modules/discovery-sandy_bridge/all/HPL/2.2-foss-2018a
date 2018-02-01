@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HPL is a software package that solves a (random) dense linear system in double precision (64 bits)
+ arithmetic on distributed-memory computers. It can thus be regarded as a portable as well as freely available
+ implementation of the High Performance Computing Linpack Benchmark.
+
+
+More information
+================
+ - Homepage: http://www.netlib.org/benchmark/hpl/
+    }
+}
+
+module-whatis {Description: HPL is a software package that solves a (random) dense linear system in double precision (64 bits)
+ arithmetic on distributed-memory computers. It can thus be regarded as a portable as well as freely available
+ implementation of the High Performance Computing Linpack Benchmark.}
+module-whatis {Homepage: http://www.netlib.org/benchmark/hpl/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/HPL/2.2-foss-2018a
+
+conflict HPL
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTHPL		"$root"
+setenv	EBVERSIONHPL		"2.2"
+setenv	EBDEVELHPL		"$root/easybuild/HPL-2.2-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1
