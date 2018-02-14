@@ -17,12 +17,14 @@ set org "vbi"
 # set our architecture
 set arch "westmere"
 
-
 # # permissions and ownerships
 set easybuild_umask "002"
 set easybuild_set_gid_bit "1"
 set easybuild_sticky_bit "1"
 set easybuild_group_writable_installdir "1"
+
+# set up environment variable to indicate currently used system
+setenv BI_SYSTEM $site-$arch
 
 # end of global configuration
 #######################################################################################################################
