@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The MEME Suite allows you to: * discover motifs using MEME, DREME (DNA only) or
+ GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
+ MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
+ motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
+ using SpaMo or CentriMo.
+
+
+More information
+================
+ - Homepage: http://meme.nbcr.net/
+    }
+}
+
+module-whatis {Description: The MEME Suite allows you to: * discover motifs using MEME, DREME (DNA only) or
+ GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
+ MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
+ motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
+ using SpaMo or CentriMo.}
+module-whatis {Homepage: http://meme.nbcr.net/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/MEME/4.8.0-foss-2016a
+
+conflict MEME
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+if { ![ is-loaded libxml2/2.9.3-foss-2016a ] } {
+    module load libxml2/2.9.3-foss-2016a
+}
+
+if { ![ is-loaded libxslt/1.1.28-foss-2016a ] } {
+    module load libxslt/1.1.28-foss-2016a
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016a ] } {
+    module load zlib/1.2.8-foss-2016a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTMEME		"$root"
+setenv	EBVERSIONMEME		"4.8.0"
+setenv	EBDEVELMEME		"$root/easybuild/MEME-4.8.0-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.1

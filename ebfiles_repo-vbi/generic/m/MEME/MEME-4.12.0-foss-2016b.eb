@@ -1,0 +1,30 @@
+# easyconfig for MEME
+easyblock = 'ConfigureMake'
+
+name = 'MEME'
+version = '4.12.0'
+
+homepage = 'http://meme-suite.org'
+description = """The MEME Suite allows you to: * discover motifs using MEME, DREME (DNA only) or
+ GLAM2 on groups of related DNA or protein sequences, * search sequence databases with motifs using
+ MAST, FIMO, MCAST or GLAM2SCAN, * compare a motif to all motifs in a database of motifs, * associate
+ motifs with Gene Ontology terms via their putative target genes, and * analyse motif enrichment
+ using SpaMo or CentriMo."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+
+sources = ['meme_%(version)s.tar.gz']
+source_urls = ['http://meme-suite.org/meme-software/%(version)s/']
+
+dependencies = [
+    ('libxml2', '2.9.4'),
+    ('libxslt', '1.1.29'),
+    ('zlib', '1.2.8'),
+]
+
+sanity_check_paths = {
+    'files': ["bin/meme"],
+    'dirs': ["etc", "lib", "share/doc"],
+}
+
+moduleclass = 'bio'
