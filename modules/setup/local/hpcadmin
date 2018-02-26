@@ -23,7 +23,7 @@ set easybuild_sticky_bit "1"
 set easybuild_group_writable_installdir "1"
 
 # set up environment variable to indicate currently used system
-setenv BI_SYSTEM $site-$arch
+setenv BI_SYSTEM $site
 
 # end of global configuration
 #######################################################################################################################
