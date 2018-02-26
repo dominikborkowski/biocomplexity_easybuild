@@ -17,12 +17,12 @@ _we need environment modules for module support, and libibverbs-devel for the go
   * openSUSE
 
 ```
-zypper -n in Modules libibverbs-devel
+zypper -n in Modules libibverbs-devel python-setuptools
 ```
   * CentOS
 
 ```
-yum -y install environment-modules libibverbs-devel
+yum -y install environment-modules libibverbs-devel python-setuptools
 ```
 
 
