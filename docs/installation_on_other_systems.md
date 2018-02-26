@@ -45,13 +45,7 @@ As any of the users in __hpcadmin__ group:
   * Check out the VBI easybuild repo
 
 ```
-git clone https://devlab.vbi.vt.edu/HPC/easybuild.git /apps/easybuild
-```
-  * Prepare permissions
-
-```
-cd /apps/easybuild
-git config core.sharedRepository group
+git clone --shared https://devlab.vbi.vt.edu/HPC/easybuild.git /apps/easybuild
 ```
 
   * link basic scripts to allow loading of EasyBuild
