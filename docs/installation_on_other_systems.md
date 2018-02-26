@@ -23,6 +23,7 @@ zypper -n in Modules libibverbs-devel python-setuptools
 
 ```
 yum -y install environment-modules libibverbs-devel python-setuptools
+yum -y groupinstall "Development tools"
 ```
 
 
