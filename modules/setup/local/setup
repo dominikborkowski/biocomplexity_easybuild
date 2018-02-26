@@ -19,7 +19,7 @@ set org "vbi"
 set local "~$::env(USER)/easybuild"
 
 # set up environment variable to indicate currently used system
-setenv BI_SYSTEM $site-$arch
+setenv BI_SYSTEM $site
 
 # end of global configuration
 #######################################################################################################################
