@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HDF5 is a data model, library, and file format for storing and managing data.
+ It supports an unlimited variety of datatypes, and is designed for flexible
+ and efficient I/O and for high volume and complex data.
+
+
+More information
+================
+ - Homepage: https://support.hdfgroup.org/HDF5/
+    }
+}
+
+module-whatis {Description: HDF5 is a data model, library, and file format for storing and managing data.
+ It supports an unlimited variety of datatypes, and is designed for flexible
+ and efficient I/O and for high volume and complex data.}
+module-whatis {Homepage: https://support.hdfgroup.org/HDF5/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/HDF5/1.10.1-foss-2017b
+
+conflict HDF5
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Szip/2.1.1-GCCcore-6.4.0 ] } {
+    module load Szip/2.1.1-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTHDF5		"$root"
+setenv	EBVERSIONHDF5		"1.10.1"
+setenv	EBDEVELHDF5		"$root/easybuild/HDF5-1.10.1-foss-2017b-easybuild-devel"
+
+setenv	HDF5_DIR		"/apps/easybuild/software/discovery-sandy_bridge/HDF5/1.10.1-foss-2017b"
+# Built with EasyBuild version 3.5.2

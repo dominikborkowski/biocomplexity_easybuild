@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Doxygen is a documentation system for C++, C, Java, Objective-C, Python,
+ IDL (Corba and Microsoft flavors), Fortran, VHDL, PHP, C#, and to some
+ extent D.
+
+
+More information
+================
+ - Homepage: http://www.doxygen.org
+    }
+}
+
+module-whatis {Description: 
+ Doxygen is a documentation system for C++, C, Java, Objective-C, Python,
+ IDL (Corba and Microsoft flavors), Fortran, VHDL, PHP, C#, and to some
+ extent D.
+}
+module-whatis {Homepage: http://www.doxygen.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Doxygen/1.8.13-GCCcore-6.4.0
+
+conflict Doxygen
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTDOXYGEN		"$root"
+setenv	EBVERSIONDOXYGEN		"1.8.13"
+setenv	EBDEVELDOXYGEN		"$root/easybuild/Doxygen-1.8.13-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.2

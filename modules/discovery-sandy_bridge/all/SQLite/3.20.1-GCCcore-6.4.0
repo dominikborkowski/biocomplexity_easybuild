@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SQLite: SQL Database Engine in a C Library
+
+
+More information
+================
+ - Homepage: http://www.sqlite.org/
+    }
+}
+
+module-whatis {Description: SQLite: SQL Database Engine in a C Library}
+module-whatis {Homepage: http://www.sqlite.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/SQLite/3.20.1-GCCcore-6.4.0
+
+conflict SQLite
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded libreadline/7.0-GCCcore-6.4.0 ] } {
+    module load libreadline/7.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Tcl/8.6.7-GCCcore-6.4.0 ] } {
+    module load Tcl/8.6.7-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSQLITE		"$root"
+setenv	EBVERSIONSQLITE		"3.20.1"
+setenv	EBDEVELSQLITE		"$root/easybuild/SQLite-3.20.1-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.2
