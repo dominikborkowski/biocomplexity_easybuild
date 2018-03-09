@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics,
+ and functions of complex networks.
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/networkx
+    }
+}
+
+module-whatis {Description: NetworkX is a Python package for the creation, manipulation, and study of the structure, dynamics,
+ and functions of complex networks.}
+module-whatis {Homepage: https://pypi.python.org/pypi/networkx}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/networkx/2.1-foss-2016b-Python-2.7.12
+
+conflict networkx
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+setenv	EBROOTNETWORKX		"$root"
+setenv	EBVERSIONNETWORKX		"2.1"
+setenv	EBDEVELNETWORKX		"$root/easybuild/networkx-2.1-foss-2016b-Python-2.7.12-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.2
