@@ -22,7 +22,7 @@ zypper -n in Modules libibverbs-devel python-setuptools
   * CentOS
 
 ```
-yum -y install environment-modules libibverbs-devel python-setuptools openssl-devel
+yum -y install environment-modules libibverbs-devel python-setuptools openssl-devel mesa-libGLU-devel libX11-devel
 yum -y groupinstall "Development tools"
 ```
 
