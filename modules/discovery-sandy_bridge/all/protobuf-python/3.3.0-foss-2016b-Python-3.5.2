@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Python Protocol Buffers runtime library.
+
+
+More information
+================
+ - Homepage: https://github.com/google/protobuf/
+    }
+}
+
+module-whatis {Description: Python Protocol Buffers runtime library.}
+module-whatis {Homepage: https://github.com/google/protobuf/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/protobuf-python/3.3.0-foss-2016b-Python-3.5.2
+
+conflict protobuf-python
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+if { ![ is-loaded protobuf/3.3.0-foss-2016b ] } {
+    module load protobuf/3.3.0-foss-2016b
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPROTOBUFMINPYTHON		"$root"
+setenv	EBVERSIONPROTOBUFMINPYTHON		"3.3.0"
+setenv	EBDEVELPROTOBUFMINPYTHON		"$root/easybuild/protobuf-python-3.3.0-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.5.3

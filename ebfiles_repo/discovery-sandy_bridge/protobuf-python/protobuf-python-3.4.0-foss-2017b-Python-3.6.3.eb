@@ -1,0 +1,57 @@
+# Built with EasyBuild version 3.5.3 on 2018-03-10_00-37-28
+easyblock = 'PythonPackage'
+
+name = 'protobuf-python'
+version = '3.4.0'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/google/protobuf/'
+description = """Python Protocol Buffers runtime library."""
+
+toolchain = {'name': 'foss', 'version': '2017b'}
+
+source_urls = ['https://github.com/google/protobuf/archive/v%(version)s']
+sources = [SOURCE_TAR_GZ]
+checksums = ['f6600abeee3babfa18591961a0ff21e7db6a6d9ef82418a261ec4fee44ee6d44']
+
+dependencies = [
+    ('Python', '3.6.3'),
+    ('protobuf', version)
+]
+
+start_dir = 'python'
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+options = {'modulename': 'google.protobuf'}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "build_time": 32.62,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.5.3/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.3-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'protobuf-python-3.4.0-foss-2017b-Python-3.6.3.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.3",
+    "easybuild-framework_version": "3.5.3",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery2",
+    "install_size": 3501326,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/discovery-sandy_bridge/Python/3.6.3-foss-2017b/bin/python",
+    "timestamp": 1520660248,
+    "total_memory": 64403,
+}]

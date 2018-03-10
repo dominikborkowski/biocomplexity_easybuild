@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+This library provides functions for manipulating Unicode strings and for manipulating C strings
+ according to the Unicode standard.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/libunistring/
+    }
+}
+
+module-whatis {Description: This library provides functions for manipulating Unicode strings and for manipulating C strings
+ according to the Unicode standard.}
+module-whatis {Homepage: http://www.gnu.org/software/libunistring/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libunistring/0.9.6-foss-2016b
+
+conflict libunistring
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTLIBUNISTRING		"$root"
+setenv	EBVERSIONLIBUNISTRING		"0.9.6"
+setenv	EBDEVELLIBUNISTRING		"$root/easybuild/libunistring-0.9.6-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3
