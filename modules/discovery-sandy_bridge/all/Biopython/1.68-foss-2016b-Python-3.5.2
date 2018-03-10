@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Biopython is a set of freely available tools for biological computation written
+in Python by an international team of developers. It is a distributed collaborative effort to
+develop Python libraries and applications which address the needs of current and future work in
+bioinformatics.
+
+
+More information
+================
+ - Homepage: http://www.biopython.org
+    }
+}
+
+module-whatis {Description: Biopython is a set of freely available tools for biological computation written
+in Python by an international team of developers. It is a distributed collaborative effort to
+develop Python libraries and applications which address the needs of current and future work in
+bioinformatics. }
+module-whatis {Homepage: http://www.biopython.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Biopython/1.68-foss-2016b-Python-3.5.2
+
+conflict Biopython
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Python/3.5.2-foss-2016b ] } {
+    module load Python/3.5.2-foss-2016b
+}
+
+setenv	EBROOTBIOPYTHON		"$root"
+setenv	EBVERSIONBIOPYTHON		"1.68"
+setenv	EBDEVELBIOPYTHON		"$root/easybuild/Biopython-1.68-foss-2016b-Python-3.5.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.5/site-packages
+# Built with EasyBuild version 3.5.3

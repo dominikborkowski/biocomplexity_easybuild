@@ -1,0 +1,64 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Guile is the GNU Ubiquitous Intelligent Language for Extensions,
+ the official extension language for the GNU operating system.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/guile
+    }
+}
+
+module-whatis {Description: Guile is the GNU Ubiquitous Intelligent Language for Extensions,
+ the official extension language for the GNU operating system.}
+module-whatis {Homepage: http://www.gnu.org/software/guile}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Guile/1.8.8-foss-2016b
+
+conflict Guile
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded libtool/2.4.6-foss-2016b ] } {
+    module load libtool/2.4.6-foss-2016b
+}
+
+if { ![ is-loaded GMP/6.1.1-foss-2016b ] } {
+    module load GMP/6.1.1-foss-2016b
+}
+
+if { ![ is-loaded libunistring/0.9.6-foss-2016b ] } {
+    module load libunistring/0.9.6-foss-2016b
+}
+
+if { ![ is-loaded pkg-config/0.29.1-foss-2016b ] } {
+    module load pkg-config/0.29.1-foss-2016b
+}
+
+if { ![ is-loaded libffi/3.2.1-foss-2016b ] } {
+    module load libffi/3.2.1-foss-2016b
+}
+
+if { ![ is-loaded libreadline/6.3-foss-2016b ] } {
+    module load libreadline/6.3-foss-2016b
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGUILE		"$root"
+setenv	EBVERSIONGUILE		"1.8.8"
+setenv	EBDEVELGUILE		"$root/easybuild/Guile-1.8.8-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

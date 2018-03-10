@@ -1,0 +1,71 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences.
+
+
+More information
+================
+ - Homepage: http://blast.ncbi.nlm.nih.gov/
+    }
+}
+
+module-whatis {Description: Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences.}
+module-whatis {Homepage: http://blast.ncbi.nlm.nih.gov/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/BLAST+/2.6.0-foss-2016b-Python-2.7.12
+
+conflict BLAST+
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+if { ![ is-loaded PCRE/8.39-foss-2016b ] } {
+    module load PCRE/8.39-foss-2016b
+}
+
+if { ![ is-loaded Python/2.7.12-foss-2016b ] } {
+    module load Python/2.7.12-foss-2016b
+}
+
+if { ![ is-loaded Boost/1.63.0-foss-2016b-Python-2.7.12 ] } {
+    module load Boost/1.63.0-foss-2016b-Python-2.7.12
+}
+
+if { ![ is-loaded GMP/6.1.1-foss-2016b ] } {
+    module load GMP/6.1.1-foss-2016b
+}
+
+if { ![ is-loaded libpng/1.6.26-foss-2016b ] } {
+    module load libpng/1.6.26-foss-2016b
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.0-foss-2016b ] } {
+    module load libjpeg-turbo/1.5.0-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTBLASTPLUS		"$root"
+setenv	EBVERSIONBLASTPLUS		"2.6.0"
+setenv	EBDEVELBLASTPLUS		"$root/easybuild/BLAST+-2.6.0-foss-2016b-Python-2.7.12-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3
