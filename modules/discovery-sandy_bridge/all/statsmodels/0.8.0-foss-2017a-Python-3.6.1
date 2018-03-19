@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Statsmodels is a Python module that allows users to explore data, estimate statistical models,
+and perform statistical tests.
+
+
+More information
+================
+ - Homepage: http://statsmodels.sourceforge.net/
+
+
+Included extensions
+===================
+patsy-0.4.1, statsmodels-0.8.0
+    }
+}
+
+module-whatis {Description: Statsmodels is a Python module that allows users to explore data, estimate statistical models,
+and perform statistical tests.}
+module-whatis {Homepage: http://statsmodels.sourceforge.net/}
+module-whatis {Extensions: patsy-0.4.1, statsmodels-0.8.0}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/statsmodels/0.8.0-foss-2017a-Python-3.6.1
+
+conflict statsmodels
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded Python/3.6.1-foss-2017a ] } {
+    module load Python/3.6.1-foss-2017a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSTATSMODELS		"$root"
+setenv	EBVERSIONSTATSMODELS		"0.8.0"
+setenv	EBDEVELSTATSMODELS		"$root/easybuild/statsmodels-0.8.0-foss-2017a-Python-3.6.1-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.5.3
+setenv	EBEXTSLISTSTATSMODELS		"patsy-0.4.1,statsmodels-0.8.0"
