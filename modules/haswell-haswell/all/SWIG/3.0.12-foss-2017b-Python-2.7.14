@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SWIG is a software development tool that connects programs written in C and C++ with
+ a variety of high-level programming languages.
+
+
+More information
+================
+ - Homepage: http://www.swig.org/
+    }
+}
+
+module-whatis {Description: SWIG is a software development tool that connects programs written in C and C++ with
+ a variety of high-level programming languages.}
+module-whatis {Homepage: http://www.swig.org/}
+
+set root /apps/easybuild/software/haswell-haswell/SWIG/3.0.12-foss-2017b-Python-2.7.14
+
+conflict SWIG
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2017b ] } {
+    module load Python/2.7.14-foss-2017b
+}
+
+if { ![ is-loaded PCRE/8.41-GCCcore-6.4.0 ] } {
+    module load PCRE/8.41-GCCcore-6.4.0
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSWIG		"$root"
+setenv	EBVERSIONSWIG		"3.0.12"
+setenv	EBDEVELSWIG		"$root/easybuild/SWIG-3.0.12-foss-2017b-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

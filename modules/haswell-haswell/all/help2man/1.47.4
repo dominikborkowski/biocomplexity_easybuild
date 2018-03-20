@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+help2man produces simple manual pages from the '--help' and '--version'
+ output of other commands.
+
+
+More information
+================
+ - Homepage: https://www.gnu.org/software/help2man/
+    }
+}
+
+module-whatis {Description: 
+ help2man produces simple manual pages from the '--help' and '--version'
+ output of other commands.
+}
+module-whatis {Homepage: https://www.gnu.org/software/help2man/}
+
+set root /apps/easybuild/software/haswell-haswell/help2man/1.47.4
+
+conflict help2man
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTHELP2MAN		"$root"
+setenv	EBVERSIONHELP2MAN		"1.47.4"
+setenv	EBDEVELHELP2MAN		"$root/easybuild/help2man-1.47.4-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Cutadapt finds and removes adapter sequences, primers, poly-A tails and
+ other types of unwanted sequence from your high-throughput sequencing reads.
+
+
+More information
+================
+ - Homepage: http://opensource.scilifelab.se/projects/cutadapt/
+    }
+}
+
+module-whatis {Description:  Cutadapt finds and removes adapter sequences, primers, poly-A tails and
+ other types of unwanted sequence from your high-throughput sequencing reads. }
+module-whatis {Homepage: http://opensource.scilifelab.se/projects/cutadapt/}
+
+set root /apps/easybuild/software/haswell-haswell/cutadapt/1.14-foss-2017a-Python-2.7.13
+
+conflict cutadapt
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded Python/2.7.13-foss-2017a ] } {
+    module load Python/2.7.13-foss-2017a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTCUTADAPT		"$root"
+setenv	EBVERSIONCUTADAPT		"1.14"
+setenv	EBDEVELCUTADAPT		"$root/easybuild/cutadapt-1.14-foss-2017a-Python-2.7.13-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.3

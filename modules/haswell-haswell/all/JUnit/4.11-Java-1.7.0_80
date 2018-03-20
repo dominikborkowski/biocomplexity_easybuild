@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A programmer-oriented testing framework for Java.
+
+
+More information
+================
+ - Homepage: http://sourceforge.net/projects/junit
+    }
+}
+
+module-whatis {Description: A programmer-oriented testing framework for Java.}
+module-whatis {Homepage: http://sourceforge.net/projects/junit}
+
+set root /apps/easybuild/software/haswell-haswell/JUnit/4.11-Java-1.7.0_80
+
+conflict JUnit
+
+if { ![ is-loaded Java/1.7.0_80 ] } {
+    module load Java/1.7.0_80
+}
+
+prepend-path	CLASSPATH		$root/junit-4.11.jar
+setenv	EBROOTJUNIT		"$root"
+setenv	EBVERSIONJUNIT		"4.11"
+setenv	EBDEVELJUNIT		"$root/easybuild/JUnit-4.11-Java-1.7.0_80-easybuild-devel"
+
+prepend-path	PATH		$root
+prepend-path	CLASSPATH		$root/junit-4.11.jar
+# Built with EasyBuild version 3.5.3

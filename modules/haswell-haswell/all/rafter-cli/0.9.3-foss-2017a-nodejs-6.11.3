@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+CLI interface for Rafter
+
+
+More information
+================
+ - Homepage: https://www.npmjs.com/package/rafter-cli
+    }
+}
+
+module-whatis {Description: CLI interface for Rafter}
+module-whatis {Homepage: https://www.npmjs.com/package/rafter-cli}
+
+set root /apps/easybuild/software/haswell-haswell/rafter-cli/0.9.3-foss-2017a-nodejs-6.11.3
+
+conflict rafter-cli
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded nodejs/6.11.3-foss-2017a ] } {
+    module load nodejs/6.11.3-foss-2017a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTRAFTERMINCLI		"$root"
+setenv	EBVERSIONRAFTERMINCLI		"0.9.3"
+setenv	EBDEVELRAFTERMINCLI		"$root/easybuild/rafter-cli-0.9.3-foss-2017a-nodejs-6.11.3-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

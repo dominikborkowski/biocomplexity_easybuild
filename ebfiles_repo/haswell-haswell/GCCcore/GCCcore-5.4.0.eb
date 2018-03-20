@@ -1,0 +1,79 @@
+# Built with EasyBuild version 3.5.3 on 2018-03-19_13-22-24
+easyblock = 'EB_GCC'
+
+name = 'GCCcore'
+version = '5.4.0'
+
+homepage = 'http://gcc.gnu.org/'
+description = """The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Java, and Ada,
+ as well as libraries for these languages (libstdc++, libgcj,...)."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+mpfr_version = '3.1.4'
+
+source_urls = [
+    'http://ftpmirror.gnu.org/gnu/gcc/gcc-%(version)s',  # GCC auto-resolving HTTP mirror
+    'http://ftpmirror.gnu.org/gnu/gmp',  # idem for GMP
+    'http://ftpmirror.gnu.org/gnu/mpfr',  # idem for MPFR
+    'http://ftpmirror.gnu.org/gnu/mpc',  # idem for MPC
+    'ftp://gcc.gnu.org/pub/gcc/infrastructure/',  # GCC dependencies
+    'http://gcc.cybermirror.org/infrastructure/',  # HTTP mirror for GCC dependencies
+    'http://isl.gforge.inria.fr/',  # original HTTP source for ISL
+]
+
+sources = [
+    'gcc-%(version)s.tar.bz2',
+    'gmp-6.1.0.tar.bz2',
+    'mpfr-%s.tar.gz' % mpfr_version,
+    'mpc-1.0.3.tar.gz',
+    'isl-0.15.tar.bz2',
+]
+
+patches = [('mpfr-%s-allpatches-20160601.patch' % mpfr_version, '../mpfr-%s' % mpfr_version)]
+
+builddependencies = [
+    ('binutils', '2.26'),
+    ('M4', '1.4.17'),
+]
+
+checksums = [
+    '4c626ac2a83ef30dfb9260e6f59c2b30',     # gcc-5.4.0.tar.bz2
+    '86ee6e54ebfc4a90b643a65e402c4048',     # gmp-6.1.0.tar.bz2
+    '482ab3c120ffc959f631b4ba9ec59a46',     # mpfr-3.1.4.tar.gz
+    'd6a1d5f8ddea3abd2cc3e98f58352d26',     # mpc-1.0.3.tar.gz
+    '8428efbbc6f6e2810ce5c1ba73ecf98c',     # isl-0.15.tar.bz2
+    '22164533561142b70fda09af4e775acc',     # mpfr-3.1.4-allpatches-20150603.patch
+]
+
+languages = ['c', 'c++', 'fortran']
+
+withisl = True
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "build_time": 1150.14,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/haswell-haswell'", "--installpath-software='/apps/easybuild/software/haswell-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/haswell-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:/apps/easybuild/software/haswell-haswell/EasyBuild/3.5.3/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.3-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'ABySS-2.0.2-foss-2016b.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 3600.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.3",
+    "easybuild-framework_version": "3.5.3",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/local/apps/gcc/6.1.0/libexec/gcc/x86_64-pc-linux-gnu/6.1.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../gcc-6.1.0/configure --prefix=/cm/local/apps/gcc/6.1.0 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpfr/src/.libs; Thread model: posix; gcc version 6.1.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "hswlogin1",
+    "install_size": 833091137,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  4 2017, 00:39:18) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]",
+    "system_gcc_path": "/cm/local/apps/gcc/6.1.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1521480144,
+    "total_memory": 128831,
+}]

@@ -1,0 +1,70 @@
+# Built with EasyBuild version 3.5.3 on 2018-03-19_15-59-19
+easyblock = 'CMakeMake'
+
+name = 'LLVM'
+version = '3.8.1'
+
+homepage = "http://llvm.org/"
+description = """The LLVM Core libraries provide a modern source- and target-independent
+ optimizer, along with code generation support for many popular CPUs
+ (as well as some less common ones!) These libraries are built around a well
+ specified code representation known as the LLVM intermediate representation
+ ("LLVM IR"). The LLVM Core libraries are well documented, and it is
+ particularly easy to invent your own language (or port an existing compiler)
+ to use LLVM as an optimizer and code generator."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'cstd': 'gnu++11'}
+
+source_urls = ["http://llvm.org/releases/%(version)s"]
+sources = ["llvm-%(version)s.src.tar.xz"]
+checksums = ['6e82ce4adb54ff3afc18053d6981b6aed1406751b8742582ed50f04b5ab475f9']
+
+builddependencies = [
+    ('CMake', '3.6.1'),
+    ('Python', '2.7.12'),
+]
+
+dependencies = [
+    ('ncurses', '6.0'),
+    ('zlib', '1.2.8'),
+]
+
+configopts = '-DBUILD_SHARED_LIBS=ON '
+# required to install extra tools in bin/
+configopts += "-DLLVM_INSTALL_UTILS=ON -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_ZLIB=ON"
+
+sanity_check_paths = {
+    'files': ['bin/llvm-ar', 'bin/FileCheck'],
+    'dirs': ['include/llvm', 'include/llvm-c'],
+}
+
+separate_build_dir = True
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "build_time": 178.49,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/haswell-haswell'", "--installpath-software='/apps/easybuild/software/haswell-haswell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/haswell-haswell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:/apps/easybuild/software/haswell-haswell/EasyBuild/3.5.3/lib/python2.7/site-packages/easybuild_easyconfigs-3.5.3-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/haswell-haswell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/haswell-haswell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'CGAL-4.8.1-foss-2016b-Python-2.7.12.eb'],
+    "core_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz",
+    "cpu_speed": 3600.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.5.3",
+    "easybuild-framework_version": "3.5.3",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/haswell-haswell/GCCcore/5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/haswell-haswell/GCCcore/5.4.0 --with-local-prefix=/apps/easybuild/software/haswell-haswell/GCCcore/5.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/5.4.0/dummy-/gcc-5.4.0/stage2_stuff; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "hswlogin1",
+    "install_size": 62727962,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Aug  4 2017, 00:39:18) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-16)]",
+    "system_gcc_path": "/apps/easybuild/software/haswell-haswell/GCCcore/5.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/haswell-haswell/Python/2.7.12-foss-2016b/bin/python",
+    "timestamp": 1521489558,
+    "total_memory": 128831,
+}]

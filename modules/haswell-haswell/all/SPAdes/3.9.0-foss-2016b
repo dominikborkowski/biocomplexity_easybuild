@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Genome assembler for single-cell and isolates data sets
+
+
+More information
+================
+ - Homepage: http://bioinf.spbau.ru/en/spades
+    }
+}
+
+module-whatis {Description: Genome assembler for single-cell and isolates data sets}
+module-whatis {Homepage: http://bioinf.spbau.ru/en/spades}
+
+set root /apps/easybuild/software/haswell-haswell/SPAdes/3.9.0-foss-2016b
+
+conflict SPAdes
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSPADES		"$root"
+setenv	EBVERSIONSPADES		"3.9.0"
+setenv	EBDEVELSPADES		"$root/easybuild/SPAdes-3.9.0-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3
