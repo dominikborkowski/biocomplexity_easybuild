@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Tk is an open source, cross-platform widget toolchain that provides a library of basic elements for
+ building a graphical user interface (GUI) in many different programming languages.
+
+
+More information
+================
+ - Homepage: http://www.tcl.tk/
+    }
+}
+
+module-whatis {Description: Tk is an open source, cross-platform widget toolchain that provides a library of basic elements for
+ building a graphical user interface (GUI) in many different programming languages.}
+module-whatis {Homepage: http://www.tcl.tk/}
+
+set root /apps/easybuild/software/haswell-haswell/Tk/8.6.5-foss-2016b
+
+conflict Tk
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded Tcl/8.6.5-foss-2016b ] } {
+    module load Tcl/8.6.5-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTTK		"$root"
+setenv	EBVERSIONTK		"8.6.5"
+setenv	EBDEVELTK		"$root/easybuild/Tk-8.6.5-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

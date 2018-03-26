@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA specifications.
+Libidn's purpose is to encode and decode internationalized domain names.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/libidn
+    }
+}
+
+module-whatis {Description: GNU Libidn is a fully documented implementation of the Stringprep, Punycode and IDNA specifications.
+Libidn's purpose is to encode and decode internationalized domain names.}
+module-whatis {Homepage: http://www.gnu.org/software/libidn}
+
+set root /apps/easybuild/software/haswell-haswell/libidn/1.32-foss-2016b
+
+conflict libidn
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBIDN		"$root"
+setenv	EBVERSIONLIBIDN		"1.32"
+setenv	EBDEVELLIBIDN		"$root/easybuild/libidn-1.32-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

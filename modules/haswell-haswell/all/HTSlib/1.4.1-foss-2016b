@@ -1,0 +1,55 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A C library for reading/writing high-throughput sequencing data.
+ This package includes the utilities bgzip and tabix
+
+
+More information
+================
+ - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Description: A C library for reading/writing high-throughput sequencing data.
+ This package includes the utilities bgzip and tabix}
+module-whatis {Homepage: http://www.htslib.org/}
+
+set root /apps/easybuild/software/haswell-haswell/HTSlib/1.4.1-foss-2016b
+
+conflict HTSlib
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+if { ![ is-loaded XZ/5.2.2-foss-2016b ] } {
+    module load XZ/5.2.2-foss-2016b
+}
+
+if { ![ is-loaded cURL/7.49.1-foss-2016b ] } {
+    module load cURL/7.49.1-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTHTSLIB		"$root"
+setenv	EBVERSIONHTSLIB		"1.4.1"
+setenv	EBDEVELHTSLIB		"$root/easybuild/HTSlib-1.4.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

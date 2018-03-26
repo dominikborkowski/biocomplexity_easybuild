@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HDF5 is a data model, library, and file format for storing and managing data.
+ It supports an unlimited variety of datatypes, and is designed for flexible
+ and efficient I/O and for high volume and complex data.
+
+
+More information
+================
+ - Homepage: https://support.hdfgroup.org/HDF5/
+    }
+}
+
+module-whatis {Description: HDF5 is a data model, library, and file format for storing and managing data.
+ It supports an unlimited variety of datatypes, and is designed for flexible
+ and efficient I/O and for high volume and complex data.}
+module-whatis {Homepage: https://support.hdfgroup.org/HDF5/}
+
+set root /apps/easybuild/software/haswell-haswell/HDF5/1.8.17-foss-2016b
+
+conflict HDF5
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded Szip/2.1-foss-2016b ] } {
+    module load Szip/2.1-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTHDF5		"$root"
+setenv	EBVERSIONHDF5		"1.8.17"
+setenv	EBDEVELHDF5		"$root/easybuild/HDF5-1.8.17-foss-2016b-easybuild-devel"
+
+setenv	HDF5_DIR		"/apps/easybuild/software/haswell-haswell/HDF5/1.8.17-foss-2016b"
+# Built with EasyBuild version 3.5.3

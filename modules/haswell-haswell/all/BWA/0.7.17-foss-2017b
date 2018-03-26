@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Burrows-Wheeler Aligner (BWA) is an efficient program that aligns
+ relatively short nucleotide sequences against a long reference sequence such as the human genome.
+
+
+More information
+================
+ - Homepage: http://bio-bwa.sourceforge.net/
+    }
+}
+
+module-whatis {Description: Burrows-Wheeler Aligner (BWA) is an efficient program that aligns
+ relatively short nucleotide sequences against a long reference sequence such as the human genome.}
+module-whatis {Homepage: http://bio-bwa.sourceforge.net/}
+
+set root /apps/easybuild/software/haswell-haswell/BWA/0.7.17-foss-2017b
+
+conflict BWA
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBWA		"$root"
+setenv	EBVERSIONBWA		"0.7.17"
+setenv	EBDEVELBWA		"$root/easybuild/BWA-0.7.17-foss-2017b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

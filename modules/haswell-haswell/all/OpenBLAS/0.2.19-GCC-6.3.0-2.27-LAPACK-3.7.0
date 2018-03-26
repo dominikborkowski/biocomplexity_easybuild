@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+
+
+More information
+================
+ - Homepage: http://xianyi.github.com/OpenBLAS/
+    }
+}
+
+module-whatis {Description: OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.}
+module-whatis {Homepage: http://xianyi.github.com/OpenBLAS/}
+
+set root /apps/easybuild/software/haswell-haswell/OpenBLAS/0.2.19-GCC-6.3.0-2.27-LAPACK-3.7.0
+
+conflict OpenBLAS
+
+if { ![ is-loaded GCC/6.3.0-2.27 ] } {
+    module load GCC/6.3.0-2.27
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTOPENBLAS		"$root"
+setenv	EBVERSIONOPENBLAS		"0.2.19"
+setenv	EBDEVELOPENBLAS		"$root/easybuild/OpenBLAS-0.2.19-GCC-6.3.0-2.27-LAPACK-3.7.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

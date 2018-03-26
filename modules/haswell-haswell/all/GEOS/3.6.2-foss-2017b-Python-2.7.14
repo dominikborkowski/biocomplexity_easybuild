@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GEOS (Geometry Engine - Open Source) is a C++ port of the  Java Topology Suite (JTS)
+
+
+More information
+================
+ - Homepage: http://trac.osgeo.org/geos
+    }
+}
+
+module-whatis {Description: GEOS (Geometry Engine - Open Source) is a C++ port of the  Java Topology Suite (JTS)}
+module-whatis {Homepage: http://trac.osgeo.org/geos}
+
+set root /apps/easybuild/software/haswell-haswell/GEOS/3.6.2-foss-2017b-Python-2.7.14
+
+conflict GEOS
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2017b ] } {
+    module load Python/2.7.14-foss-2017b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTGEOS		"$root"
+setenv	EBVERSIONGEOS		"3.6.2"
+setenv	EBDEVELGEOS		"$root/easybuild/GEOS-3.6.2-foss-2017b-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.3

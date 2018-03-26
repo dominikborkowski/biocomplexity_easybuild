@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers.
+
+
+More information
+================
+ - Homepage: http://java.com/
+    }
+}
+
+module-whatis {Description: Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers.}
+module-whatis {Homepage: http://java.com/}
+
+set root /apps/easybuild/software/haswell-haswell/Java/1.7.0_80
+
+conflict Java
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTJAVA		"$root"
+setenv	EBVERSIONJAVA		"1.7.0_80"
+setenv	EBDEVELJAVA		"$root/easybuild/Java-1.7.0_80-easybuild-devel"
+
+prepend-path	PATH		$root
+setenv	JAVA_HOME		"/apps/easybuild/software/haswell-haswell/Java/1.7.0_80"
+# Built with EasyBuild version 3.5.3

@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+OpenPGM is an open source implementation of the Pragmatic General Multicast (PGM)
+ specification in RFC 3208 available at www.ietf.org. PGM is a reliable and scalable multicast protocol
+ that enables receivers to detect loss, request retransmission of lost data, or notify an application
+ of unrecoverable loss. PGM is a receiver-reliable protocol, which means the receiver is responsible
+ for ensuring all data is received, absolving the sender of reception responsibility.
+
+
+More information
+================
+ - Homepage: http://code.google.com/p/openpgm/
+    }
+}
+
+module-whatis {Description: OpenPGM is an open source implementation of the Pragmatic General Multicast (PGM)
+ specification in RFC 3208 available at www.ietf.org. PGM is a reliable and scalable multicast protocol
+ that enables receivers to detect loss, request retransmission of lost data, or notify an application
+ of unrecoverable loss. PGM is a receiver-reliable protocol, which means the receiver is responsible
+ for ensuring all data is received, absolving the sender of reception responsibility.}
+module-whatis {Homepage: http://code.google.com/p/openpgm/}
+
+set root /apps/easybuild/software/haswell-haswell/OpenPGM/5.2.122-foss-2016b
+
+conflict OpenPGM
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTOPENPGM		"$root"
+setenv	EBVERSIONOPENPGM		"5.2.122"
+setenv	EBDEVELOPENPGM		"$root/easybuild/OpenPGM-5.2.122-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

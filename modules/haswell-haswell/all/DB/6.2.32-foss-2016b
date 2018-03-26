@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Berkeley DB enables the development of custom data management solutions,
+ without the overhead traditionally associated with such custom projects.
+
+
+More information
+================
+ - Homepage: http://www.oracle.com/technetwork/products/berkeleydb
+    }
+}
+
+module-whatis {Description: Berkeley DB enables the development of custom data management solutions,
+ without the overhead traditionally associated with such custom projects.}
+module-whatis {Homepage: http://www.oracle.com/technetwork/products/berkeleydb}
+
+set root /apps/easybuild/software/haswell-haswell/DB/6.2.32-foss-2016b
+
+conflict DB
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTDB		"$root"
+setenv	EBVERSIONDB		"6.2.32"
+setenv	EBDEVELDB		"$root/easybuild/DB-6.2.32-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

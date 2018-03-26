@@ -1,0 +1,61 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Rmath is the standalone version of the R math library.
+ Rmath can be used in your own C/C++ routines.
+
+
+More information
+================
+ - Homepage: https://www.r-project.org/
+    }
+}
+
+module-whatis {Description: Rmath is the standalone version of the R math library.
+ Rmath can be used in your own C/C++ routines.}
+module-whatis {Homepage: https://www.r-project.org/}
+
+set root /apps/easybuild/software/haswell-haswell/Rmath/3.3.1-foss-2016b
+
+conflict Rmath
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+if { ![ is-loaded cURL/7.49.1-foss-2016b ] } {
+    module load cURL/7.49.1-foss-2016b
+}
+
+if { ![ is-loaded libreadline/6.3-foss-2016b ] } {
+    module load libreadline/6.3-foss-2016b
+}
+
+if { ![ is-loaded PCRE/8.38-foss-2016b ] } {
+    module load PCRE/8.38-foss-2016b
+}
+
+if { ![ is-loaded XZ/5.2.2-foss-2016b ] } {
+    module load XZ/5.2.2-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	PKG_CONFIG_PATH		$root/lib64/pkgconfig
+setenv	EBROOTRMATH		"$root"
+setenv	EBVERSIONRMATH		"3.3.1"
+setenv	EBDEVELRMATH		"$root/easybuild/Rmath-3.3.1-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

@@ -1,0 +1,72 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Cairo is a 2D graphics library with support for multiple output devices.
+ Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB
+
+
+More information
+================
+ - Homepage: http://cairographics.org
+    }
+}
+
+module-whatis {Description: Cairo is a 2D graphics library with support for multiple output devices.
+ Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB}
+module-whatis {Homepage: http://cairographics.org}
+
+set root /apps/easybuild/software/haswell-haswell/cairo/1.14.6-foss-2016b
+
+conflict cairo
+
+if { ![ is-loaded foss/2016b ] } {
+    module load foss/2016b
+}
+
+if { ![ is-loaded bzip2/1.0.6-foss-2016b ] } {
+    module load bzip2/1.0.6-foss-2016b
+}
+
+if { ![ is-loaded zlib/1.2.8-foss-2016b ] } {
+    module load zlib/1.2.8-foss-2016b
+}
+
+if { ![ is-loaded libpng/1.6.24-foss-2016b ] } {
+    module load libpng/1.6.24-foss-2016b
+}
+
+if { ![ is-loaded freetype/2.6.5-foss-2016b ] } {
+    module load freetype/2.6.5-foss-2016b
+}
+
+if { ![ is-loaded pixman/0.34.0-foss-2016b ] } {
+    module load pixman/0.34.0-foss-2016b
+}
+
+if { ![ is-loaded expat/2.2.0-foss-2016b ] } {
+    module load expat/2.2.0-foss-2016b
+}
+
+if { ![ is-loaded GLib/2.49.5-foss-2016b ] } {
+    module load GLib/2.49.5-foss-2016b
+}
+
+if { ![ is-loaded X11/20160819-foss-2016b ] } {
+    module load X11/20160819-foss-2016b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTCAIRO		"$root"
+setenv	EBVERSIONCAIRO		"1.14.6"
+setenv	EBDEVELCAIRO		"$root/easybuild/cairo-1.14.6-foss-2016b-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

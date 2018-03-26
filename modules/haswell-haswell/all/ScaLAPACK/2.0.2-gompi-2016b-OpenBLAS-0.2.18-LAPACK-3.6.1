@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The ScaLAPACK (or Scalable LAPACK) library includes a subset of LAPACK routines
+ redesigned for distributed memory MIMD parallel computers.
+
+
+More information
+================
+ - Homepage: http://www.netlib.org/scalapack/
+    }
+}
+
+module-whatis {Description: The ScaLAPACK (or Scalable LAPACK) library includes a subset of LAPACK routines
+ redesigned for distributed memory MIMD parallel computers.}
+module-whatis {Homepage: http://www.netlib.org/scalapack/}
+
+set root /apps/easybuild/software/haswell-haswell/ScaLAPACK/2.0.2-gompi-2016b-OpenBLAS-0.2.18-LAPACK-3.6.1
+
+conflict ScaLAPACK
+
+if { ![ is-loaded gompi/2016b ] } {
+    module load gompi/2016b
+}
+
+if { ![ is-loaded OpenBLAS/0.2.18-GCC-5.4.0-2.26-LAPACK-3.6.1 ] } {
+    module load OpenBLAS/0.2.18-GCC-5.4.0-2.26-LAPACK-3.6.1
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTSCALAPACK		"$root"
+setenv	EBVERSIONSCALAPACK		"2.0.2"
+setenv	EBDEVELSCALAPACK		"$root/easybuild/ScaLAPACK-2.0.2-gompi-2016b-OpenBLAS-0.2.18-LAPACK-3.6.1-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

@@ -1,0 +1,63 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits.
+
+
+More information
+================
+ - Homepage: http://matplotlib.org
+
+
+Included extensions
+===================
+backports.functools_lru_cache-1.4, Cycler-0.10.0, matplotlib-2.1.0,
+subprocess32-3.2.7
+    }
+}
+
+module-whatis {Description: matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits.}
+module-whatis {Homepage: http://matplotlib.org}
+module-whatis {Extensions: backports.functools_lru_cache-1.4, Cycler-0.10.0, matplotlib-2.1.0, subprocess32-3.2.7}
+
+set root /apps/easybuild/software/haswell-haswell/matplotlib/2.1.0-foss-2017b-Python-2.7.14
+
+conflict matplotlib
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2017b ] } {
+    module load Python/2.7.14-foss-2017b
+}
+
+if { ![ is-loaded Tkinter/2.7.14-foss-2017b-Python-2.7.14 ] } {
+    module load Tkinter/2.7.14-foss-2017b-Python-2.7.14
+}
+
+if { ![ is-loaded libpng/1.6.32-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.32-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.8-GCCcore-6.4.0 ] } {
+    module load freetype/2.8-GCCcore-6.4.0
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTMATPLOTLIB		"$root"
+setenv	EBVERSIONMATPLOTLIB		"2.1.0"
+setenv	EBDEVELMATPLOTLIB		"$root/easybuild/matplotlib-2.1.0-foss-2017b-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.5.3
+setenv	EBEXTSLISTMATPLOTLIB		"Cycler-0.10.0,subprocess32-3.2.7,backports.functools_lru_cache-1.4,matplotlib-2.1.0"
