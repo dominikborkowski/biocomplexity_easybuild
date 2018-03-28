@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Tcl (Tool Command Language) is a very powerful but easy to learn dynamic
+ programming language, suitable for a very wide range of uses, including web
+ and desktop applications, networking, administration, testing and many more.
+
+
+More information
+================
+ - Homepage: http://www.tcl.tk/
+    }
+}
+
+module-whatis {Description: 
+ Tcl (Tool Command Language) is a very powerful but easy to learn dynamic
+ programming language, suitable for a very wide range of uses, including web
+ and desktop applications, networking, administration, testing and many more.
+}
+module-whatis {Homepage: http://www.tcl.tk/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Tcl/8.6.8-GCCcore-6.4.0
+
+conflict Tcl
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTTCL		"$root"
+setenv	EBVERSIONTCL		"8.6.8"
+setenv	EBDEVELTCL		"$root/easybuild/Tcl-8.6.8-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3
