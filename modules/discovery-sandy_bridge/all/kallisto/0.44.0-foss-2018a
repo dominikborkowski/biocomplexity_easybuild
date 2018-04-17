@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+kallisto is a program for quantifying abundances of transcripts from RNA-Seq data, or more generally
+ of target sequences using high-throughput sequencing reads.
+
+
+More information
+================
+ - Homepage: http://pachterlab.github.io/kallisto/
+    }
+}
+
+module-whatis {Description: kallisto is a program for quantifying abundances of transcripts from RNA-Seq data, or more generally
+ of target sequences using high-throughput sequencing reads.}
+module-whatis {Homepage: http://pachterlab.github.io/kallisto/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/kallisto/0.44.0-foss-2018a
+
+conflict kallisto
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded HDF5/1.10.1-foss-2018a ] } {
+    module load HDF5/1.10.1-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTKALLISTO		"$root"
+setenv	EBVERSIONKALLISTO		"0.44.0"
+setenv	EBDEVELKALLISTO		"$root/easybuild/kallisto-0.44.0-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

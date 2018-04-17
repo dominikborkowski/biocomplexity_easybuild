@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Jellyfish is a tool for fast, memory-efficient counting of k-mers in DNA.
+
+
+More information
+================
+ - Homepage: http://www.genome.umd.edu/jellyfish.html
+    }
+}
+
+module-whatis {Description:  Jellyfish is a tool for fast, memory-efficient counting of k-mers in DNA.}
+module-whatis {Homepage: http://www.genome.umd.edu/jellyfish.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Jellyfish/2.2.6-foss-2018a
+
+conflict Jellyfish
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTJELLYFISH		"$root"
+setenv	EBVERSIONJELLYFISH		"2.2.6"
+setenv	EBDEVELJELLYFISH		"$root/easybuild/Jellyfish-2.2.6-foss-2018a-easybuild-devel"
+
+prepend-path	CPATH		$root/include/jellyfish-2.2.6
+# Built with EasyBuild version 3.5.3

@@ -1,0 +1,49 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Salmon is a wicked-fast program to produce a highly-accurate,
+ transcript-level quantification estimates from RNA-seq data.
+
+
+More information
+================
+ - Homepage: https://github.com/COMBINE-lab/salmon
+    }
+}
+
+module-whatis {Description: Salmon is a wicked-fast program to produce a highly-accurate,
+ transcript-level quantification estimates from RNA-seq data.}
+module-whatis {Homepage: https://github.com/COMBINE-lab/salmon}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Salmon/0.8.2-foss-2018a-Python-2.7.14
+
+conflict Salmon
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Boost/1.66.0-foss-2018a-Python-2.7.14 ] } {
+    module load Boost/1.66.0-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded tbb/2018_U3-GCCcore-6.4.0 ] } {
+    module load tbb/2018_U3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Jellyfish/2.2.6-foss-2018a ] } {
+    module load Jellyfish/2.2.6-foss-2018a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTSALMON		"$root"
+setenv	EBVERSIONSALMON		"0.8.2"
+setenv	EBDEVELSALMON		"$root/easybuild/Salmon-0.8.2-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3

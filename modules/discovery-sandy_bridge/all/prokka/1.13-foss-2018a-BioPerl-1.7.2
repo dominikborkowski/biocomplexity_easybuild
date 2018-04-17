@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Prokka is a software tool for the rapid annotation of prokaryotic genomes.
+
+
+More information
+================
+ - Homepage: http://www.vicbioinformatics.com/software.prokka.shtml
+    }
+}
+
+module-whatis {Description: Prokka is a software tool for the rapid annotation of prokaryotic genomes.}
+module-whatis {Homepage: http://www.vicbioinformatics.com/software.prokka.shtml}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/prokka/1.13-foss-2018a-BioPerl-1.7.2
+
+conflict prokka
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded BioPerl/1.7.2-foss-2018a-Perl-5.26.1 ] } {
+    module load BioPerl/1.7.2-foss-2018a-Perl-5.26.1
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPROKKA		"$root"
+setenv	EBVERSIONPROKKA		"1.13"
+setenv	EBDEVELPROKKA		"$root/easybuild/prokka-1.13-foss-2018a-BioPerl-1.7.2-easybuild-devel"
+
+prepend-path	PATH		$root
+
+if { [ module-info mode load ] } {
+    puts stderr "prokka scripts are located in \$EBROOTPROKKA/bin; databases are located in \$EBROOTPROKKA/db
+    "
+}
+# Built with EasyBuild version 3.5.3
