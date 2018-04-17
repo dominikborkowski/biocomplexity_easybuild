@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Direct Rendering Manager runtime library.
+
+
+More information
+================
+ - Homepage: http://dri.freedesktop.org
+    }
+}
+
+module-whatis {Description: Direct Rendering Manager runtime library.}
+module-whatis {Homepage: http://dri.freedesktop.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libdrm/2.4.91-GCCcore-6.4.0
+
+conflict libdrm
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBDRM		"$root"
+setenv	EBVERSIONLIBDRM		"2.4.91"
+setenv	EBDEVELLIBDRM		"$root/easybuild/libdrm-2.4.91-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.5.3
