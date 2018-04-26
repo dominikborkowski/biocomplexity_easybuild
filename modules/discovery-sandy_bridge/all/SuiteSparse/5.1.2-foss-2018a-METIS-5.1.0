@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SuiteSparse is a collection of libraries manipulate sparse matrices.
+
+
+More information
+================
+ - Homepage: http://faculty.cse.tamu.edu/davis/suitesparse.html
+    }
+}
+
+module-whatis {Description: SuiteSparse is a collection of libraries manipulate sparse matrices.}
+module-whatis {Homepage: http://faculty.cse.tamu.edu/davis/suitesparse.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/SuiteSparse/5.1.2-foss-2018a-METIS-5.1.0
+
+conflict SuiteSparse
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded METIS/5.1.0-GCCcore-6.4.0 ] } {
+    module load METIS/5.1.0-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSUITESPARSE		"$root"
+setenv	EBVERSIONSUITESPARSE		"5.1.2"
+setenv	EBDEVELSUITESPARSE		"$root/easybuild/SuiteSparse-5.1.2-foss-2018a-METIS-5.1.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

@@ -1,0 +1,64 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+FLTK is a cross-platform C++ GUI toolkit for UNIX/Linux (X11), Microsoft Windows,
+ and MacOS X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL
+ and its built-in GLUT emulation.
+
+
+More information
+================
+ - Homepage: http://www.fltk.org
+    }
+}
+
+module-whatis {Description: FLTK is a cross-platform C++ GUI toolkit for UNIX/Linux (X11), Microsoft Windows,
+ and MacOS X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL
+ and its built-in GLUT emulation.}
+module-whatis {Homepage: http://www.fltk.org}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/FLTK/1.3.4-foss-2018a
+
+conflict FLTK
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Mesa/17.3.6-foss-2018a ] } {
+    module load Mesa/17.3.6-foss-2018a
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded xprop/1.2.2-GCCcore-6.4.0-X11-20180131 ] } {
+    module load xprop/1.2.2-GCCcore-6.4.0-X11-20180131
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTFLTK		"$root"
+setenv	EBVERSIONFLTK		"1.3.4"
+setenv	EBDEVELFLTK		"$root/easybuild/FLTK-1.3.4-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
