@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Pango is a library for laying out and rendering of text, with an emphasis on internationalization.
+Pango can be used anywhere that text layout is needed, though most of the work on Pango so far has been done in the
+context of the GTK+ widget toolkit. Pango forms the core of text and font handling for GTK+-2.x.
+
+
+More information
+================
+ - Homepage: http://www.pango.org/
+    }
+}
+
+module-whatis {Description: Pango is a library for laying out and rendering of text, with an emphasis on internationalization.
+Pango can be used anywhere that text layout is needed, though most of the work on Pango so far has been done in the
+context of the GTK+ widget toolkit. Pango forms the core of text and font handling for GTK+-2.x.}
+module-whatis {Homepage: http://www.pango.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Pango/1.41.1-foss-2018a
+
+conflict Pango
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded cairo/1.14.12-GCCcore-6.4.0 ] } {
+    module load cairo/1.14.12-GCCcore-6.4.0
+}
+
+if { ![ is-loaded HarfBuzz/1.7.5-foss-2018a ] } {
+    module load HarfBuzz/1.7.5-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTPANGO		"$root"
+setenv	EBVERSIONPANGO		"1.41.1"
+setenv	EBDEVELPANGO		"$root/easybuild/Pango-1.41.1-foss-2018a-easybuild-devel"
+
+prepend-path	XDG_DATA_DIRS		$root/share
+# Built with EasyBuild version 3.6.0

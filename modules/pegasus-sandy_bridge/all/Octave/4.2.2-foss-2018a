@@ -1,0 +1,130 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GNU Octave is a high-level interpreted language, primarily intended for numerical computations.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/octave/
+
+
+Included extensions
+===================
+control-3.1.0, io-2.4.10, signal-1.3.2, statistics-1.3.0
+    }
+}
+
+module-whatis {Description: GNU Octave is a high-level interpreted language, primarily intended for numerical computations.}
+module-whatis {Homepage: http://www.gnu.org/software/octave/}
+module-whatis {Extensions: control-3.1.0, io-2.4.10, signal-1.3.2, statistics-1.3.0}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Octave/4.2.2-foss-2018a
+
+conflict Octave
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+if { ![ is-loaded PCRE/8.41-GCCcore-6.4.0 ] } {
+    module load PCRE/8.41-GCCcore-6.4.0
+}
+
+if { ![ is-loaded ncurses/6.0-GCCcore-6.4.0 ] } {
+    module load ncurses/6.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libreadline/7.0-GCCcore-6.4.0 ] } {
+    module load libreadline/7.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded arpack-ng/3.5.0-foss-2018a ] } {
+    module load arpack-ng/3.5.0-foss-2018a
+}
+
+if { ![ is-loaded cURL/7.58.0-GCCcore-6.4.0 ] } {
+    module load cURL/7.58.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded FLTK/1.3.4-foss-2018a ] } {
+    module load FLTK/1.3.4-foss-2018a
+}
+
+if { ![ is-loaded fontconfig/2.12.6-GCCcore-6.4.0 ] } {
+    module load fontconfig/2.12.6-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GLPK/4.65-GCCcore-6.4.0 ] } {
+    module load GLPK/4.65-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GL2PS/1.4.0-foss-2018a ] } {
+    module load GL2PS/1.4.0-foss-2018a
+}
+
+if { ![ is-loaded gnuplot/5.2.2-foss-2018a ] } {
+    module load gnuplot/5.2.2-foss-2018a
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Mesa/17.3.6-foss-2018a ] } {
+    module load Mesa/17.3.6-foss-2018a
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+if { ![ is-loaded Qhull/2015.2-GCCcore-6.4.0 ] } {
+    module load Qhull/2015.2-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Qt5/5.10.1-foss-2018a ] } {
+    module load Qt5/5.10.1-foss-2018a
+}
+
+if { ![ is-loaded HDF5/1.10.1-foss-2018a ] } {
+    module load HDF5/1.10.1-foss-2018a
+}
+
+if { ![ is-loaded qrupdate/1.1.2-foss-2018a ] } {
+    module load qrupdate/1.1.2-foss-2018a
+}
+
+if { ![ is-loaded SuiteSparse/5.1.2-foss-2018a-METIS-5.1.0 ] } {
+    module load SuiteSparse/5.1.2-foss-2018a-METIS-5.1.0
+}
+
+if { ![ is-loaded GraphicsMagick/1.3.28-foss-2018a ] } {
+    module load GraphicsMagick/1.3.28-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTOCTAVE		"$root"
+setenv	EBVERSIONOCTAVE		"4.2.2"
+setenv	EBDEVELOCTAVE		"$root/easybuild/Octave-4.2.2-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
+setenv	EBEXTSLISTOCTAVE		"control-3.1.0,signal-1.3.2,io-2.4.10,statistics-1.3.0"

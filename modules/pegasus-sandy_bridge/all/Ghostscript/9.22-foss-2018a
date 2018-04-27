@@ -1,0 +1,69 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Ghostscript is a versatile processor for PostScript data with the ability to render PostScript to
+ different targets. It used to be part of the cups printing stack, but is no longer used for that.
+
+
+More information
+================
+ - Homepage: http://ghostscript.com
+    }
+}
+
+module-whatis {Description: Ghostscript is a versatile processor for PostScript data with the ability to render PostScript to
+ different targets. It used to be part of the cups printing stack, but is no longer used for that.}
+module-whatis {Homepage: http://ghostscript.com}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Ghostscript/9.22-foss-2018a
+
+conflict Ghostscript
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded expat/2.2.5-GCCcore-6.4.0 ] } {
+    module load expat/2.2.5-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded cairo/1.14.12-GCCcore-6.4.0 ] } {
+    module load cairo/1.14.12-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-GCCcore-6.4.0 ] } {
+    module load LibTIFF/4.0.9-GCCcore-6.4.0
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGHOSTSCRIPT		"$root"
+setenv	EBVERSIONGHOSTSCRIPT		"9.22"
+setenv	EBDEVELGHOSTSCRIPT		"$root/easybuild/Ghostscript-9.22-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

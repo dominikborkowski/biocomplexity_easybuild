@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The GLPK (GNU Linear Programming Kit) package is intended for
+ solving large-scale linear programming (LP),
+ mixed integer programming (MIP), and other related problems.
+ It is a set of routines written in ANSI C 
+ and organized in the form of a callable library.
+
+
+More information
+================
+ - Homepage: https://www.gnu.org/software/glpk/
+    }
+}
+
+module-whatis {Description: The GLPK (GNU Linear Programming Kit) package is intended for
+ solving large-scale linear programming (LP),
+ mixed integer programming (MIP), and other related problems.
+ It is a set of routines written in ANSI C 
+ and organized in the form of a callable library.}
+module-whatis {Homepage: https://www.gnu.org/software/glpk/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/GLPK/4.65-GCCcore-6.4.0
+
+conflict GLPK
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded GMP/6.1.2-GCCcore-6.4.0 ] } {
+    module load GMP/6.1.2-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTGLPK		"$root"
+setenv	EBVERSIONGLPK		"4.65"
+setenv	EBDEVELGLPK		"$root/easybuild/GLPK-4.65-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
