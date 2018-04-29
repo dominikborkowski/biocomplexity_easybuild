@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GLib is one of the base libraries of the GTK+ project
+
+
+More information
+================
+ - Homepage: http://www.gtk.org/
+    }
+}
+
+module-whatis {Description: GLib is one of the base libraries of the GTK+ project}
+module-whatis {Homepage: http://www.gtk.org/}
+
+set root /apps/easybuild/software/orion-broadwell/GLib/2.54.3-GCCcore-6.4.0
+
+conflict GLib
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded libffi/3.2.1-GCCcore-6.4.0 ] } {
+    module load libffi/3.2.1-GCCcore-6.4.0
+}
+
+if { ![ is-loaded gettext/0.19.8.1-GCCcore-6.4.0-libxml2-2.9.7 ] } {
+    module load gettext/0.19.8.1-GCCcore-6.4.0-libxml2-2.9.7
+}
+
+if { ![ is-loaded libxml2/2.9.7-GCCcore-6.4.0 ] } {
+    module load libxml2/2.9.7-GCCcore-6.4.0
+}
+
+if { ![ is-loaded PCRE/8.41-GCCcore-6.4.0 ] } {
+    module load PCRE/8.41-GCCcore-6.4.0
+}
+
+if { ![ is-loaded util-linux/2.31.1-GCCcore-6.4.0 ] } {
+    module load util-linux/2.31.1-GCCcore-6.4.0
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGLIB		"$root"
+setenv	EBVERSIONGLIB		"2.54.3"
+setenv	EBDEVELGLIB		"$root/easybuild/GLib-2.54.3-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

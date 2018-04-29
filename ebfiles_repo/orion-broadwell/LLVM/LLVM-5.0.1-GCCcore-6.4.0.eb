@@ -1,0 +1,72 @@
+# Built with EasyBuild version 3.6.0 on 2018-04-27_08-15-46
+easyblock = 'CMakeMake'
+
+name = 'LLVM'
+version = '5.0.1'
+
+homepage = "http://llvm.org/"
+description = """The LLVM Core libraries provide a modern source- and target-independent
+ optimizer, along with code generation support for many popular CPUs
+ (as well as some less common ones!) These libraries are built around a well
+ specified code representation known as the LLVM intermediate representation
+ ("LLVM IR"). The LLVM Core libraries are well documented, and it is
+ particularly easy to invent your own language (or port an existing compiler)
+ to use LLVM as an optimizer and code generator."""
+
+toolchain = {'name': 'GCCcore', 'version': '6.4.0'}
+toolchainopts = {'cstd': 'gnu++11'}
+
+source_urls = ["http://llvm.org/releases/%(version)s"]
+sources = ["llvm-%(version)s.src.tar.xz"]
+checksums = ['5fa7489fc0225b11821cab0362f5813a05f2bcf2533e8a4ea9c9c860168807b0']
+
+builddependencies = [
+    ('binutils', '2.28'),
+    ('CMake', '3.9.5'),
+    ('Python', '2.7.14', '-bare'),
+]
+
+dependencies = [
+    ('ncurses', '6.0'),
+    ('zlib', '1.2.11'),
+]
+
+configopts = '-DBUILD_SHARED_LIBS=ON '
+# required to install extra tools in bin/
+configopts += '-DLLVM_INSTALL_UTILS=ON -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_ZLIB=ON -DLLVM_ENABLE_RTTI=ON '
+configopts += '-DCMAKE_BUILD_TYPE=Release '
+
+sanity_check_paths = {
+    'files': ['bin/llvm-ar', 'bin/FileCheck'],
+    'dirs': ['include/llvm', 'include/llvm-c'],
+}
+
+separate_build_dir = True
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "build_time": 181.05,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.6.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'libGLU-9.0.0-foss-2018a.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.0",
+    "easybuild-framework_version": "3.6.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 165571388,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/orion-broadwell/Python/2.7.14-GCCcore-6.4.0-bare/bin/python",
+    "timestamp": 1524831346,
+    "total_memory": 8901828,
+}]

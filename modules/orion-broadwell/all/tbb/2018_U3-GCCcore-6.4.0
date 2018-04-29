@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Intel(R) Threading Building Blocks (Intel(R) TBB) lets you easily write parallel C++ programs that
+ take full advantage of multicore performance, that are portable, composable and have future-proof scalability.
+
+
+More information
+================
+ - Homepage: https://01.org/tbb/
+    }
+}
+
+module-whatis {Description: Intel(R) Threading Building Blocks (Intel(R) TBB) lets you easily write parallel C++ programs that
+ take full advantage of multicore performance, that are portable, composable and have future-proof scalability.}
+module-whatis {Homepage: https://01.org/tbb/}
+
+set root /apps/easybuild/software/orion-broadwell/tbb/2018_U3-GCCcore-6.4.0
+
+conflict tbb
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+setenv	EBROOTTBB		"$root"
+setenv	EBVERSIONTBB		"2018_U3"
+setenv	EBDEVELTBB		"$root/easybuild/tbb-2018_U3-GCCcore-6.4.0-easybuild-devel"
+
+prepend-path	NLSPATH		$root/idb/intel64/locale/%l_%t/%N
+prepend-path	LD_LIBRARY_PATH		$root/build/linux_intel64_gcc_cc6.4.0_libc2.22_kernel4.4.59_release
+prepend-path	LIBRARY_PATH		$root/build/linux_intel64_gcc_cc6.4.0_libc2.22_kernel4.4.59_release
+prepend-path	CPATH		$root/include
+setenv	TBBROOT		"/apps/easybuild/software/orion-broadwell/tbb/2018_U3-GCCcore-6.4.0/"
+# Built with EasyBuild version 3.6.0
