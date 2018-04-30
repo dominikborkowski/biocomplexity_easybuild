@@ -1,7 +1,7 @@
 easyblock = 'ConfigureMake'
 
 name = 'Graphviz'
-version = '2.40.1'
+version = '2.41.1'
 
 homepage = 'http://www.graphviz.org/'
 description = """Graphviz is open source graph visualization software. Graph visualization
