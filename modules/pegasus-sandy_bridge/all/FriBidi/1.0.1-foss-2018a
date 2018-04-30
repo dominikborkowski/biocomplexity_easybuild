@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+FriBidi is a free implementation of the Unicode Bidirectional (BiDi) Algorithm. It also provides
+utility functions to aid in the development of interactive editors and widgets that implement BiDi functionality.
+The BiDi algorithm is a prerequisite for supporting right-to-left scripts such as Hebrew, Arabic, Syriac, and
+Thaana.
+
+
+More information
+================
+ - Homepage: https://directory.fsf.org/wiki/Fribidi
+    }
+}
+
+module-whatis {Description: FriBidi is a free implementation of the Unicode Bidirectional (BiDi) Algorithm. It also provides
+utility functions to aid in the development of interactive editors and widgets that implement BiDi functionality.
+The BiDi algorithm is a prerequisite for supporting right-to-left scripts such as Hebrew, Arabic, Syriac, and
+Thaana.}
+module-whatis {Homepage: https://directory.fsf.org/wiki/Fribidi}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/FriBidi/1.0.1-foss-2018a
+
+conflict FriBidi
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTFRIBIDI		"$root"
+setenv	EBVERSIONFRIBIDI		"1.0.1"
+setenv	EBDEVELFRIBIDI		"$root/easybuild/FriBidi-1.0.1-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

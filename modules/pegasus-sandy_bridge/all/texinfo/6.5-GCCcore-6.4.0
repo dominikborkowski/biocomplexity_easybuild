@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Texinfo is the official documentation format of the GNU project.
+
+
+More information
+================
+ - Homepage: https://www.gnu.org/software/texinfo/
+    }
+}
+
+module-whatis {Description: Texinfo is the official documentation format of the GNU project.}
+module-whatis {Homepage: https://www.gnu.org/software/texinfo/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/texinfo/6.5-GCCcore-6.4.0
+
+conflict texinfo
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTTEXINFO		"$root"
+setenv	EBVERSIONTEXINFO		"6.5"
+setenv	EBDEVELTEXINFO		"$root/easybuild/texinfo-6.5-GCCcore-6.4.0-easybuild-devel"
+
+setenv	TEXMFHOME		"/apps/easybuild/software/pegasus-sandy_bridge/texinfo/6.5-GCCcore-6.4.0/texmf"
+
+if { [ module-info mode load ] } {
+    puts stderr "
+    
+    WARNING: This texinfo module has (re)defined the value for the environment variable \$TEXMFHOME.
+    If you use a custom texmf directory (such as ~/texmf) you should copy files found in the
+    new \$TEXMFHOME to your custom directory and reset the value of \$TEXMFHOME to point to that space:
+    	cp -r \$TEXMFHOME/* /path/to/your/texmf
+    	export TEXMFHOME=/path/to/your/texmf
+    
+    "
+}
+# Built with EasyBuild version 3.6.0

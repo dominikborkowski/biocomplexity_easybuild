@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+binutils: GNU binary utilities
+
+
+More information
+================
+ - Homepage: http://directory.fsf.org/project/binutils/
+    }
+}
+
+module-whatis {Description: binutils: GNU binary utilities}
+module-whatis {Homepage: http://directory.fsf.org/project/binutils/}
+
+set root /apps/easybuild/software/orion-broadwell/binutils/2.28
+
+conflict binutils
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBINUTILS		"$root"
+setenv	EBVERSIONBINUTILS		"2.28"
+setenv	EBDEVELBINUTILS		"$root/easybuild/binutils-2.28-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

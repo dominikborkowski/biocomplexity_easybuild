@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The OpenGL Utility Library (GLU) is a computer graphics library for OpenGL.
+
+
+More information
+================
+ - Homepage: ftp://ftp.freedesktop.org/pub/mesa/glu/
+    }
+}
+
+module-whatis {Description: The OpenGL Utility Library (GLU) is a computer graphics library for OpenGL. }
+module-whatis {Homepage: ftp://ftp.freedesktop.org/pub/mesa/glu/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/libGLU/9.0.0-foss-2018a
+
+conflict libGLU
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Mesa/17.3.6-foss-2018a ] } {
+    module load Mesa/17.3.6-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBGLU		"$root"
+setenv	EBVERSIONLIBGLU		"9.0.0"
+setenv	EBDEVELLIBGLU		"$root/easybuild/libGLU-9.0.0-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

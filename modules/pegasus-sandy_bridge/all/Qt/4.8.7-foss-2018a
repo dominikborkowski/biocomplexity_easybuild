@@ -1,0 +1,52 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Qt is a comprehensive cross-platform C++ application framework.
+
+
+More information
+================
+ - Homepage: http://qt.io/
+    }
+}
+
+module-whatis {Description: Qt is a comprehensive cross-platform C++ application framework.}
+module-whatis {Homepage: http://qt.io/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Qt/4.8.7-foss-2018a
+
+conflict Qt
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTQT		"$root"
+setenv	EBVERSIONQT		"4.8.7"
+setenv	EBDEVELQT		"$root/easybuild/Qt-4.8.7-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

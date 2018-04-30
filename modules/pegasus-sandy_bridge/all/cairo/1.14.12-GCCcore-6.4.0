@@ -1,0 +1,72 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Cairo is a 2D graphics library with support for multiple output devices.
+ Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB
+
+
+More information
+================
+ - Homepage: http://cairographics.org
+    }
+}
+
+module-whatis {Description: Cairo is a 2D graphics library with support for multiple output devices.
+ Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers,
+ PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB}
+module-whatis {Homepage: http://cairographics.org}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/cairo/1.14.12-GCCcore-6.4.0
+
+conflict cairo
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded bzip2/1.0.6-GCCcore-6.4.0 ] } {
+    module load bzip2/1.0.6-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded pixman/0.34.0-GCCcore-6.4.0 ] } {
+    module load pixman/0.34.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded expat/2.2.5-GCCcore-6.4.0 ] } {
+    module load expat/2.2.5-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTCAIRO		"$root"
+setenv	EBVERSIONCAIRO		"1.14.12"
+setenv	EBDEVELCAIRO		"$root/easybuild/cairo-1.14.12-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

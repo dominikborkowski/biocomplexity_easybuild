@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A set of tools (in Java) for working with next generation sequencing data in the BAM format.
+
+
+More information
+================
+ - Homepage: http://sourceforge.net/projects/picard
+    }
+}
+
+module-whatis {Description: A set of tools (in Java) for working with next generation sequencing data in the BAM format.}
+module-whatis {Homepage: http://sourceforge.net/projects/picard}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/picard/2.18.3-Java-1.8.0_131
+
+conflict picard
+
+if { ![ is-loaded Java/1.8.0_131 ] } {
+    module load Java/1.8.0_131
+}
+
+prepend-path	CLASSPATH		$root/picard.jar
+setenv	EBROOTPICARD		"$root"
+setenv	EBVERSIONPICARD		"2.18.3"
+setenv	EBDEVELPICARD		"$root/easybuild/picard-2.18.3-Java-1.8.0_131-easybuild-devel"
+
+
+if { [ module-info mode load ] } {
+    puts stderr "To execute picard run: java -jar \$EBROOTPICARD/picard.jar"
+}
+prepend-path	PATH		$root
+prepend-path	CLASSPATH		$root/picard-2.18.3.jar
+# Built with EasyBuild version 3.6.0

@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+libcerf is a self-contained numeric library that provides an efficient and
+ accurate implementation of complex error functions, along with Dawson,
+ Faddeeva, and Voigt functions.
+
+
+More information
+================
+ - Homepage: http://apps.jcns.fz-juelich.de/doku/sc/libcerf
+    }
+}
+
+module-whatis {Description: 
+ libcerf is a self-contained numeric library that provides an efficient and
+ accurate implementation of complex error functions, along with Dawson,
+ Faddeeva, and Voigt functions.
+}
+module-whatis {Homepage: http://apps.jcns.fz-juelich.de/doku/sc/libcerf}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/libcerf/1.5-GCCcore-6.4.0
+
+conflict libcerf
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBCERF		"$root"
+setenv	EBVERSIONLIBCERF		"1.5"
+setenv	EBDEVELLIBCERF		"$root/easybuild/libcerf-1.5-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
