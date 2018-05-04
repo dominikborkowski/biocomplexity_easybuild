@@ -24,7 +24,7 @@ module-whatis {Description: Graphviz is open source graph visualization software
  and in visual interfaces for other technical domains.}
 module-whatis {Homepage: http://www.graphviz.org/}
 
-set root /apps/easybuild/software/discovery-sandy_bridge/Graphviz/2.40.1-foss-2018a
+set root /apps/easybuild/software/discovery-sandy_bridge/Graphviz/2.41.1-foss-2018a
 
 conflict Graphviz
 
@@ -87,11 +87,11 @@ prepend-path	MANPATH		$root/share/man
 prepend-path	PATH		$root/bin
 prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
 setenv	EBROOTGRAPHVIZ		"$root"
-setenv	EBVERSIONGRAPHVIZ		"2.40.1"
-setenv	EBDEVELGRAPHVIZ		"$root/easybuild/Graphviz-2.40.1-foss-2018a-easybuild-devel"
+setenv	EBVERSIONGRAPHVIZ		"2.41.1"
+setenv	EBDEVELGRAPHVIZ		"$root/easybuild/Graphviz-2.41.1-foss-2018a-easybuild-devel"
 
 prepend-path	PYTHONPATH		$root/lib/graphviz/python
 prepend-path	CLASSPATH		$root/lib/graphviz/java/org/graphviz
 prepend-path	LD_LIBRARY_PATH		$root/lib/graphviz/java
 prepend-path	TCLLIBPATH		$root/lib/graphviz/tcl
-# Built with EasyBuild version 3.5.3
+# Built with EasyBuild version 3.6.0

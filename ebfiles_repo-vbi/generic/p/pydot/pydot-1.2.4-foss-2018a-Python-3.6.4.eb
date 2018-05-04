@@ -1,0 +1,29 @@
+easyblock = 'PythonPackage'
+
+name = 'pydot'
+version = '1.2.4'
+
+homepage = 'https://pypi.org/project/pydot/'
+description = """A Python interface to GraphViz and the DOT language."""
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+
+source_urls = [PYPI_SOURCE]
+sources = [SOURCE_TAR_GZ]
+
+python = 'Python'
+pyver = '3.6.4'
+versionsuffix = '-%s-%s' % (python, pyver)
+
+dependencies = [
+    (python, pyver),
+    ('Graphviz', '2.41.1'),
+]
+
+pyshortver = '.'.join(pyver.split('.')[:2])
+sanity_check_paths = {
+    'files': ['lib/python%(pyv)s/site-packages/pydot-%%(version)s-py%(pyv)s.egg' % {'pyv': pyshortver}],
+    'dirs': [],
+}
+
+moduleclass = 'vis'
