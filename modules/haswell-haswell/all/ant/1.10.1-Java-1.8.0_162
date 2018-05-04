@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Apache Ant is a Java library and command-line tool whose mission is to drive processes described in
+ build files as targets and extension points dependent upon each other. The main known usage of Ant is the build of
+ Java applications.
+
+
+More information
+================
+ - Homepage: http://ant.apache.org/
+    }
+}
+
+module-whatis {Description: Apache Ant is a Java library and command-line tool whose mission is to drive processes described in
+ build files as targets and extension points dependent upon each other. The main known usage of Ant is the build of
+ Java applications.}
+module-whatis {Homepage: http://ant.apache.org/}
+
+set root /apps/easybuild/software/haswell-haswell/ant/1.10.1-Java-1.8.0_162
+
+conflict ant
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTANT		"$root"
+setenv	EBVERSIONANT		"1.10.1"
+setenv	EBDEVELANT		"$root/easybuild/ant-1.10.1-Java-1.8.0_162-easybuild-devel"
+
+setenv	ANT_HOME		"/apps/easybuild/software/haswell-haswell/ant/1.10.1-Java-1.8.0_162"
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.6.0
