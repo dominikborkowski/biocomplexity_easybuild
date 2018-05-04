@@ -1,0 +1,78 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GraphicsMagick is the swiss army knife of image processing.
+
+
+More information
+================
+ - Homepage: http://www.graphicsmagick.org/
+    }
+}
+
+module-whatis {Description: GraphicsMagick is the swiss army knife of image processing.}
+module-whatis {Homepage: http://www.graphicsmagick.org/}
+
+set root /apps/easybuild/software/haswell-haswell/GraphicsMagick/1.3.28-foss-2018a
+
+conflict GraphicsMagick
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+if { ![ is-loaded bzip2/1.0.6-GCCcore-6.4.0 ] } {
+    module load bzip2/1.0.6-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-GCCcore-6.4.0 ] } {
+    module load LibTIFF/4.0.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libxml2/2.9.7-GCCcore-6.4.0 ] } {
+    module load libxml2/2.9.7-GCCcore-6.4.0
+}
+
+if { ![ is-loaded XZ/5.2.3-GCCcore-6.4.0 ] } {
+    module load XZ/5.2.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Ghostscript/9.22-GCCcore-6.4.0-cairo-1.14.12 ] } {
+    module load Ghostscript/9.22-GCCcore-6.4.0-cairo-1.14.12
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGRAPHICSMAGICK		"$root"
+setenv	EBVERSIONGRAPHICSMAGICK		"1.3.28"
+setenv	EBDEVELGRAPHICSMAGICK		"$root/easybuild/GraphicsMagick-1.3.28-foss-2018a-easybuild-devel"
+
+prepend-path	CPATH		$root/include/GraphicsMagick
+# Built with EasyBuild version 3.6.0

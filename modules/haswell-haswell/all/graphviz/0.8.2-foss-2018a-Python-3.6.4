@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Simple Python interface for Graphviz
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/graphviz
+    }
+}
+
+module-whatis {Description: Simple Python interface for Graphviz}
+module-whatis {Homepage: https://pypi.python.org/pypi/graphviz}
+
+set root /apps/easybuild/software/haswell-haswell/graphviz/0.8.2-foss-2018a-Python-3.6.4
+
+conflict graphviz
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Graphviz/2.41.1-foss-2018a ] } {
+    module load Graphviz/2.41.1-foss-2018a
+}
+
+setenv	EBROOTGRAPHVIZ		"$root"
+setenv	EBVERSIONGRAPHVIZ		"0.8.2"
+setenv	EBDEVELGRAPHVIZ		"$root/easybuild/graphviz-0.8.2-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.0

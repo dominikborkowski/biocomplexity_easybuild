@@ -1,0 +1,97 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Graphviz is open source graph visualization software. Graph visualization
+ is a way of representing structural information as diagrams of
+ abstract graphs and networks. It has important applications in networking,
+ bioinformatics,  software engineering, database and web design, machine learning,
+ and in visual interfaces for other technical domains.
+
+
+More information
+================
+ - Homepage: http://www.graphviz.org/
+    }
+}
+
+module-whatis {Description: Graphviz is open source graph visualization software. Graph visualization
+ is a way of representing structural information as diagrams of
+ abstract graphs and networks. It has important applications in networking,
+ bioinformatics,  software engineering, database and web design, machine learning,
+ and in visual interfaces for other technical domains.}
+module-whatis {Homepage: http://www.graphviz.org/}
+
+set root /apps/easybuild/software/haswell-haswell/Graphviz/2.41.1-foss-2018a
+
+conflict Graphviz
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded cairo/1.14.12-GCCcore-6.4.0 ] } {
+    module load cairo/1.14.12-GCCcore-6.4.0
+}
+
+if { ![ is-loaded expat/2.2.5-GCCcore-6.4.0 ] } {
+    module load expat/2.2.5-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Ghostscript/9.22-foss-2018a ] } {
+    module load Ghostscript/9.22-foss-2018a
+}
+
+if { ![ is-loaded GTS/0.7.6-foss-2018a ] } {
+    module load GTS/0.7.6-foss-2018a
+}
+
+if { ![ is-loaded Java/1.8.0_92 ] } {
+    module load Java/1.8.0_92
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Pango/1.41.1-foss-2018a ] } {
+    module load Pango/1.41.1-foss-2018a
+}
+
+if { ![ is-loaded Perl/5.26.1-foss-2018a ] } {
+    module load Perl/5.26.1-foss-2018a
+}
+
+if { ![ is-loaded Qt/4.8.7-foss-2018a ] } {
+    module load Qt/4.8.7-foss-2018a
+}
+
+if { ![ is-loaded Tcl/8.6.8-GCCcore-6.4.0 ] } {
+    module load Tcl/8.6.8-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGRAPHVIZ		"$root"
+setenv	EBVERSIONGRAPHVIZ		"2.41.1"
+setenv	EBDEVELGRAPHVIZ		"$root/easybuild/Graphviz-2.41.1-foss-2018a-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/graphviz/python
+prepend-path	CLASSPATH		$root/lib/graphviz/java/org/graphviz
+prepend-path	LD_LIBRARY_PATH		$root/lib/graphviz/java
+prepend-path	TCLLIBPATH		$root/lib/graphviz/tcl
+# Built with EasyBuild version 3.6.0

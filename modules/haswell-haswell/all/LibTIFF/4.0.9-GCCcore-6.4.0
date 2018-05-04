@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+tiff: Library and tools for reading and writing TIFF data files
+
+
+More information
+================
+ - Homepage: http://www.remotesensing.org/libtiff/
+    }
+}
+
+module-whatis {Description: tiff: Library and tools for reading and writing TIFF data files}
+module-whatis {Homepage: http://www.remotesensing.org/libtiff/}
+
+set root /apps/easybuild/software/haswell-haswell/LibTIFF/4.0.9-GCCcore-6.4.0
+
+conflict LibTIFF
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBTIFF		"$root"
+setenv	EBVERSIONLIBTIFF		"4.0.9"
+setenv	EBDEVELLIBTIFF		"$root/easybuild/LibTIFF-4.0.9-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

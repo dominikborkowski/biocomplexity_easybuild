@@ -1,0 +1,55 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The LLVM Core libraries provide a modern source- and target-independent
+ optimizer, along with code generation support for many popular CPUs
+ (as well as some less common ones!) These libraries are built around a well
+ specified code representation known as the LLVM intermediate representation
+ ("LLVM IR"). The LLVM Core libraries are well documented, and it is
+ particularly easy to invent your own language (or port an existing compiler)
+ to use LLVM as an optimizer and code generator.
+
+
+More information
+================
+ - Homepage: http://llvm.org/
+    }
+}
+
+module-whatis {Description: The LLVM Core libraries provide a modern source- and target-independent
+ optimizer, along with code generation support for many popular CPUs
+ (as well as some less common ones!) These libraries are built around a well
+ specified code representation known as the LLVM intermediate representation
+ ("LLVM IR"). The LLVM Core libraries are well documented, and it is
+ particularly easy to invent your own language (or port an existing compiler)
+ to use LLVM as an optimizer and code generator.}
+module-whatis {Homepage: http://llvm.org/}
+
+set root /apps/easybuild/software/haswell-haswell/LLVM/5.0.1-GCCcore-6.4.0
+
+conflict LLVM
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded ncurses/6.0-GCCcore-6.4.0 ] } {
+    module load ncurses/6.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTLLVM		"$root"
+setenv	EBVERSIONLLVM		"5.0.1"
+setenv	EBDEVELLLVM		"$root/easybuild/LLVM-5.0.1-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

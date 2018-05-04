@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+freeglut is a completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library.
+
+
+More information
+================
+ - Homepage: http://freeglut.sourceforge.net/
+    }
+}
+
+module-whatis {Description: freeglut is a completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library.}
+module-whatis {Homepage: http://freeglut.sourceforge.net/}
+
+set root /apps/easybuild/software/haswell-haswell/freeglut/3.0.0-foss-2018a
+
+conflict freeglut
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Mesa/17.3.6-foss-2018a ] } {
+    module load Mesa/17.3.6-foss-2018a
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	PKG_CONFIG_PATH		$root/lib64/pkgconfig
+setenv	EBROOTFREEGLUT		"$root"
+setenv	EBVERSIONFREEGLUT		"3.0.0"
+setenv	EBDEVELFREEGLUT		"$root/easybuild/freeglut-3.0.0-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
