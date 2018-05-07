@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A Python interface to GraphViz and the DOT language.
+
+
+More information
+================
+ - Homepage: https://pypi.org/project/pydot/
+    }
+}
+
+module-whatis {Description: A Python interface to GraphViz and the DOT language.}
+module-whatis {Homepage: https://pypi.org/project/pydot/}
+
+set root /apps/easybuild/software/orion-broadwell/pydot/1.2.4-foss-2018a-Python-3.6.4
+
+conflict pydot
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Graphviz/2.41.1-foss-2018a ] } {
+    module load Graphviz/2.41.1-foss-2018a
+}
+
+setenv	EBROOTPYDOT		"$root"
+setenv	EBVERSIONPYDOT		"1.2.4"
+setenv	EBDEVELPYDOT		"$root/easybuild/pydot-1.2.4-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.0

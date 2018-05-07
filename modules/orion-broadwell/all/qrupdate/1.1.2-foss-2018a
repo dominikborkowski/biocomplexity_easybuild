@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+qrupdate is a Fortran library for fast updates of QR and Cholesky decompositions.
+
+
+More information
+================
+ - Homepage: https://sourceforge.net/projects/qrupdate/
+    }
+}
+
+module-whatis {Description: qrupdate is a Fortran library for fast updates of QR and Cholesky decompositions.}
+module-whatis {Homepage: https://sourceforge.net/projects/qrupdate/}
+
+set root /apps/easybuild/software/orion-broadwell/qrupdate/1.1.2-foss-2018a
+
+conflict qrupdate
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTQRUPDATE		"$root"
+setenv	EBVERSIONQRUPDATE		"1.1.2"
+setenv	EBDEVELQRUPDATE		"$root/easybuild/qrupdate-1.1.2-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

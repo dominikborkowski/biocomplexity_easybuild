@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GL2PS: an OpenGL to PostScript printing library
+
+
+More information
+================
+ - Homepage: http://www.geuz.org/gl2ps/
+    }
+}
+
+module-whatis {Description: GL2PS: an OpenGL to PostScript printing library}
+module-whatis {Homepage: http://www.geuz.org/gl2ps/}
+
+set root /apps/easybuild/software/orion-broadwell/GL2PS/1.4.0-foss-2018a
+
+conflict GL2PS
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Mesa/17.3.6-foss-2018a ] } {
+    module load Mesa/17.3.6-foss-2018a
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+if { ![ is-loaded freeglut/3.0.0-foss-2018a ] } {
+    module load freeglut/3.0.0-foss-2018a
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTGL2PS		"$root"
+setenv	EBVERSIONGL2PS		"1.4.0"
+setenv	EBDEVELGL2PS		"$root/easybuild/GL2PS-1.4.0-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
