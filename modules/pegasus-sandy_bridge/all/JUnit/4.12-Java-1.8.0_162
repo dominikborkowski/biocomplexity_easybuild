@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A programmer-oriented testing framework for Java.
+
+
+More information
+================
+ - Homepage: http://sourceforge.net/projects/junit
+    }
+}
+
+module-whatis {Description: A programmer-oriented testing framework for Java.}
+module-whatis {Homepage: http://sourceforge.net/projects/junit}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/JUnit/4.12-Java-1.8.0_162
+
+conflict JUnit
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+prepend-path	CLASSPATH		$root/junit-4.12.jar
+setenv	EBROOTJUNIT		"$root"
+setenv	EBVERSIONJUNIT		"4.12"
+setenv	EBDEVELJUNIT		"$root/easybuild/JUnit-4.12-Java-1.8.0_162-easybuild-devel"
+
+prepend-path	PATH		$root
+prepend-path	CLASSPATH		$root/junit-4.12.jar
+# Built with EasyBuild version 3.6.0
