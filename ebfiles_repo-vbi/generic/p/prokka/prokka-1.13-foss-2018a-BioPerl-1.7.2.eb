@@ -20,6 +20,9 @@ sources = ['v%(version)s.zip']
 
 dependencies = [('BioPerl', bioperl_ver, '-Perl-5.26.1')]
 
+# remove perl5 modules
+postinstallcmds = ["rm -r %(installdir)s/perl5"]
+
 modextrapaths = {
     'PATH': '',
 }
