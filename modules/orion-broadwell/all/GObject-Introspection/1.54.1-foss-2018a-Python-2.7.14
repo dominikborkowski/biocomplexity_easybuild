@@ -1,0 +1,60 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+GObject introspection is a middleware layer between C libraries
+ (using GObject) and language bindings. The C library can be scanned at
+ compile time and generate a metadata file, in addition to the actual
+ native C library. Then at runtime, language bindings can read this
+ metadata and automatically provide bindings to call into the C library.
+
+
+More information
+================
+ - Homepage: https://wiki.gnome.org/GObjectIntrospection/
+    }
+}
+
+module-whatis {Description: GObject introspection is a middleware layer between C libraries
+ (using GObject) and language bindings. The C library can be scanned at
+ compile time and generate a metadata file, in addition to the actual
+ native C library. Then at runtime, language bindings can read this
+ metadata and automatically provide bindings to call into the C library.}
+module-whatis {Homepage: https://wiki.gnome.org/GObjectIntrospection/}
+
+set root /apps/easybuild/software/orion-broadwell/GObject-Introspection/1.54.1-foss-2018a-Python-2.7.14
+
+conflict GObject-Introspection
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libffi/3.2.1-GCCcore-6.4.0 ] } {
+    module load libffi/3.2.1-GCCcore-6.4.0
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGOBJECTMININTROSPECTION		"$root"
+setenv	EBVERSIONGOBJECTMININTROSPECTION		"1.54.1"
+setenv	EBDEVELGOBJECTMININTROSPECTION		"$root/easybuild/GObject-Introspection-1.54.1-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	XDG_DATA_DIRS		$root/share
+prepend-path	GI_TYPELIB_PATH		$root/share
+# Built with EasyBuild version 3.6.0

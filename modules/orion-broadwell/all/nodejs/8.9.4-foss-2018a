@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Node.js is a platform built on Chrome's JavaScript runtime 
+ for easily building fast, scalable network applications. Node.js uses an 
+ event-driven, non-blocking I/O model that makes it lightweight and efficient, 
+ perfect for data-intensive real-time applications that run across distributed devices.
+
+
+More information
+================
+ - Homepage: http://nodejs.org
+    }
+}
+
+module-whatis {Description: Node.js is a platform built on Chrome's JavaScript runtime 
+ for easily building fast, scalable network applications. Node.js uses an 
+ event-driven, non-blocking I/O model that makes it lightweight and efficient, 
+ perfect for data-intensive real-time applications that run across distributed devices.}
+module-whatis {Homepage: http://nodejs.org}
+
+set root /apps/easybuild/software/orion-broadwell/nodejs/8.9.4-foss-2018a
+
+conflict nodejs
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNODEJS		"$root"
+setenv	EBVERSIONNODEJS		"8.9.4"
+setenv	EBDEVELNODEJS		"$root/easybuild/nodejs-8.9.4-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

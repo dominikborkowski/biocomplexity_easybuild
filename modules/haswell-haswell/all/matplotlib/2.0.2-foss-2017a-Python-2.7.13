@@ -1,0 +1,62 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits.
+
+
+More information
+================
+ - Homepage: http://matplotlib.org
+
+
+Included extensions
+===================
+Cycler-0.10.0, matplotlib-2.0.2
+    }
+}
+
+module-whatis {Description: matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits.}
+module-whatis {Homepage: http://matplotlib.org}
+module-whatis {Extensions: Cycler-0.10.0, matplotlib-2.0.2}
+
+set root /apps/easybuild/software/haswell-haswell/matplotlib/2.0.2-foss-2017a-Python-2.7.13
+
+conflict matplotlib
+
+if { ![ is-loaded foss/2017a ] } {
+    module load foss/2017a
+}
+
+if { ![ is-loaded Python/2.7.13-foss-2017a ] } {
+    module load Python/2.7.13-foss-2017a
+}
+
+if { ![ is-loaded Tkinter/2.7.13-foss-2017a-Python-2.7.13 ] } {
+    module load Tkinter/2.7.13-foss-2017a-Python-2.7.13
+}
+
+if { ![ is-loaded libpng/1.6.29-GCCcore-6.3.0 ] } {
+    module load libpng/1.6.29-GCCcore-6.3.0
+}
+
+if { ![ is-loaded freetype/2.7.1-GCCcore-6.3.0-libpng-1.6.29 ] } {
+    module load freetype/2.7.1-GCCcore-6.3.0-libpng-1.6.29
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTMATPLOTLIB		"$root"
+setenv	EBVERSIONMATPLOTLIB		"2.0.2"
+setenv	EBDEVELMATPLOTLIB		"$root/easybuild/matplotlib-2.0.2-foss-2017a-Python-2.7.13-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.0
+setenv	EBEXTSLISTMATPLOTLIB		"Cycler-0.10.0,matplotlib-2.0.2"

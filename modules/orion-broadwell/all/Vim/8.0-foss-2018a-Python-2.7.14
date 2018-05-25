@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Vim is an advanced text editor that seeks to provide the power 
+ of the de-facto Unix editor 'Vi', with a more complete feature set.
+
+
+More information
+================
+ - Homepage: http://www.vim.org
+    }
+}
+
+module-whatis {Description:  Vim is an advanced text editor that seeks to provide the power 
+ of the de-facto Unix editor 'Vi', with a more complete feature set. }
+module-whatis {Homepage: http://www.vim.org}
+
+set root /apps/easybuild/software/orion-broadwell/Vim/8.0-foss-2018a-Python-2.7.14
+
+conflict Vim
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded Perl/5.26.1-foss-2018a-bare ] } {
+    module load Perl/5.26.1-foss-2018a-bare
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTVIM		"$root"
+setenv	EBVERSIONVIM		"8.0"
+setenv	EBDEVELVIM		"$root/easybuild/Vim-8.0-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0

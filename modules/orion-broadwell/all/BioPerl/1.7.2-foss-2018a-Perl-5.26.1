@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Bioperl is the product of a community effort to produce Perl code which is useful in biology.
+ Examples include Sequence objects, Alignment objects and database searching objects.
+
+
+More information
+================
+ - Homepage: http://www.bioperl.org/
+    }
+}
+
+module-whatis {Description: Bioperl is the product of a community effort to produce Perl code which is useful in biology.
+ Examples include Sequence objects, Alignment objects and database searching objects.}
+module-whatis {Homepage: http://www.bioperl.org/}
+
+set root /apps/easybuild/software/orion-broadwell/BioPerl/1.7.2-foss-2018a-Perl-5.26.1
+
+conflict BioPerl
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Perl/5.26.1-foss-2018a ] } {
+    module load Perl/5.26.1-foss-2018a
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+prepend-path	PERL5LIB		$root
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.26.1
+setenv	EBROOTBIOPERL		"$root"
+setenv	EBVERSIONBIOPERL		"1.7.2"
+setenv	EBDEVELBIOPERL		"$root/easybuild/BioPerl-1.7.2-foss-2018a-Perl-5.26.1-easybuild-devel"
+
+# Built with EasyBuild version 3.6.0
