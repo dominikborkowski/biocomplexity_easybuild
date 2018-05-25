@@ -1,0 +1,78 @@
+# Built with EasyBuild version 3.6.0 on 2018-05-25_16-12-11
+easyblock = 'Bundle'
+
+name = 'matplotlib'
+version = '2.0.2'
+versionsuffix = '-Python-%(pyver)s'
+
+libpng_ver = '1.6.29'
+
+homepage = 'http://matplotlib.org'
+description = """matplotlib is a python 2D plotting library which produces publication quality figures in a variety of
+ hardcopy formats and interactive environments across platforms. matplotlib can be used in python scripts, the python
+ and ipython shell, web application servers, and six graphical user interface toolkits."""
+
+toolchain = {'name': 'foss', 'version': '2017a'}
+
+# this is a bundle of Python packages
+exts_defaultclass = 'PythonPackage'
+
+dependencies = [
+    ('Python', '2.7.13'),
+    ('Tkinter', '%(pyver)s', versionsuffix),
+    ('libpng', libpng_ver),
+    ('freetype', '2.7.1', '-libpng-%s' % libpng_ver),
+]
+
+exts_list = [
+    ('Cycler', '0.10.0', {
+        'modulename': 'cycler',
+        'source_urls': ['https://pypi.python.org/packages/source/C/Cycler'],
+        'source_tmpl': 'cycler-%(version)s.tar.gz',
+        'checksums': ['cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8'],
+    }),
+    (name, version, {
+        'source_urls': ['https://pypi.python.org/packages/source/m/matplotlib'],
+        'checksums': ['0ffbc44faa34a8b1704bc108c451ecf87988f900ef7ce757b8e2e84383121ff1'],
+    }),
+]
+
+# specify that Bundle easyblock should run a full sanity check, rather than just trying to load the module
+full_sanity_check = True
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+modextrapaths = {'PYTHONPATH': ['lib/python%(pyshortver)s/site-packages']}
+
+sanity_check_commands = ["""python -c 'import matplotlib; matplotlib.use("TkAgg"); import matplotlib.pyplot' """]
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "build_time": 113.27,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.6.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'Seaborn-0.8.1-foss-2017a-Python-2.7.13.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.0",
+    "easybuild-framework_version": "3.6.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.3.0/libexec/gcc/x86_64-pc-linux-gnu/6.3.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.3.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.3.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.3.0/dummy-/gcc-6.3.0/stage2_stuff; Thread model: posix; gcc version 6.3.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 32757684,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.5.1804",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Apr 11 2018, 07:36:10) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.3.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/pegasus-sandy_bridge/Python/2.7.13-foss-2017a/bin/python",
+    "timestamp": 1527279131,
+    "total_memory": 128891,
+}]
