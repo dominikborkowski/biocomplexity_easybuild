@@ -1,0 +1,60 @@
+# Built with EasyBuild version 3.6.0 on 2018-05-29_10-21-35
+easyblock = 'ConfigureMake'
+
+name = 'fontconfig'
+version = '2.12.4'
+
+homepage = 'http://www.freedesktop.org/software/fontconfig'
+
+description = """
+ Fontconfig is a library designed to provide system-wide font configuration,
+ customization and application access.
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '6.4.0'}
+toolchainopts = {'pic': True}
+
+source_urls = ['http://www.freedesktop.org/software/fontconfig/release/']
+sources = [SOURCE_TAR_GZ]
+checksums = ['fd5a6a663f4c4a00e196523902626654dd0c4a78686cbc6e472f338e50fdf806']
+
+builddependencies = [
+    ('binutils', '2.28'),
+    ('gperf', '3.1'),
+    ('pkg-config', '0.29.2'),
+]
+
+dependencies = [
+    ('expat', '2.2.4'),
+    ('freetype', '2.8'),
+]
+
+configopts = '--disable-docs '
+
+moduleclass = 'vis'
+
+# Build statistics
+buildstats = [{
+    "build_time": 21.07,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.6.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'InterProScan-5.29-68.0-foss-2018a-Python-2.7.14.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.0",
+    "easybuild-framework_version": "3.6.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 2773841,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1527603695,
+    "total_memory": 8901828,
+}]
