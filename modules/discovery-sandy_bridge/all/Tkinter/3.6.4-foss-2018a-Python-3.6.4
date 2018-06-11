@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Tkinter module, built with the Python buildsystem
+
+
+More information
+================
+ - Homepage: http://python.org/
+    }
+}
+
+module-whatis {Description: Tkinter module, built with the Python buildsystem}
+module-whatis {Homepage: http://python.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Tkinter/3.6.4-foss-2018a-Python-3.6.4
+
+conflict Tkinter
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Tk/8.6.8-foss-2018a ] } {
+    module load Tk/8.6.8-foss-2018a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTTKINTER		"$root"
+setenv	EBVERSIONTKINTER		"3.6.4"
+setenv	EBDEVELTKINTER		"$root/easybuild/Tkinter-3.6.4-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6
+# Built with EasyBuild version 3.6.1
