@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A built-package format for Python.
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/wheel
+    }
+}
+
+module-whatis {Description: A built-package format for Python.}
+module-whatis {Homepage: https://pypi.python.org/pypi/wheel}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/wheel/0.31.0-foss-2018a-Python-3.6.4
+
+conflict wheel
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTWHEEL		"$root"
+setenv	EBVERSIONWHEEL		"0.31.0"
+setenv	EBDEVELWHEEL		"$root/easybuild/wheel-0.31.0-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.1
