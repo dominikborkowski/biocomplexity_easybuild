@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Theano is a Python library that allows you to define, optimize,
+and evaluate mathematical expressions involving multi-dimensional arrays efficiently.
+
+
+More information
+================
+ - Homepage: http://deeplearning.net/software/theano
+    }
+}
+
+module-whatis {Description: Theano is a Python library that allows you to define, optimize,
+and evaluate mathematical expressions involving multi-dimensional arrays efficiently.}
+module-whatis {Homepage: http://deeplearning.net/software/theano}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Theano/1.0.2-foss-2018a-Python-3.6.4
+
+conflict Theano
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTTHEANO		"$root"
+setenv	EBVERSIONTHEANO		"1.0.2"
+setenv	EBDEVELTHEANO		"$root/easybuild/Theano-1.0.2-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.1
