@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+LibYAML is a YAML parser and emitter written in C.
+
+
+More information
+================
+ - Homepage: http://pyyaml.org/wiki/LibYAML
+    }
+}
+
+module-whatis {Description: LibYAML is a YAML parser and emitter written in C.}
+module-whatis {Homepage: http://pyyaml.org/wiki/LibYAML}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/libyaml/0.1.7-GCCcore-6.4.0
+
+conflict libyaml
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBYAML		"$root"
+setenv	EBVERSIONLIBYAML		"0.1.7"
+setenv	EBDEVELLIBYAML		"$root/easybuild/libyaml-0.1.7-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.1

@@ -1,0 +1,48 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The matplotlib basemap toolkit is a library for plotting 2D data on maps in Python
+
+
+More information
+================
+ - Homepage: http://matplotlib.org/basemap/
+    }
+}
+
+module-whatis {Description: The matplotlib basemap toolkit is a library for plotting 2D data on maps in Python}
+module-whatis {Homepage: http://matplotlib.org/basemap/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/basemap/1.0.7-foss-2018a-Python-3.6.4
+
+conflict basemap
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded matplotlib/2.1.2-foss-2018a-Python-3.6.4 ] } {
+    module load matplotlib/2.1.2-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded GEOS/3.6.2-foss-2018a-Python-3.6.4 ] } {
+    module load GEOS/3.6.2-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded Pillow/5.0.0-foss-2018a-Python-3.6.4 ] } {
+    module load Pillow/5.0.0-foss-2018a-Python-3.6.4
+}
+
+setenv	EBROOTBASEMAP		"$root"
+setenv	EBVERSIONBASEMAP		"1.0.7"
+setenv	EBDEVELBASEMAP		"$root/easybuild/basemap-1.0.7-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.1
