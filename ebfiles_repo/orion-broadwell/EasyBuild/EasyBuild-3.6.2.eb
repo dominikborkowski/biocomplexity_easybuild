@@ -1,0 +1,72 @@
+# Built with EasyBuild version 3.6.0 on 2018-07-13_08-38-27
+easyblock = 'EB_EasyBuildMeta'
+
+name = 'EasyBuild'
+version = '3.6.2'
+
+homepage = 'https://easybuilders.github.io/easybuild'
+description = """EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = [
+    # vsc-install
+    'https://files.pythonhosted.org/packages/b6/03/becd813f5c4e8890254c79db8d2558b658f5a3ab52157bc0c077c6c9beea/',
+    # vsc-base
+    'https://files.pythonhosted.org/packages/62/e5/589612e47255627e4752d99018ae7cff8f49ab0fa6b4ba7b2226a76a05d3/',
+    # easybuild-framework
+    'https://files.pythonhosted.org/packages/bf/61/64490fdf5f4f1815756b931a6be42dfd14322a58a3d3c879603d7f54f8ca/',
+    # easybuild-easyblocks
+    'https://files.pythonhosted.org/packages/de/60/32d5808c683e58e64129e938e0a3098db856c07151cf026643493d5e8e11/',
+    # easybuild-easyconfigs
+    'https://files.pythonhosted.org/packages/b8/99/661cd37557a37f1aea38f5e7d156313101ca812f28690c25eda29d332576/',
+]
+sources = [
+    'vsc-install-0.11.2.tar.gz',
+    'vsc-base-2.8.3.tar.gz',
+    'easybuild-framework-%(version)s.tar.gz',
+    'easybuild-easyblocks-%(version)s.tar.gz',
+    'easybuild-easyconfigs-%(version)s.tar.gz',
+]
+checksums = [
+    'c03ce30a54cc5be53acc55addb027d67be58386bebdd9d2274ed6429b1fc0512',  # vsc-install-0.11.2.tar.gz
+    '9e102ca9d94ab97c2b974c63708dab7ea4dbaa3144787f06455e16445b92f204',  # vsc-base-2.8.3.tar.gz
+    '05530ca8ed29abc1f77c9fb1c1adea0849b23eb66544a256cee5d88c5434b55b',  # easybuild-framework-3.6.2.tar.gz
+    'e3b2d7069dc9d035898ec016c83605a36c9bad5862508159fb980528f418a771',  # easybuild-easyblocks-3.6.2.tar.gz
+    '4e8e92a2c329f4a32537a9deef9eb68e8c2ba7a305b3d6f2d2c9916679be75ab',  # easybuild-easyconfigs-3.6.2.tar.gz
+]
+
+# order matters a lot, to avoid having dependencies auto-resolved (--no-deps easy_install option doesn't work?)
+# EasyBuild is a (set of) Python packages, so it depends on Python
+# usually, we want to use the system Python, so no actual Python dependency is listed
+allow_system_deps = [('Python', SYS_PYTHON_VERSION)]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 13.61,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', '--install-latest-eb-release', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.6.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'"],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.0",
+    "easybuild-framework_version": "3.6.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.8 --enable-ssp --disable-libssp --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --enable-linux-futex --program-suffix=-4.8 --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux; Thread model: posix; gcc version 4.8.5 (SUSE Linux) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 31860250,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1531485507,
+    "total_memory": 8901828,
+}]
