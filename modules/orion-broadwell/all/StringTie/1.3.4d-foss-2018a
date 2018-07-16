@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.
+
+
+More information
+================
+ - Homepage: http://ccb.jhu.edu/software/stringtie/
+    }
+}
+
+module-whatis {Description: StringTie is a fast and highly efficient assembler of RNA-Seq alignments into potential transcripts.}
+module-whatis {Homepage: http://ccb.jhu.edu/software/stringtie/}
+
+set root /apps/easybuild/software/orion-broadwell/StringTie/1.3.4d-foss-2018a
+
+conflict StringTie
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTSTRINGTIE		"$root"
+setenv	EBVERSIONSTRINGTIE		"1.3.4d"
+setenv	EBDEVELSTRINGTIE		"$root/easybuild/StringTie-1.3.4d-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

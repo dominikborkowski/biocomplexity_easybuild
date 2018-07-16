@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Keras is a minimalist, highly modular neural networks library, written in Python and
+capable of running on top of either TensorFlow or Theano.
+
+
+More information
+================
+ - Homepage: https://keras.io/
+    }
+}
+
+module-whatis {Description: Keras is a minimalist, highly modular neural networks library, written in Python and
+capable of running on top of either TensorFlow or Theano.}
+module-whatis {Homepage: https://keras.io/}
+
+set root /apps/easybuild/software/orion-broadwell/Keras/2.2.0-foss-2018a-Python-3.6.4
+
+conflict Keras
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded TensorFlow/1.8.0-foss-2018a-Python-3.6.4 ] } {
+    module load TensorFlow/1.8.0-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded Theano/1.0.2-foss-2018a-Python-3.6.4 ] } {
+    module load Theano/1.0.2-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded h5py/2.7.1-foss-2018a-Python-3.6.4 ] } {
+    module load h5py/2.7.1-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded PyYAML/3.12-foss-2018a-Python-3.6.4 ] } {
+    module load PyYAML/3.12-foss-2018a-Python-3.6.4
+}
+
+setenv	EBROOTKERAS		"$root"
+setenv	EBVERSIONKERAS		"2.2.0"
+setenv	EBDEVELKERAS		"$root/easybuild/Keras-2.2.0-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads
+ (both DNA and RNA) against the general human population (as well as against a single reference genome).
+
+
+More information
+================
+ - Homepage: https://ccb.jhu.edu/software/hisat2/index.shtml
+    }
+}
+
+module-whatis {Description: HISAT2 is a fast and sensitive alignment program for mapping next-generation sequencing reads
+ (both DNA and RNA) against the general human population (as well as against a single reference genome).}
+module-whatis {Homepage: https://ccb.jhu.edu/software/hisat2/index.shtml}
+
+set root /apps/easybuild/software/orion-broadwell/HISAT2/2.1.0-foss-2018a
+
+conflict HISAT2
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded NGS/1.3.0-foss-2018a ] } {
+    module load NGS/1.3.0-foss-2018a
+}
+
+if { ![ is-loaded ncbi-vdb/2.8.2-foss-2018a ] } {
+    module load ncbi-vdb/2.8.2-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTHISAT2		"$root"
+setenv	EBVERSIONHISAT2		"2.1.0"
+setenv	EBDEVELHISAT2		"$root/easybuild/HISAT2-2.1.0-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
