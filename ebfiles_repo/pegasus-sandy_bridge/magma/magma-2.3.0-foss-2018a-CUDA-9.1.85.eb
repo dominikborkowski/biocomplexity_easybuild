@@ -1,0 +1,64 @@
+# Built with EasyBuild version 3.6.1 on 2018-07-16_08-26-37
+easyblock = "ConfigureMake"
+
+name = 'magma'
+version = '2.3.0'
+cuda_ver = '9.1.85'
+versionsuffix = '-CUDA-%s' % cuda_ver
+
+homepage = 'http://icl.cs.utk.edu/magma/'
+description = """The MAGMA project aims to develop a dense linear algebra library similar to
+ LAPACK but for heterogeneous/hybrid architectures, starting with current Multicore+GPU systems."""
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+toolchainopts = {'pic': True, 'openmp': True}
+
+source_urls = ['http://icl.cs.utk.edu/projectsfiles/magma/downloads/']
+sources = [SOURCE_TAR_GZ]
+patches = [('magma-%(version)s-fix-makefile.patch')]
+checksums = [
+    '010a4a057d7aa1e57b9426bffc0958f3d06913c9151463737e289e67dd9ea608',  # magma-2.3.0.tar.gz
+    '47e734cf30577b563377c946fb7897da2fd53d050f7e4fe83d8bb11b8d157913',  # magma-2.3.0-fix-makefile.patch
+]
+
+dependencies = [('CUDA', cuda_ver, '', True)]
+
+skipsteps = ['configure']
+
+prebuildopts = 'touch make.inc && '
+prebuildopts += 'GPU_TARGET="Kepler Maxwell Pascal" '
+
+installopts = 'prefix=%(installdir)s'
+
+sanity_check_paths = {
+    'files': ['lib/libmagma.so', 'lib/libmagma.a'],
+    'dirs': ['include'],
+}
+
+moduleclass = 'math'
+
+# Build statistics
+buildstats = [{
+    "build_time": 316.71,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.6.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'magma-2.3.0-foss-2018a-CUDA-9.1.85.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.1",
+    "easybuild-framework_version": "3.6.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 370486194,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.5.1804",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Apr 11 2018, 07:36:10) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1531743996,
+    "total_memory": 128891,
+}]
