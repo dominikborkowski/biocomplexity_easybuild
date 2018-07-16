@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization
+ support for software applications.
+
+
+More information
+================
+ - Homepage: http://site.icu-project.org/home
+    }
+}
+
+module-whatis {Description: ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization
+ support for software applications.}
+module-whatis {Homepage: http://site.icu-project.org/home}
+
+set root /apps/easybuild/software/orion-broadwell/ICU/61.1-GCCcore-6.4.0
+
+conflict ICU
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/sbin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTICU		"$root"
+setenv	EBVERSIONICU		"61.1"
+setenv	EBDEVELICU		"$root/easybuild/ICU-61.1-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The file command is 'a file type guesser', that is, a command-line tool
+ that tells you in words what kind of data a file contains.
+
+
+More information
+================
+ - Homepage: http://www.darwinsys.com/file/
+    }
+}
+
+module-whatis {Description: The file command is 'a file type guesser', that is, a command-line tool
+ that tells you in words what kind of data a file contains.}
+module-whatis {Homepage: http://www.darwinsys.com/file/}
+
+set root /apps/easybuild/software/orion-broadwell/file/5.30-foss-2018a
+
+conflict file
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTFILE		"$root"
+setenv	EBVERSIONFILE		"5.30"
+setenv	EBDEVELFILE		"$root/easybuild/file-5.30-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

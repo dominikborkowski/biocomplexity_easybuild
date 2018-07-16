@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Sodium is a modern, easy-to-use software library for encryption, decryption,
+ signatures, password hashing and more.
+
+
+More information
+================
+ - Homepage: http://doc.libsodium.org/
+    }
+}
+
+module-whatis {Description: 
+ Sodium is a modern, easy-to-use software library for encryption, decryption,
+ signatures, password hashing and more.
+}
+module-whatis {Homepage: http://doc.libsodium.org/}
+
+set root /apps/easybuild/software/orion-broadwell/libsodium/1.0.16-GCCcore-6.4.0
+
+conflict libsodium
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBSODIUM		"$root"
+setenv	EBVERSIONLIBSODIUM		"1.0.16"
+setenv	EBDEVELLIBSODIUM		"$root/easybuild/libsodium-1.0.16-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

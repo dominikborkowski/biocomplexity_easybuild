@@ -1,0 +1,52 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Library for reading and writing coordinate system information from/to GeoTIFF files
+
+
+More information
+================
+ - Homepage: https://directory.fsf.org/wiki/Libgeotiff
+    }
+}
+
+module-whatis {Description: Library for reading and writing coordinate system information from/to GeoTIFF files}
+module-whatis {Homepage: https://directory.fsf.org/wiki/Libgeotiff}
+
+set root /apps/easybuild/software/orion-broadwell/libgeotiff/1.4.2-foss-2018a
+
+conflict libgeotiff
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-GCCcore-6.4.0 ] } {
+    module load LibTIFF/4.0.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded PROJ/5.0.0-foss-2018a ] } {
+    module load PROJ/5.0.0-foss-2018a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTLIBGEOTIFF		"$root"
+setenv	EBVERSIONLIBGEOTIFF		"1.4.2"
+setenv	EBDEVELLIBGEOTIFF		"$root/easybuild/libgeotiff-1.4.2-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NGS is a new, domain-specific API for accessing reads, alignments and pileups produced from
+ Next Generation Sequencing.
+
+
+More information
+================
+ - Homepage: https://github.com/ncbi/ngs
+    }
+}
+
+module-whatis {Description: NGS is a new, domain-specific API for accessing reads, alignments and pileups produced from
+ Next Generation Sequencing.}
+module-whatis {Homepage: https://github.com/ncbi/ngs}
+
+set root /apps/easybuild/software/orion-broadwell/NGS/2.9.1-foss-2018a
+
+conflict NGS
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+setenv	EBROOTNGS		"$root"
+setenv	EBVERSIONNGS		"2.9.1"
+setenv	EBDEVELNGS		"$root/easybuild/NGS-2.9.1-foss-2018a-easybuild-devel"
+
+prepend-path	CLASSPATH		$root/jar/ngs-java.jar
+# Built with EasyBuild version 3.6.2
