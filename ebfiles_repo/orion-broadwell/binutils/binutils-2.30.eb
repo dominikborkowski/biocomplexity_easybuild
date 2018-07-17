@@ -1,0 +1,52 @@
+# Built with EasyBuild version 3.6.2 on 2018-07-16_23-06-52
+name = 'binutils'
+version = '2.30'
+
+homepage = 'http://directory.fsf.org/project/binutils/'
+
+description = "binutils: GNU binary utilities"
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCE_TAR_GZ]
+patches = ['binutils-%(version)s_fix-assertion-fail-elf.patch']
+checksums = [
+    '8c3850195d1c093d290a716e20ebcaa72eda32abf5e3d8611154b39cff79e9ea',  # binutils-2.30.tar.gz
+    '7a661190c973287642296dd9fb30ff45dc26ae2138f7761cd8362f7e412ff5ab',  # binutils-2.30_fix-assertion-fail-elf.patch
+]
+
+builddependencies = [
+    ('flex', '2.6.4'),
+    ('Bison', '3.0.4'),
+    # zlib required, but being linked in statically, so not a runtime dep
+    ('zlib', '1.2.11'),
+]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 63.17,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.6.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'Mako-1.0.7-foss-2018b-Python-2.7.15.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2",
+    "easybuild-framework_version": "3.6.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper; Target: x86_64-suse-linux; Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,java,ada --enable-checking=release --with-gxx-include-dir=/usr/include/c++/4.8 --enable-ssp --disable-libssp --disable-plugin --with-bugurl=http://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --disable-libgcj --disable-libmudflap --with-slibdir=/lib64 --with-system-zlib --enable-__cxa_atexit --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --enable-linker-build-id --enable-linux-futex --program-suffix=-4.8 --without-system-libunwind --with-arch-32=i586 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux; Thread model: posix; gcc version 4.8.5 (SUSE Linux) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 323309244,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/usr/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1531796812,
+    "total_memory": 8901828,
+}]

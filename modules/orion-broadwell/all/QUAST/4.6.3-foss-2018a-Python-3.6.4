@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+QUAST evaluates genome assemblies by computing various metrics.
+ It works both with and without reference genomes. The tool accepts multiple
+ assemblies, thus is suitable for comparison.
+
+
+More information
+================
+ - Homepage: https://github.com/ablab/quast
+    }
+}
+
+module-whatis {Description: QUAST evaluates genome assemblies by computing various metrics.
+ It works both with and without reference genomes. The tool accepts multiple
+ assemblies, thus is suitable for comparison.}
+module-whatis {Homepage: https://github.com/ablab/quast}
+
+set root /apps/easybuild/software/orion-broadwell/QUAST/4.6.3-foss-2018a-Python-3.6.4
+
+conflict QUAST
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Perl/5.26.1-foss-2018a ] } {
+    module load Perl/5.26.1-foss-2018a
+}
+
+if { ![ is-loaded matplotlib/2.1.2-foss-2018a-Python-3.6.4 ] } {
+    module load matplotlib/2.1.2-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+if { ![ is-loaded Boost/1.66.0-foss-2018a ] } {
+    module load Boost/1.66.0-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTQUAST		"$root"
+setenv	EBVERSIONQUAST		"4.6.3"
+setenv	EBDEVELQUAST		"$root/easybuild/QUAST-4.6.3-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

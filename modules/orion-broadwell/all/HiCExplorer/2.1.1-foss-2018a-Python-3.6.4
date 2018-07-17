@@ -1,0 +1,67 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+HiCexplorer addresses the common tasks of Hi-C analysis from processing to visualization.
+
+
+More information
+================
+ - Homepage: http://hicexplorer.readthedocs.org/
+
+
+Included extensions
+===================
+cooler-0.7.6, future-0.16.0, HiCExplorer-2.1.1, intervaltree-2.1.0,
+Jinja2-2.10, pyBigWig-0.3.11, Unidecode-1.0.22
+    }
+}
+
+module-whatis {Description: HiCexplorer addresses the common tasks of Hi-C analysis from processing to visualization.}
+module-whatis {Homepage: http://hicexplorer.readthedocs.org/}
+module-whatis {Extensions: cooler-0.7.6, future-0.16.0, HiCExplorer-2.1.1, intervaltree-2.1.0, Jinja2-2.10, pyBigWig-0.3.11, Unidecode-1.0.22}
+
+set root /apps/easybuild/software/orion-broadwell/HiCExplorer/2.1.1-foss-2018a-Python-3.6.4
+
+conflict HiCExplorer
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Pysam/0.14.1-foss-2018a-Python-3.6.4 ] } {
+    module load Pysam/0.14.1-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded matplotlib/2.1.2-foss-2018a-Python-3.6.4 ] } {
+    module load matplotlib/2.1.2-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded Biopython/1.71-foss-2018a-Python-3.6.4 ] } {
+    module load Biopython/1.71-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded PyTables/3.4.2-foss-2018a-Python-3.6.4 ] } {
+    module load PyTables/3.4.2-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded h5py/2.7.1-foss-2018a-Python-3.6.4 ] } {
+    module load h5py/2.7.1-foss-2018a-Python-3.6.4
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTHICEXPLORER		"$root"
+setenv	EBVERSIONHICEXPLORER		"2.1.1"
+setenv	EBDEVELHICEXPLORER		"$root/easybuild/HiCExplorer-2.1.1-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2
+setenv	EBEXTSLISTHICEXPLORER		"intervaltree-2.1.0,pyBigWig-0.3.11,future-0.16.0,cooler-0.7.6,Jinja2-2.10,Unidecode-1.0.22,HiCExplorer-2.1.1"

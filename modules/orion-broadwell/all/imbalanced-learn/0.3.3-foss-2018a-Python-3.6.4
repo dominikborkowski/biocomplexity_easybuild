@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+imbalanced-learn is a Python package offering a number of re-sampling techniques commonly used in
+ datasets showing strong between-class imbalance.
+
+
+More information
+================
+ - Homepage: https://github.com/scikit-learn-contrib/imbalanced-learn
+    }
+}
+
+module-whatis {Description: imbalanced-learn is a Python package offering a number of re-sampling techniques commonly used in
+ datasets showing strong between-class imbalance.}
+module-whatis {Homepage: https://github.com/scikit-learn-contrib/imbalanced-learn}
+
+set root /apps/easybuild/software/orion-broadwell/imbalanced-learn/0.3.3-foss-2018a-Python-3.6.4
+
+conflict imbalanced-learn
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded scikit-learn/0.19.1-foss-2018a-Python-3.6.4 ] } {
+    module load scikit-learn/0.19.1-foss-2018a-Python-3.6.4
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTIMBALANCEDMINLEARN		"$root"
+setenv	EBVERSIONIMBALANCEDMINLEARN		"0.3.3"
+setenv	EBDEVELIMBALANCEDMINLEARN		"$root/easybuild/imbalanced-learn-0.3.3-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

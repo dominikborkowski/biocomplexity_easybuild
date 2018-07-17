@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Datasets, Transforms and Models specific to Computer Vision
+
+
+More information
+================
+ - Homepage: https://github.com/pytorch/vision
+    }
+}
+
+module-whatis {Description:  Datasets, Transforms and Models specific to Computer Vision}
+module-whatis {Homepage: https://github.com/pytorch/vision}
+
+set root /apps/easybuild/software/orion-broadwell/torchvision/0.2.0-foss-2018a-Python-3.6.4-CUDA-9.1.85
+
+conflict torchvision
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Pillow-SIMD/5.0.0-foss-2018a-Python-3.6.4 ] } {
+    module load Pillow-SIMD/5.0.0-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded PyTorch/0.3.1-foss-2018a-Python-3.6.4-CUDA-9.1.85 ] } {
+    module load PyTorch/0.3.1-foss-2018a-Python-3.6.4-CUDA-9.1.85
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTTORCHVISION		"$root"
+setenv	EBVERSIONTORCHVISION		"0.2.0"
+setenv	EBDEVELTORCHVISION		"$root/easybuild/torchvision-0.2.0-foss-2018a-Python-3.6.4-CUDA-9.1.85-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

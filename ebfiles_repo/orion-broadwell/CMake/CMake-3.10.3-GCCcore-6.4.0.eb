@@ -1,0 +1,68 @@
+# Built with EasyBuild version 3.6.2 on 2018-07-16_22-22-11
+easyblock = 'ConfigureMake'
+
+name = 'CMake'
+version = '3.10.3'
+
+homepage = 'http://www.cmake.org'
+
+description = """
+ CMake, the cross-platform, open-source build system.  CMake is a family of
+ tools designed to build, test and package software.
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '6.4.0'}
+
+source_urls = ['http://www.cmake.org/files/v%(version_major_minor)s']
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['0c3a1dcf0be03e40cf4f341dda79c96ffb6c35ae35f2f911845b72dab3559cf8']
+
+builddependencies = [
+    ('binutils', '2.28'),
+]
+
+dependencies = [
+    ('ncurses', '6.1'),
+    # OS dependency should be preferred if the os version is more recent then this version,
+    # it's nice to have an up to date openssl for security reasons
+    # ('OpenSSL', '1.1.0g'),
+]
+
+osdependencies = [
+    ('openssl-devel', 'libssl-dev', 'libopenssl-devel'),
+]
+
+configopts = '-- -DCMAKE_USE_OPENSSL=1 -DCMAKE_PREFIX_PATH=$EBROOTNCURSES'
+
+sanity_check_paths = {
+    'files': ["bin/%s" % x for x in ['ccmake', 'cmake', 'cpack', 'ctest']],
+    'dirs': [],
+}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "build_time": 269.56,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.6.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'HiCExplorer-2.1.1-foss-2018a-Python-3.6.4.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2",
+    "easybuild-framework_version": "3.6.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 37085878,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1531794130,
+    "total_memory": 8901828,
+}]

@@ -1,0 +1,65 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PyTables is a package for managing hierarchical datasets and designed to efficiently and easily cope
+ with extremely large amounts of data. PyTables is built on top of the HDF5 library, using the Python language and the
+ NumPy package. It features an object-oriented interface that, combined with C extensions for the performance-critical
+ parts of the code (generated using Cython), makes it a fast, yet extremely easy to use tool for interactively browse,
+ process and search very large amounts of data. One important feature of PyTables is that it optimizes memory and disk
+ resources so that data takes much less space (specially if on-flight compression is used) than other solutions such as
+ relational or object oriented databases.
+
+
+More information
+================
+ - Homepage: http://www.pytables.org
+    }
+}
+
+module-whatis {Description: PyTables is a package for managing hierarchical datasets and designed to efficiently and easily cope
+ with extremely large amounts of data. PyTables is built on top of the HDF5 library, using the Python language and the
+ NumPy package. It features an object-oriented interface that, combined with C extensions for the performance-critical
+ parts of the code (generated using Cython), makes it a fast, yet extremely easy to use tool for interactively browse,
+ process and search very large amounts of data. One important feature of PyTables is that it optimizes memory and disk
+ resources so that data takes much less space (specially if on-flight compression is used) than other solutions such as
+ relational or object oriented databases.}
+module-whatis {Homepage: http://www.pytables.org}
+
+set root /apps/easybuild/software/orion-broadwell/PyTables/3.4.2-foss-2018a-Python-3.6.4
+
+conflict PyTables
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded numexpr/2.6.4-foss-2018a-Python-3.6.4 ] } {
+    module load numexpr/2.6.4-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded HDF5/1.10.1-foss-2018a ] } {
+    module load HDF5/1.10.1-foss-2018a
+}
+
+if { ![ is-loaded LZO/2.10-foss-2018a ] } {
+    module load LZO/2.10-foss-2018a
+}
+
+if { ![ is-loaded Blosc/1.14.2-GCCcore-6.4.0 ] } {
+    module load Blosc/1.14.2-GCCcore-6.4.0
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPYTABLES		"$root"
+setenv	EBVERSIONPYTABLES		"3.4.2"
+setenv	EBDEVELPYTABLES		"$root/easybuild/PyTables-3.4.2-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

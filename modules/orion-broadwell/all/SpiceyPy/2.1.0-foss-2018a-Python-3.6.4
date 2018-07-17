@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SpiceyPy is a Python wrapper for the NAIF C SPICE Toolkit (N65)
+
+
+More information
+================
+ - Homepage: https://github.com/AndrewAnnex/SpiceyPy
+    }
+}
+
+module-whatis {Description: SpiceyPy is a Python wrapper for the NAIF C SPICE Toolkit (N65)}
+module-whatis {Homepage: https://github.com/AndrewAnnex/SpiceyPy}
+
+set root /apps/easybuild/software/orion-broadwell/SpiceyPy/2.1.0-foss-2018a-Python-3.6.4
+
+conflict SpiceyPy
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+setenv	EBROOTSPICEYPY		"$root"
+setenv	EBVERSIONSPICEYPY		"2.1.0"
+setenv	EBDEVELSPICEYPY		"$root/easybuild/SpiceyPy-2.1.0-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

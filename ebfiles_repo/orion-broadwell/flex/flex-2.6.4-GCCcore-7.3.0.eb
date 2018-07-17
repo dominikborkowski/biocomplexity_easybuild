@@ -1,0 +1,57 @@
+# Built with EasyBuild version 3.6.2 on 2018-07-16_23-25-25
+name = 'flex'
+version = '2.6.4'
+
+homepage = 'http://flex.sourceforge.net/'
+
+description = """
+ Flex (Fast Lexical Analyzer) is a tool for generating scanners. A scanner, 
+ sometimes called a tokenizer, is a program which recognizes lexical patterns
+ in text.
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '7.3.0'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://github.com/westes/flex/releases/download/v%(version)s/']
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995']
+
+builddependencies = [
+    ('Bison', '3.0.4'),
+    ('help2man', '1.47.4'),
+    # use same binutils version that was used when building GCC toolchain
+    ('binutils', '2.30', '', True),
+]
+
+dependencies = [
+    ('M4', '1.4.18'),
+]
+
+moduleclass = 'lang'
+
+# Build statistics
+buildstats = [{
+    "build_time": 7.97,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.6.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'Mako-1.0.7-foss-2018b-Python-2.7.15.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2",
+    "easybuild-framework_version": "3.6.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/7.3.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/7.3.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/7.3.0/dummy-/gcc-7.3.0/stage2_stuff; Thread model: posix; gcc version 7.3.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 2308227,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/7.3.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1531797925,
+    "total_memory": 8901828,
+}]

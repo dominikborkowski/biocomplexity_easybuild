@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt.
+
+
+More information
+================
+ - Homepage: http://lxml.de/
+    }
+}
+
+module-whatis {Description: The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt.}
+module-whatis {Homepage: http://lxml.de/}
+
+set root /apps/easybuild/software/orion-broadwell/lxml/4.2.0-foss-2018a-Python-2.7.14
+
+conflict lxml
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded libxml2/2.9.7-GCCcore-6.4.0 ] } {
+    module load libxml2/2.9.7-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libxslt/1.1.32-GCCcore-6.4.0 ] } {
+    module load libxslt/1.1.32-GCCcore-6.4.0
+}
+
+setenv	EBROOTLXML		"$root"
+setenv	EBVERSIONLXML		"4.2.0"
+setenv	EBDEVELLXML		"$root/easybuild/lxml-4.2.0-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2
