@@ -1,0 +1,54 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Tensors and Dynamic neural networks in Python with strong GPU acceleration.
+PyTorch is a deep learning framework that puts Python first.
+
+
+More information
+================
+ - Homepage: http://pytorch.org/
+    }
+}
+
+module-whatis {Description: Tensors and Dynamic neural networks in Python with strong GPU acceleration.
+PyTorch is a deep learning framework that puts Python first.}
+module-whatis {Homepage: http://pytorch.org/}
+
+set root /apps/easybuild/software/orion-broadwell/PyTorch/0.3.1-foss-2018a-Python-3.6.4-CUDA-9.1.85
+
+conflict PyTorch
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded PyYAML/3.12-foss-2018a-Python-3.6.4 ] } {
+    module load PyYAML/3.12-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded CUDA/9.1.85 ] } {
+    module load CUDA/9.1.85
+}
+
+if { ![ is-loaded magma/2.3.0-foss-2018a-CUDA-9.1.85 ] } {
+    module load magma/2.3.0-foss-2018a-CUDA-9.1.85
+}
+
+if { ![ is-loaded cuDNN/7.0.5-CUDA-9.1.85 ] } {
+    module load cuDNN/7.0.5-CUDA-9.1.85
+}
+
+setenv	EBROOTPYTORCH		"$root"
+setenv	EBVERSIONPYTORCH		"0.3.1"
+setenv	EBDEVELPYTORCH		"$root/easybuild/PyTorch-0.3.1-foss-2018a-Python-3.6.4-CUDA-9.1.85-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2
