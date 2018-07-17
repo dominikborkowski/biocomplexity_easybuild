@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+SCons is a software construction tool.
+
+
+More information
+================
+ - Homepage: http://www.scons.org/
+    }
+}
+
+module-whatis {Description: SCons is a software construction tool.}
+module-whatis {Homepage: http://www.scons.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/SCons/3.0.1-foss-2018a-Python-2.7.14
+
+conflict SCons
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+prepend-path	MANPATH		$root/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTSCONS		"$root"
+setenv	EBVERSIONSCONS		"3.0.1"
+setenv	EBDEVELSCONS		"$root/easybuild/SCons-3.0.1-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

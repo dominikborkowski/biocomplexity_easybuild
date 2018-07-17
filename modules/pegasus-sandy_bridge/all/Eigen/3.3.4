@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Eigen is a C++ template library for linear algebra:
+ matrices, vectors, numerical solvers, and related algorithms.
+
+
+More information
+================
+ - Homepage: http://eigen.tuxfamily.org/index.php?title=Main_Page
+    }
+}
+
+module-whatis {Description: 
+ Eigen is a C++ template library for linear algebra:
+ matrices, vectors, numerical solvers, and related algorithms.
+}
+module-whatis {Homepage: http://eigen.tuxfamily.org/index.php?title=Main_Page}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Eigen/3.3.4
+
+conflict Eigen
+
+prepend-path	CPATH		$root/include
+prepend-path	CPLUS_INCLUDE_PATH		$root/include
+setenv	EBROOTEIGEN		"$root"
+setenv	EBVERSIONEIGEN		"3.3.4"
+setenv	EBDEVELEIGEN		"$root/easybuild/Eigen-3.3.4-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

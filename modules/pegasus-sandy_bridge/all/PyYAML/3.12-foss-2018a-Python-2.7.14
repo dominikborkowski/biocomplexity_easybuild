@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PyYAML is a YAML parser and emitter for the Python programming language.
+
+
+More information
+================
+ - Homepage: https://pypi.python.org/pypi/PyYAML/
+    }
+}
+
+module-whatis {Description: PyYAML is a YAML parser and emitter for the Python programming language.}
+module-whatis {Homepage: https://pypi.python.org/pypi/PyYAML/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/PyYAML/3.12-foss-2018a-Python-2.7.14
+
+conflict PyYAML
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded libyaml/0.1.7-GCCcore-6.4.0 ] } {
+    module load libyaml/0.1.7-GCCcore-6.4.0
+}
+
+setenv	EBROOTPYYAML		"$root"
+setenv	EBVERSIONPYYAML		"3.12"
+setenv	EBDEVELPYYAML		"$root/easybuild/PyYAML-3.12-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2

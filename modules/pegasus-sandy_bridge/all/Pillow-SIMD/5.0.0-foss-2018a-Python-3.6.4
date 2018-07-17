@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Pillow is the 'friendly PIL fork' by Alex Clark and Contributors.
+ PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
+
+
+More information
+================
+ - Homepage: https://github.com/uploadcare/pillow-simd
+    }
+}
+
+module-whatis {Description: Pillow is the 'friendly PIL fork' by Alex Clark and Contributors.
+ PIL is the Python Imaging Library by Fredrik Lundh and Contributors.}
+module-whatis {Homepage: https://github.com/uploadcare/pillow-simd}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Pillow-SIMD/5.0.0-foss-2018a-Python-3.6.4
+
+conflict Pillow-SIMD
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-GCCcore-6.4.0 ] } {
+    module load LibTIFF/4.0.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+setenv	EBROOTPILLOWMINSIMD		"$root"
+setenv	EBVERSIONPILLOWMINSIMD		"5.0.0"
+setenv	EBDEVELPILLOWMINSIMD		"$root/easybuild/Pillow-SIMD-5.0.0-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

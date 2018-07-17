@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ANTLR, ANother Tool for Language Recognition, (formerly PCCTS)
+ is a language tool that provides a framework for constructing recognizers,
+ compilers, and translators from grammatical descriptions containing
+ Java, C#, C++, or Python actions.
+
+
+More information
+================
+ - Homepage: http://www.antlr2.org/
+    }
+}
+
+module-whatis {Description: ANTLR, ANother Tool for Language Recognition, (formerly PCCTS)
+ is a language tool that provides a framework for constructing recognizers,
+ compilers, and translators from grammatical descriptions containing
+ Java, C#, C++, or Python actions.}
+module-whatis {Homepage: http://www.antlr2.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/ANTLR/2.7.7-foss-2018a-Python-2.7.14
+
+conflict ANTLR
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/sbin
+setenv	EBROOTANTLR		"$root"
+setenv	EBVERSIONANTLR		"2.7.7"
+setenv	EBDEVELANTLR		"$root/easybuild/ANTLR-2.7.7-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

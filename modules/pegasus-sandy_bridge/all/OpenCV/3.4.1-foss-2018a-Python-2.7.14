@@ -1,0 +1,90 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+OpenCV (Open Source Computer Vision Library) is an open source computer vision
+ and machine learning software library. OpenCV was built to provide
+ a common infrastructure for computer vision applications and to accelerate
+ the use of machine perception in the commercial products.
+
+
+More information
+================
+ - Homepage: http://opencv.org/
+    }
+}
+
+module-whatis {Description: OpenCV (Open Source Computer Vision Library) is an open source computer vision
+ and machine learning software library. OpenCV was built to provide
+ a common infrastructure for computer vision applications and to accelerate
+ the use of machine perception in the commercial products.}
+module-whatis {Homepage: http://opencv.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/OpenCV/3.4.1-foss-2018a-Python-2.7.14
+
+conflict OpenCV
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded FFmpeg/3.4.2-foss-2018a ] } {
+    module load FFmpeg/3.4.2-foss-2018a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-GCCcore-6.4.0 ] } {
+    module load LibTIFF/4.0.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded JasPer/2.0.14-GCCcore-6.4.0 ] } {
+    module load JasPer/2.0.14-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+if { ![ is-loaded ant/1.10.1-Java-1.8.0_162 ] } {
+    module load ant/1.10.1-Java-1.8.0_162
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GTK+/2.24.32-foss-2018a ] } {
+    module load GTK+/2.24.32-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib64/pkgconfig
+setenv	EBROOTOPENCV		"$root"
+setenv	EBVERSIONOPENCV		"3.4.1"
+setenv	EBDEVELOPENCV		"$root/easybuild/OpenCV-3.4.1-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	CLASSPATH		$root/share/OpenCV/java
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Proteinortho is a tool to detect orthologous genes within different species.
+
+
+More information
+================
+ - Homepage: http://www.bioinf.uni-leipzig.de/Software/proteinortho/
+    }
+}
+
+module-whatis {Description: Proteinortho is a tool to detect orthologous genes within different species.}
+module-whatis {Homepage: http://www.bioinf.uni-leipzig.de/Software/proteinortho/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Proteinortho/5.16b-foss-2018a-Python-3.6.4-Perl-5.26.1
+
+conflict Proteinortho
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Perl/5.26.1-foss-2018a ] } {
+    module load Perl/5.26.1-foss-2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded BLAST+/2.7.1-foss-2018a ] } {
+    module load BLAST+/2.7.1-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPROTEINORTHO		"$root"
+setenv	EBVERSIONPROTEINORTHO		"5.16b"
+setenv	EBDEVELPROTEINORTHO		"$root/easybuild/Proteinortho-5.16b-foss-2018a-Python-3.6.4-Perl-5.26.1-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

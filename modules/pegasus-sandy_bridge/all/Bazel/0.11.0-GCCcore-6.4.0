@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Bazel is a build tool that builds code quickly and reliably. 
+It is used to build the majority of Google's software.
+
+
+More information
+================
+ - Homepage: http://bazel.io/
+    }
+}
+
+module-whatis {Description: Bazel is a build tool that builds code quickly and reliably. 
+It is used to build the majority of Google's software.}
+module-whatis {Homepage: http://bazel.io/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Bazel/0.11.0-GCCcore-6.4.0
+
+conflict Bazel
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTBAZEL		"$root"
+setenv	EBVERSIONBAZEL		"0.11.0"
+setenv	EBDEVELBAZEL		"$root/easybuild/Bazel-0.11.0-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

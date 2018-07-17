@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+LMDB is a fast, memory-efficient database. With memory-mapped files, it has the read performance
+ of a pure in-memory database while retaining the persistence of standard disk-based databases.
+
+
+More information
+================
+ - Homepage: https://symas.com/lmdb
+    }
+}
+
+module-whatis {Description: LMDB is a fast, memory-efficient database. With memory-mapped files, it has the read performance
+ of a pure in-memory database while retaining the persistence of standard disk-based databases.}
+module-whatis {Homepage: https://symas.com/lmdb}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/LMDB/0.9.21-GCCcore-6.4.0
+
+conflict LMDB
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTLMDB		"$root"
+setenv	EBVERSIONLMDB		"0.9.21"
+setenv	EBDEVELLMDB		"$root/easybuild/LMDB-0.9.21-GCCcore-6.4.0-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

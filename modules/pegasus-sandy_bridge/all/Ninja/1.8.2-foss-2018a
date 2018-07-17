@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Ninja is a small build system with a focus on speed.
+
+
+More information
+================
+ - Homepage: https://ninja-build.org/
+    }
+}
+
+module-whatis {Description: Ninja is a small build system with a focus on speed.}
+module-whatis {Homepage: https://ninja-build.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Ninja/1.8.2-foss-2018a
+
+conflict Ninja
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTNINJA		"$root"
+setenv	EBVERSIONNINJA		"1.8.2"
+setenv	EBDEVELNINJA		"$root/easybuild/Ninja-1.8.2-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
