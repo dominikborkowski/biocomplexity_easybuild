@@ -1,0 +1,26 @@
+easyblock = 'PythonPackage'
+
+name = 'Horovod'
+version = '0.13.10'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'https://github.com/uber/horovod'
+description = "Horovod is a distributed training framework for TensorFlow."
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+
+source_urls = [PYPI_LOWER_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['a28201d988a4165297ca85ee8f6b41c26c9d3f631e69918eebb1173cde7fbd5a']
+
+dependencies = [
+    ('Python', '3.6.4'),
+    ('TensorFlow', '1.8.0', versionsuffix),
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+moduleclass = 'tools'
