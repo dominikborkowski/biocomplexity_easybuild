@@ -1,0 +1,66 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The goal of the CGAL Open Source Project is to provide easy access to efficient
+ and reliable geometric algorithms in the form of a C++ library.
+
+
+More information
+================
+ - Homepage: http://www.cgal.org/
+    }
+}
+
+module-whatis {Description: The goal of the CGAL Open Source Project is to provide easy access to efficient
+ and reliable geometric algorithms in the form of a C++ library.}
+module-whatis {Homepage: http://www.cgal.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/CGAL/4.11.1-foss-2018a-Python-2.7.14
+
+conflict CGAL
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded Boost/1.66.0-foss-2018a ] } {
+    module load Boost/1.66.0-foss-2018a
+}
+
+if { ![ is-loaded MPFR/4.0.1-GCCcore-6.4.0 ] } {
+    module load MPFR/4.0.1-GCCcore-6.4.0
+}
+
+if { ![ is-loaded GMP/6.1.2-GCCcore-6.4.0 ] } {
+    module load GMP/6.1.2-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+if { ![ is-loaded Qt5/5.10.1-foss-2018a ] } {
+    module load Qt5/5.10.1-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTCGAL		"$root"
+setenv	EBVERSIONCGAL		"4.11.1"
+setenv	EBDEVELCGAL		"$root/easybuild/CGAL-4.11.1-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Meson is a cross-platform build system designed to be both as fast and as user friendly as possible.
+
+
+More information
+================
+ - Homepage: https://mesonbuild.com
+    }
+}
+
+module-whatis {Description: Meson is a cross-platform build system designed to be both as fast and as user friendly as possible.}
+module-whatis {Homepage: https://mesonbuild.com}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/Meson/0.46.1-foss-2018a-Python-3.6.4
+
+conflict Meson
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Ninja/1.8.2-foss-2018a ] } {
+    module load Ninja/1.8.2-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMESON		"$root"
+setenv	EBVERSIONMESON		"0.46.1"
+setenv	EBDEVELMESON		"$root/easybuild/Meson-0.46.1-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2
