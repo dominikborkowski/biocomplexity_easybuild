@@ -26,6 +26,18 @@ set root /apps/easybuild/software/discovery-sandy_bridge/CUDA/9.1.85
 
 conflict CUDA
 
+if { ![ is-loaded cuda91/toolkit/9.1.85 ] } {
+    module load cuda91/toolkit/9.1.85
+}
+
+if { ![ is-loaded cuda91/blas/9.1.85 ] } {
+    module load cuda91/blas/9.1.85
+}
+
+if { ![ is-loaded cuda91/fft/9.1.85 ] } {
+    module load cuda91/fft/9.1.85
+}
+
 prepend-path	CPATH		$root/include
 prepend-path	CPATH		$root/extras/CUPTI/include
 prepend-path	CUDA_HOME		$root
