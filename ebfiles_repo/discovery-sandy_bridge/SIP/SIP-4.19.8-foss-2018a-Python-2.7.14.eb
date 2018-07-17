@@ -1,0 +1,58 @@
+# Built with EasyBuild version 3.6.2 on 2018-07-16_22-13-59
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+# Author: Bart Verleye
+# Center for eResearch, Auckland
+easyblock = 'ConfigureMakePythonPackage'
+
+name = 'SIP'
+version = '4.19.8'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.riverbankcomputing.com/software/sip/'
+description = """SIP is a tool that makes it very easy to create Python bindings for C and C++ libraries."""
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+
+source_urls = ['http://sourceforge.net/projects/pyqt/files/sip/sip-%(version)s']
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['7eaf7a2ea7d4d38a56dd6d2506574464bddf7cf284c960801679942377c297bc']
+
+dependencies = [('Python', '2.7.14')]
+
+configopts = "configure.py --bindir %(installdir)s/bin --incdir %(installdir)s/include "
+configopts += "--destdir %(installdir)s/lib/python%(pyshortver)s/site-packages"
+
+sanity_check_paths = {
+    'files': ['bin/sip', 'include/sip.h'] +
+             ['lib/python%%(pyshortver)s/site-packages/%s' % x
+              for x in ['sip.%s' % SHLIB_EXT, 'sipconfig.py', 'sipdistutils.py']],
+    'dirs': [],
+}
+
+moduleclass = 'lang'
+
+# Build statistics
+buildstats = [{
+    "build_time": 10.91,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.6.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'EMAN2-2.21a-foss-2018a-Python-2.7.14-Boost-1.63.0.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2",
+    "easybuild-framework_version": "3.6.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery2",
+    "install_size": 751748,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/discovery-sandy_bridge/Python/2.7.14-foss-2018a/bin/python",
+    "timestamp": 1531793639,
+    "total_memory": 64403,
+}]

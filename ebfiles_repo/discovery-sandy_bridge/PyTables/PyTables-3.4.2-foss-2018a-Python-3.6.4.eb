@@ -1,0 +1,69 @@
+# Built with EasyBuild version 3.6.2 on 2018-07-16_22-48-41
+easyblock = 'PythonPackage'
+
+name = 'PyTables'
+version = '3.4.2'
+versionsuffix = '-Python-%(pyver)s'
+
+homepage = 'http://www.pytables.org'
+description = """PyTables is a package for managing hierarchical datasets and designed to efficiently and easily cope
+ with extremely large amounts of data. PyTables is built on top of the HDF5 library, using the Python language and the
+ NumPy package. It features an object-oriented interface that, combined with C extensions for the performance-critical
+ parts of the code (generated using Cython), makes it a fast, yet extremely easy to use tool for interactively browse,
+ process and search very large amounts of data. One important feature of PyTables is that it optimizes memory and disk
+ resources so that data takes much less space (specially if on-flight compression is used) than other solutions such as
+ relational or object oriented databases."""
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+toolchainopts = {'usempi': True}
+
+source_urls = ['https://github.com/PyTables/PyTables/archive/']
+sources = ['v%(version)s.tar.gz']
+patches = ['pyTables-3.4.2-fix-libs.patch']
+checksums = [
+    '629a0227bb2b315c5d97629073696609eaee41d0fc89e03f997412613cd46d3a',  # v3.4.2.tar.gz
+    'f34a05573e7843e67dab011bede8436074362041747c028b409fac9f599231a3',  # pyTables-3.4.2-fix-libs.patch
+]
+
+dependencies = [
+    ('Python', '3.6.4'),
+    ('numexpr', '2.6.4', versionsuffix),
+    ('HDF5', '1.10.1'),
+    ('LZO', '2.10'),
+    ('Blosc', '1.14.2'),
+]
+
+sanity_check_paths = {
+    'files': ['bin/%s' % x for x in ['pt2to3', 'ptdump', 'ptrepack']],
+    'dirs': ['lib/python%(pyshortver)s/site-packages'],
+}
+
+options = {'modulename': 'tables'}
+
+moduleclass = 'data'
+
+# Build statistics
+buildstats = [{
+    "build_time": 54.44,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.6.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'HiCExplorer-2.1.1-foss-2018a-Python-3.6.4.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2",
+    "easybuild-framework_version": "3.6.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery2",
+    "install_size": 13318952,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/discovery-sandy_bridge/Python/3.6.4-foss-2018a/bin/python",
+    "timestamp": 1531795721,
+    "total_memory": 64403,
+}]

@@ -1,0 +1,65 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A complete, cross-platform solution to record, convert and stream audio and video.
+
+
+More information
+================
+ - Homepage: https://www.ffmpeg.org/
+    }
+}
+
+module-whatis {Description: A complete, cross-platform solution to record, convert and stream audio and video.}
+module-whatis {Homepage: https://www.ffmpeg.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/FFmpeg/3.4.2-foss-2018a
+
+conflict FFmpeg
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded NASM/2.13.03-GCCcore-6.4.0 ] } {
+    module load NASM/2.13.03-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded bzip2/1.0.6-GCCcore-6.4.0 ] } {
+    module load bzip2/1.0.6-GCCcore-6.4.0
+}
+
+if { ![ is-loaded x264/20180128-GCCcore-6.4.0 ] } {
+    module load x264/20180128-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LAME/3.100-GCCcore-6.4.0 ] } {
+    module load LAME/3.100-GCCcore-6.4.0
+}
+
+if { ![ is-loaded x265/2.6-GCCcore-6.4.0 ] } {
+    module load x265/2.6-GCCcore-6.4.0
+}
+
+if { ![ is-loaded X11/20180131-GCCcore-6.4.0 ] } {
+    module load X11/20180131-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTFFMPEG		"$root"
+setenv	EBVERSIONFFMPEG		"3.4.2"
+setenv	EBDEVELFFMPEG		"$root/easybuild/FFmpeg-3.4.2-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

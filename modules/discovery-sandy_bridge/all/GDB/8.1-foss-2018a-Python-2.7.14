@@ -1,0 +1,56 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The GNU Project Debugger
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/gdb/gdb.html
+    }
+}
+
+module-whatis {Description: The GNU Project Debugger}
+module-whatis {Homepage: http://www.gnu.org/software/gdb/gdb.html}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/GDB/8.1-foss-2018a-Python-2.7.14
+
+conflict GDB
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libreadline/7.0-GCCcore-6.4.0 ] } {
+    module load libreadline/7.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded ncurses/6.0-GCCcore-6.4.0 ] } {
+    module load ncurses/6.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded expat/2.2.5-GCCcore-6.4.0 ] } {
+    module load expat/2.2.5-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTGDB		"$root"
+setenv	EBVERSIONGDB		"8.1"
+setenv	EBDEVELGDB		"$root/easybuild/GDB-8.1-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+An open-source software library for Machine Intelligence
+
+
+More information
+================
+ - Homepage: https://www.tensorflow.org/
+    }
+}
+
+module-whatis {Description: An open-source software library for Machine Intelligence}
+module-whatis {Homepage: https://www.tensorflow.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/TensorFlow/1.6.0-foss-2018a-Python-3.6.4
+
+conflict TensorFlow
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTTENSORFLOW		"$root"
+setenv	EBVERSIONTENSORFLOW		"1.6.0"
+setenv	EBDEVELTENSORFLOW		"$root/easybuild/TensorFlow-1.6.0-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2
