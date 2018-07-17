@@ -1,0 +1,47 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Boost provides free peer-reviewed portable C++ source libraries.
+
+
+More information
+================
+ - Homepage: http://www.boost.org/
+    }
+}
+
+module-whatis {Description: Boost provides free peer-reviewed portable C++ source libraries.}
+module-whatis {Homepage: http://www.boost.org/}
+
+set root /apps/easybuild/software/orion-broadwell/Boost/1.63.0-foss-2018a-Python-2.7.14
+
+conflict Boost
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded bzip2/1.0.6-GCCcore-6.4.0 ] } {
+    module load bzip2/1.0.6-GCCcore-6.4.0
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-6.4.0 ] } {
+    module load zlib/1.2.11-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+setenv	EBROOTBOOST		"$root"
+setenv	EBVERSIONBOOST		"1.63.0"
+setenv	EBDEVELBOOST		"$root/easybuild/Boost-1.63.0-foss-2018a-Python-2.7.14-easybuild-devel"
+
+setenv	BOOST_ROOT		"/apps/easybuild/software/orion-broadwell/Boost/1.63.0-foss-2018a-Python-2.7.14"
+# Built with EasyBuild version 3.6.2

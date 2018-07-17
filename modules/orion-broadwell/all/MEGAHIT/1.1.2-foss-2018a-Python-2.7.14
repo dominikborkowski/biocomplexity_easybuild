@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+An ultra-fast single-node solution for large and complex
+ metagenomics assembly via succinct de Bruijn graph
+
+
+More information
+================
+ - Homepage: https://github.com/voutcn/megahit
+    }
+}
+
+module-whatis {Description: An ultra-fast single-node solution for large and complex
+ metagenomics assembly via succinct de Bruijn graph}
+module-whatis {Homepage: https://github.com/voutcn/megahit}
+
+set root /apps/easybuild/software/orion-broadwell/MEGAHIT/1.1.2-foss-2018a-Python-2.7.14
+
+conflict MEGAHIT
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMEGAHIT		"$root"
+setenv	EBVERSIONMEGAHIT		"1.1.2"
+setenv	EBDEVELMEGAHIT		"$root/easybuild/MEGAHIT-1.1.2-foss-2018a-Python-2.7.14-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

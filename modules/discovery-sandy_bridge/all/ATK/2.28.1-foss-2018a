@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ATK provides the set of accessibility interfaces that are implemented by other
+ toolkits and applications. Using the ATK interfaces, accessibility tools have
+ full access to view and control running applications.
+
+
+More information
+================
+ - Homepage: https://developer.gnome.org/ATK/stable/
+    }
+}
+
+module-whatis {Description: 
+ ATK provides the set of accessibility interfaces that are implemented by other
+ toolkits and applications. Using the ATK interfaces, accessibility tools have
+ full access to view and control running applications.
+}
+module-whatis {Homepage: https://developer.gnome.org/ATK/stable/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/ATK/2.28.1-foss-2018a
+
+conflict ATK
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded GLib/2.54.3-GCCcore-6.4.0 ] } {
+    module load GLib/2.54.3-GCCcore-6.4.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTATK		"$root"
+setenv	EBVERSIONATK		"2.28.1"
+setenv	EBDEVELATK		"$root/easybuild/ATK-2.28.1-foss-2018a-easybuild-devel"
+
+prepend-path	XDG_DATA_DIRS		$root/share
+# Built with EasyBuild version 3.6.2

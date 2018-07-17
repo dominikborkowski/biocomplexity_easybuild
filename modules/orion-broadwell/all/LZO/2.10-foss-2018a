@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Portable lossless data compression library
+
+
+More information
+================
+ - Homepage: http://www.oberhumer.com/opensource/lzo/
+    }
+}
+
+module-whatis {Description: Portable lossless data compression library}
+module-whatis {Homepage: http://www.oberhumer.com/opensource/lzo/}
+
+set root /apps/easybuild/software/orion-broadwell/LZO/2.10-foss-2018a
+
+conflict LZO
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLZO		"$root"
+setenv	EBVERSIONLZO		"2.10"
+setenv	EBDEVELLZO		"$root/easybuild/LZO-2.10-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

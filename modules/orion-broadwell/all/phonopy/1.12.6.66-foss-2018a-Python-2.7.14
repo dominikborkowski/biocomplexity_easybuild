@@ -1,0 +1,53 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Phonopy is an open source package of phonon calculations based on the supercell approach.
+
+
+More information
+================
+ - Homepage: http://atztogo.github.io/phonopy/
+    }
+}
+
+module-whatis {Description: Phonopy is an open source package of phonon calculations based on the supercell approach.}
+module-whatis {Homepage: http://atztogo.github.io/phonopy/}
+
+set root /apps/easybuild/software/orion-broadwell/phonopy/1.12.6.66-foss-2018a-Python-2.7.14
+
+conflict phonopy
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded matplotlib/2.1.2-foss-2018a-Python-2.7.14 ] } {
+    module load matplotlib/2.1.2-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded lxml/4.2.0-foss-2018a-Python-2.7.14 ] } {
+    module load lxml/4.2.0-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded PyYAML/3.12-foss-2018a-Python-2.7.14 ] } {
+    module load PyYAML/3.12-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded h5py/2.7.1-foss-2018a-Python-2.7.14 ] } {
+    module load h5py/2.7.1-foss-2018a-Python-2.7.14
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPHONOPY		"$root"
+setenv	EBVERSIONPHONOPY		"1.12.6.66"
+setenv	EBDEVELPHONOPY		"$root/easybuild/phonopy-1.12.6.66-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2

@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Multi-lingual medical image registration library.
+
+
+More information
+================
+ - Homepage: http://simpleelastix.github.io/
+    }
+}
+
+module-whatis {Description:  Multi-lingual medical image registration library. }
+module-whatis {Homepage: http://simpleelastix.github.io/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/SimpleElastix/0.10.0-foss-2018a-Python-3.6.4
+
+conflict SimpleElastix
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTSIMPLEELASTIX		"$root"
+setenv	EBVERSIONSIMPLEELASTIX		"0.10.0"
+setenv	EBDEVELSIMPLEELASTIX		"$root/easybuild/SimpleElastix-0.10.0-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

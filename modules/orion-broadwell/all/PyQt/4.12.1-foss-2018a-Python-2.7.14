@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PyQt is a set of Python v2 and v3 bindings for Digia's Qt application framework.
+
+
+More information
+================
+ - Homepage: http://www.riverbankcomputing.co.uk/software/pyqt
+    }
+}
+
+module-whatis {Description: PyQt is a set of Python v2 and v3 bindings for Digia's Qt application framework.}
+module-whatis {Homepage: http://www.riverbankcomputing.co.uk/software/pyqt}
+
+set root /apps/easybuild/software/orion-broadwell/PyQt/4.12.1-foss-2018a-Python-2.7.14
+
+conflict PyQt
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded SIP/4.19.8-foss-2018a-Python-2.7.14 ] } {
+    module load SIP/4.19.8-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded Qt/4.8.7-foss-2018a ] } {
+    module load Qt/4.8.7-foss-2018a
+}
+
+setenv	EBROOTPYQT		"$root"
+setenv	EBVERSIONPYQT		"4.12.1"
+setenv	EBDEVELPYQT		"$root/easybuild/PyQt-4.12.1-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2

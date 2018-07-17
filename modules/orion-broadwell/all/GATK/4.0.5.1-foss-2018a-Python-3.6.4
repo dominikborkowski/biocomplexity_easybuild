@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The Genome Analysis Toolkit or GATK is a software package developed at the Broad Institute
+ to analyse next-generation resequencing data. The toolkit offers a wide variety of tools,
+ with a primary focus on variant discovery and genotyping as well as strong emphasis on
+ data quality assurance. Its robust architecture, powerful processing engine and
+ high-performance computing features make it capable of taking on projects of any size.
+
+
+More information
+================
+ - Homepage: http://www.broadinstitute.org/gatk/
+    }
+}
+
+module-whatis {Description: The Genome Analysis Toolkit or GATK is a software package developed at the Broad Institute
+ to analyse next-generation resequencing data. The toolkit offers a wide variety of tools,
+ with a primary focus on variant discovery and genotyping as well as strong emphasis on
+ data quality assurance. Its robust architecture, powerful processing engine and
+ high-performance computing features make it capable of taking on projects of any size.}
+module-whatis {Homepage: http://www.broadinstitute.org/gatk/}
+
+set root /apps/easybuild/software/orion-broadwell/GATK/4.0.5.1-foss-2018a-Python-3.6.4
+
+conflict GATK
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded Java/1.8.0_162 ] } {
+    module load Java/1.8.0_162
+}
+
+prepend-path	CLASSPATH		$root/gatk-package-4.0.5.1-local.jar
+prepend-path	CLASSPATH		$root/gatk-package-4.0.5.1-spark.jar
+setenv	EBROOTGATK		"$root"
+setenv	EBVERSIONGATK		"4.0.5.1"
+setenv	EBDEVELGATK		"$root/easybuild/GATK-4.0.5.1-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PATH		$root
+# Built with EasyBuild version 3.6.2

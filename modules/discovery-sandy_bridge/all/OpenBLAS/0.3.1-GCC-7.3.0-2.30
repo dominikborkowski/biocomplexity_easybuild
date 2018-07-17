@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+
+
+More information
+================
+ - Homepage: http://xianyi.github.com/OpenBLAS/
+    }
+}
+
+module-whatis {Description: OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.}
+module-whatis {Homepage: http://xianyi.github.com/OpenBLAS/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/OpenBLAS/0.3.1-GCC-7.3.0-2.30
+
+conflict OpenBLAS
+
+if { ![ is-loaded GCC/7.3.0-2.30 ] } {
+    module load GCC/7.3.0-2.30
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTOPENBLAS		"$root"
+setenv	EBVERSIONOPENBLAS		"0.3.1"
+setenv	EBDEVELOPENBLAS		"$root/easybuild/OpenBLAS-0.3.1-GCC-7.3.0-2.30-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2

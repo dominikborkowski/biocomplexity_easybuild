@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The numexpr package evaluates multiple-operator array expressions many times faster than NumPy can.
+ It accepts the expression as a string, analyzes it, rewrites it more efficiently, and compiles it on the fly into
+ code for its internal virtual machine (VM). Due to its integrated just-in-time (JIT) compiler, it does not require a
+ compiler at runtime.
+
+
+More information
+================
+ - Homepage: http://code.google.com/p/numexpr/
+    }
+}
+
+module-whatis {Description: The numexpr package evaluates multiple-operator array expressions many times faster than NumPy can.
+ It accepts the expression as a string, analyzes it, rewrites it more efficiently, and compiles it on the fly into
+ code for its internal virtual machine (VM). Due to its integrated just-in-time (JIT) compiler, it does not require a
+ compiler at runtime.}
+module-whatis {Homepage: http://code.google.com/p/numexpr/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/numexpr/2.6.4-foss-2018a-Python-3.6.4
+
+conflict numexpr
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTNUMEXPR		"$root"
+setenv	EBVERSIONNUMEXPR		"2.6.4"
+setenv	EBDEVELNUMEXPR		"$root/easybuild/numexpr-2.6.4-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.6.2

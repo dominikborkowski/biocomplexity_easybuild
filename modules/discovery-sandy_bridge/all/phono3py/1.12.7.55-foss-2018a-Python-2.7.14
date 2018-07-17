@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+phono3py calculates phonon-phonon interaction and related properties using the supercell approach.
+
+
+More information
+================
+ - Homepage: http://atztogo.github.io/phono3py/
+    }
+}
+
+module-whatis {Description: phono3py calculates phonon-phonon interaction and related properties using the supercell approach.}
+module-whatis {Homepage: http://atztogo.github.io/phono3py/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/phono3py/1.12.7.55-foss-2018a-Python-2.7.14
+
+conflict phono3py
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded phonopy/1.12.6.66-foss-2018a-Python-2.7.14 ] } {
+    module load phonopy/1.12.6.66-foss-2018a-Python-2.7.14
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTPHONO3PY		"$root"
+setenv	EBVERSIONPHONO3PY		"1.12.7.55"
+setenv	EBDEVELPHONO3PY		"$root/easybuild/phono3py-1.12.7.55-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2
