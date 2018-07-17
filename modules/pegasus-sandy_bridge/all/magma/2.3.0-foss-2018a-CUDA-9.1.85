@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The MAGMA project aims to develop a dense linear algebra library similar to
+ LAPACK but for heterogeneous/hybrid architectures, starting with current Multicore+GPU systems.
+
+
+More information
+================
+ - Homepage: http://icl.cs.utk.edu/magma/
+    }
+}
+
+module-whatis {Description: The MAGMA project aims to develop a dense linear algebra library similar to
+ LAPACK but for heterogeneous/hybrid architectures, starting with current Multicore+GPU systems.}
+module-whatis {Homepage: http://icl.cs.utk.edu/magma/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/magma/2.3.0-foss-2018a-CUDA-9.1.85
+
+conflict magma
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded CUDA/9.1.85 ] } {
+    module load CUDA/9.1.85
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTMAGMA		"$root"
+setenv	EBVERSIONMAGMA		"2.3.0"
+setenv	EBDEVELMAGMA		"$root/easybuild/magma-2.3.0-foss-2018a-CUDA-9.1.85-easybuild-devel"
+
+# Built with EasyBuild version 3.6.1

@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way.
+
+
+More information
+================
+ - Homepage: https://easybuilders.github.io/easybuild
+    }
+}
+
+module-whatis {Description: EasyBuild is a software build and installation framework
+ written in Python that allows you to install software in a structured,
+ repeatable and robust way.}
+module-whatis {Homepage: https://easybuilders.github.io/easybuild}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.6.2
+
+conflict EasyBuild
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTEASYBUILD		"$root"
+setenv	EBVERSIONEASYBUILD		"3.6.2"
+setenv	EBDEVELEASYBUILD		"$root/easybuild/EasyBuild-3.6.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.1

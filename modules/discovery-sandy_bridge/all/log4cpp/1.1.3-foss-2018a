@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Log4cpp is library of C++ classes for flexible logging to files, syslog, IDSA and other destinations. 
+ It is modeled after the Log4j Java library, staying as close to their API as is reasonable..
+
+
+More information
+================
+ - Homepage: http://log4cpp.sourceforge.net/
+    }
+}
+
+module-whatis {Description: 
+ Log4cpp is library of C++ classes for flexible logging to files, syslog, IDSA and other destinations. 
+ It is modeled after the Log4j Java library, staying as close to their API as is reasonable..}
+module-whatis {Homepage: http://log4cpp.sourceforge.net/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/log4cpp/1.1.3-foss-2018a
+
+conflict log4cpp
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLOG4CPP		"$root"
+setenv	EBVERSIONLOG4CPP		"1.1.3"
+setenv	EBDEVELLOG4CPP		"$root/easybuild/log4cpp-1.1.3-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
