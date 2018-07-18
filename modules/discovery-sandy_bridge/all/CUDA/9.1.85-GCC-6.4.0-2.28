@@ -22,9 +22,13 @@ module-whatis {Description: CUDA (formerly Compute Unified Device Architecture) 
  to the virtual instruction set and memory of the parallel computational elements in CUDA GPUs.}
 module-whatis {Homepage: https://developer.nvidia.com/cuda-toolkit}
 
-set root /apps/easybuild/software/discovery-sandy_bridge/CUDA/9.1.85
+set root /apps/easybuild/software/discovery-sandy_bridge/CUDA/9.1.85-GCC-6.4.0-2.28
 
 conflict CUDA
+
+if { ![ is-loaded GCC/6.4.0-2.28 ] } {
+    module load GCC/6.4.0-2.28
+}
 
 if { ![ is-loaded cuda91/toolkit/9.1.85 ] } {
     module load cuda91/toolkit/9.1.85
@@ -40,7 +44,7 @@ if { ![ is-loaded cuda91/fft/9.1.85 ] } {
 
 prepend-path	CPATH		$root/include
 prepend-path	CPATH		$root/extras/CUPTI/include
-#prepend-path	CUDA_HOME		$root
+prepend-path	CUDA_HOME		$root
 prepend-path	CUDA_PATH		$root
 prepend-path	CUDA_ROOT		$root
 prepend-path	LD_LIBRARY_PATH		$root/lib64
@@ -49,7 +53,7 @@ prepend-path	LIBRARY_PATH		$root/lib64
 prepend-path	PATH		$root/bin
 setenv	EBROOTCUDA		"$root"
 setenv	EBVERSIONCUDA		"9.1.85"
-setenv	EBDEVELCUDA		"$root/easybuild/CUDA-9.1.85-easybuild-devel"
+setenv	EBDEVELCUDA		"$root/easybuild/CUDA-9.1.85-GCC-6.4.0-2.28-easybuild-devel"
 
 prepend-path	PATH		$root
 # Built with EasyBuild version 3.6.2
