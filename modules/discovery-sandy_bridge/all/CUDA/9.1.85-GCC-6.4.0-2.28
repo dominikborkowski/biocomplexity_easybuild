@@ -55,5 +55,6 @@ setenv	EBROOTCUDA		"$root"
 setenv	EBVERSIONCUDA		"9.1.85"
 setenv	EBDEVELCUDA		"$root/easybuild/CUDA-9.1.85-GCC-6.4.0-2.28-easybuild-devel"
 
+prepend-path	LIBRARY_PATH		$root/lib64/stubs
 prepend-path	PATH		$root
 # Built with EasyBuild version 3.6.2

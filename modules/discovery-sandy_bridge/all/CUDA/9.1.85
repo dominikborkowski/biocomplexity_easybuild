@@ -40,7 +40,7 @@ if { ![ is-loaded cuda91/fft/9.1.85 ] } {
 
 prepend-path	CPATH		$root/include
 prepend-path	CPATH		$root/extras/CUPTI/include
-#prepend-path	CUDA_HOME		$root
+prepend-path	CUDA_HOME		$root
 prepend-path	CUDA_PATH		$root
 prepend-path	CUDA_ROOT		$root
 prepend-path	LD_LIBRARY_PATH		$root/lib64
@@ -51,5 +51,6 @@ setenv	EBROOTCUDA		"$root"
 setenv	EBVERSIONCUDA		"9.1.85"
 setenv	EBDEVELCUDA		"$root/easybuild/CUDA-9.1.85-easybuild-devel"
 
+prepend-path	LIBRARY_PATH		$root/lib64/stubs
 prepend-path	PATH		$root
 # Built with EasyBuild version 3.6.2
