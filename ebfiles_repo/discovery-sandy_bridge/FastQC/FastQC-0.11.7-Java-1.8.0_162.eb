@@ -1,0 +1,62 @@
+# Built with EasyBuild version 3.6.2 on 2018-07-18_15-59-10
+easyblock = 'PackedBinary'
+
+name = 'FastQC'
+version = '0.11.7'
+versionsuffix = '-Java-%(javaver)s'
+
+homepage = 'http://www.bioinformatics.babraham.ac.uk/projects/fastqc/'
+description = """FastQC is a quality control application for high throughput sequence data.
+ It reads in sequence data in a variety of formats and can either provide an interactive
+ application to review the results of several different QC checks, or create an HTML based
+ report which can be integrated into a pipeline."""
+
+toolchain = {'name': 'dummy', 'version': ''}
+
+source_urls = ['http://www.bioinformatics.babraham.ac.uk/projects/%(namelower)s']
+sources = ['%(namelower)s_v%(version)s.zip']
+patches = ['FastQC_shebang.patch']
+checksums = [
+    '59cf50876bbe5f363442eb989e43ae3eaab8d932c49e8cff2c1a1898dd721112',  # fastqc_v0.11.7.zip
+    '684701634440864750c9a0b99d81e122a1def78672d436daf5497bff61d9a356',  # FastQC_shebang.patch
+]
+
+dependencies = [('Java', '1.8.0_162')]
+
+postinstallcmds = ["chmod +x %(installdir)s/fastqc"]
+
+sanity_check_paths = {
+    'files': ['fastqc', 'fastqc_icon.ico', 'INSTALL.txt', 'jbzip2-0.9.jar', 'LICENSE.txt', 'LICENSE_JHDF5.txt',
+              'README.txt', 'RELEASE_NOTES.txt', 'run_fastqc.bat', 'sam-1.103.jar', 'cisd-jhdf5.jar'],
+    'dirs': ['Configuration', 'Help', 'Templates', 'uk', 'net', 'org'],
+}
+
+sanity_check_commands = [('fastqc', '-v')]
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 9.69,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.6.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.6.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'FastQC-0.11.7-Java-1.8.0_162.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2",
+    "easybuild-framework_version": "3.6.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cm/local/apps/gcc/6.1.0/libexec/gcc/x86_64-pc-linux-gnu/6.1.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../gcc-6.1.0/configure --prefix=/cm/local/apps/gcc/6.1.0 --enable-languages=c,c++,fortran --with-gmp-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-gmp --with-gmp-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-gmp/.libs --with-mpc-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpc/src --with-mpc-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpc/src/.libs --with-mpfr-include=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpfr/src --with-mpfr-lib=/root/rpmbuild/BUILD/gcc-6.1.0-obj/../gcc-6.1.0/our-mpfr/src/.libs; Thread model: posix; gcc version 6.1.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery2",
+    "install_size": 11373411,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/cm/local/apps/gcc/6.1.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1531943950,
+    "total_memory": 64403,
+}]
