@@ -1,0 +1,41 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright (c) 2018 Biocomplexity Institute of Virginia Tech
+# Authors::   Dominik L. Borkowski
+# License::   MIT/GPL
+# $Id$
+#
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'the_silver_searcher'
+version = '2.1.0'
+
+homepage = 'https://github.com/ggreer/the_silver_searcher'
+description = "A code searching tool similar to ack, with a focus on speed."
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+
+
+sources = ['%(name)s-%(version)s.tar.gz']
+source_urls = ['http://geoff.greer.fm/ag/releases/']
+
+dependencies = [('PCRE','8.41'),
+		('XZ','5.2.3')]
+
+# make sure we have necessary files as a result of compilation
+sanity_check_paths = {
+    'files': ["bin/ag"],
+    'dirs': [],
+}
+
+# make sure the resulting binary is working
+# First 'True' refers to the equivalent of: '%(name)s -h'
+#sanity_check_commands = [True, ('ag', '--version')]
+
+# make sure the resulting binary is working
+sanity_check_commands = [('ag', '--version')]
+
+moduleclass = 'tools'
