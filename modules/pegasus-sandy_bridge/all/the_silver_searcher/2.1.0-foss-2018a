@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A code searching tool similar to ack, with a focus on speed.
+
+
+More information
+================
+ - Homepage: https://github.com/ggreer/the_silver_searcher
+    }
+}
+
+module-whatis {Description: A code searching tool similar to ack, with a focus on speed.}
+module-whatis {Homepage: https://github.com/ggreer/the_silver_searcher}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/the_silver_searcher/2.1.0-foss-2018a
+
+conflict the_silver_searcher
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded PCRE/8.41-GCCcore-6.4.0 ] } {
+    module load PCRE/8.41-GCCcore-6.4.0
+}
+
+if { ![ is-loaded XZ/5.2.3-GCCcore-6.4.0 ] } {
+    module load XZ/5.2.3-GCCcore-6.4.0
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTTHE_SILVER_SEARCHER		"$root"
+setenv	EBVERSIONTHE_SILVER_SEARCHER		"2.1.0"
+setenv	EBDEVELTHE_SILVER_SEARCHER		"$root/easybuild/the_silver_searcher-2.1.0-foss-2018a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
