@@ -1,0 +1,31 @@
+easyblock = 'PerlModule'
+
+name = 'Graph'
+version = '0.9704'
+versionsuffix = '-Perl-%(perlver)s'
+
+homepage = 'http://search.cpan.org/~toddr/XML-Parser-2.41/'
+description = """This is a Perl extension interface to James Clark's XML parser, expat."""
+
+toolchain = {'name': 'GCCcore', 'version': '6.4.0'}
+
+source_urls = ['https://cpan.metacpan.org/authors/id/J/JH/JHI/']
+sources = [SOURCE_TAR_GZ]
+checksums = ['325e8eb07be2d09a909e450c13d3a42dcb2a2e96cc3ac780fe4572a0d80b2a25']
+
+builddependencies = [
+    ('binutils', '2.28')
+]
+
+dependencies = [
+    ('Perl', '5.26.1'),
+]
+
+options = {'modulename': 'Graph'}
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['lib/perl5/site_perl/%(perlver)s/Graph'],
+}
+
+moduleclass = 'data'
