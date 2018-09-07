@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A wrapper tool around Cutadapt and FastQC to consistently apply 
+ quality and adapter trimming to FastQ files, with some extra functionality for 
+ MspI-digested RRBS-type (Reduced Representation Bisufite-Seq) libraries.
+
+
+More information
+================
+ - Homepage: http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/
+    }
+}
+
+module-whatis {Description: A wrapper tool around Cutadapt and FastQC to consistently apply 
+ quality and adapter trimming to FastQ files, with some extra functionality for 
+ MspI-digested RRBS-type (Reduced Representation Bisufite-Seq) libraries.}
+module-whatis {Homepage: http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Trim_Galore/0.5.0-foss-2018a
+
+conflict Trim_Galore
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded FastQC/0.11.7-Java-1.8.0_162 ] } {
+    module load FastQC/0.11.7-Java-1.8.0_162
+}
+
+if { ![ is-loaded cutadapt/1.17-foss-2018a-Python-3.6.4 ] } {
+    module load cutadapt/1.17-foss-2018a-Python-3.6.4
+}
+
+setenv	EBROOTTRIM_GALORE		"$root"
+setenv	EBVERSIONTRIM_GALORE		"0.5.0"
+setenv	EBDEVELTRIM_GALORE		"$root/easybuild/Trim_Galore-0.5.0-foss-2018a-easybuild-devel"
+
+prepend-path	PATH		$root
+prepend-path	MANPATH		$root
+# Built with EasyBuild version 3.6.2
