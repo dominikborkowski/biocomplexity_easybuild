@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Model Based Analysis for ChIP-Seq data
+
+
+More information
+================
+ - Homepage: https://github.com/taoliu/MACS/
+    }
+}
+
+module-whatis {Description: Model Based Analysis for ChIP-Seq data}
+module-whatis {Homepage: https://github.com/taoliu/MACS/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/MACS2/2.1.1.20160309-foss-2018a-Python-2.7.14
+
+conflict MACS2
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMACS2		"$root"
+setenv	EBVERSIONMACS2		"2.1.1.20160309"
+setenv	EBDEVELMACS2		"$root/easybuild/MACS2-2.1.1.20160309-foss-2018a-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.6.2
