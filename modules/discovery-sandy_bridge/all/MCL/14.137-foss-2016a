@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The MCL algorithm is short for the Markov Cluster Algorithm, a fast
+and scalable unsupervised cluster algorithm for graphs (also known as networks) based
+on simulation of (stochastic) flow in graphs.
+
+
+More information
+================
+ - Homepage: http://micans.org/mcl/
+    }
+}
+
+module-whatis {Description: The MCL algorithm is short for the Markov Cluster Algorithm, a fast
+and scalable unsupervised cluster algorithm for graphs (also known as networks) based
+on simulation of (stochastic) flow in graphs. }
+module-whatis {Homepage: http://micans.org/mcl/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/MCL/14.137-foss-2016a
+
+conflict MCL
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTMCL		"$root"
+setenv	EBVERSIONMCL		"14.137"
+setenv	EBDEVELMCL		"$root/easybuild/MCL-14.137-foss-2016a-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
