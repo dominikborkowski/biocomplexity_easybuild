@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The MCL algorithm is short for the Markov Cluster Algorithm, a fast
+and scalable unsupervised cluster algorithm for graphs (also known as networks) based
+on simulation of (stochastic) flow in graphs.
+
+
+More information
+================
+ - Homepage: http://micans.org/mcl/
+    }
+}
+
+module-whatis {Description: The MCL algorithm is short for the Markov Cluster Algorithm, a fast
+and scalable unsupervised cluster algorithm for graphs (also known as networks) based
+on simulation of (stochastic) flow in graphs. }
+module-whatis {Homepage: http://micans.org/mcl/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/MCL/14.137-GCCcore-6.4.0-Perl-5.26.1
+
+conflict MCL
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded Perl/5.26.1-GCCcore-6.4.0 ] } {
+    module load Perl/5.26.1-GCCcore-6.4.0
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTMCL		"$root"
+setenv	EBVERSIONMCL		"14.137"
+setenv	EBDEVELMCL		"$root/easybuild/MCL-14.137-GCCcore-6.4.0-Perl-5.26.1-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
