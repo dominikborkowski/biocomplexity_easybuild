@@ -1,0 +1,36 @@
+# Author: Dominik Borkowski
+##
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+easyblock = 'MakeCp'
+
+name = 'louvain'
+version = '20150706'
+
+homepage = 'https://sourceforge.net/projects/louvain/'
+
+description = """
+ Louvain method for community detection in large graphs
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '6.4.0'}
+toolchainopts = {'pic': True}
+
+source_urls = [SOURCEFORGE_SOURCE]
+sources = ['louvain-generic.tar.gz']
+checksums = ['e9a627006f2ce46da619f33c04ff79a1b80ce9ace31132b8db9a2fdcffe695a4']
+
+builddependencies = [
+    ('binutils', '2.28'),
+]
+
+# buildopts = 'lib'
+
+files_to_copy = [(['convert', 'hierarchy', 'louvain', 'matrix'], 'bin'),
+                (['README.txt', 'lgpl-3.0.txt', 'gpl.txt', 'matrix'], 'doc')]
+
+sanity_check_paths = {
+    'files': ['bin/convert', 'bin/hierarchy', 'bin/louvain', 'bin/matrix'],
+    'dirs': ['bin','doc'],
+}
+
+moduleclass = 'numlib'
