@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+An open-source software library for Machine Intelligence
+
+
+More information
+================
+ - Homepage: https://www.tensorflow.org/
+
+
+Included extensions
+===================
+absl-py-0.6.1, astor-0.7.1, gast-0.2.0, grpcio-1.16.0, Keras-
+Applications-1.0.6, Keras-Preprocessing-1.0.5, Markdown-3.0.1, protobuf-
+python-3.6.1, tensorboard-1.12.0, TensorFlow-1.12.0, termcolor-1.1.0,
+Werkzeug-0.14.1
+    }
+}
+
+module-whatis {Description: An open-source software library for Machine Intelligence}
+module-whatis {Homepage: https://www.tensorflow.org/}
+module-whatis {Extensions: absl-py-0.6.1, astor-0.7.1, gast-0.2.0, grpcio-1.16.0, Keras-Applications-1.0.6, Keras-Preprocessing-1.0.5, Markdown-3.0.1, protobuf-python-3.6.1, tensorboard-1.12.0, TensorFlow-1.12.0, termcolor-1.1.0, Werkzeug-0.14.1}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/TensorFlow/1.12.0-foss-2018b-Python-3.6.6
+
+conflict TensorFlow
+
+if { ![ is-loaded foss/2018b ] } {
+    module load foss/2018b
+}
+
+if { ![ is-loaded Python/3.6.6-foss-2018b ] } {
+    module load Python/3.6.6-foss-2018b
+}
+
+if { ![ is-loaded wheel/0.31.1-foss-2018b-Python-3.6.6 ] } {
+    module load wheel/0.31.1-foss-2018b-Python-3.6.6
+}
+
+if { ![ is-loaded h5py/2.8.0-foss-2018b-Python-3.6.6 ] } {
+    module load h5py/2.8.0-foss-2018b-Python-3.6.6
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTTENSORFLOW		"$root"
+setenv	EBVERSIONTENSORFLOW		"1.12.0"
+setenv	EBDEVELTENSORFLOW		"$root/easybuild/TensorFlow-1.12.0-foss-2018b-Python-3.6.6-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.8.0
+setenv	EBEXTSLISTTENSORFLOW		"protobuf-python-3.6.1,absl-py-0.6.1,astor-0.7.1,gast-0.2.0,grpcio-1.16.0,Markdown-3.0.1,tensorboard-1.12.0,termcolor-1.1.0,Werkzeug-0.14.1,Keras-Applications-1.0.6,Keras-Preprocessing-1.0.5,TensorFlow-1.12.0"
