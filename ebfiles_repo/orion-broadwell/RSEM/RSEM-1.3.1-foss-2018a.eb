@@ -1,0 +1,62 @@
+# Built with EasyBuild version 3.8.0 on 2019-01-14_15-52-16
+easyblock = 'ConfigureMake'
+
+name = 'RSEM'
+version = '1.3.1'
+
+homepage = 'http://deweylab.github.io/RSEM/'
+description = """RNA-Seq by Expectation-Maximization"""
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+
+source_urls = ['https://github.com/deweylab/RSEM/archive/']
+sources = ['v%(version)s.tar.gz']
+patches = ['RSEM-1.3.0_makefiles.patch']
+checksums = [
+    '93c749a03ac16e94b1aab94d032d4fd5687d3261316ce943ecb89d3ae3ec2e11',  # v1.3.1.tar.gz
+    '2d244659206c78655b92f1bd519ee65f28a6b5f9418dfad04e887b64eca6641b',  # RSEM-1.3.0_makefiles.patch
+]
+
+skipsteps = ['configure']
+installopts = "prefix=%(installdir)s"
+
+dependencies = [
+    ('ncurses', '6.0'),
+    ('zlib', '1.2.11'),
+    ('Perl', '5.26.1'),
+    ('R', '3.4.4', '-X11-20180131'),
+]
+
+sanity_check_paths = {
+    'files': ['bin/rsem-calculate-expression', 'bin/rsem-plot-model', 'bin/rsem-plot-transcript-wiggles',
+              'bin/rsem-bam2wig', 'bin/rsem-generate-data-matrix', 'bin/rsem-run-em', 'bin/convert-sam-for-rsem'],
+    'dirs': ['bin/samtools-1.3'],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 16.29,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", "--filter-deps='libreadline'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/orion-broadwell'", "--installpath-software='/apps/easybuild/software/orion-broadwell'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--parallel='256'", "--repositorypath='/apps/easybuild/ebfiles_repo/orion-broadwell'", "--robot='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/software/orion-broadwell/EasyBuild/3.8.0/lib/python2.7/site-packages/easybuild_easyconfigs-3.8.0-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/orion-broadwell:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/orion-broadwell:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'RSEM-1.3.1-foss-2018a.eb'],
+    "core_count": 432,
+    "cpu_model": "Intel(R) Xeon(R) CPU E7-8867 v4 @ 2.40GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.8.0",
+    "easybuild-framework_version": "3.8.0",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/libexec/gcc/x86_64-pc-linux-gnu/6.4.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --with-local-prefix=/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/6.4.0/dummy-/gcc-6.4.0/stage2_stuff; Thread model: posix; gcc version 6.4.0 (GCC) ; ",
+    "glibc_version": "2.22",
+    "hostname": "orion",
+    "install_size": 6633276,
+    "modules_tool": ('EnvironmentModulesC', '/usr/bin/modulecmd', '3.2.10'),
+    "os_name": "SLES",
+    "os_type": "Linux",
+    "os_version": "12",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Jan 11 2017, 10:56:06) [GCC]",
+    "system_gcc_path": "/apps/easybuild/software/orion-broadwell/GCCcore/6.4.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/orion-broadwell/Python/3.6.4-foss-2018a/bin/python",
+    "timestamp": 1547499136,
+    "total_memory": 8901823,
+}]

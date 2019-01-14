@@ -1,0 +1,40 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Horovod is a distributed training framework for TensorFlow.
+
+
+More information
+================
+ - Homepage: https://github.com/uber/horovod
+    }
+}
+
+module-whatis {Description: Horovod is a distributed training framework for TensorFlow.}
+module-whatis {Homepage: https://github.com/uber/horovod}
+
+set root /apps/easybuild/software/orion-broadwell/Horovod/0.13.10-foss-2018a-Python-3.6.4
+
+conflict Horovod
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded TensorFlow/1.8.0-foss-2018a-Python-3.6.4 ] } {
+    module load TensorFlow/1.8.0-foss-2018a-Python-3.6.4
+}
+
+setenv	EBROOTHOROVOD		"$root"
+setenv	EBVERSIONHOROVOD		"0.13.10"
+setenv	EBDEVELHOROVOD		"$root/easybuild/Horovod-0.13.10-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.8.0

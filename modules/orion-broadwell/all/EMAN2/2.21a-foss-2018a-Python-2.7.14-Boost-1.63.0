@@ -1,0 +1,89 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+EMAN2 is the successor to EMAN1. It is a broadly based greyscale scientific image processing suite
+ with a primary focus on processing data from transmission electron microscopes.
+
+
+More information
+================
+ - Homepage: http://blake.bcm.edu/emanwiki/EMAN2
+    }
+}
+
+module-whatis {Description: EMAN2 is the successor to EMAN1. It is a broadly based greyscale scientific image processing suite
+ with a primary focus on processing data from transmission electron microscopes. }
+module-whatis {Homepage: http://blake.bcm.edu/emanwiki/EMAN2}
+
+set root /apps/easybuild/software/orion-broadwell/EMAN2/2.21a-foss-2018a-Python-2.7.14-Boost-1.63.0
+
+conflict EMAN2
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Boost/1.63.0-foss-2018a-Python-2.7.14 ] } {
+    module load Boost/1.63.0-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded freetype/2.9-GCCcore-6.4.0 ] } {
+    module load freetype/2.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded FTGL/2.1.3-rc5-foss-2018a ] } {
+    module load FTGL/2.1.3-rc5-foss-2018a
+}
+
+if { ![ is-loaded GSL/2.4-GCCcore-6.4.0 ] } {
+    module load GSL/2.4-GCCcore-6.4.0
+}
+
+if { ![ is-loaded HDF5/1.10.1-foss-2018a ] } {
+    module load HDF5/1.10.1-foss-2018a
+}
+
+if { ![ is-loaded IPython/5.7.0-foss-2018a-Python-2.7.14 ] } {
+    module load IPython/5.7.0-foss-2018a-Python-2.7.14
+}
+
+if { ![ is-loaded libGLU/9.0.0-foss-2018a ] } {
+    module load libGLU/9.0.0-foss-2018a
+}
+
+if { ![ is-loaded libjpeg-turbo/1.5.3-GCCcore-6.4.0 ] } {
+    module load libjpeg-turbo/1.5.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.9-GCCcore-6.4.0 ] } {
+    module load LibTIFF/4.0.9-GCCcore-6.4.0
+}
+
+if { ![ is-loaded libpng/1.6.34-GCCcore-6.4.0 ] } {
+    module load libpng/1.6.34-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Mesa/17.3.6-foss-2018a ] } {
+    module load Mesa/17.3.6-foss-2018a
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2018a ] } {
+    module load Python/2.7.14-foss-2018a
+}
+
+if { ![ is-loaded PyQt/4.12.1-foss-2018a-Python-2.7.14 ] } {
+    module load PyQt/4.12.1-foss-2018a-Python-2.7.14
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTEMAN2		"$root"
+setenv	EBVERSIONEMAN2		"2.21a"
+setenv	EBDEVELEMAN2		"$root/easybuild/EMAN2-2.21a-foss-2018a-Python-2.7.14-Boost-1.63.0-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.8.0
