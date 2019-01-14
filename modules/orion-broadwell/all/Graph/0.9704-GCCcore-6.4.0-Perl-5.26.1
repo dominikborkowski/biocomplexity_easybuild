@@ -1,0 +1,41 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+This is a Perl extension interface to James Clark's XML parser, expat.
+
+
+More information
+================
+ - Homepage: http://search.cpan.org/~toddr/XML-Parser-2.41/
+    }
+}
+
+module-whatis {Description: This is a Perl extension interface to James Clark's XML parser, expat.}
+module-whatis {Homepage: http://search.cpan.org/~toddr/XML-Parser-2.41/}
+
+set root /apps/easybuild/software/orion-broadwell/Graph/0.9704-GCCcore-6.4.0-Perl-5.26.1
+
+conflict Graph
+
+if { ![ is-loaded GCCcore/6.4.0 ] } {
+    module load GCCcore/6.4.0
+}
+
+if { ![ is-loaded Perl/5.26.1-GCCcore-6.4.0 ] } {
+    module load Perl/5.26.1-GCCcore-6.4.0
+}
+
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/man
+prepend-path	PERL5LIB		$root
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi
+prepend-path	PERL5LIB		$root/lib/perl5/site_perl/5.26.1
+setenv	EBROOTGRAPH		"$root"
+setenv	EBVERSIONGRAPH		"0.9704"
+setenv	EBDEVELGRAPH		"$root/easybuild/Graph-0.9704-GCCcore-6.4.0-Perl-5.26.1-easybuild-devel"
+
+# Built with EasyBuild version 3.8.0
