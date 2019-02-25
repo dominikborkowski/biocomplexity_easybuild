@@ -1,0 +1,34 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The IOR software is used for benchmarking parallel file systems using POSIX, MPIIO,
+ or HDF5 interfaces.
+
+
+More information
+================
+ - Homepage: https://github.com/chaos/ior
+    }
+}
+
+module-whatis {Description:  The IOR software is used for benchmarking parallel file systems using POSIX, MPIIO,
+ or HDF5 interfaces. }
+module-whatis {Homepage: https://github.com/chaos/ior}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/IOR/3.0.1-foss-2016a-mpiio
+
+conflict IOR
+
+if { ![ is-loaded foss/2016a ] } {
+    module load foss/2016a
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTIOR		"$root"
+setenv	EBVERSIONIOR		"3.0.1"
+setenv	EBDEVELIOR		"$root/easybuild/IOR-3.0.1-foss-2016a-mpiio-easybuild-devel"
+
+# Built with EasyBuild version 3.6.2
