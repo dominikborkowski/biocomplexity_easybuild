@@ -31,7 +31,7 @@ Other links of great interest:
 * set up environment to access software built by EasyBuild:
 
 ```
-module load site/shadowfax/easybuild/setup
+module load site/discovery-sandy_bridge/easybuild/setup
 ```
 
 * list all available modules:
@@ -49,7 +49,7 @@ Besides having access to software maintained by BI under `/apps/easybuild`, user
 To get started, load the setup module and EasyBuild:
 
 ```
-module load site/shadowfax/easybuild/setup
+module load site/discovery-sandy_bridge/easybuild/setup
 module load EasyBuild
 ```
 
@@ -78,7 +78,7 @@ To get started, change your effective group and umask, then load the setup and E
 ```
 newgrp hpcadmin
 umask 002
-module load site/shadowfax/easybuild/hpcadmin
+module load site/discovery-sandy_bridge/easybuild/hpcadmin
 module load EasyBuild
 ```
 
