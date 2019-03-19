@@ -1,0 +1,45 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+PyQt5 is a set of Python bindings for v5 of the Qt application framework from The Qt Company.
+
+
+More information
+================
+ - Homepage: http://www.riverbankcomputing.co.uk/software/pyqt
+    }
+}
+
+module-whatis {Description: PyQt5 is a set of Python bindings for v5 of the Qt application framework from The Qt Company.}
+module-whatis {Homepage: http://www.riverbankcomputing.co.uk/software/pyqt}
+
+set root /apps/easybuild/software/orion-broadwell/PyQt5/5.9.2-foss-2018a-Python-3.6.4
+
+conflict PyQt5
+
+if { ![ is-loaded foss/2018a ] } {
+    module load foss/2018a
+}
+
+if { ![ is-loaded Python/3.6.4-foss-2018a ] } {
+    module load Python/3.6.4-foss-2018a
+}
+
+if { ![ is-loaded SIP/4.19.8-foss-2018a-Python-3.6.4 ] } {
+    module load SIP/4.19.8-foss-2018a-Python-3.6.4
+}
+
+if { ![ is-loaded Qt5/5.10.1-foss-2018a ] } {
+    module load Qt5/5.10.1-foss-2018a
+}
+
+setenv	EBROOTPYQT5		"$root"
+setenv	EBVERSIONPYQT5		"5.9.2"
+setenv	EBDEVELPYQT5		"$root/easybuild/PyQt5-5.9.2-foss-2018a-Python-3.6.4-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+prepend-path	PYTHONPATH		$root/lib/python3.6/site-packages
+# Built with EasyBuild version 3.8.0

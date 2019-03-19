@@ -1,0 +1,4 @@
+#%Module
+if {"Java/1.8" eq [module-info version Java/1.8]} {
+    module-version Java/1.8.0_192 1.8
+}
