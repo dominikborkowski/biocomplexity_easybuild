@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Clustal Omega is a multiple sequence alignment
+ program for proteins. It produces biologically meaningful multiple
+ sequence alignments of divergent sequences. Evolutionary relationships
+ can be seen via viewing Cladograms or Phylograms
+
+
+More information
+================
+ - Homepage: http://www.clustal.org/omega/
+    }
+}
+
+module-whatis {Description:  Clustal Omega is a multiple sequence alignment
+ program for proteins. It produces biologically meaningful multiple
+ sequence alignments of divergent sequences. Evolutionary relationships
+ can be seen via viewing Cladograms or Phylograms }
+module-whatis {Homepage: http://www.clustal.org/omega/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Clustal-Omega/1.2.4-foss-2018b
+
+conflict Clustal-Omega
+
+if { ![ is-loaded foss/2018b ] } {
+    module load foss/2018b
+}
+
+if { ![ is-loaded argtable/2.13-foss-2018b ] } {
+    module load argtable/2.13-foss-2018b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTCLUSTALMINOMEGA		"$root"
+setenv	EBVERSIONCLUSTALMINOMEGA		"1.2.4"
+setenv	EBDEVELCLUSTALMINOMEGA		"$root/easybuild/Clustal-Omega-1.2.4-foss-2018b-easybuild-devel"
+
+# Built with EasyBuild version 3.8.1

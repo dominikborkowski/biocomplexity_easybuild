@@ -1,0 +1,60 @@
+# Built with EasyBuild version 3.8.1 on 2019-03-26_21-53-57
+easyblock = 'ConfigureMake'
+
+name = 'libgeotiff'
+version = '1.4.2'
+
+homepage = 'https://directory.fsf.org/wiki/Libgeotiff'
+description = "Library for reading and writing coordinate system information from/to GeoTIFF files"
+
+toolchain = {'name': 'foss', 'version': '2018b'}
+
+source_urls = [
+    'http://download.osgeo.org/geotiff/libgeotiff/',
+    'ftp://ftp.remotesensing.org/pub/libgeotiff/',
+]
+sources = ['%(name)s-%(version)s.tar.gz']
+checksums = ['ad87048adb91167b07f34974a8e53e4ec356494c29f1748de95252e8f81a5e6e']
+
+dependencies = [
+    ('zlib', '1.2.11'),
+    ('LibTIFF', '4.0.9'),
+    ('PROJ', '5.0.0'),
+    ('libjpeg-turbo', '2.0.0'),
+]
+
+configopts = ' --with-libtiff=$EBROOTLIBTIFF --with-proj=$EBROOTPROJ --with-zlib=$EBROOTZLIB'
+configopts += ' --with-jpeg=$EBROOTLIBJPEGMINTURBO'
+
+sanity_check_paths = {
+    'files': ['bin/listgeo', 'lib/libgeotiff.a', 'lib/libgeotiff.%s' % SHLIB_EXT],
+    'dirs': ['include', 'share'],
+}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 25.51,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.8.1/lib/python2.7/site-packages/easybuild_easyconfigs-3.8.1-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'R-bundle-Bioconductor-3.7-foss-2018b-R-3.5.1.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.8.1",
+    "easybuild-framework_version": "3.8.1",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/7.3.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/7.3.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/7.3.0/dummy-/gcc-7.3.0/stage2_stuff; Thread model: posix; gcc version 7.3.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 7889753,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.5.1804",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Apr 11 2018, 07:36:10) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/7.3.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1553651637,
+    "total_memory": 128891,
+}]

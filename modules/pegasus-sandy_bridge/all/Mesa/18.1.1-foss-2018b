@@ -1,0 +1,57 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Mesa is an open-source implementation of the OpenGL specification -
+ a system for rendering interactive 3D graphics.
+
+
+More information
+================
+ - Homepage: http://www.mesa3d.org/
+    }
+}
+
+module-whatis {Description: Mesa is an open-source implementation of the OpenGL specification -
+ a system for rendering interactive 3D graphics.}
+module-whatis {Homepage: http://www.mesa3d.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Mesa/18.1.1-foss-2018b
+
+conflict Mesa
+
+if { ![ is-loaded foss/2018b ] } {
+    module load foss/2018b
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-7.3.0 ] } {
+    module load zlib/1.2.11-GCCcore-7.3.0
+}
+
+if { ![ is-loaded nettle/3.4-foss-2018b ] } {
+    module load nettle/3.4-foss-2018b
+}
+
+if { ![ is-loaded libdrm/2.4.92-GCCcore-7.3.0 ] } {
+    module load libdrm/2.4.92-GCCcore-7.3.0
+}
+
+if { ![ is-loaded LLVM/6.0.0-GCCcore-7.3.0 ] } {
+    module load LLVM/6.0.0-GCCcore-7.3.0
+}
+
+if { ![ is-loaded X11/20180604-GCCcore-7.3.0 ] } {
+    module load X11/20180604-GCCcore-7.3.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTMESA		"$root"
+setenv	EBVERSIONMESA		"18.1.1"
+setenv	EBDEVELMESA		"$root/easybuild/Mesa-18.1.1-foss-2018b-easybuild-devel"
+
+# Built with EasyBuild version 3.8.1
