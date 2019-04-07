@@ -1,0 +1,33 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+NASM: General-purpose x86 assembler
+
+
+More information
+================
+ - Homepage: http://www.nasm.us/
+    }
+}
+
+module-whatis {Description: NASM: General-purpose x86 assembler}
+module-whatis {Homepage: http://www.nasm.us/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/NASM/2.13.03-GCCcore-7.3.0
+
+conflict NASM
+
+if { ![ is-loaded GCCcore/7.3.0 ] } {
+    module load GCCcore/7.3.0
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTNASM		"$root"
+setenv	EBVERSIONNASM		"2.13.03"
+setenv	EBDEVELNASM		"$root/easybuild/NASM-2.13.03-GCCcore-7.3.0-easybuild-devel"
+
+# Built with EasyBuild version 3.8.1

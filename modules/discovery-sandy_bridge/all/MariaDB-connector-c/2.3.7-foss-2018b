@@ -1,0 +1,38 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases.
+
+
+More information
+================
+ - Homepage: https://downloads.mariadb.org/connector-c/
+    }
+}
+
+module-whatis {Description: MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases.}
+module-whatis {Homepage: https://downloads.mariadb.org/connector-c/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/MariaDB-connector-c/2.3.7-foss-2018b
+
+conflict MariaDB-connector-c
+
+if { ![ is-loaded foss/2018b ] } {
+    module load foss/2018b
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTMARIADBMINCONNECTORMINC		"$root"
+setenv	EBVERSIONMARIADBMINCONNECTORMINC		"2.3.7"
+setenv	EBDEVELMARIADBMINCONNECTORMINC		"$root/easybuild/MariaDB-connector-c-2.3.7-foss-2018b-easybuild-devel"
+
+prepend-path	CPATH		$root/include/mariadb
+prepend-path	LD_LIBRARY_PATH		$root/lib/mariadb
+prepend-path	LIBRARY_PATH		$root/lib/mariadb
+# Built with EasyBuild version 3.8.1
