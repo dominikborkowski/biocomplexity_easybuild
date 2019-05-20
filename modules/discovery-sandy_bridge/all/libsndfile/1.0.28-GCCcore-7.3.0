@@ -1,0 +1,39 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Libsndfile is a C library for reading and writing files containing sampled sound
+ (such as MS Windows WAV and the Apple/SGI AIFF format) through one standard library interface.
+
+
+More information
+================
+ - Homepage: http://www.mega-nerd.com/libsndfile
+    }
+}
+
+module-whatis {Description: Libsndfile is a C library for reading and writing files containing sampled sound
+ (such as MS Windows WAV and the Apple/SGI AIFF format) through one standard library interface.}
+module-whatis {Homepage: http://www.mega-nerd.com/libsndfile}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libsndfile/1.0.28-GCCcore-7.3.0
+
+conflict libsndfile
+
+if { ![ is-loaded GCCcore/7.3.0 ] } {
+    module load GCCcore/7.3.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBSNDFILE		"$root"
+setenv	EBVERSIONLIBSNDFILE		"1.0.28"
+setenv	EBDEVELLIBSNDFILE		"$root/easybuild/libsndfile-1.0.28-GCCcore-7.3.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.0
