@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers.
+ The library provides a wide range of mathematical routines such as random number generators, special functions
+ and least-squares fitting.
+
+
+More information
+================
+ - Homepage: http://www.gnu.org/software/gsl/
+    }
+}
+
+module-whatis {Description: The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers.
+ The library provides a wide range of mathematical routines such as random number generators, special functions
+ and least-squares fitting.}
+module-whatis {Homepage: http://www.gnu.org/software/gsl/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/GSL/2.5-foss-2018b
+
+conflict GSL
+
+if { ![ is-loaded foss/2018b ] } {
+    module load foss/2018b
+}
+
+prepend-path	ACLOCAL_PATH		$root/share/aclocal
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTGSL		"$root"
+setenv	EBVERSIONGSL		"2.5"
+setenv	EBDEVELGSL		"$root/easybuild/GSL-2.5-foss-2018b-easybuild-devel"
+
+# Built with EasyBuild version 3.8.1
