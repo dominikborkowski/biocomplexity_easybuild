@@ -1,0 +1,37 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+xz: XZ utilities
+
+
+More information
+================
+ - Homepage: https://tukaani.org/xz/
+    }
+}
+
+module-whatis {Description: xz: XZ utilities}
+module-whatis {Homepage: https://tukaani.org/xz/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/XZ/5.2.4-GCCcore-8.2.0
+
+conflict XZ
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTXZ		"$root"
+setenv	EBVERSIONXZ		"5.2.4"
+setenv	EBDEVELXZ		"$root/easybuild/XZ-5.2.4-GCCcore-8.2.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.2
