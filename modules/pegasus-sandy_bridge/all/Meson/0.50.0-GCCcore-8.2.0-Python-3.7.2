@@ -1,0 +1,42 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Meson is a cross-platform build system designed to be both as fast and as user friendly as possible.
+
+
+More information
+================
+ - Homepage: https://mesonbuild.com
+    }
+}
+
+module-whatis {Description: Meson is a cross-platform build system designed to be both as fast and as user friendly as possible.}
+module-whatis {Homepage: https://mesonbuild.com}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Meson/0.50.0-GCCcore-8.2.0-Python-3.7.2
+
+conflict Meson
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+if { ![ is-loaded Python/3.7.2-GCCcore-8.2.0 ] } {
+    module load Python/3.7.2-GCCcore-8.2.0
+}
+
+if { ![ is-loaded Ninja/1.9.0-GCCcore-8.2.0 ] } {
+    module load Ninja/1.9.0-GCCcore-8.2.0
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTMESON		"$root"
+setenv	EBVERSIONMESON		"0.50.0"
+setenv	EBDEVELMESON		"$root/easybuild/Meson-0.50.0-GCCcore-8.2.0-Python-3.7.2-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python3.7/site-packages
+# Built with EasyBuild version 3.9.2

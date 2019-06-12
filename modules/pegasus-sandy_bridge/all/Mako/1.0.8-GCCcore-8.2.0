@@ -1,0 +1,44 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+A super-fast templating language that borrows the best ideas from the existing templating languages
+
+
+More information
+================
+ - Homepage: http://www.makotemplates.org
+
+
+Compatible modules
+==================
+This module is compatible with the following modules, one of each line is required:
+* Python/3.7.2-GCCcore-8.2.0 (default), Python/2.7.15-GCCcore-8.2.0
+    }
+}
+
+module-whatis {Description: A super-fast templating language that borrows the best ideas from the existing templating languages}
+module-whatis {Homepage: http://www.makotemplates.org}
+module-whatis {Compatible modules: Python/3.7.2-GCCcore-8.2.0 (default), Python/2.7.15-GCCcore-8.2.0}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Mako/1.0.8-GCCcore-8.2.0
+
+conflict Mako
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+if { ![ is-loaded Python/3.7.2-GCCcore-8.2.0 ] && ![ is-loaded Python/2.7.15-GCCcore-8.2.0 ] } {
+    module load Python/3.7.2-GCCcore-8.2.0
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTMAKO		"$root"
+setenv	EBVERSIONMAKO		"1.0.8"
+setenv	EBDEVELMAKO		"$root/easybuild/Mako-1.0.8-GCCcore-8.2.0-easybuild-devel"
+
+prepend-path	EBPYTHONPREFIXES		$root
+# Built with EasyBuild version 3.9.2

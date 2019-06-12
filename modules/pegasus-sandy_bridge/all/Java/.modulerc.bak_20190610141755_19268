@@ -2,6 +2,3 @@
 if {"Java/1.8" eq [module-info version Java/1.8]} {
     module-version Java/1.8.0_192 1.8
 }
-if {"Java/11" eq [module-info version Java/11]} {
-    module-version Java/11.0.2 11
-}

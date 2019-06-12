@@ -1,0 +1,46 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Nettle is a cryptographic library that is designed to fit easily
+ in more or less any context: In crypto toolkits for object-oriented
+ languages (C++, Python, Pike, ...), in applications like LSH or GNUPG,
+ or even in kernel space.
+
+
+More information
+================
+ - Homepage: http://www.lysator.liu.se/~nisse/nettle/
+    }
+}
+
+module-whatis {Description: Nettle is a cryptographic library that is designed to fit easily
+ in more or less any context: In crypto toolkits for object-oriented
+ languages (C++, Python, Pike, ...), in applications like LSH or GNUPG,
+ or even in kernel space.}
+module-whatis {Homepage: http://www.lysator.liu.se/~nisse/nettle/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/nettle/3.4.1-GCCcore-8.2.0
+
+conflict nettle
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+if { ![ is-loaded GMP/6.1.2-GCCcore-8.2.0 ] } {
+    module load GMP/6.1.2-GCCcore-8.2.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib64
+prepend-path	LIBRARY_PATH		$root/lib64
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib64/pkgconfig
+setenv	EBROOTNETTLE		"$root"
+setenv	EBVERSIONNETTLE		"3.4.1"
+setenv	EBDEVELNETTLE		"$root/easybuild/nettle-3.4.1-GCCcore-8.2.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.2

@@ -1,0 +1,58 @@
+# Built with EasyBuild version 3.9.2 on 2019-06-10_12-30-10
+easyblock = 'ConfigureMake'
+
+name = 'gperf'
+version = '3.1'
+
+homepage = 'http://www.gnu.org/software/gperf/'
+
+description = """
+ GNU gperf is a perfect hash function generator. For a given list of strings,
+ it produces a hash function and hash table, in form of C or C++ code, for
+ looking up a value depending on the input string. The hash function is
+ perfect, which means that the hash table has no collisions, and the hash
+ table lookup needs a single string comparison only.
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+
+source_urls = [GNU_SOURCE]
+sources = [SOURCELOWER_TAR_GZ]
+checksums = ['588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2']
+
+builddependencies = [
+    ('binutils', '2.31.1'),
+]
+
+sanity_check_paths = {
+    'files': ['bin/gperf'],
+    'dirs': []
+}
+
+moduleclass = 'devel'
+
+# Build statistics
+buildstats = [{
+    "build_time": 10.69,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.9.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.9.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'R-3.6.0-foss-2019a.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.9.2",
+    "easybuild-framework_version": "3.9.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0/libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 327120,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.5.1804",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Apr 11 2018, 07:36:10) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1560184210,
+    "total_memory": 128891,
+}]

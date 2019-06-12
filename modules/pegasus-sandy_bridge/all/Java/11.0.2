@@ -1,0 +1,35 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers.
+
+
+More information
+================
+ - Homepage: http://openjdk.java.net
+    }
+}
+
+module-whatis {Description: Java Platform, Standard Edition (Java SE) lets you develop and deploy
+ Java applications on desktops and servers.}
+module-whatis {Homepage: http://openjdk.java.net}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Java/11.0.2
+
+conflict Java
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PATH		$root/bin
+setenv	EBROOTJAVA		"$root"
+setenv	EBVERSIONJAVA		"11.0.2"
+setenv	EBDEVELJAVA		"$root/easybuild/Java-11.0.2-easybuild-devel"
+
+prepend-path	PATH		$root
+setenv	JAVA_HOME		"/apps/easybuild/software/pegasus-sandy_bridge/Java/11.0.2"
+# Built with EasyBuild version 3.9.2

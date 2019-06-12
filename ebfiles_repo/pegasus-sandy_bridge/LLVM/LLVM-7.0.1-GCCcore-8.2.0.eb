@@ -1,0 +1,72 @@
+# Built with EasyBuild version 3.9.2 on 2019-06-10_14-12-29
+easyblock = 'CMakeMake'
+
+name = 'LLVM'
+version = '7.0.1'
+
+homepage = "http://llvm.org/"
+description = """The LLVM Core libraries provide a modern source- and target-independent
+ optimizer, along with code generation support for many popular CPUs
+ (as well as some less common ones!) These libraries are built around a well
+ specified code representation known as the LLVM intermediate representation
+ ("LLVM IR"). The LLVM Core libraries are well documented, and it is
+ particularly easy to invent your own language (or port an existing compiler)
+ to use LLVM as an optimizer and code generator."""
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+toolchainopts = {'cstd': 'gnu++11'}
+
+source_urls = ["http://llvm.org/releases/%(version)s"]
+sources = ["llvm-%(version)s.src.tar.xz"]
+checksums = ['a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b']
+
+builddependencies = [
+    ('binutils', '2.31.1'),
+    ('CMake', '3.13.3'),
+    ('Python', '3.7.2'),
+]
+
+dependencies = [
+    ('ncurses', '6.1'),
+    ('zlib', '1.2.11'),
+]
+
+configopts = '-DBUILD_SHARED_LIBS=ON '
+# required to install extra tools in bin/
+configopts += '-DLLVM_INSTALL_UTILS=ON -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_ZLIB=ON -DLLVM_ENABLE_RTTI=ON '
+configopts += '-DCMAKE_BUILD_TYPE=Release '
+
+sanity_check_paths = {
+    'files': ['bin/llvm-ar', 'bin/FileCheck'],
+    'dirs': ['include/llvm', 'include/llvm-c'],
+}
+
+separate_build_dir = True
+
+moduleclass = 'compiler'
+
+# Build statistics
+buildstats = [{
+    "build_time": 487.65,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.9.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.9.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'R-3.6.0-foss-2019a.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.9.2",
+    "easybuild-framework_version": "3.9.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0/libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 135876985,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.5.1804",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Apr 11 2018, 07:36:10) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/apps/easybuild/software/pegasus-sandy_bridge/Python/3.7.2-GCCcore-8.2.0/bin/python",
+    "timestamp": 1560190349,
+    "total_memory": 128891,
+}]

@@ -1,0 +1,32 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Ninja is a small build system with a focus on speed.
+
+
+More information
+================
+ - Homepage: https://ninja-build.org/
+    }
+}
+
+module-whatis {Description: Ninja is a small build system with a focus on speed.}
+module-whatis {Homepage: https://ninja-build.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Ninja/1.9.0-GCCcore-8.2.0
+
+conflict Ninja
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+prepend-path	PATH		$root/bin
+setenv	EBROOTNINJA		"$root"
+setenv	EBVERSIONNINJA		"1.9.0"
+setenv	EBDEVELNINJA		"$root/easybuild/Ninja-1.9.0-GCCcore-8.2.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.2
