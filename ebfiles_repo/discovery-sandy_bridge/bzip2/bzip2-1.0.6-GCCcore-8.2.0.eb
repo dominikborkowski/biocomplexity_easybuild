@@ -1,0 +1,55 @@
+# Built with EasyBuild version 3.9.2 on 2019-06-12_08-43-57
+name = 'bzip2'
+version = '1.0.6'
+
+homepage = 'https://sourceware.org/bzip2'
+
+description = """
+ bzip2 is a freely available, patent free, high-quality data compressor. It
+ typically compresses files to within 10% to 15% of the best available
+ techniques (the PPM family of statistical compressors), whilst being around
+ twice as fast at compression and six times faster at decompression.
+"""
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://fossies.org/linux/misc/']
+sources = [SOURCE_TAR_GZ]
+patches = ['bzip2-%(version)s-pkgconfig.patch']
+checksums = [
+    'a2848f34fcd5d6cf47def00461fcb528a0484d8edef8208d6d2e2909dc61d9cd',  # bzip2-1.0.6.tar.gz
+    '5a823e820b332eca3684416894f58edc125ac3dace9f46e62f98e45362aa8a6d',  # bzip2-1.0.6-pkgconfig.patch
+]
+
+builddependencies = [
+    ('binutils', '2.31.1'),
+]
+
+moduleclass = 'tools'
+
+# Build statistics
+buildstats = [{
+    "build_time": 3.54,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/discovery-sandy_bridge'", "--installpath-software='/apps/easybuild/software/discovery-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/discovery-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/software/discovery-sandy_bridge/EasyBuild/3.9.2/lib/python2.7/site-packages/easybuild_easyconfigs-3.9.2-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/discovery-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/discovery-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'R-3.6.0-foss-2019a.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz",
+    "cpu_speed": 3300.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.9.2",
+    "easybuild-framework_version": "3.9.2",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/8.2.0/libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/8.2.0 --with-local-prefix=/apps/easybuild/software/discovery-sandy_bridge/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "discovery2",
+    "install_size": 2457862,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.3.1611",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Nov  6 2016, 00:28:07) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)]",
+    "system_gcc_path": "/apps/easybuild/software/discovery-sandy_bridge/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1560343437,
+    "total_memory": 64403,
+}]
