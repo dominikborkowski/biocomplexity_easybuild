@@ -1,0 +1,50 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Pysam is a python module for reading and manipulating Samfiles. 
+ It's a lightweight wrapper of the samtools C-API. Pysam also includes an interface for tabix.
+
+
+More information
+================
+ - Homepage: https://github.com/pysam-developers/pysam
+    }
+}
+
+module-whatis {Description: Pysam is a python module for reading and manipulating Samfiles. 
+ It's a lightweight wrapper of the samtools C-API. Pysam also includes an interface for tabix.}
+module-whatis {Homepage: https://github.com/pysam-developers/pysam}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/Pysam/0.14-foss-2017b-Python-2.7.14
+
+conflict Pysam
+
+if { ![ is-loaded foss/2017b ] } {
+    module load foss/2017b
+}
+
+if { ![ is-loaded XZ/5.2.3-GCCcore-6.4.0 ] } {
+    module load XZ/5.2.3-GCCcore-6.4.0
+}
+
+if { ![ is-loaded Python/2.7.14-foss-2017b ] } {
+    module load Python/2.7.14-foss-2017b
+}
+
+if { ![ is-loaded ncurses/6.0-GCCcore-6.4.0 ] } {
+    module load ncurses/6.0-GCCcore-6.4.0
+}
+
+if { ![ is-loaded cURL/7.56.1-GCCcore-6.4.0 ] } {
+    module load cURL/7.56.1-GCCcore-6.4.0
+}
+
+setenv	EBROOTPYSAM		"$root"
+setenv	EBVERSIONPYSAM		"0.14"
+setenv	EBDEVELPYSAM		"$root/easybuild/Pysam-0.14-foss-2017b-Python-2.7.14-easybuild-devel"
+
+prepend-path	PYTHONPATH		$root/lib/python2.7/site-packages
+# Built with EasyBuild version 3.9.2
