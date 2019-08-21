@@ -1,0 +1,43 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Little CMS intends to be an OPEN SOURCE small-footprint color management engine,
+ with special focus on accuracy and performance.
+
+
+More information
+================
+ - Homepage: http://www.littlecms.com/
+    }
+}
+
+module-whatis {Description:  Little CMS intends to be an OPEN SOURCE small-footprint color management engine,
+ with special focus on accuracy and performance. }
+module-whatis {Homepage: http://www.littlecms.com/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/LittleCMS/2.9-GCCcore-8.2.0
+
+conflict LittleCMS
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+if { ![ is-loaded libjpeg-turbo/2.0.2-GCCcore-8.2.0 ] } {
+    module load libjpeg-turbo/2.0.2-GCCcore-8.2.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLITTLECMS		"$root"
+setenv	EBVERSIONLITTLECMS		"2.9"
+setenv	EBDEVELLITTLECMS		"$root/easybuild/LittleCMS-2.9-GCCcore-8.2.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.2

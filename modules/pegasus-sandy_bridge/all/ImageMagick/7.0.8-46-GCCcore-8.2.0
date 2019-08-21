@@ -1,0 +1,66 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+ImageMagick is a software suite to create, edit, compose, or convert bitmap images
+
+
+More information
+================
+ - Homepage: http://www.imagemagick.org/
+    }
+}
+
+module-whatis {Description: ImageMagick is a software suite to create, edit, compose, or convert bitmap images}
+module-whatis {Homepage: http://www.imagemagick.org/}
+
+set root /apps/easybuild/software/pegasus-sandy_bridge/ImageMagick/7.0.8-46-GCCcore-8.2.0
+
+conflict ImageMagick
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+if { ![ is-loaded bzip2/1.0.6-GCCcore-8.2.0 ] } {
+    module load bzip2/1.0.6-GCCcore-8.2.0
+}
+
+if { ![ is-loaded X11/20190311-GCCcore-8.2.0 ] } {
+    module load X11/20190311-GCCcore-8.2.0
+}
+
+if { ![ is-loaded Ghostscript/9.27-GCCcore-8.2.0 ] } {
+    module load Ghostscript/9.27-GCCcore-8.2.0
+}
+
+if { ![ is-loaded JasPer/2.0.14-GCCcore-8.2.0 ] } {
+    module load JasPer/2.0.14-GCCcore-8.2.0
+}
+
+if { ![ is-loaded libjpeg-turbo/2.0.2-GCCcore-8.2.0 ] } {
+    module load libjpeg-turbo/2.0.2-GCCcore-8.2.0
+}
+
+if { ![ is-loaded LibTIFF/4.0.10-GCCcore-8.2.0 ] } {
+    module load LibTIFF/4.0.10-GCCcore-8.2.0
+}
+
+if { ![ is-loaded LittleCMS/2.9-GCCcore-8.2.0 ] } {
+    module load LittleCMS/2.9-GCCcore-8.2.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTIMAGEMAGICK		"$root"
+setenv	EBVERSIONIMAGEMAGICK		"7.0.8-46"
+setenv	EBDEVELIMAGEMAGICK		"$root/easybuild/ImageMagick-7.0.8-46-GCCcore-8.2.0-easybuild-devel"
+
+setenv	MAGICK_HOME		"/apps/easybuild/software/pegasus-sandy_bridge/ImageMagick/7.0.8-46-GCCcore-8.2.0"
+# Built with EasyBuild version 3.9.2
