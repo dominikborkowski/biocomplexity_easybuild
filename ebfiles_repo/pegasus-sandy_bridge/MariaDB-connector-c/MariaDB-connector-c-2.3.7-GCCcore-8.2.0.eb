@@ -1,0 +1,58 @@
+# Built with EasyBuild version 3.9.4 on 2019-08-23_08-18-49
+easyblock = 'CMakeMake'
+
+name = 'MariaDB-connector-c'
+version = '2.3.7'
+
+homepage = 'https://downloads.mariadb.org/connector-c/'
+description = "MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases."
+
+toolchain = {'name': 'GCCcore', 'version': '8.2.0'}
+
+source_urls = ['https://downloads.mariadb.org/f/connector-c-%(version)s']
+sources = ['mariadb-connector-c-%(version)s-src.tar.gz']
+checksums = ['94f9582da738809ae1d9f1813185165ec7c8caf9195bdd04e511f6bdcb883f8e']
+
+builddependencies = [
+    ('binutils', '2.31.1'),
+    ('CMake', '3.13.3'),
+]
+
+sanity_check_paths = {
+    'files': ['lib/mariadb/libmariadbclient.a', 'lib/mariadb/libmariadb.%s' % SHLIB_EXT],
+    'dirs': ['include/mariadb'],
+}
+
+modextrapaths = {
+    'CPATH': ['include/mariadb'],
+    'LD_LIBRARY_PATH': ['lib/mariadb'],
+    'LIBRARY_PATH': ['lib/mariadb'],
+}
+
+moduleclass = 'lib'
+
+# Build statistics
+buildstats = [{
+    "build_time": 44.97,
+    "command_line": ["--buildpath='/dev/shm/dom/build'", '--group-writable-installdir', "--installpath-modules='/apps/easybuild/modules/pegasus-sandy_bridge'", "--installpath-software='/apps/easybuild/software/pegasus-sandy_bridge'", "--module-syntax='Tcl'", "--modules-tool='EnvironmentModulesC'", "--repositorypath='/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge'", "--robot='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/software/pegasus-sandy_bridge/EasyBuild/3.9.4/lib/python2.7/site-packages/easybuild_easyconfigs-3.9.4-py2.7.egg/easybuild/easyconfigs'", "--robot-paths='/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/pegasus-sandy_bridge:/apps/easybuild/ebfiles_repo-vbi/generic:/apps/easybuild/ebfiles_repo/pegasus-sandy_bridge:'", '--set-gid-bit', "--sourcepath='/apps/easybuild/sources'", '--sticky-bit', "--umask='002'", 'R-bundle-Bioconductor-3.9-foss-2019a-R-3.6.0.eb'],
+    "core_count": 16,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2690 0 @ 2.90GHz",
+    "cpu_speed": 3800.0,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.9.4",
+    "easybuild-framework_version": "3.9.4",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0/libexec/gcc/x86_64-pc-linux-gnu/8.2.0/lto-wrapper; Target: x86_64-pc-linux-gnu; Configured with: ../configure --enable-languages=c,c++,fortran --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-plugins --enable-gold=default --enable-ld --with-plugin-ld=ld.gold --prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0 --with-local-prefix=/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0 --enable-bootstrap --with-isl=/dev/shm/dom/build/GCCcore/8.2.0/dummy-/gcc-8.2.0/stage2_stuff; Thread model: posix; gcc version 8.2.0 (GCC) ; ",
+    "glibc_version": "2.17",
+    "hostname": "pegasus1",
+    "install_size": 15654192,
+    "modules_tool": ('EnvironmentModulesC', '/cm/local/apps/environment-modules/3.2.10/bin/modulecmd', '3.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.5.1804",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.5 (default, Apr 11 2018, 07:36:10) ; [GCC 4.8.5 20150623 (Red Hat 4.8.5-28)]",
+    "system_gcc_path": "/apps/easybuild/software/pegasus-sandy_bridge/GCCcore/8.2.0/bin/gcc",
+    "system_python_path": "/usr/bin/python",
+    "timestamp": 1566562729,
+    "total_memory": 128891,
+}]
