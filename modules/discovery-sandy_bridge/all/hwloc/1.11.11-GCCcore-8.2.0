@@ -1,0 +1,67 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+The Portable Hardware Locality (hwloc) software package provides a portable
+ abstraction (across OS, versions, architectures, ...) of the hierarchical
+ topology of modern architectures, including NUMA memory nodes, sockets, shared
+ caches, cores and simultaneous multithreading. It also gathers various system
+ attributes such as cache and memory information as well as the locality of I/O
+ devices such as network interfaces, InfiniBand HCAs or GPUs. It primarily
+ aims at helping applications with gathering information about modern computing
+ hardware so as to exploit it accordingly and efficiently.
+
+
+More information
+================
+ - Homepage: https://www.open-mpi.org/projects/hwloc/
+    }
+}
+
+module-whatis {Description: 
+ The Portable Hardware Locality (hwloc) software package provides a portable
+ abstraction (across OS, versions, architectures, ...) of the hierarchical
+ topology of modern architectures, including NUMA memory nodes, sockets, shared
+ caches, cores and simultaneous multithreading. It also gathers various system
+ attributes such as cache and memory information as well as the locality of I/O
+ devices such as network interfaces, InfiniBand HCAs or GPUs. It primarily
+ aims at helping applications with gathering information about modern computing
+ hardware so as to exploit it accordingly and efficiently.
+}
+module-whatis {Homepage: https://www.open-mpi.org/projects/hwloc/}
+module-whatis {URL: https://www.open-mpi.org/projects/hwloc/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/hwloc/1.11.11-GCCcore-8.2.0
+
+conflict hwloc
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+if { ![ is-loaded numactl/2.0.12-GCCcore-8.2.0 ] } {
+    module load numactl/2.0.12-GCCcore-8.2.0
+}
+
+if { ![ is-loaded libxml2/2.9.8-GCCcore-8.2.0 ] } {
+    module load libxml2/2.9.8-GCCcore-8.2.0
+}
+
+if { ![ is-loaded libpciaccess/0.14-GCCcore-8.2.0 ] } {
+    module load libpciaccess/0.14-GCCcore-8.2.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+prepend-path	PATH		$root/sbin
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTHWLOC		"$root"
+setenv	EBVERSIONHWLOC		"1.11.11"
+setenv	EBDEVELHWLOC		"$root/easybuild/hwloc-1.11.11-GCCcore-8.2.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.4

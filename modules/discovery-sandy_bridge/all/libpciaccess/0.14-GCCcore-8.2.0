@@ -1,0 +1,36 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Generic PCI access library.
+
+
+More information
+================
+ - Homepage: http://cgit.freedesktop.org/xorg/lib/libpciaccess/
+    }
+}
+
+module-whatis {Description: Generic PCI access library.}
+module-whatis {Homepage: http://cgit.freedesktop.org/xorg/lib/libpciaccess/}
+module-whatis {URL: http://cgit.freedesktop.org/xorg/lib/libpciaccess/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/libpciaccess/0.14-GCCcore-8.2.0
+
+conflict libpciaccess
+
+if { ![ is-loaded GCCcore/8.2.0 ] } {
+    module load GCCcore/8.2.0
+}
+
+prepend-path	CPATH		$root/include
+prepend-path	LD_LIBRARY_PATH		$root/lib
+prepend-path	LIBRARY_PATH		$root/lib
+prepend-path	PKG_CONFIG_PATH		$root/lib/pkgconfig
+setenv	EBROOTLIBPCIACCESS		"$root"
+setenv	EBVERSIONLIBPCIACCESS		"0.14"
+setenv	EBDEVELLIBPCIACCESS		"$root/easybuild/libpciaccess-0.14-GCCcore-8.2.0-easybuild-devel"
+
+# Built with EasyBuild version 3.9.4

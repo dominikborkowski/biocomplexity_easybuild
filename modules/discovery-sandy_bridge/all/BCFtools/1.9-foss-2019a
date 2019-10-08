@@ -1,0 +1,58 @@
+#%Module
+proc ModulesHelp { } {
+    puts stderr {
+
+Description
+===========
+Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ BCFtools - Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence
+ variants
+
+
+More information
+================
+ - Homepage: http://www.htslib.org/
+    }
+}
+
+module-whatis {Description: Samtools is a suite of programs for interacting with high-throughput sequencing data.
+ BCFtools - Reading/writing BCF2/VCF/gVCF files and calling/filtering/summarising SNP and short indel sequence
+ variants}
+module-whatis {Homepage: http://www.htslib.org/}
+module-whatis {URL: http://www.htslib.org/}
+
+set root /apps/easybuild/software/discovery-sandy_bridge/BCFtools/1.9-foss-2019a
+
+conflict BCFtools
+
+if { ![ is-loaded foss/2019a ] } {
+    module load foss/2019a
+}
+
+if { ![ is-loaded zlib/1.2.11-GCCcore-8.2.0 ] } {
+    module load zlib/1.2.11-GCCcore-8.2.0
+}
+
+if { ![ is-loaded HTSlib/1.9-GCC-8.2.0-2.31.1 ] } {
+    module load HTSlib/1.9-GCC-8.2.0-2.31.1
+}
+
+if { ![ is-loaded bzip2/1.0.6-GCCcore-8.2.0 ] } {
+    module load bzip2/1.0.6-GCCcore-8.2.0
+}
+
+if { ![ is-loaded XZ/5.2.4-GCCcore-8.2.0 ] } {
+    module load XZ/5.2.4-GCCcore-8.2.0
+}
+
+if { ![ is-loaded GSL/2.5-GCC-8.2.0-2.31.1 ] } {
+    module load GSL/2.5-GCC-8.2.0-2.31.1
+}
+
+prepend-path	MANPATH		$root/share/man
+prepend-path	PATH		$root/bin
+setenv	EBROOTBCFTOOLS		"$root"
+setenv	EBVERSIONBCFTOOLS		"1.9"
+setenv	EBDEVELBCFTOOLS		"$root/easybuild/BCFtools-1.9-foss-2019a-easybuild-devel"
+
+# Built with EasyBuild version 3.9.4
